@@ -7,7 +7,6 @@ public class MahjongGame {
     private Player[] players;
     private GameBoard gameBoard;
     private int currentPlayerIndex;
-    
 
     public MahjongGame() {
         this.players = new Player[4];
