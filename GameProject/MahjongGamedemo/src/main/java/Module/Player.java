@@ -8,7 +8,7 @@ public class Player {
 
     public Player(){}
 
-    public int rollDice(){return 0;}
+    public int rollDice(Dose dose){return 0;}
 
     public Tile drawTiles(){return null;}
 
