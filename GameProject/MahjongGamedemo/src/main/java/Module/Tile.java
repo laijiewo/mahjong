@@ -1,4 +1,7 @@
 package Module;
+import System.*;
+import Display.*;
+
 
 public class Tile {
     abstract class Character{}      //万

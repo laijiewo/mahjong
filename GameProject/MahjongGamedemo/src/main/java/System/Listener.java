@@ -1,6 +1,6 @@
 package System;
-
-import Display.ClickListener;
+import Display.*;
+import Module.*;
 
 public class Listener {
     public ClickListener Click_listener;
