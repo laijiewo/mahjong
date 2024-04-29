@@ -3,6 +3,7 @@ import System.*;
 import Module.*;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
+import javafx.stage.Stage;
 
 
 public class GameScreen {
@@ -18,5 +19,5 @@ public class GameScreen {
     Button Win_button = ButtonDisplay.Win_button;
     Button Hand_tilesButton = ButtonDisplay.Hand_tilesButton;
 
-    public static void loadGameWindow(){}
+    public static void loadGameWindow(Stage primaryStage){}
 }
