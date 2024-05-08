@@ -1,4 +1,2 @@
 # mahjong
-cai ji写的劣质麻将
-来自软工三班课设小组精心调制的答辩
-尽情享受
+Group members: Jingwag Li, Jie Mao, Yixin Niu, Lanyun Xiao
