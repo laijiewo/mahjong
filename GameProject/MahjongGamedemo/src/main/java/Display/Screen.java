@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * screen, rules screen, and the game screen.
  * @author Jingwang Li
  */
-public interface IScreen {
+public interface Screen {
     /**
      * Loads the window on the specified stage. This method is responsible for setting up the user interface elements
      * on the stage, preparing it to be displayed. This could involve configuring scene size, adding components,

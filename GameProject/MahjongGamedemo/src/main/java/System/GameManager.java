@@ -4,20 +4,26 @@ import Module.*;
 
 import java.util.ArrayList;
 
-public class GameManager {
+public class GameManager{
     enum Game_state {Waiting, InProgress, Paused, Ended}
-    Player Dealer;
-    ArrayList<Tile> Remaining_tiles = new ArrayList<Tile>();
+    private final ArrayList<Player> players;
+    private Player dealer;
+    private final MahjongGame mahjongGame;
+    private final Screen gameScreen;
+    private final Screen loginScreen;
+    private final Screen menuScreen;
+    private final Screen scoreScreen;
+    private Screen rulesScreen;
+    public GameManager(MahjongGame mahjongGame, Screen gameScreen, Screen loginScreen, Screen menuScreen, Screen scoreScreen, Screen rulesScreen) {
+        players = new ArrayList<>();
+        this.mahjongGame = mahjongGame;
+        this.gameScreen = gameScreen;
+        this.loginScreen = loginScreen;
+        this.menuScreen = menuScreen;
+        this.scoreScreen = scoreScreen;
+        this.rulesScreen = rulesScreen;
+    }
 
-    public void determineDealer(){}
-
-    public void rotateDealer(){}
-
-    public void initializeGame(){}
-
-    public void startGame(){}
-
-    public void endGame(){}
 
     public void checkVictory(){}
 

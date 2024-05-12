@@ -1,17 +1,14 @@
 package Display;
-import System.*;
-import Module.*;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MenuScreen implements IScreen{
+public class MenuScreen implements Screen {
 
     private static Background background; // Assuming Background is a custom class or JavaFX Background
     private static Button startGameButton = ButtonDisplay.Start_gameButton;
