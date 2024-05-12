@@ -1,16 +1,11 @@
-package Module;
-import System.*;
-import Display.*;
+import numpy as np
 
+# 设置随机种子以确保结果的可重复性
+np.random.seed(0)
 
-public class MahjongGame {
-    private Player[] players;
-    private GameBoard gameBoard;
-    private int currentPlayerIndex;
+# 生成100个包含100个随机整数的1-D数组
+arrays = [np.random.randint(1, 1000, size=100) for _ in range(100)]
 
-    public MahjongGame() {
-        this.players = new Player[4];
-        this.gameBoard = new GameBoard();
-        this.currentPlayerIndex = 0;
-    }
-}
+# 打印生成的数组
+for i, arr in enumerate(arrays, 1):
+    print(f"Array {i}: {arr}")
