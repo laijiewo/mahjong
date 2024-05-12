@@ -6,7 +6,7 @@ import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 
-public class GameScreen {
+public class GameScreen implements IScreen{
     MahjongGame Mahjong_game;
     GameManager Game_manager;
     Background Background;
@@ -20,4 +20,9 @@ public class GameScreen {
     Button Hand_tilesButton = ButtonDisplay.Hand_tilesButton;
 
     public static void loadGameWindow(Stage primaryStage){}
+
+    @Override
+    public void loadWindow(Stage primaryStage) {
+        loadGameWindow(primaryStage);
+    }
 }

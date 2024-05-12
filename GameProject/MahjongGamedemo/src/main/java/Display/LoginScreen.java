@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginScreen {
+public class LoginScreen implements IScreen{
     private static Button loginButton = new Button("Login");
     private static TextField usernameField = new TextField();
     private static PasswordField passwordField = new PasswordField();
@@ -48,6 +48,11 @@ public class LoginScreen {
         primaryStage.setTitle("Login Window");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void loadWindow(Stage stage) {
+        loadLoginWindow(stage);
     }
 }
 

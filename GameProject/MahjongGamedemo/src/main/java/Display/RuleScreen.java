@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class RuleScreen {
+public class RuleScreen implements IScreen{
     private Background Background;
     private static Button Return_toMenuButton = ButtonDisplay.Return_toMenuButton;
 
@@ -31,5 +31,10 @@ public class RuleScreen {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Rule Screen");
         primaryStage.show();
+    }
+
+    @Override
+    public void loadWindow(Stage stage) {
+        loadRuleWindow(stage);
     }
 }

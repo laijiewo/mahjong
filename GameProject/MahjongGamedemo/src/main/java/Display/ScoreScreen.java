@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class ScoreScreen {
+public class ScoreScreen implements IScreen{
     Background Background;
     static Button Return_toMenuButton = ButtonDisplay.Return_toMenuButton;
 
@@ -27,4 +27,8 @@ public class ScoreScreen {
 
     }
 
+    @Override
+    public void loadWindow(Stage stage) {
+        loadScoreWindow(stage);
+    }
 }
