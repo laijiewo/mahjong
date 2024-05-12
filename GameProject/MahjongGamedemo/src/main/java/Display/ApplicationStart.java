@@ -1,8 +1,4 @@
 package Display;
-import System.*;
-import Module.*;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

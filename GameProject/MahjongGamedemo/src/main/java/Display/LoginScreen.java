@@ -1,17 +1,4 @@
 package Display;
-import System.*;
-import Module.*;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class LoginScreen {
+public class LoginScreen implements Screen {
     private static Button loginButton = new Button("Login");
     private static TextField usernameField = new TextField();
     private static PasswordField passwordField = new PasswordField();
@@ -48,6 +35,11 @@ public class LoginScreen {
         primaryStage.setTitle("Login Window");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void loadWindow(Stage stage) {
+        loadLoginWindow(stage);
     }
 }
 

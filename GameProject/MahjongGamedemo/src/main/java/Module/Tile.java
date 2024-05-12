@@ -4,9 +4,14 @@ import Display.*;
 
 
 public class Tile {
-    tileEnum type;
-    final int tileCount = 108;
-    public Tile(tileEnum type) {
-        this.type = type;
+    private int suit;
+    public Tile(int suit) {
+        this.suit = suit;
+    }
+    public int getSuit() {
+        return suit;
+    }
+    protected void setSuit(int suit) {
+        this.suit = suit;
     }
 }
