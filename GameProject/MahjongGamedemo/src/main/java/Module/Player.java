@@ -1,7 +1,5 @@
 package Module;
 import System.*;
-import Display.*;
-import Module.*;
 
 import java.util.ArrayList;
 
@@ -11,7 +9,7 @@ public class Player {
 
     public Player(){}
 
-    public int rollDice(Dose Dose){return 0;}
+    public int rollDice(Dice Dose){return 0;}
 
     public Tile drawTiles(TileWall Tile_wall){return null;}
 
