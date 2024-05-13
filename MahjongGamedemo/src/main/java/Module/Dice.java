@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * This class represents a six-sided dice that can be tossed to get a random outcome.
+ * @author YiXin Niu
  */
 public class Dice {
     private int pips; // Number of pips facing up after tossing the dice

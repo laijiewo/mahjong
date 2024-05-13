@@ -1,7 +1,8 @@
 package Module;
 
 public class TileFactory {
-    public Tile createTile(int tileType, int tileValue) {
+    public Tile createTile(String tileType, int tileValue) {
         return null;
     }
+
 }
