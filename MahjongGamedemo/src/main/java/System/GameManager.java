@@ -43,15 +43,4 @@ public class GameManager {
         this.rulesScreen = rulesScreen;
     }
 
-    public void checkVictory() {
-    }
-
-    public void calculateScores() {
-    }
-
-    public void pauseGame() {
-    }
-
-    public void resumeGame() {
-    }
 }

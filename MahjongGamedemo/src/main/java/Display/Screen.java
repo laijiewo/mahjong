@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 /**
  * This interface defines the methods that are required for the objects that will be used to display information on the screen. This includes the menu, about
  * screen, rules screen, and the game screen.
+ *
  * @author Jingwang Li
  */
 public interface Screen {

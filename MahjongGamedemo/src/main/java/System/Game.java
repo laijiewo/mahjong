@@ -22,7 +22,7 @@ public interface Game {
 
     /**
      * This method is used to detect whether a player has won.
-     * 
+     *
      * @return the player object of the winner if there is a winner, null otherwise.
      */
     public Player checkVictory();
