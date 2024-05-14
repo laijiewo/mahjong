@@ -17,6 +17,7 @@ public class TileFactory {
      */
     public TileFactory() {
         tiles = new ArrayList<>();
+        createTile();
     }
 
     /**
