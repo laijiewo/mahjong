@@ -1,17 +1,58 @@
 package Module;
 import System.*;
 import Display.*;
-
-
+enum Suit{
+    /**
+     * The {@code Suit} enum defines the possible suits for tiles in games like Mahjong.
+     * This includes traditional suits such as bamboo (TIAO), characters (WAN), and dots (TONG),
+     * as well as special suits like wind directions and dragons.
+     */
+    TIAO,
+    WAN,
+    TONG,
+    WIND,
+    DRAGON
+}
+/**
+ * Represents a generic tile in games such as Mahjong. This class serves as a base class
+ * for different types of tiles that might have specific attributes and behaviors.
+ * @author Yixin Niu
+ */
 public class Tile {
-    private int suit;
-    public Tile(int suit) {
+    private Suit suit;
+    /**
+     * Constructs a new tile with the specified suit.
+     *
+     * @param suit the suit of this tile, which determines its category in the game.
+     */
+    public Tile(Suit suit) {
         this.suit = suit;
     }
-    public int getSuit() {
+    /**
+     * Returns the suit of this tile.
+     *
+     * @return the suit of the tile.
+     */
+    public Suit getSuit() {
         return suit;
     }
-    protected void setSuit(int suit) {
+    /**
+     * Sets the suit of this tile. This method is protected to allow access only within
+     * the package or subclasses.
+     *
+     * @param suit the new suit of the tile.
+     */
+    protected void setSuit(Suit suit) {
         this.suit = suit;
+    }
+    /**
+     * Returns a string representation of this tile, including its suit.
+     *
+     * @return a string representation of the tile, which includes the suit of the tile.
+     */
+    public String toString() {
+        return "Tile{" +
+                "suit=" + suit +
+                '}';
     }
 }
