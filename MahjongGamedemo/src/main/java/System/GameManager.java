@@ -2,6 +2,12 @@ package System;
 
 import Display.*;
 import Module.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -12,7 +18,6 @@ import java.util.ArrayList;
  */
 public class GameManager {
     enum Game_state {Waiting, InProgress, Paused, Ended}
-
     private final ArrayList<Player> players;
     private Player dealer;
     private final Game game;
@@ -43,4 +48,21 @@ public class GameManager {
         this.rulesScreen = rulesScreen;
     }
 
+    /**
+     * This method controls the execution of the game.
+     */
+    public void run() {
+        Timeline gameLoop = new Timeline();
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        KeyFrame kf = new KeyFrame(
+                Duration.seconds(0.017),// 60 FPS
+                new EventHandler<ActionEvent>() {
+                    public void handle(ActionEvent ae) {
+                    }
+                }
+        );}
+
+    private void exitGame() {
+        Platform.exit();
+    }
 }
