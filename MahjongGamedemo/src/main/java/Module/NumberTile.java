@@ -30,24 +30,5 @@ public class NumberTile extends  Tile{
     public int getRank() {
         return rank;
     }
-    /**
-     * Returns a string representation of this tile, combining its rank and suit name.
-     *
-     * @return a string representing this tile, formatted as "rankSuitName", e.g., "1TIAO".
-     */
-    public String toString() {
-        String suitName = "";
-        switch (getSuit()) {
-            case TIAO:
-                suitName = "TIAO";
-                break;
-            case TONG:
-                suitName = "TONG";
-                break;
-            case WAN:
-                suitName = "WAN";
-                break;
-        }
-        return rank + suitName;
-    }
+
 }

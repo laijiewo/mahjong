@@ -19,16 +19,5 @@ public class NumberTileTest {
     public void testInvalidRankCreation() {
         new NumberTile(0, Suit.WAN);
     }
-
-    @Test
-    public void testToString() {
-        NumberTile tile = new NumberTile(9, Suit.TIAO);
-        Assert.assertEquals("toString should return '9TIAO'", "9TIAO", tile.toString());
-
-        tile = new NumberTile(1, Suit.TONG);
-        Assert.assertEquals("toString should return '1TONG'", "1TONG", tile.toString());
-
-        tile = new NumberTile(3, Suit.WAN);
-        Assert.assertEquals("toString should return '3WAN'", "3WAN", tile.toString());
-    }
+    
 }

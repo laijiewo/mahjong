@@ -35,14 +35,5 @@ public class WindAndDragonTile extends Tile {
         return type;
     }
 
-    /**
-     * Returns a string representation of this tile, using the type as its descriptor.
-     * This method overrides the {@link Tile#toString()} method to provide a more specific output.
-     *
-     * @return a string that represents this specific tile, e.g., "East" or "ZHONG".
-     */
-    @Override
-    public String toString() {
-        return type;
-    }
+
 }
