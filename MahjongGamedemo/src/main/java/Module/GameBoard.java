@@ -16,7 +16,7 @@ public class GameBoard {
     public Player player3;
     public Player player4;
 
-    ArrayList<Player> playerList = new ArrayList<>(Arrays.asList(player1,player2,player3,player4 e));
+    ArrayList<Player> playerList = new ArrayList<>(Arrays.asList(player1,player2,player3,player4));
 
     public void rotate(){
         Dice dice = new Dice();
