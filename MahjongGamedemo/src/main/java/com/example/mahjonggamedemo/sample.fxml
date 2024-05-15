@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mahjonggamedemo.Sample">
+<AnchorPane prefHeight="712.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mahjonggamedemo.Sample">
    <children>
-      <Button layoutX="276.0" layoutY="277.0" mnemonicParsing="false" text="log in" />
-      <TextField layoutX="244.0" layoutY="153.0" />
-      <TextField layoutX="244.0" layoutY="200.0" />
-      <Label layoutX="199.0" layoutY="157.0" text="Label" />
-      <Label layoutX="199.0" layoutY="204.0" text="Label" />
+      <Button fx:id="LogininButton" layoutX="657.0" layoutY="480.0" mnemonicParsing="false" text="log in" />
+      <TextField fx:id="AccountText" layoutX="625.0" layoutY="356.0" />
+      <TextField fx:id="PasswordText" layoutX="625.0" layoutY="403.0" />
+      <Label fx:id="AccountLabel" layoutX="542.0" layoutY="362.0" text="Account:" />
+      <Label fx:id="PasswordLabel" layoutX="531.0" layoutY="409.0" text="Password:" />
    </children>
 </AnchorPane>
