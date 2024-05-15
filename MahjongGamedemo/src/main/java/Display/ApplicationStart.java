@@ -2,12 +2,16 @@ package Display;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import System.*;
+import Module.*;
 
 public class ApplicationStart extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        LoginScreen.loadLoginWindow(primaryStage); // Call the static method to load the login window
+        Game game = new MahjongGame();
+        GameManager manager = new GameManager(game);
+        manager.run(primaryStage);
     }
 
     public static void main(String[] args) {

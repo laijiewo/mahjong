@@ -7,9 +7,11 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * This class controls the game flow and the game state.
@@ -32,37 +34,22 @@ public class GameManager {
      * This class should be created only once in the application start class.
      *
      * @param game        The instance of the MahjongGame class.
-     * @param gameScreen  The instance of the Screen class for the game.
-     * @param loginScreen The instance of the Screen class for the login screen.
-     * @param menuScreen  The instance of the Screen class for the menu screen.
-     * @param scoreScreen The instance of the Screen class for the score screen.
-     * @param rulesScreen The instance of the Screen class for the rules screen.
      */
-    public GameManager(Game game, Screen gameScreen, Screen loginScreen, Screen menuScreen, Screen scoreScreen, Screen rulesScreen) {
+    public GameManager(Game game) {
         players = new ArrayList<>();
         this.game = game;
-        this.gameScreen = gameScreen;
-        this.loginScreen = loginScreen;
-        this.menuScreen = menuScreen;
-        this.scoreScreen = scoreScreen;
-        this.rulesScreen = rulesScreen;
+        this.gameScreen = new GameScreen((MahjongGame) game);
+        this.loginScreen = new LoginScreen();
+        this.menuScreen = new MenuScreen();
+        this.scoreScreen = new ScoreScreen();
+        this.rulesScreen = new RuleScreen();
     }
 
     /**
      * This method controls the execution of the game.
      */
-    public void run() {
-        Timeline gameLoop = new Timeline();
-        gameLoop.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.017),// 60 FPS
-                new EventHandler<ActionEvent>() {
-                    public void handle(ActionEvent ae) {
-                    }
-                }
-        );}
-
-    private void exitGame() {
-        Platform.exit();
+    public void run(Stage stage) {
+        loginScreen.loadWindow(stage);
     }
+
 }
