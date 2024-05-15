@@ -2,16 +2,9 @@ package System;
 
 import Display.*;
 import Module.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 /**
  * This class controls the game flow and the game state.
@@ -45,6 +38,55 @@ public class GameManager {
         this.rulesScreen = new RuleScreen();
     }
 
+    /**
+     * Handles the action for the "Hu" button.
+     * This method is triggered when a player wants to declare a win and end the current game round.
+     */
+    public static void handleHuButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Kong" button.
+     * This method is triggered when a player wants to perform a Kong, which is claiming four of the same tile.
+     */
+    public static void handleKongButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Pung" button.
+     * This method is triggered when a player wants to declare a Pung, which is claiming three of the same tile.
+     */
+    public static void handlePungButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Chow" button.
+     * This method is triggered when a player wants to declare a Chow, which is claiming a sequence of three tiles in the same suit.
+     */
+    public static void handleChowButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Discard" button.
+     * This method is triggered when a player chooses to discard a tile from their hand.
+     */
+    public static void handleDiscardButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Pause" button.
+     * This method is triggered when a player wants to pause the game.
+     */
+    public static void handlePauseButtonAction() {
+
+    }
+    /**
+     * Handles the action for the "Continue" button.
+     * This method is triggered when a player wants to resume the game after a pause.
+     */
+    public static void handleContinueButtonAction() {
+
+    }
     /**
      * This method controls the execution of the game.
      */
