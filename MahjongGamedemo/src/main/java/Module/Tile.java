@@ -1,13 +1,17 @@
 package Module;
 import System.*;
 import Display.*;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Comparator;
+import java.util.stream.Collector;
 
 /**
  * Represents a generic tile in games such as Mahjong. This class serves as a base class
  * for different types of tiles that might have specific attributes and behaviors.
  * @author Yixin Niu
  */
-public class Tile {
+public class Tile implements Comparable<Tile>{
     private Suit suit;
     /**
      * Constructs a new tile with the specified suit.
@@ -35,4 +39,9 @@ public class Tile {
         this.suit = suit;
     }
 
+
+    @Override
+    public int compareTo(@NotNull Tile other) {
+        return Integer.compare(this.getSuit().ordinal(), other.getSuit().ordinal());
+    }
 }

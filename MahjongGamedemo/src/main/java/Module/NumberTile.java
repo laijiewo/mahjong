@@ -5,7 +5,7 @@ package Module;
  * that have numerical values, such as tiles in the suits of WAN, TONG, and TIAO.
  * @author Yixin Niu
  */
-public class NumberTile extends  Tile{
+public class NumberTile extends Tile{
     private int rank;
     /**
      * Constructs a new NumberTile with the specified rank and suit.
@@ -29,6 +29,21 @@ public class NumberTile extends  Tile{
      */
     public int getRank() {
         return rank;
+    }
+    @Override
+    public int compareTo(Tile other) {
+        if (other instanceof NumberTile) {
+            NumberTile otherNumberTile = (NumberTile) other;
+            // First compare by suit
+            int suitComparison = Integer.compare(this.getSuit().ordinal(), otherNumberTile.getSuit().ordinal());
+            if (suitComparison != 0) {
+                return suitComparison;
+            }
+            // Then compare by rank
+            return Integer.compare(this.rank, otherNumberTile.rank);
+        }
+        // If not comparable by rank, fall back to suit comparison
+        return super.compareTo(other);
     }
 
 }
