@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Player {
     public int Score;
+    public int location;
     public ArrayList<Tile> Tile_hand = new ArrayList<Tile>() ;
 
     public Player(){}
