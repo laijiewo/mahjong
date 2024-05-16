@@ -40,7 +40,7 @@ public class SeverHost {
             synchronized (clientSocket){
                 sockets.add(clientSocket);
             }
-            new Thread(new ServerThread(clientSocket, "player " + i, sockets)).start();
+            new Thread(new ServerThread(clientSocket, "player " + i)).start();
             i++;
         } catch (IOException e) {
             System.out.println("Accept failed.");

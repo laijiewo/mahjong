@@ -7,6 +7,7 @@ public class Client {
     static String serverHostname = "10.19.44.61";
 
     static Socket echoSocket;
+    static boolean isRunning = true;
 
     public static void main(String[] args) throws IOException {
         if (args.length > 0)
@@ -14,21 +15,29 @@ public class Client {
         System.out.println ("Attemping to connect to host " +
                                     serverHostname + " on port 8080.");
         connect();
-        echoSocket.close();
     }
     public static void connect(){
         try {
             System.out.println("Connecting to server...");
             echoSocket = new Socket(serverHostname, 8080);
             System.out.println("Connection successful.");
-            new Thread(() -> {
+            Thread receiveThread = new Thread(() -> {
                 try {
                     receiveMessage();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }).start();
-            sendMessage();
+            });
+            receiveThread.start();
+            System.out.println("Type 'Bye.' to exit.");
+            new Thread(() -> {
+                try {
+                    sendMessage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }}).start();
+            receiveThread.join();
+            echoSocket.close();
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + serverHostname);
             System.exit(1);
@@ -36,38 +45,51 @@ public class Client {
             System.err.println("Couldn't get I/O for "
                                        + "the connection to: " + serverHostname);
             System.exit(1);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
-    public static void sendMessage() throws IOException {
-        PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                echoSocket.getInputStream()));
-        BufferedReader stdIn = new BufferedReader(
-                new InputStreamReader(System.in));
-        String userInput;
-        while ((userInput = stdIn.readLine()) != null) {
-            if (userInput.equals("Bye.")) {
-                System.out.println("See you again!");
-                break;
+    public static void sendMessage() {
+        try {
+            PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    echoSocket.getInputStream()));
+            BufferedReader stdIn = new BufferedReader(
+                    new InputStreamReader(System.in));
+            String userInput;
+            while ((userInput = stdIn.readLine()) != null) {
+                if (userInput.equals("Bye.")) {
+                    isRunning = false;
+                    System.out.println("See you again!");
+                    Thread.currentThread().interrupt();
+                    out.println(userInput);
+                    out.close();
+                    in.close();
+                    stdIn.close();
+                    return;
+                }
+                out.println(userInput);
             }
-            System.out.print ("input: ");
-            out.println(userInput);
-        }
 
-        out.close();
-        in.close();
-        stdIn.close();
+
+            out.close();
+            in.close();
+            stdIn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public static void receiveMessage() {
         String message;
         try {
-            InputStream read = echoSocket.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(read));
-            while ((message = reader.readLine()) != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+            while (isRunning && (message = reader.readLine()) != null) {
                 System.out.println("Server: " + message);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            if (isRunning) {
+                System.out.println("An error occurred while receiving message: " + e.getMessage());
+            }
         }
     }
 }
