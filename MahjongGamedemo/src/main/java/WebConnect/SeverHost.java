@@ -25,9 +25,6 @@ public class SeverHost {
         }
         while (true) {
             listenForConnections();
-            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Input: ");
-            sendToAll(input.readLine());
             if (sockets.isEmpty()) {
                 System.out.println("No clients connected.");
                 break;
@@ -43,7 +40,6 @@ public class SeverHost {
             synchronized (clientSocket){
                 sockets.add(clientSocket);
             }
-            System.out.println(clientSocket);
             new Thread(new ServerThread(clientSocket, "player " + i, sockets)).start();
             i++;
         } catch (IOException e) {
@@ -53,15 +49,5 @@ public class SeverHost {
 
         System.out.println("Got a connection from " + clientSocket.getInetAddress().getHostAddress());
         System.out.println("Waiting for input.....");
-        sockets.add(clientSocket);
-    }
-    public static void sendToAll(String message) {
-        for (Socket socket : sockets) {
-            try {
-                socket.getOutputStream().write(message.getBytes());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 }

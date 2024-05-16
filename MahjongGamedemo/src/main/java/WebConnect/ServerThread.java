@@ -1,9 +1,6 @@
 package WebConnect;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.LinkedList;
 
@@ -18,14 +15,20 @@ public class ServerThread implements Runnable {
     }
     @Override
     public void run() {
-        try {
-            sendMessages();
+        sendToAll(name + " has joined the chat.");
+        new Thread(() -> {try {
+            sendMessageToAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }}).start();
+        new Thread(() -> {try {
+            acceptMessages();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }}).start();
     }
 
-    private void sendMessages() throws IOException {
+    private void acceptMessages() throws IOException {
         PrintWriter out = new PrintWriter(socket.getOutputStream(),
                                           true);
         BufferedReader in = new BufferedReader(
@@ -44,6 +47,24 @@ public class ServerThread implements Runnable {
         }
         in.close();
         out.close();
+    }
+    public void sendMessageToAll() throws IOException {
+        BufferedReader stdIn = new BufferedReader(
+                new InputStreamReader(System.in));
+        String userInput;
+        while ((userInput = stdIn.readLine()) != null) {
+            sendToAll(userInput);
+        }
+    }
+    public void sendToAll(String message) {
+        for (Socket socket : sockets) {
+            try {
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                out.println(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
