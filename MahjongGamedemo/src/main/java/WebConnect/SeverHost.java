@@ -51,14 +51,15 @@ public class SeverHost {
              BufferedReader in = new BufferedReader(
                      new InputStreamReader( socket.getInputStream()));
 
-             String inputLine = in.readLine();
-             if (inputLine != null) {
+             String inputLine;
+             while ((inputLine = in.readLine()) != null) {
                  System.out.println(socket.getInetAddress().getHostAddress() + " : " + inputLine);
                  out.println(inputLine);
                  if (inputLine.equals("Bye.")) {
                      System.out.println(socket.getInetAddress().getHostAddress() + " has left the chat.");
                      socket.close();
                      sockets.remove(socket);
+                     break;
                  }
              }
              in.close();

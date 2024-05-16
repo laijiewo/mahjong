@@ -4,7 +4,16 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    static String serverHostname = new String ("192.168.243.1");
+    static String serverHostname;
+
+    static {
+        try {
+            serverHostname = new String (InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     static Socket echoSocket = null;
 
     public static void main(String[] args) throws IOException {
@@ -15,7 +24,7 @@ public class Client {
         connect();
         echoSocket.close();
     }
-    public static void connect() throws IOException {
+    public static void connect(){
         echoSocket = null;
         try {
             System.out.println("Connecting to server...");

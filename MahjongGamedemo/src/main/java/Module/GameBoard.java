@@ -27,7 +27,6 @@ public class GameBoard {
 
 
     public void determineDealer(){
-
         player1.site=Site.East;
         player2.site=Site.South;
         player3.site=Site.West;
