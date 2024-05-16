@@ -17,5 +17,5 @@ public interface Screen {
      * @param stage The primary stage on which the screen will be displayed. This stage is typically passed from the
      *              main application and reused for different screens.
      */
-    public void loadWindow(Stage stage);
+    public void loadWindow(Stage stage) throws Exception;
 }

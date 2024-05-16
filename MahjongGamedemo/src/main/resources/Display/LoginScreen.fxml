@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:; -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.LoginScreen">
+   <children>
+      <TextField fx:id="PasswordText" layoutX="705.0" layoutY="374.0" />
+
+      <Button fx:id="LoginButton" layoutX="814.0" layoutY="427.0" mnemonicParsing="false" style="-fx-text-fill: #308C4C;" text="Log in">
+         <font>
+            <Font name="Silkscreen" size="12" />
+         </font></Button>
+
+      <TextField fx:id="AccountText" layoutX="705.0" layoutY="320.0" />
+
+      <Label fx:id="AccountLabel" layoutX="626.0" layoutY="324.0" style="-fx-text-fill: white;" text="Account:">
+         <font>
+            <Font name="Silkscreen" size="12" />
+         </font></Label>
+
+      <Label fx:id="PasswordLabel" layoutX="619.0" layoutY="378.0" style="-fx-text-fill: white;" text="Password:">
+         <font>
+            <Font name="Silkscreen" size="12" />
+         </font></Label>
+
+
+      <Label fx:id="GameTitle" contentDisplay="CENTER" layoutX="196.0" layoutY="149.0" prefHeight="144.0" prefWidth="635.0" style="-fx-text-fill: black;" text="PIXEL MAHJONG" textAlignment="CENTER">
+         <font>
+            <Font name="Pixelmania" size="34.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

@@ -1,45 +1,54 @@
 package Display;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import Display.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class LoginScreen implements Screen {
-    private static Button loginButton = new Button("Login");
-    private static TextField usernameField = new TextField();
-    private static PasswordField passwordField = new PasswordField();
+import java.io.IOException;
 
-    public static void loadLoginWindow(Stage primaryStage) {
-        // Setup the user interface elements
-        usernameField.setPromptText("Username");
-        passwordField.setPromptText("Password");
+public class LoginScreen implements Screen{
 
-        // Event handling for login button
-        loginButton.setOnAction(event -> {
-            // Assuming successful login, load the Menu Screen
-            MenuScreen.loadMenuWindow(primaryStage);
-        });
+    @FXML
+    private TextField AccountText;
 
-        // Create layout and add elements
-        VBox layout = new VBox(10); // 10 is the spacing between elements
-        layout.getChildren().addAll(new Label("Login"), usernameField, passwordField, loginButton);
+    @FXML
+    private TextField PasswordText;
 
-        // Optionally set a background, adjust layout, etc.
-        layout.setStyle("-fx-padding: 10; -fx-alignment: center;");
+    @FXML
+    private Label AccountLabel;
 
-        // Set the scene and stage
-        Scene scene = new Scene(layout, 300, 200); // Set appropriate size for your window
-        primaryStage.setTitle("Login Window");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    @FXML
+    private Button LogininButton;
+
+    @FXML
+    private Label GameTitle;
+
+    @FXML
+    private Label PasswordLabel;
+    @FXML
+    private ImageView BackgroundImage;
+
+    @FXML
+    void Login(ActionEvent event) {
+        String username = AccountText.getText();
+        String password = PasswordText.getText();
     }
 
     @Override
-    public void loadWindow(Stage stage) {
-        loadLoginWindow(stage);
+    public void loadWindow(Stage stage)throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("/Display/LoginScreen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Mahjong Game");
+        stage.setScene(scene);
+        stage.show();
     }
 }
 

@@ -90,7 +90,7 @@ public class GameManager {
     /**
      * This method controls the execution of the game.
      */
-    public void run(Stage stage) {
+    public void run(Stage stage) throws Exception {
         loginScreen.loadWindow(stage);
     }
 

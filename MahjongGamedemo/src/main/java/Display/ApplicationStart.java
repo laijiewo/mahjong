@@ -1,6 +1,7 @@
 package Display;
 
 import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import System.*;
 import Module.*;
@@ -8,7 +9,13 @@ import Module.*;
 public class ApplicationStart extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void init() {
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Regular.ttf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/Pixelmania.ttf"), 20);
+
+    }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         Game game = new MahjongGame();
         GameManager manager = new GameManager(game);
         manager.run(primaryStage);
