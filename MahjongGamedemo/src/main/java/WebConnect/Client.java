@@ -7,11 +7,7 @@ public class Client {
     static String serverHostname;
 
     static {
-        try {
-            serverHostname = new String (InetAddress.getLocalHost().getHostAddress());
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
+        serverHostname = new String ("10.19.44.61");
     }
 
     static Socket echoSocket = null;
