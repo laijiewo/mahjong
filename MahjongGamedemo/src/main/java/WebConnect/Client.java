@@ -4,15 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    static String serverHostname;
-
-    static {
-        try {
-            serverHostname = new String (InetAddress.getLocalHost().getHostAddress());
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    static String serverHostname = "10.19.44.61";
 
     static Socket echoSocket = null;
 
@@ -50,13 +42,30 @@ public class Client {
 
         System.out.print ("input: ");
         while ((userInput = stdIn.readLine()) != null) {
+            receiveMessage();
+            if (userInput.equals("Bye.")) {
+                System.out.println("See you again!");
+                break;
+            }
             out.println(userInput);
-            System.out.println("echo: " + in.readLine());
             System.out.print ("input: ");
         }
 
         out.close();
         in.close();
         stdIn.close();
+    }
+    public static void receiveMessage() {
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(
+                echoSocket.getInputStream()))) {
+            String serverResponse;
+
+            while ((serverResponse = in.readLine()) != null) {
+                System.out.println("Server: " + serverResponse);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading from server");
+        }
+
     }
 }
