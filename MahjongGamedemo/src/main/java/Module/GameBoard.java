@@ -13,6 +13,7 @@ public class GameBoard {
     public TileFactory tileFactory;
 
     public Player Dealer;
+    public Player currentPlayer;
 
     public Player player1;
     public Player player2;
@@ -45,17 +46,7 @@ public class GameBoard {
     }
 
     public void changeDealer(){
-        Player winner=mahjongGame.checkVictory();
-        if(winner==player1){
-            Dealer=player1;
-        } else if (winner==player2) {
-            Dealer=player2;
-        } else if (winner==player3) {
-            Dealer=player3;
-        } else if (winner==player4) {
-            Dealer=player4;
-        }
-
+        Dealer=mahjongGame.checkVictory();
     }
 
     public List shuffleTiles(){
