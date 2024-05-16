@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import Display.*;
+import javafx.scene.image.ImageView;
 
 public class Sample {
 
@@ -23,12 +24,13 @@ public class Sample {
 
     @FXML
     private Label PasswordLabel;
+    @FXML
+    private ImageView BackgroundImage;
 
     @FXML
     void Login(ActionEvent event) {
         String username = AccountText.getText();
         String password = PasswordText.getText();
-
     }
 
 }
