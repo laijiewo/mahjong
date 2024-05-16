@@ -8,14 +8,16 @@ import java.util.Random;
 public class Player {
     public int Score;
     public int location;
+
+    public Site site;
     public ArrayList<Tile> Tile_hand = new ArrayList<Tile>() ;
 
     public Player(){}
 
     public int rollDice(Dice Dice){
-        Random r = new Random();
-        return r.nextInt(1,6);
+        return Dice.toss();
     }
+
 
     public Tile drawTiles(TileWall Tile_wall){
         Random r = new Random();
