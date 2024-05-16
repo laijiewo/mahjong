@@ -64,15 +64,10 @@ public class RuleImplementation implements MahjongRule {
     public boolean canPeng(List<Tile> hand, Tile tile) {
         int count = 0;
         for (Tile t : hand) {
-            System.out.println("Comparing tile: " + t + " with tile: " + tile + " and hunTile: " + hunTile);
             if (t.equals(tile) || t.equals(hunTile)) {
-                System.out.println("Match found: " + t);
                 count++;
-            }else{
-                System.out.println("No match for tile: " + t);
             }
         }
-        System.out.println("Count: " + count);
         return count >= 2; // Need at least two tiles to Peng
     }
 
