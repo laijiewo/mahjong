@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class Client {
-    static String serverHostname = new String ("127.0.0.1");
+    static String serverHostname = new String ("192.168.243.1");
     static Socket echoSocket = null;
 
     public static void main(String[] args) throws IOException {
@@ -18,7 +18,9 @@ public class Client {
     public static void connect() throws IOException {
         echoSocket = null;
         try {
+            System.out.println("Connecting to server...");
             echoSocket = new Socket(serverHostname, 8080);
+            System.out.println("Connection successful.");
             sendMessage();
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + serverHostname);
