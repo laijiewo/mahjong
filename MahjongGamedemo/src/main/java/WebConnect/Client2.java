@@ -3,7 +3,7 @@ package WebConnect;
 import java.io.*;
 import java.net.*;
 
-public class Client {
+public class Client2 {
     static String serverHostname = "10.26.51.204";
 
     static Socket echoSocket;
@@ -82,11 +82,7 @@ public class Client {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
             while (isRunning && (message = reader.readLine()) != null) {
-                if (message.contains("player")) {
-                    System.out.println(message);
-                } else {
-                    System.out.println("Server: " + message);
-                }
+                System.out.println("Server: " + message);
             }
         } catch (IOException e) {
             if (isRunning) {

@@ -23,7 +23,9 @@ public class SeverHost {
             System.out.println("Could not listen on port: 8080");
             System.exit(1);
         }
+        new Thread(SeverHost::sendMessageToAll).start();
         while (true) {
+            System.out.println(sockets.size() + " clients connected.");
             listenForConnections();
             if (sockets.isEmpty()) {
                 System.out.println("No clients connected.");
@@ -33,11 +35,30 @@ public class SeverHost {
         serverSocket.close();
     }
 
+    public static void sendMessageToAll() {
+        try (BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
+            String message;
+            while ((message = stdIn.readLine()) != null) {
+                for (Socket socket : SeverHost.sockets) {
+                    try {
+                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                        out.println(message);
+                        out.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void listenForConnections() {
         Socket clientSocket = null;
         try {
             clientSocket = serverSocket.accept();
-            synchronized (clientSocket){
+            synchronized (clientSocket) {
                 sockets.add(clientSocket);
             }
             new Thread(new ServerThread(clientSocket, "player " + i)).start();
@@ -46,7 +67,6 @@ public class SeverHost {
             System.out.println("Accept failed.");
             System.exit(1);
         }
-
         System.out.println("Got a connection from " + clientSocket.getInetAddress().getHostAddress());
         System.out.println("Waiting for input.....");
     }
