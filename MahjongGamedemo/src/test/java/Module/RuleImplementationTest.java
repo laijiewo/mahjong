@@ -50,7 +50,7 @@ class RuleImplementationTest {
 
     @Test
     void testCanHu() {
-        hand.add(new NumberTile(2, Suit.WAN));
+        hand.add(new NumberTile(9, Suit.WAN));
         hand.add(new NumberTile(3, Suit.WAN));
         hand.add(new NumberTile(4, Suit.WAN));
         hand.add(new NumberTile(5, Suit.WAN));
@@ -64,7 +64,7 @@ class RuleImplementationTest {
         hand.add(new NumberTile(4, Suit.TIAO));
         hand.add(new NumberTile(5, Suit.TIAO));
 
-        assertTrue(ruleImplementation.canHu(hand, new NumberTile(8, Suit.WAN))); // Winning hand with 23456789 WAN and 123456 TIAO
+        assertTrue(ruleImplementation.canHu(hand, new NumberTile(1, Suit.WAN))); // Winning hand with 23456789 WAN and 123456 TIAO
         assertFalse(ruleImplementation.canHu(hand, new NumberTile(7, Suit.TIAO))); // Not a winning hand
     }
 }
