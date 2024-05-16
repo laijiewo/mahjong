@@ -1,4 +1,5 @@
 package Module;
+import java.util.Objects;
 /**
  * Represents a tile with a numerical rank and suit in Mahjong.
  * This class extends the {@link Tile} class, providing additional properties specific to tiles
@@ -29,6 +30,22 @@ public class NumberTile extends Tile{
      */
     public int getRank() {
         return rank;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        NumberTile that = (NumberTile) obj;
+        return rank == that.rank && getSuit() == that.getSuit();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rank, getSuit());
     }
     @Override
     public int compareTo(Tile other) {
