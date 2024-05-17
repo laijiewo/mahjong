@@ -14,12 +14,7 @@ public class ServerThread implements Runnable {
     @Override
     public void run() {
         sendToAll(name + " has joined the chat.");
-        new Thread(() -> {try {
-            sendMessageToAll();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }}).start();
-        acceptMessages();
+        new Thread(this::acceptMessages).start();
     }
 
     private void acceptMessages() {
@@ -50,14 +45,6 @@ public class ServerThread implements Runnable {
                 e.printStackTrace();
             }
             SeverHost.sockets.remove(socket);
-        }
-    }
-    public void sendMessageToAll() throws IOException {
-        BufferedReader stdIn = new BufferedReader(
-                new InputStreamReader(System.in));
-        String userInput;
-        while ((userInput = stdIn.readLine()) != null) {
-            sendToAll(userInput);
         }
     }
     public void sendToAll(String message) {
