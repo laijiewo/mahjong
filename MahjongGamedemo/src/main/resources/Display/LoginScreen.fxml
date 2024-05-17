@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:; -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.LoginScreen">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.LoginScreen">
    <children>
       <TextField fx:id="PasswordText" layoutX="705.0" layoutY="374.0" />
 
@@ -31,5 +30,12 @@
          <font>
             <Font name="Pixelmania" size="34.0" />
          </font></Label>
+      <Label fx:id="Covermj" layoutX="181.0" layoutY="336.0" maxHeight="-Infinity" maxWidth="-Infinity"
+             minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="64.0"
+             style="-fx-background-image: url('/mj/mj_60.png');
+                  -fx-background-size: stretch;
+                  -fx-background-repeat: no-repeat;
+                  -fx-background-position: center center;"/>
+
    </children>
 </AnchorPane>
