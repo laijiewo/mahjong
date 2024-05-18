@@ -4,23 +4,27 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class SeverHost {
     static LinkedList<Socket> sockets;
     static ServerSocket serverSocket;
+    static Scanner scanner = new Scanner(System.in);
     static int i = 0;
 
     public static void main(String[] args) throws IOException {
-        startServer();
+        System.out.print("Please enter the port number: ");
+        int port = scanner.nextInt();
+        startServer(port);
     }
 
-    public static void startServer() throws IOException {
+    public static void startServer(int port) throws IOException {
         sockets = new LinkedList<>();
         try {
-            serverSocket = new ServerSocket(8080);
+            serverSocket = new ServerSocket(port);
             System.out.println("Waiting for connections.....");
         } catch (IOException e) {
-            System.out.println("Could not listen on port: 8080");
+            System.out.println("Could not listen on port: " + port);
             System.exit(1);
         }
         new Thread(SeverHost::sendMessageToAll).start();

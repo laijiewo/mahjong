@@ -7,14 +7,21 @@ import java.util.LinkedList;
 public class ServerThread implements Runnable {
     Socket socket;
     String name;
+
     ServerThread(Socket socket, String name) {
         this.socket = socket;
         this.name = name;
     }
+
     @Override
     public void run() {
-        sendToAll(name + " has joined the chat.");
-        new Thread(this::acceptMessages).start();
+        try {
+            sendToAll(name + " has joined the chat.");
+            acceptMessages();
+        } catch (Exception e) {
+            Thread.currentThread().interrupt();
+        }
+
     }
 
     private void acceptMessages() {
@@ -31,6 +38,15 @@ public class ServerThread implements Runnable {
                 sendToAllExcept(name + " : " + inputLine);
                 if (inputLine.equals("Bye.")) {
                     System.out.println(socket.getInetAddress().getHostAddress() + " has left the chat.");
+                    try {
+                        if (socket != null) {
+                            out.close();
+                            in.close();
+                            socket.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 }
             }
@@ -45,8 +61,10 @@ public class ServerThread implements Runnable {
                 e.printStackTrace();
             }
             SeverHost.sockets.remove(socket);
+            Thread.currentThread().interrupt();
         }
     }
+
     public void sendToAll(String message) {
         synchronized (SeverHost.sockets) {
             for (Socket socket : SeverHost.sockets) {
@@ -60,6 +78,7 @@ public class ServerThread implements Runnable {
             }
         }
     }
+
     public void sendToAllExcept(String message) {
         synchronized (SeverHost.sockets) {
             for (Socket s : SeverHost.sockets) {
