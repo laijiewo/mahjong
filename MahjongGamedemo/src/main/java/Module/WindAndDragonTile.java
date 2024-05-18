@@ -1,5 +1,7 @@
 package Module;
 
+import java.util.Objects;
+
 /**
  * Represents specific types of tiles used in games like Mahjong, specifically wind and dragon tiles.
  * This class extends {@link Tile} to include a specific type, which can either be one of the four
@@ -34,6 +36,35 @@ public class WindAndDragonTile extends Tile {
     public String getType() {
         return type;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        WindAndDragonTile that = (WindAndDragonTile) obj;
+        return type.equals(that.type) && getSuit() == that.getSuit();
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, getSuit());
+    }
 
+    @Override
+    public int compareTo(Tile other) {
+        if (other instanceof WindAndDragonTile) {
+            WindAndDragonTile otherTile = (WindAndDragonTile) other;
+            int suitComparison = Integer.compare(this.getSuit().ordinal(), otherTile.getSuit().ordinal());
+            if (suitComparison != 0) {
+                return suitComparison;
+            }
+            return this.type.compareTo(otherTile.type);
+        }
+        return super.compareTo(other);
+    }
 }
+
+

@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * Implementation of Beijing Mahjong rules.
+ *
+ * @author Yixin Niu
  */
 public class RuleImplementation implements MahjongRule {
     private Tile hunTile; // The wildcard tile (混儿牌)

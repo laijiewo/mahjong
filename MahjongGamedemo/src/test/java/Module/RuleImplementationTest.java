@@ -22,7 +22,7 @@ class RuleImplementationTest {
     }
 
     @Test
-    void testCanChi() {
+    void testCanChi1() {
         hand.add(new NumberTile(2, Suit.WAN));
         hand.add(new NumberTile(3, Suit.WAN));
 
@@ -31,10 +31,60 @@ class RuleImplementationTest {
     }
 
     @Test
-    void testCanPeng() {
+    void testCanChi2() {
+        hand.add(new NumberTile(3, Suit.WAN));
+        hand.add(new NumberTile(4, Suit.WAN));
+
+        assertFalse(ruleImplementation.canChi(hand, new NumberTile(1, Suit.WAN))); // no 134 WAN
+        assertTrue(ruleImplementation.canChi(hand, new NumberTile(5, Suit.WAN))); // 456 WAN
+    }
+
+    @Test
+    void testCanChi3() {
+        hand.add(new NumberTile(2, Suit.TONG));
+        hand.add(new NumberTile(3, Suit.TONG));
+
+        assertTrue(ruleImplementation.canChi(hand, new NumberTile(1, Suit.WAN))); // 123 TONG
+        assertFalse(ruleImplementation.canChi(hand, new NumberTile(5, Suit.TONG))); // No 456 WAN
+    }
+    @Test
+    void testCanChi4() {
+        hand.add(new NumberTile(2, Suit.TIAO));
+        hand.add(new NumberTile(3, Suit.TIAO));
+
+        assertTrue(ruleImplementation.canChi(hand, new NumberTile(1, Suit.WAN))); // 123 TIAO
+        assertFalse(ruleImplementation.canChi(hand, new NumberTile(5, Suit.TIAO))); // No 456 TIAO
+    }
+
+    @Test
+    void testCanPeng1() {
         hand.add(new NumberTile(2, Suit.WAN));
         hand.add(new NumberTile(2, Suit.WAN));
         assertTrue(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.WAN))); // 222 WAN
+        assertFalse(ruleImplementation.canPeng(hand, new NumberTile(3, Suit.WAN))); // No 33 WAN
+    }
+
+    @Test
+    void testCanPeng2() {
+        hand.add(new NumberTile(2, Suit.TIAO));
+        hand.add(new NumberTile(2, Suit.TIAO));
+        assertFalse(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.WAN))); // 222 WAN
+        assertTrue(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.TIAO))); // No 33 WAN
+    }
+
+    @Test
+    void testCanPeng3() {
+        hand.add(new NumberTile(2, Suit.TONG));
+        hand.add(new NumberTile(2, Suit.TONG));
+        assertFalse(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.WAN))); // 222 WAN
+        assertTrue(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.TONG))); // No 33 WAN
+    }
+
+    @Test
+    void testCanPeng4() {
+        hand.add(new WindAndDragonTile("East", Suit.WIND));
+        hand.add(new WindAndDragonTile("East", Suit.WIND));
+        assertTrue(ruleImplementation.canPeng(hand, new WindAndDragonTile("East", Suit.WIND))); // 222 WAN
         assertFalse(ruleImplementation.canPeng(hand, new NumberTile(3, Suit.WAN))); // No 33 WAN
     }
 
