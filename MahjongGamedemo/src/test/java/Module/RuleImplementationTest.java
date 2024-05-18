@@ -97,6 +97,15 @@ class RuleImplementationTest {
         assertTrue(ruleImplementation.canGang(hand, new NumberTile(2, Suit.WAN))); // 2222 WAN
         assertFalse(ruleImplementation.canGang(hand, new NumberTile(3, Suit.WAN))); // No 333 WAN
     }
+    @Test
+    void testCanGang2() {
+        hand.add(new WindAndDragonTile("East", Suit.WIND));
+        hand.add(new WindAndDragonTile("East", Suit.WIND));
+        hand.add(new WindAndDragonTile("East", Suit.WIND));
+
+        assertTrue(ruleImplementation.canGang(hand,new WindAndDragonTile("East", Suit.WIND))); // 2222 WAN
+        assertFalse(ruleImplementation.canGang(hand, new NumberTile(3, Suit.WAN))); // No 333 WAN
+    }
 
     @Test
     void testCanHu() {
