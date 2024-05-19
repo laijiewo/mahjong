@@ -54,8 +54,21 @@ public class GameBoard {
         return newList;
 
     }
-    public void dealTiles(TileWall Tile_wall){
+    public void dealTiles(TileWall Tile_wall, Player currentPlayer){
+        currentPlayer.Tile_hand.add(Tile_wall.StackOfTiles.get(0));
+        Tile_wall.StackOfTiles.remove(0);
     }
+
+    public Tile discardTile(Player player, int num){
+        Tile discardTile = player.discardTiles(num);
+        player.Tile_hand.remove(num);
+        return discardTile;
+    }
+
+    public Player getCurrent_activePlayer(){
+        return currentPlayer;
+    }
+
 
 
 }
