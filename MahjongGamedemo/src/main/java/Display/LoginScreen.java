@@ -37,9 +37,12 @@ public class LoginScreen implements Screen{
     private ImageView BackgroundImage;
 
     @FXML
-    void Login(ActionEvent event) {
+    void Login(ActionEvent event) throws Exception {
         String username = AccountText.getText();
         String password = PasswordText.getText();
+        MenuScreen menuScreen = new MenuScreen();
+        menuScreen.loadWindow(new Stage());
+        System.out.println(1);
     }
 
     @Override

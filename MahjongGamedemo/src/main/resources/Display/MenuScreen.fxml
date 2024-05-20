@@ -8,7 +8,7 @@
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.MenuScreen">
     <children>
 
-        <Button fx:id="JoinGameButton" layoutX="71.0" layoutY="330.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="JOIN GAME">
+        <Button fx:id="JoinGameButton" layoutX="71.0" layoutY="330.0" mnemonicParsing="false" onAction="#JoinGame" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="JOIN GAME">
             <font>
                 <Font size="24.0" />
             </font></Button>
@@ -18,22 +18,22 @@
             <font>
                 <Font name="Pixelmania" size="34.0" />
             </font></Label>
-      <Button fx:id="RulesButton" layoutX="71.0" layoutY="390.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="RULES">
+      <Button fx:id="RulesButton" layoutX="71.0" layoutY="390.0" mnemonicParsing="false" onAction="#LearnRules" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="LEARN RULES">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="ScoresButton" layoutX="71.0" layoutY="450.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="SCORES">
+      <Button fx:id="ScoresButton" layoutX="71.0" layoutY="450.0" mnemonicParsing="false" onAction="#Scores" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="SCORES">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="ExitButton" layoutX="71.0" layoutY="510.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="EXIT">
+      <Button fx:id="ExitButton" layoutX="71.0" layoutY="510.0" mnemonicParsing="false" onAction="#Exit" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="EXIT">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="CreateGameButton" layoutX="71.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="CREATEGAME">
+      <Button fx:id="CreateGameButton" layoutX="71.0" layoutY="270.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="CREATEGAME">
          <font>
             <Font size="24.0" />
          </font>

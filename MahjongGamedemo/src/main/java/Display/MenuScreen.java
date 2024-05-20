@@ -1,43 +1,67 @@
 package Display;
-import javafx.application.Platform;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
 
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MenuScreen implements Screen {
 
-    private static Background background; // Assuming Background is a custom class or JavaFX Background
-    private static Button startGameButton = ButtonDisplay.Start_gameButton;
-    private static Button exitGameButton = ButtonDisplay.Exit_gameButton;
-    private static Button rulesExplanationButton = ButtonDisplay.Rules_explanationButton;
-    private static Button scoreInquiryButton = ButtonDisplay.Score_inquiryButton;
+    @FXML
+    private Button RulesButton;
 
-    public static void loadMenuWindow(Stage primaryStage) {
-        // Create layout and add elements
-        VBox layout = new VBox(10); // 10 is the spacing between elements
-        layout.getChildren().addAll(startGameButton, exitGameButton, rulesExplanationButton, scoreInquiryButton);
-        startGameButton.setOnAction(event -> {GameScreen.loadGameWindow(primaryStage);});
-        exitGameButton.setOnAction(event -> {Platform.exit();});
-        rulesExplanationButton.setOnAction(event -> {RuleScreen.loadRuleWindow(primaryStage);});
-        scoreInquiryButton.setOnAction(event -> {ScoreScreen.loadScoreWindow(primaryStage);});
+    @FXML
+    private Button ExitButton;
 
-        // Optionally set a background, adjust layout, etc.
-        layout.setStyle("-fx-padding: 10; -fx-alignment: center;");
+    @FXML
+    private Button ScoresButton;
 
-        // Set the scene and stage
-        Scene scene = new Scene(layout, 300, 200); // Set appropriate size for your window
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Menu Screen");
-        primaryStage.show();
+    @FXML
+    private Button JoinGameButton;
+
+    @FXML
+    private Label GameTitle;
+
+    @FXML
+    private Button CreateGameButton;
+
+    @FXML
+    void JoinGame(ActionEvent event) {
+
+    }
+
+    @FXML
+    void LearnRules(ActionEvent event) {
+
+    }
+
+    @FXML
+    void Scores(ActionEvent event) {
+
+    }
+
+    @FXML
+    void Exit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void CreateGame(ActionEvent event) {
+
     }
 
     @Override
-    public void loadWindow(Stage stage) {
-        loadMenuWindow(stage);
+    public void loadWindow(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/Display/MenuScreen.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Mahjong Game");
+        stage.setScene(scene);
+        stage.show();
     }
 }
+
 
