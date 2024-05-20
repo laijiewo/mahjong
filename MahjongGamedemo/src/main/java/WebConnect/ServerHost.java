@@ -6,19 +6,21 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class SeverHost {
-    static LinkedList<Socket> sockets;
-    static ServerSocket serverSocket;
-    static Scanner scanner = new Scanner(System.in);
+public class ServerHost {
+    protected static LinkedList<Socket> sockets;
+    private static ServerSocket serverSocket;
+    private static final Scanner scanner = new Scanner(System.in);
+    private int port;
     static int i = 0;
 
-    public static void main(String[] args) throws IOException {
+    public ServerHost() throws IOException {
         System.out.print("Please enter the port number: ");
         int port = scanner.nextInt();
         startServer(port);
     }
 
-    public static void startServer(int port) throws IOException {
+    private void startServer(int port) throws IOException {
+        this.port = port;
         sockets = new LinkedList<>();
         try {
             serverSocket = new ServerSocket(port);
@@ -27,7 +29,7 @@ public class SeverHost {
             System.out.println("Could not listen on port: " + port);
             System.exit(1);
         }
-        new Thread(SeverHost::sendMessageToAll).start();
+        new Thread(ServerHost::sendMessageToAll).start();
         while (true) {
             System.out.println(sockets.size() + " clients connected.");
             listenForConnections();
@@ -38,12 +40,18 @@ public class SeverHost {
         }
         serverSocket.close();
     }
+    public String getHostIPAddress() {
+        return serverSocket.getInetAddress().getHostAddress();
+    }
+    public int getPort() {
+        return port;
+    }
 
     public static void sendMessageToAll() {
         try (BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
             String message;
             while ((message = stdIn.readLine()) != null) {
-                for (Socket socket : SeverHost.sockets) {
+                for (Socket socket : ServerHost.sockets) {
                     try {
                         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                         out.println(message);

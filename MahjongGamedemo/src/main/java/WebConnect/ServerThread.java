@@ -2,7 +2,6 @@ package WebConnect;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.LinkedList;
 
 public class ServerThread implements Runnable {
     Socket socket;
@@ -60,14 +59,14 @@ public class ServerThread implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            SeverHost.sockets.remove(socket);
+            ServerHost.sockets.remove(socket);
             Thread.currentThread().interrupt();
         }
     }
 
     public void sendToAll(String message) {
-        synchronized (SeverHost.sockets) {
-            for (Socket socket : SeverHost.sockets) {
+        synchronized (ServerHost.sockets) {
+            for (Socket socket : ServerHost.sockets) {
                 try {
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                     out.println(message);
@@ -80,8 +79,8 @@ public class ServerThread implements Runnable {
     }
 
     public void sendToAllExcept(String message) {
-        synchronized (SeverHost.sockets) {
-            for (Socket s : SeverHost.sockets) {
+        synchronized (ServerHost.sockets) {
+            for (Socket s : ServerHost.sockets) {
                 if (s != socket) {
                     try {
                         PrintWriter out = new PrintWriter(s.getOutputStream(), true);

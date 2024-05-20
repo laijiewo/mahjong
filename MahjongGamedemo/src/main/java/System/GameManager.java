@@ -2,8 +2,10 @@ package System;
 
 import Display.*;
 import Module.*;
+import WebConnect.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -16,11 +18,7 @@ public class GameManager {
     private final ArrayList<Player> players;
     private Player dealer;
     private final Game game;
-    private final Screen gameScreen;
-    private final Screen loginScreen;
-    private final Screen menuScreen;
-    private final Screen scoreScreen;
-    private Screen rulesScreen;
+    private static ServerHost serverHost;
 
     /**
      * Constructor for the GameManager class.
@@ -31,11 +29,34 @@ public class GameManager {
     public GameManager(Game game) {
         players = new ArrayList<>();
         this.game = game;
-        this.gameScreen = new GameScreen((MahjongGame) game);
-        this.loginScreen = new LoginScreen();
-        this.menuScreen = new MenuScreen();
-        this.scoreScreen = new ScoreScreen();
-        this.rulesScreen = new RuleScreen();
+        startNewGame();
+    }
+    /**
+     * This method is called when a player create a game.
+     * It starts the server thread to communicate with the other players.
+     *
+     */
+    public static void startNewGame() {
+            new Thread(() -> {try {
+                serverHost = new ServerHost();
+            }catch (IOException e) {
+                System.out.println("Can not start server!!!");
+                throw new RuntimeException(e);
+            }});
+    }
+    public String getHostIPAddress() {
+        return serverHost.getHostIPAddress();
+    }
+    public int getHostPort() {
+        return serverHost.getPort();
+    }
+
+    /**
+     *
+     *
+     */
+    public static void handleJoinGameButtonAction() {
+
     }
 
     /**
@@ -91,7 +112,7 @@ public class GameManager {
      * This method controls the execution of the game.
      */
     public void run(Stage stage) throws Exception {
-        loginScreen.loadWindow(stage);
+
     }
 
 }

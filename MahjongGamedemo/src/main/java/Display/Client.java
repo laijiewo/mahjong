@@ -28,7 +28,7 @@ public class Client {
      * Prompts the user for the hostname and port number,
      * and then attempts to connect to the server.
      */
-    private static void connect(){
+    public static void connect(){
         // Prompt the user for the hostname and port number
         System.out.println("Please enter the hostname and the port of the server:");
         String serverHostname = scanner.next();
