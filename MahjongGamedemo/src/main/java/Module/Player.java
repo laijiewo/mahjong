@@ -35,7 +35,8 @@ public class Player {
     }
 
     public void kong(GameBoard gameBoard){
-        Tile kongTile = gameBoard.Tiles_discardedByPlayer;
+        ArrayList<Tile> Tiles_discardedByPlayer=gameBoard.Tiles_discardedByPlayer;
+        Tile kongTile = Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
         Tile tile = new Tile(kongTile.getSuit());
         int count = 0;
         for(int number=0;number<Tile_hand.size();number++){
