@@ -52,7 +52,8 @@ public class Player {
     }
 
     public void chow(GameBoard gameBoard){
-        Tile chowTile = gameBoard.Tiles_discardedByPlayer;
+        ArrayList<Tile> Tiles_discardedByPlayer=gameBoard.Tiles_discardedByPlayer;
+        Tile chowTile = Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
         Tile tile = new Tile(chowTile.getSuit());
         int count = 0;
         for(int number=0;number<Tile_hand.size();number++){
@@ -67,7 +68,8 @@ public class Player {
     }
 
     public void pung(GameBoard gameBoard){
-        Tile pungTile = gameBoard.Tiles_discardedByPlayer;
+        ArrayList<Tile> Tiles_discardedByPlayer=gameBoard.Tiles_discardedByPlayer;
+        Tile pungTile = Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
         Tile tile = new Tile(pungTile.getSuit());
         int count = 0;
         for(int number=0;number<Tile_hand.size();number++){
