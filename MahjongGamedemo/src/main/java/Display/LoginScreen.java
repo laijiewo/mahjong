@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class LoginScreen implements Screen{
 
+    Stage stage;
     @FXML
     private TextField AccountText;
 
@@ -26,7 +27,7 @@ public class LoginScreen implements Screen{
     private Label AccountLabel;
 
     @FXML
-    private Button LogininButton;
+    private Button LoginButton;
 
     @FXML
     private Label GameTitle;
@@ -42,6 +43,8 @@ public class LoginScreen implements Screen{
         String password = PasswordText.getText();
         MenuScreen menuScreen = new MenuScreen();
         menuScreen.loadWindow(new Stage());
+        Stage stage = (Stage) LoginButton.getScene().getWindow();
+        stage.close();
         System.out.println(1);
     }
 
@@ -52,6 +55,7 @@ public class LoginScreen implements Screen{
         stage.setTitle("Mahjong Game");
         stage.setScene(scene);
         stage.show();
+        this.stage = stage;
     }
 }
 
