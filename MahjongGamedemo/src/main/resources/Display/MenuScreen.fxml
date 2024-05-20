@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.MenuScreen">
+    <children>
+
+        <Button fx:id="JoinGameButton" layoutX="71.0" layoutY="330.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="JOIN GAME">
+            <font>
+                <Font size="24.0" />
+            </font></Button>
+
+
+        <Label fx:id="GameTitle" contentDisplay="CENTER" layoutX="195.0" layoutY="84.0" prefHeight="144.0" prefWidth="635.0" style="-fx-text-fill: black;" text="PIXEL MAHJONG" textAlignment="CENTER">
+            <font>
+                <Font name="Pixelmania" size="34.0" />
+            </font></Label>
+      <Button fx:id="RulesButton" layoutX="71.0" layoutY="390.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="RULES">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="ScoresButton" layoutX="71.0" layoutY="450.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="SCORES">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="ExitButton" layoutX="71.0" layoutY="510.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="EXIT">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="CreateGameButton" layoutX="71.0" layoutY="270.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-text-fill: #308C4C;" text="CREATEGAME">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+
+    </children>
+</AnchorPane>

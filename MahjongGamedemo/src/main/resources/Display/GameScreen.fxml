@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreen">
+    <children>
+      <Group id="Tiles">
+         <children>
+            <Button fx:id="Tile3" layoutX="283.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile13" layoutX="733.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile2" layoutX="238.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile8" layoutX="508.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile7" layoutX="463.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile1" layoutX="193.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile11" layoutX="643.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile5" layoutX="373.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile14" layoutX="787.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile9" layoutX="553.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile12" layoutX="688.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile10" layoutX="598.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile6" layoutX="418.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="Tile4" layoutX="328.0" layoutY="541.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Tile1">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </Group>
+      <Group id="Option">
+         <children>
+            <Button fx:id="Pung" layoutX="737.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Pung" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Pung">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="Chow" layoutX="682.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Chow" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Chow">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="Kong" layoutX="792.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Kong" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Kong">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="Win" layoutX="847.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Win" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Win">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+         </children>
+      </Group>
+      <Button fx:id="Pause" layoutX="950.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Pause" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Pause">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="424.0" layoutY="374.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="Tile152" layoutX="451.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19" layoutX="559.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile151" layoutX="451.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile17" layoutX="505.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile" layoutX="424.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile20" layoutX="424.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile182" layoutX="532.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile162" layoutX="478.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191" layoutX="559.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile171" layoutX="505.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile192" layoutX="559.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile161" layoutX="478.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile15" layoutX="451.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile181" layoutX="532.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile18" layoutX="532.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile16" layoutX="478.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile172" layoutX="505.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile21" layoutX="424.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane layoutX="424.0" layoutY="93.0" rotate="180.0">
+         <children>
+            <Label fx:id="Tile1521" layoutX="451.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191" layoutX="559.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1511" layoutX="451.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile171" layoutX="505.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile15" layoutX="424.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile201" layoutX="424.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1821" layoutX="532.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1621" layoutX="478.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1911" layoutX="559.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1711" layoutX="505.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1921" layoutX="559.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1611" layoutX="478.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile151" layoutX="451.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1811" layoutX="532.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile181" layoutX="532.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile161" layoutX="478.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1721" layoutX="505.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile211" layoutX="424.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane layoutX="225.0" layoutY="239.0" rotate="90.0">
+         <children>
+            <Label fx:id="Tile1522" layoutX="451.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191" layoutX="559.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1512" layoutX="451.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile171" layoutX="505.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile15" layoutX="424.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile202" layoutX="424.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1822" layoutX="532.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1622" layoutX="478.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1912" layoutX="559.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1712" layoutX="505.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1922" layoutX="559.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1612" layoutX="478.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile151" layoutX="451.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1812" layoutX="532.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile181" layoutX="532.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile161" layoutX="478.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1722" layoutX="505.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile212" layoutX="424.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane layoutX="613.0" layoutY="239.0" rotate="-90.0">
+         <children>
+            <Label fx:id="Tile1523" layoutX="451.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191" layoutX="559.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1513" layoutX="451.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile171" layoutX="505.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile15" layoutX="424.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile203" layoutX="424.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1823" layoutX="532.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1623" layoutX="478.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1913" layoutX="559.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1713" layoutX="505.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1923" layoutX="559.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1613" layoutX="478.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile151" layoutX="451.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1813" layoutX="532.0" layoutY="413.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile181" layoutX="532.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile161" layoutX="478.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1723" layoutX="505.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile213" layoutX="424.0" layoutY="452.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane layoutX="323.0" layoutY="28.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="Tile19146" layoutX="485.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="6">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19148" layoutX="539.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="8">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19147" layoutX="512.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="7">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19145" layoutX="458.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="5">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19144" layoutX="431.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="4">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19149" layoutX="566.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="9">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191412" layoutX="647.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="12">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19143" layoutX="404.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="3">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19142" layoutX="377.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="2">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141" layoutX="350.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191411" layoutX="620.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="11">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191410" layoutX="593.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1" GridPane.columnIndex="10">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914" layoutX="323.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Group>
+         <children>
+            <Label fx:id="Tile1914143" layoutX="86.0" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141412" layoutX="86.0" layoutY="416.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914144" layoutX="86.0" layoutY="216.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141411" layoutX="86.0" layoutY="391.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914149" layoutX="86.0" layoutY="341.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141410" layoutX="86.0" layoutY="366.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914146" layoutX="86.0" layoutY="266.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914148" layoutX="86.0" layoutY="316.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914147" layoutX="86.0" layoutY="291.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141413" layoutX="86.0" layoutY="441.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914141" layoutX="86.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914142" layoutX="86.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile1914145" layoutX="86.0" layoutY="241.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191414" layoutX="86.0" layoutY="116.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+      <Group>
+         <children>
+            <Label fx:id="Tile19141451" layoutX="926.0" layoutY="234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141461" layoutX="926.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141431" layoutX="926.0" layoutY="184.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141491" layoutX="926.0" layoutY="334.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191414121" layoutX="926.0" layoutY="409.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191414101" layoutX="926.0" layoutY="359.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141421" layoutX="926.0" layoutY="159.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191414111" layoutX="926.0" layoutY="384.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile191414131" layoutX="926.0" layoutY="434.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141471" layoutX="926.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141414" layoutX="926.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141481" layoutX="926.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141414" layoutX="926.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="Tile19141441" layoutX="926.0" layoutY="209.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-image: url('/mj/mj_60.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="Tile1">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+
+          </children>
+</AnchorPane>
