@@ -45,8 +45,8 @@ public class LoginScreen implements Screen{
         menuScreen.loadWindow(new Stage());
         Stage stage = (Stage) LoginButton.getScene().getWindow();
         stage.close();
-        System.out.println(1);
     }
+
 
     @Override
     public void loadWindow(Stage stage)throws Exception{

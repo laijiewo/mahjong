@@ -21,9 +21,11 @@ public class LaunchScreen implements Screen{
     void LaunchGame(ActionEvent event) {
 
     }
-    public void closeWindow() {
+
+    public LaunchScreen closeWindow() {
         Stage stage = (Stage) LaunchGameButton.getScene().getWindow();
         stage.close();
+        return this;
     }
 
     public void loadWindow(Stage stage) throws Exception {

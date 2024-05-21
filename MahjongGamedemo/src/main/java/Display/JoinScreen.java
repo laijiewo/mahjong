@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.Objects;
+
 public class JoinScreen implements Screen{
 
     @FXML
@@ -21,11 +24,20 @@ public class JoinScreen implements Screen{
 
     @FXML
     void JoinGame(ActionEvent event) {
-
+        ClientTest client = new ClientTest();
+        String ip = IpText.getText();
+        int port = Integer.parseInt(PortText.getText());
+        if(ip!="" && port!=0){
+            System.out.println(12);
+            client.setSeverHostname(ip);
+            client.setSeverPort(port);
+            client.connect();
+        }
     }
-    public void closeWindow() {
+    public JoinScreen closeWindow() {
         Stage stage = (Stage) JoinGameButton.getScene().getWindow();
         stage.close();
+        return this;
     }
 
     @Override

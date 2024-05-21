@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MenuScreen implements Screen {
-    Screen subscreen;
 
     @FXML
     private Button RulesButton;
@@ -33,15 +32,17 @@ public class MenuScreen implements Screen {
     @FXML
     void CreateGame(ActionEvent event) throws Exception {
         LaunchScreen launchScreen = new LaunchScreen();
-        subscreen = (LaunchScreen) launchScreen;
-        subscreen.loadWindow(new Stage());
+        launchScreen.loadWindow(new Stage());
+        Stage stage = (Stage) CreateGameButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void JoinGame(ActionEvent event) throws Exception {
         JoinScreen  joinScreen = new JoinScreen();
-        subscreen = (JoinScreen) joinScreen;
-        subscreen.loadWindow(new Stage());
+        joinScreen.loadWindow(new Stage());
+        Stage stage = (Stage) JoinGameButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
