@@ -135,7 +135,7 @@ public class RuleImplementation implements MahjongRule {
      * @param hunCount the number of wildcard tiles in the hand
      * @return true if the hand can form a winning hand, false otherwise
      */
-    public boolean isWinningHand(List<Tile> hand, int hunCount) {
+    private boolean isWinningHand(List<Tile> hand, int hunCount) {
         // Base cases: if there are no tiles left to check, we have a winning hand
         if (hand.isEmpty()) {
             return true;
