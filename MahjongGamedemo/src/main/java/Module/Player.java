@@ -11,7 +11,7 @@ import java.util.Random;
 public class Player {
     private int Score;
     private Site site;
-    private ArrayList<Tile> Tile_hand = new ArrayList<Tile>();
+    private ArrayList<Tile> Tile_hand;
 
     private Tile hunTile;
     private RuleImplementation ruleImplementation;
@@ -20,32 +20,16 @@ public class Player {
      * Constructs a Player with initial settings.
      * @param Score Initial score of the player.
      * @param site Initial seating position of the player.
-     * @param Tile_hand Initial set of tiles the player has.
      * @param hunTile The hun tile used for certain game rules.
      */
-    public Player(int Score, Site site, ArrayList<Tile> Tile_hand, Tile hunTile){
+    public Player(int Score, Site site, Tile hunTile){
         this.Score = Score;
         this.site = site;
-        this.Tile_hand = Tile_hand;
         this.hunTile = hunTile;
+        Tile_hand = new ArrayList<Tile>();
         ruleImplementation = new RuleImplementation(hunTile);
     }
 
-    /**
-     * Sets the seating position of the player based on an integer input.
-     * @param site The seat number to be set for the player.
-     */
-    public void setSite(int site){
-        if(site == 1){
-            this.site = Site.East;
-        } else if (site == 2) {
-            this.site = Site.South;
-        } else if (site == 3) {
-            this.site = Site.West;
-        } else if (site == 4) {
-            this.site = Site.North;
-        }
-    }
 
     /**
      * Rolls the dice using a provided Dice object.
