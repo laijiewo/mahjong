@@ -5,51 +5,28 @@ import Display.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Represents a player in the game.
- */
 public class Player {
     public int Score;
     public int location;
 
     public Site site;
-    public ArrayList<Tile> Tile_hand = new ArrayList<>();
+    public ArrayList<Tile> Tile_hand = new ArrayList<Tile>() ;
 
-    /**
-     * Default constructor for Player.
-     */
-    public Player() {}
+    public Player(){}
 
-    /**
-     * Rolls a dice and returns the result.
-     * @param dice The dice to roll.
-     * @return The result of the dice toss.
-     */
-    public int rollDice(Dice dice) {
-        return dice.toss();
+    public int rollDice(Dice Dice){
+        return Dice.toss();
     }
 
-    /**
-     * Retrieves the current score of the player.
-     * @return The current score.
-     */
+
     public int getScore() {
         return Score;
     }
 
-    /**
-     * Sets the player's score.
-     * @param score The new score.
-     */
     public void setScore(int score) {
         this.Score = score;
     }
 
-    /**
-     * Draws a tile from the tile wall if available.
-     * @param tileWall The wall of tiles from which to draw.
-     * @return The drawn tile, or null if the wall is empty.
-     */
     public Tile drawTiles(TileWall tileWall) {
         if (!tileWall.StackOfTiles.isEmpty()) {
             Tile drawTile = tileWall.StackOfTiles.pop();
@@ -59,101 +36,116 @@ public class Player {
         return null;
     }
 
-    /**
-     * Discards a tile from the player's hand.
-     * @param tileNumber The index of the tile to discard.
-     * @return The discarded tile.
-     */
-    public Tile discardTiles(int tileNumber) {
-        Tile tileDiscard = Tile_hand.get(tileNumber);
-        Tile_hand.remove(tileDiscard);
-        return tileDiscard;
+    public Tile discardTiles(int Tile_number){
+        Tile Tile_discard = Tile_hand.get(Tile_number);
+        Tile_hand.remove(Tile_discard);
+        return Tile_discard;
     }
 
-    /**
-     * Attempts to form a "Kong" with the latest discarded tile.
-     * @param gameBoard The current state of the game board.
-     */
-    public void kong(GameBoard gameBoard) {
+    public void kong(GameBoard gameBoard){
         Tile kongTile = gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size() - 1);
         int count = 0;
-        for (Tile tile : Tile_hand) {
-            if (tile.equals(kongTile)) {
+        for(int number=0;number<Tile_hand.size();number++){
+            if(Tile_hand.get(number).equals(kongTile)){
                 count++;
             }
         }
-        if (count == 3) {
+        if(count==3 && kongTile.equals(kongTile)){
             Tile_hand.add(kongTile);
         }
-        // Note: Hidden Kong logic needs to be implemented.
+        //暗杠没实现
+
     }
 
     /**
-     * Attempts to form a "Chow" with the latest discarded tile, which is a sequence of three consecutive number tiles of the same suit.
-     * @param gameBoard The current state of the game board.
+     * Attempts to form a "Chow" (a sequential set of three tiles of the same suit) with the most recently discarded tile.
+     * This method checks if the player's hand contains the necessary tiles to form a Chow sequence with the discarded tile.
+     * @param gameBoard The game board containing the discarded tiles.
      */
     public void chow(GameBoard gameBoard) {
+        // Retrieve the list of tiles discarded by players from the game board
         ArrayList<Tile> discardedTiles = gameBoard.Tiles_discardedByPlayer;
+        // Get the most recently discarded tile
         Tile chowTile = discardedTiles.get(discardedTiles.size() - 1);
-        if (chowTile.getSuit().equals(Suit.WAN) || chowTile.getSuit().equals(Suit.TONG) || chowTile.getSuit().equals(Suit.TIAO)) {
-            NumberTile numberTile = (NumberTile) chowTile;
-            int targetRank = numberTile.getRank();
-            ArrayList<NumberTile> sequenceCandidates = new ArrayList<>();
-            for (Tile tile : Tile_hand) {
-                if (tile instanceof NumberTile && tile.getSuit() == chowTile.getSuit()) {
-                    sequenceCandidates.add((NumberTile) tile);
+        // Check if the discarded tile is suitable for a Chow (must be a numeric tile from suits WAN, TONG, or TIAO)
+        if(chowTile.getSuit().equals(Suit.WAN) || chowTile.getSuit().equals(Suit.TONG) || chowTile.getSuit().equals(Suit.TIAO)){
+            NumberTile chow = (NumberTile) chowTile;
+            // List to hold numeric tiles of the same suit as the chowTile from the player's hand
+            ArrayList<NumberTile> handNumberCard = new ArrayList<>();
+            // Populate the list with numeric tiles of the matching suit
+            for(Tile tile : Tile_hand){
+                if(tile.getSuit().equals(chow.getSuit())){
+                    handNumberCard.add((NumberTile) tile);
                 }
             }
-            boolean canChow = checkChowPossibility(sequenceCandidates, targetRank);
-            if (canChow) {
-                Tile_hand.add(chowTile);
-                discardedTiles.remove(chowTile);
+            // Check for sequential combinations around the chowTile's rank, avoiding the first and last ranks
+            if(chow.getRank() != 1 && chow.getRank() != 9){
+                NumberTile lowerTile1 = new NumberTile(chow.getRank() - 1, chow.getSuit());
+                NumberTile lowerTile2 = new NumberTile(chow.getRank() - 2, chow.getSuit());
+                NumberTile higherTile1 = new NumberTile(chow.getRank() + 1, chow.getSuit());
+                NumberTile higherTile2 = new NumberTile(chow.getRank() + 2, chow.getSuit());
+
+                // Check for the possibility of a Chow with the tile immediately before or after the chowTile
+                if(handNumberCard.contains(lowerTile1)){
+                    if(handNumberCard.contains(lowerTile2) || handNumberCard.contains(higherTile1)){
+                        Tile_hand.add(chowTile);
+                    }
+                } else if (handNumberCard.contains(higherTile1)) {
+                    if(handNumberCard.contains(higherTile2)){
+                        Tile_hand.add(chowTile);
+                    }
+                }
+            } else if (chow.getRank() == 1) {
+                // Special case for the lowest rank: only check tiles immediately higher
+                NumberTile higherTile1 = new NumberTile(chow.getRank() + 1, chow.getSuit());
+                NumberTile higherTile2 = new NumberTile(chow.getRank() + 2, chow.getSuit());
+                if(handNumberCard.contains(higherTile1) && handNumberCard.contains(higherTile2)){
+                    Tile_hand.add(chowTile);
+                }
+            } else if (chow.getRank() == 9) {
+                // Special case for the highest rank: only check tiles immediately lower
+                NumberTile lowerTile1 = new NumberTile(chow.getRank() - 1, chow.getSuit());
+                NumberTile lowerTile2 = new NumberTile(chow.getRank() - 2, chow.getSuit());
+                if(handNumberCard.contains(lowerTile1) && handNumberCard.contains(lowerTile2)){
+                    Tile_hand.add(chowTile);
+                }
             }
         }
     }
 
-    /**
-     * Attempts to form a "Pung" with the latest discarded tile, which is a set of three identical tiles.
-     * @param gameBoard The current state of the game board.
-     */
-    public void pung(GameBoard gameBoard) {
+
+
+    public void pung(GameBoard gameBoard){
         Tile pungTile = gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size() - 1);
         int count = 0;
-        for (Tile tile : Tile_hand) {
-            if (tile.equals(pungTile)) {
+        for(int number=0;number<Tile_hand.size();number++){
+            if(Tile_hand.get(number).equals(pungTile)){
                 count++;
             }
         }
-        if (count == 2) {
+        if(count==2 && pungTile.equals(pungTile)){
             Tile_hand.add(pungTile);
+        }}
+
+    /**
+     * Determines if the player has won the game based on their hand.
+     * @param mahjongGame The manager controlling the game logic.
+     */
+    public boolean winHand(MahjongGame mahjongGame) {
+        // Check conditions for winning the game
+        if (mahjongGame.checkVictory()==this) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
     /**
-     * Determines if the player has won the game.
-     * @param mahjongGame The game in which to check for a win.
-     * @return True if the player has won, false otherwise.
-     */
-    public boolean winHand(MahjongGame mahjongGame) {
-        return mahjongGame.checkVictory() == this;
-    }
-
-    /**
-     * Adjusts the player's score by a specified amount.
-     * @param change The amount to adjust the score.
+     * Changes the player's score based on game events.
+     * @param change Amount to change the score.
      */
     public void Score_change(int change) {
         this.Score += change;
-    }
-
-    /**
-     * Checks the possibility of forming a Chow from a set of candidate tiles.
-     * @param candidates Tiles available to form a Chow.
-     * @param targetRank The rank of the chow tile.
-     * @return True if forming a Chow is possible.
-     */
-    private boolean checkChowPossibility(ArrayList<NumberTile> candidates, int targetRank) {
-        // Logic to check for valid Chow combinations.
-        return true; // Placeholder for actual implementation.
     }
 }
