@@ -4,6 +4,9 @@ import Display.*;
 
 import java.util.*;
 
+/**
+ * Represents the game board for a Mahjong game, managing the state and interactions within a game session.
+ */
 public class GameBoard {
     public ArrayList<Tile> Hand_tilesOfPlayer;
     public ArrayList<Tile> Tiles_discardedByPlayer;
@@ -23,51 +26,69 @@ public class GameBoard {
     public Dice dice2;
     ArrayList<Player> playerList = new ArrayList<>(Arrays.asList(player1,player2,player3,player4));
 
-
-
-
+    /**
+     * Determines the dealer for the game using dice rolls to select from among the players.
+     */
     public void determineDealer(){
-        player1.site=Site.East;
-        player2.site=Site.South;
-        player3.site=Site.West;
-        player4.site=Site.North;
-        int count=player1.rollDice(dice1)+player1.rollDice(dice2);
-        int Croupier = count%4;
-        if(Croupier==1){
-            Dealer=player1;
-        } else if (Croupier==2) {
-            Dealer=player2;
-        } else if (Croupier==3) {
-            Dealer=player3;
-        } else if (Croupier==4) {
-            Dealer=player4;
+        player1.setSite(1);
+        player2.setSite(2);
+        player3.setSite(3);
+        player4.setSite(4);
+        int count = player1.rollDice(dice1) + player1.rollDice(dice2);
+        int Croupier = count % 4;
+        if(Croupier == 1){
+            Dealer = player1;
+        } else if (Croupier == 2) {
+            Dealer = player2;
+        } else if (Croupier == 3) {
+            Dealer = player3;
+        } else if (Croupier == 4) {
+            Dealer = player4;
         }
     }
 
+    /**
+     * Changes the dealer based on the results of the game, typically to the winning player.
+     */
     public void changeDealer(){
-        Dealer=mahjongGame.checkVictory();
+        Dealer = mahjongGame.checkVictory();
     }
 
+    /**
+     * Shuffles the tiles before the start of the game using a TileFactory to create and shuffle a new set of tiles.
+     * @return A shuffled list of tiles ready for game play.
+     */
     public List shuffleTiles(){
-        List newList=tileFactory.createTiles();
+        List newList = tileFactory.createTiles();
         Collections.shuffle(newList);
         return newList;
-
     }
+
+    /**
+     * Deals tiles to a player from the tile wall during the game.
+     * @param Tile_wall The tile wall from which tiles are drawn.
+     * @param currentPlayer The player to whom the tiles are to be dealt.
+     */
     public void dealTiles(TileWall Tile_wall, Player currentPlayer){
-        currentPlayer.Tile_hand.add(Tile_wall.StackOfTiles.get(0));
-        Tile_wall.StackOfTiles.remove(0);
+        currentPlayer.drawTiles(Tile_wall);
     }
 
+    /**
+     * Discards a tile from a player's hand.
+     * @param player The player discarding a tile.
+     * @param num The index of the tile to be discarded in the player's hand.
+     * @return The tile that was discarded.
+     */
     public Tile discardTile(Player player, int num){
         Tile discardTile = player.discardTiles(num);
-        player.Tile_hand.remove(num);
         return discardTile;
     }
 
+    /**
+     * Retrieves the currently active player.
+     * @return The currently active player in the game.
+     */
     public Player getCurrent_activePlayer(){
         return currentPlayer;
     }
-
-
 }
