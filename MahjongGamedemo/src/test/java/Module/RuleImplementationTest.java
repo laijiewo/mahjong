@@ -407,7 +407,7 @@ class RuleImplementationTest {
             hand.add(new NumberTile(4, Suit.WAN));
             hand.add(new NumberTile(4, Suit.WAN));
             hand.add(new NumberTile(5, Suit.WAN));
-            hand.add(new NumberTile(6, Suit.WAN));
+            hand.add(new NumberTile(6, Suit.TONG));
 
             assertFalse(ruleImplementation.canHu(hand, new NumberTile(5, Suit.WAN))); // Not a winning hand
         }
@@ -544,13 +544,13 @@ class RuleImplementationTest {
             hand.add(new NumberTile(7, Suit.WAN));
             hand.add(new NumberTile(8, Suit.WAN));
             hand.add(new NumberTile(9, Suit.WAN));
-            hand.add(new NumberTile(1, Suit.TIAO));
             hand.add(new NumberTile(2, Suit.TIAO));
             hand.add(new NumberTile(2, Suit.TIAO));
-            hand.add(new NumberTile(2, Suit.TIAO));
+            hand.add(new NumberTile(3, Suit.TIAO));
+            hand.add(new NumberTile(4, Suit.TIAO));
             hand.add(hunTile); // Add a hun tile to the hand
 
-            assertTrue(ruleImplementation.canHu(hand, new NumberTile(9, Suit.TIAO))); // Winning hand with mixed sequences and pairs using hun tile
+            assertTrue(ruleImplementation.canHu(hand, new NumberTile(5, Suit.TIAO))); // Winning hand with mixed sequences and pairs using hun tile
         }
 
 

@@ -202,17 +202,19 @@ public class RuleImplementation implements MahjongRule {
         }
 
         // Check for sequence
-        for (int i = 0; i < hand.size(); i++) {
+        for (int i = 0; i < hand.size()-2; i++) {
             if (hand.get(i) instanceof NumberTile) {
                 int rank = ((NumberTile) hand.get(i)).getRank();
                 Suit suit = hand.get(i).getSuit();
-                if (containsTile(hand, new NumberTile(rank + 1, suit)) && containsTile(hand, new NumberTile(rank + 2, suit))) {
-                    List<Tile> remainingHand = new ArrayList<>(hand);
-                    remainingHand.remove(hand.get(i));
-                    remainingHand.remove(new NumberTile(rank + 1, suit));
-                    remainingHand.remove(new NumberTile(rank + 2, suit));
-                    if (canFormMelds(remainingHand, hunCount)) {
-                        return true;
+                if(rank<=7) {
+                    if (containsTile(hand, new NumberTile(rank + 1, suit)) && containsTile(hand, new NumberTile(rank + 2, suit))) {
+                        List<Tile> remainingHand = new ArrayList<>(hand);
+                        remainingHand.remove(hand.get(i));
+                        remainingHand.remove(new NumberTile(rank + 1, suit));
+                        remainingHand.remove(new NumberTile(rank + 2, suit));
+                        if (canFormMelds(remainingHand, hunCount)) {
+                            return true;
+                        }
                     }
                 }
             }
