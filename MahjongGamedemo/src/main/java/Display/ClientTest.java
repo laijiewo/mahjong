@@ -8,9 +8,7 @@ import java.util.Scanner;
 /**
  * The Client class represents a client application that connects to a server
  * and allows the user to send and receive messages.
- * TODO: 1. 为sendMessage添加Button，实现点击发送消息
- *       2. 实现打牌、吃、碰、杠、和牌的按钮实现，当用户点击时应触发GameManager中相应的handle方法
- *       3. 在client中布置基本背景，于各个子类中实现具体的显示效果
+ * TODO: 1. 测试Client与JoinGameWindow的联动效果，没问题则可以以此替代Client
  *
  * @author Jingwang Li, Jie Mao
  */
