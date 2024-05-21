@@ -40,14 +40,14 @@ public class RuleImplementation implements MahjongRule {
 
         // Array to count the occurrences of each rank (1-9) in the hand
         int[] ranks = new int[10]; // ranks[0] is unused, ranks[1-9] store the count of each rank
+        Suit suit = tile.getSuit();
         for (Tile t : sortedHand) {
-            if (t instanceof NumberTile) {
+            if (t instanceof NumberTile&&t.getSuit()==suit) {
                 ranks[((NumberTile) t).getRank()]++;
             }
         }
 
         int rank = ((NumberTile) tile).getRank();
-        Suit suit = tile.getSuit();
 
         // Check if there are two consecutive tiles that can form a sequence with the given tile
         return (rank >= 3 && ranks[rank - 1] > 0 && ranks[rank - 2] > 0) || // e.g., 123
@@ -135,7 +135,7 @@ public class RuleImplementation implements MahjongRule {
      * @param hunCount the number of wildcard tiles in the hand
      * @return true if the hand can form a winning hand, false otherwise
      */
-    private boolean isWinningHand(List<Tile> hand, int hunCount) {
+    public boolean isWinningHand(List<Tile> hand, int hunCount) {
         // Base cases: if there are no tiles left to check, we have a winning hand
         if (hand.isEmpty()) {
             return true;
@@ -201,36 +201,16 @@ public class RuleImplementation implements MahjongRule {
             }
         }
 
-        // Try to form a sequence (顺子) with number tiles
-        for (int i = 0; i < hand.size() - 2; i++) {
+        // Check for sequence
+        for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i) instanceof NumberTile) {
-                NumberTile first = (NumberTile) hand.get(i);
-                NumberTile second = null;
-                NumberTile third = null;
-
-                for (int j = i + 1; j < hand.size(); j++) {
-                    if (hand.get(j) instanceof NumberTile) {
-                        second = (NumberTile) hand.get(j);
-                        break;
-                    }
-                }
-
-                for (int j = i + 2; j < hand.size(); j++) {
-                    if (hand.get(j) instanceof NumberTile) {
-                        third = (NumberTile) hand.get(j);
-                        break;
-                    }
-                }
-
-                if (second != null && third != null &&
-                        first.getSuit() == second.getSuit() && second.getSuit() == third.getSuit() &&
-                        first.getRank() + 1 == second.getRank() && second.getRank() + 1 == third.getRank()) {
-                    // Remove the sequence from the hand and check if the remaining hand can form melds
+                int rank = ((NumberTile) hand.get(i)).getRank();
+                Suit suit = hand.get(i).getSuit();
+                if (containsTile(hand, new NumberTile(rank + 1, suit)) && containsTile(hand, new NumberTile(rank + 2, suit))) {
                     List<Tile> remainingHand = new ArrayList<>(hand);
-                    remainingHand.remove(i);
-                    remainingHand.remove(second);
-                    remainingHand.remove(third);
-
+                    remainingHand.remove(hand.get(i));
+                    remainingHand.remove(new NumberTile(rank + 1, suit));
+                    remainingHand.remove(new NumberTile(rank + 2, suit));
                     if (canFormMelds(remainingHand, hunCount)) {
                         return true;
                     }
@@ -326,5 +306,13 @@ public class RuleImplementation implements MahjongRule {
             }
         }
         return numberTiles;
+    }
+    private boolean containsTile(List<Tile> hand, Tile tile) {
+        for (Tile t : hand) {
+            if (t.equals(tile)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
