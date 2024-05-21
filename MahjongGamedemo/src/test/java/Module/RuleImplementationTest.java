@@ -16,7 +16,8 @@ class RuleImplementationTest {
 
     @BeforeEach
     void setUp() {
-        hunTile = new NumberTile(1, Suit.WAN); // Let's assume the hun tile is 1 WAN
+        //hunTile = new NumberTile(1, Suit.WAN); // Let's assume the hun tile is 1 WAN
+        hunTile=new WindAndDragonTile("West",Suit.WIND);
         ruleImplementation = new RuleImplementation(hunTile);
         hand = new ArrayList<>();
     }
@@ -342,7 +343,7 @@ class RuleImplementationTest {
             hand.add(new NumberTile(4, Suit.TIAO));
             hand.add(new NumberTile(5, Suit.TIAO));
 
-            assertTrue(ruleImplementation.canHu(hand, new NumberTile(1, Suit.WAN))); // Winning hand with 23456789 WAN and 123456 TIAO
+            assertTrue(ruleImplementation.canHu(hand, new NumberTile(9, Suit.WAN))); // Winning hand with 23456789 WAN and 123456 TIAO
             assertFalse(ruleImplementation.canHu(hand, new NumberTile(7, Suit.TIAO))); // Not a winning hand
         }
 
@@ -450,14 +451,14 @@ class RuleImplementationTest {
             hand.add(new NumberTile(6, Suit.WAN));
             hand.add(new NumberTile(7, Suit.WAN));
             hand.add(new NumberTile(8, Suit.WAN));
-            hand.add(new NumberTile(6, Suit.TIAO));
+            hand.add(new NumberTile(4, Suit.TIAO));
             hand.add(new NumberTile(1, Suit.TIAO));
             hand.add(new NumberTile(2, Suit.TIAO));
             hand.add(new NumberTile(3, Suit.TIAO));
             hand.add(new NumberTile(4, Suit.TIAO));
             hand.add(hunTile); // Add a hun tile to the hand
 
-            assertTrue(ruleImplementation.canHu(hand, new NumberTile(1, Suit.WAN))); // Winning hand with 23456789 WAN, 12345 TIAO and hun tile as pair
+            assertTrue(ruleImplementation.canHu(hand, new NumberTile(9, Suit.WAN))); // Winning hand with 23456789 WAN, 12345 TIAO and hun tile as pair
             assertFalse(ruleImplementation.canHu(hand, new NumberTile(7, Suit.TIAO))); // Not a winning hand
         }
 

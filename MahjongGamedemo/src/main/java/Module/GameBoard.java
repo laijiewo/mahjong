@@ -30,10 +30,6 @@ public class GameBoard {
      * Determines the dealer for the game using dice rolls to select from among the players.
      */
     public void determineDealer(){
-        player1.setSite(1);
-        player2.setSite(2);
-        player3.setSite(3);
-        player4.setSite(4);
         int count = player1.rollDice(dice1) + player1.rollDice(dice2);
         int Croupier = count % 4;
         if(Croupier == 1){
@@ -42,7 +38,7 @@ public class GameBoard {
             Dealer = player2;
         } else if (Croupier == 3) {
             Dealer = player3;
-        } else if (Croupier == 4) {
+        } else if (Croupier == 0) {
             Dealer = player4;
         }
     }
