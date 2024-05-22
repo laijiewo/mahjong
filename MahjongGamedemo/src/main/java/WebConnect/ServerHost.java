@@ -4,18 +4,15 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class ServerHost {
     protected static LinkedList<Socket> sockets;
     private static ServerSocket serverSocket;
-    private static final Scanner scanner = new Scanner(System.in);
     private int port;
     static int i = 0;
 
-    public ServerHost() throws IOException {
-        System.out.print("Please enter the port number: ");
-        int port = scanner.nextInt();
+    public ServerHost(int port) throws IOException {
+        this.port = port;
         startServer(port);
     }
 

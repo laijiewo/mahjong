@@ -29,16 +29,16 @@ public class GameManager {
     public GameManager(Game game) {
         players = new ArrayList<>();
         this.game = game;
-        startNewGame();
     }
     /**
      * This method is called when a player create a game.
      * It starts the server thread to communicate with the other players.
      *
+     * @param port        The port number to start the server.
      */
-    public static void startNewGame() {
+    public static void startNewGame(int port) {
             new Thread(() -> {try {
-                serverHost = new ServerHost();
+                serverHost = new ServerHost(port);
             }catch (IOException e) {
                 System.out.println("Can not start server!!!");
                 throw new RuntimeException(e);
