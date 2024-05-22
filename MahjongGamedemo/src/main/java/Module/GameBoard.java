@@ -1,6 +1,4 @@
 package Module;
-import System.*;
-import Display.*;
 
 import java.util.*;
 
@@ -52,12 +50,10 @@ public class GameBoard {
 
     /**
      * Shuffles the tiles before the start of the game using a TileFactory to create and shuffle a new set of tiles.
-     * @return A shuffled list of tiles ready for game play.
      */
-    public List shuffleTiles(){
-        List newList = tileFactory.createTiles();
+    public void shuffleTiles(){
+        List<Tile> newList = tileFactory.createTiles();
         Collections.shuffle(newList);
-        return newList;
     }
 
     /**
