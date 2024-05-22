@@ -1,13 +1,18 @@
 package Display;
 
+import WebConnect.ServerHost;
+import com.almasb.fxgl.net.Server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LaunchScreen implements Screen{
 
@@ -18,7 +23,14 @@ public class LaunchScreen implements Screen{
     private TextField PortText;
 
     @FXML
-    void LaunchGame(ActionEvent event) {
+    void LaunchGame(ActionEvent event) throws IOException {
+        int port = Integer.parseInt(PortText.getText());
+        if(port!=0){
+            ServerHost serverHost = new ServerHost(port);
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Server Host");
+        alert.setHeaderText(null);
 
     }
 

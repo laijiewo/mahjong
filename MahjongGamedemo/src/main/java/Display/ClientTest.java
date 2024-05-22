@@ -18,7 +18,9 @@ public class ClientTest {
     private static boolean isRunning = true;
     private String serverHostname;
     private int serverPort;
+    private boolean connected = false;
 
+    public boolean getconnected(){ return connected; }
     public void setSeverHostname(String serverHostname) {
         this.serverHostname = serverHostname;
     }
@@ -76,6 +78,7 @@ public class ClientTest {
         }).start();
 
         System.out.println("Type 'Bye.' to exit.");
+        connected=true;
     }
     /**
      * Starts a new thread to send messages to the server.

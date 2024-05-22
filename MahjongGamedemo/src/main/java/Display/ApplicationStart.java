@@ -23,6 +23,7 @@ public class ApplicationStart extends Application {
         manager.run(primaryStage);
     }
 
+
     public static void main(String[] args) {
         launch(args); // Start the JavaFX application
     }
