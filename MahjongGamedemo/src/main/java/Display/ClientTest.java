@@ -58,6 +58,7 @@ public class ClientTest {
         System.out.println("Connecting to server...");
         echoSocket = new Socket(serverHostname, port);
         System.out.println("Connection successful.");
+        connected = true;
         // Start the threads to receive and send messages
         startReceiveMessages();
         // Start the thread to send messages

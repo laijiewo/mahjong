@@ -26,12 +26,12 @@ public class LaunchScreen implements Screen{
     void LaunchGame(ActionEvent event) throws IOException {
         int port = Integer.parseInt(PortText.getText());
         if(port!=0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Server Host");
+            alert.setHeaderText("Create Server Host");
+            alert.setContentText("Successfully create game at server Port: "+port);
             ServerHost serverHost = new ServerHost(port);
         }
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Server Host");
-        alert.setHeaderText(null);
-
     }
 
     public LaunchScreen closeWindow() {

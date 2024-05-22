@@ -12,6 +12,7 @@ public class ApplicationStart extends Application {
     public void init() {
         Font.loadFont(getClass().getResourceAsStream("/fonts/Regular.ttf"), 12);
         Font.loadFont(getClass().getResourceAsStream("/fonts/Pixelmania.ttf"), 20);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/DePixelKlein.ttf"), 20);
 
     }
     @Override

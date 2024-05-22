@@ -9,19 +9,23 @@
    <children>
       <TextField fx:id="PasswordText" layoutX="705.0" layoutY="374.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="242.0" />
 
-      <Button fx:id="LoginButton" layoutX="875.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #308C4C;" text="Log in">
+      <Button fx:id="LoginButton" layoutX="875.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login"
+              prefHeight="36.0" prefWidth="72.0" style="-fx-text-fill: #308C4C;" text="Log in">
          <font>
             <Font name="Silkscreen" size="12" />
          </font></Button>
 
       <TextField fx:id="AccountText" layoutX="705.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="242.0" />
 
-      <Label fx:id="AccountLabel" layoutX="625.0" layoutY="326.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="58.0" style="-fx-text-fill: white;" text="Account:">
+      <Label fx:id="AccountLabel" layoutX="561.0" layoutY="326.0" maxHeight="-Infinity" maxWidth="-Infinity"
+             minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" style="-fx-text-fill: white;" text="Account:">
          <font>
             <Font name="Silkscreen" size="12" />
          </font></Label>
 
-      <Label fx:id="PasswordLabel" layoutX="619.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="58.0" style="-fx-text-fill: white;" text="Password:">
+      <Label fx:id="PasswordLabel" layoutX="561.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity"
+             minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="128.0" style="-fx-text-fill: white;" text="Password:" >
          <font>
             <Font name="Silkscreen" size="12" />
          </font></Label>
