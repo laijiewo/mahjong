@@ -29,8 +29,8 @@ public class JoinScreen implements Screen{
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
-            client.setSeverHostname(ip);
-            client.setSeverPort(port);
+            client.setServerHostname(ip);
+            client.setServerPort(port);
             try {
                 client.connect();
                 if (client.getconnected()) {

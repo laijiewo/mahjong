@@ -24,19 +24,20 @@ public class ClientTest {
         return connected;
     }
 
-    public void setSeverHostname(String serverHostname) {
+    public void setServerHostname(String serverHostname) {
         this.serverHostname = serverHostname;
     }
 
-    public void setSeverPort(int serverPort) {
+    public void setServerPort(int serverPort) {
         this.serverPort = serverPort;
     }
 
     public static void main(String[] args) throws IOException {
+
         ClientTest clientTest = new ClientTest();
-        clientTest.setSeverHostname("10.27.90.52");
-        clientTest.setSeverPort(8080);
-        connect();
+        clientTest.setServerHostname("10.27.93.83");
+        clientTest.setServerPort(8080);
+        clientTest.connect();
     }
 
     /**
@@ -44,9 +45,9 @@ public class ClientTest {
      * Prompts the user for the hostname and port number,
      * and then attempts to connect to the server.
      */
-    public static void connect() throws IOException {
-        String serverHostname = "10.27.90.52";
-        int serverPort = 8080;
+    public  void connect() throws IOException {
+        //String serverHostname = "10.27.93.83";
+        //int serverPort = 8080;
         // Prompt the user for the hostname and port number
         System.out.println("Please enter the hostname and the port of the server:");
         //String serverHostname = scanner.next();
