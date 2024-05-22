@@ -20,10 +20,14 @@ public class ClientTest {
     private int serverPort;
     private boolean connected = false;
 
-    public boolean getconnected(){ return connected; }
+    public boolean getconnected() {
+        return connected;
+    }
+
     public void setSeverHostname(String serverHostname) {
         this.serverHostname = serverHostname;
     }
+
     public void setSeverPort(int severPort) {
         this.serverPort = serverPort;
     }
@@ -37,38 +41,29 @@ public class ClientTest {
      * Prompts the user for the hostname and port number,
      * and then attempts to connect to the server.
      */
-    public  void connect(){
+    public void connect() throws IOException {
         // Prompt the user for the hostname and port number
         System.out.println("Please enter the hostname and the port of the server:");
         //String serverHostname = scanner.next();
         int port = serverPort;
-        System.out.println ("Attempting to connect to host " +
-                serverHostname + " on port 8080.");
+        System.out.println("Attempting to connect to host " +
+                                   serverHostname + " on port 8080.");
         // Attempt to connect to the server
-        try {
-            System.out.println("Connecting to server...");
-            echoSocket = new Socket(serverHostname, port);
-            System.out.println("Connection successful.");
-            // Start the threads to receive and send messages
-            startReceiveMessages();
-            // Start the thread to send messages
-            // TODO: 1. 当用户进入游戏后再触发startSendMessages()
-            //       2. 为sendMessage添加Button，实现点击发送消息
-            startSendMessages();
-
-        } catch (UnknownHostException e) {
-            System.err.println("Don't know about host: " + serverHostname);
-            System.exit(1);
-        } catch (IOException e) {
-            System.err.println("Couldn't get I/O for "
-                    + "the connection to: " + serverHostname);
-            System.exit(1);
-        }
+        System.out.println("Connecting to server...");
+        echoSocket = new Socket(serverHostname, port);
+        System.out.println("Connection successful.");
+        // Start the threads to receive and send messages
+        startReceiveMessages();
+        // Start the thread to send messages
+        // TODO: 1. 当用户进入游戏后再触发startSendMessages()
+        //       2. 为sendMessage添加Button，实现点击发送消息
+        startSendMessages();
     }
+
     /**
      * Starts a new thread to receive messages from the server.
      */
-    private  void startReceiveMessages() {
+    private void startReceiveMessages() {
         new Thread(() -> {
             try {
                 receiveMessage();
@@ -78,8 +73,9 @@ public class ClientTest {
         }).start();
 
         System.out.println("Type 'Bye.' to exit.");
-        connected=true;
+        connected = true;
     }
+
     /**
      * Starts a new thread to send messages to the server.
      */
@@ -89,8 +85,10 @@ public class ClientTest {
                 sendMessage();
             } catch (Exception e) {
                 e.printStackTrace();
-            }}).start();
+            }
+        }).start();
     }
+
     /**
      * Sends messages to the server.
      * Reads user input from the console and sends it to the server.
@@ -124,6 +122,7 @@ public class ClientTest {
             e.printStackTrace();
         }
     }
+
     /**
      * Receives messages from the server.
      * Continuously reads messages from the server and prints them to the console.
@@ -131,7 +130,7 @@ public class ClientTest {
      *
      * @throws InterruptedException If the thread is interrupted while sleeping
      */
-    private  void receiveMessage() throws InterruptedException {
+    private void receiveMessage() throws InterruptedException {
         String message;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
@@ -147,7 +146,6 @@ public class ClientTest {
                 System.out.println("An error occurred while receiving message: " + e.getMessage());
                 System.out.println("Reconnecting...");
                 Thread.sleep(3000);
-                connect();
             }
         }
     }
