@@ -41,7 +41,7 @@ public class LaunchScreen implements Screen {
     }
 
     public void loadWindow(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LaunchScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Display/LaunchScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Launch Screen");

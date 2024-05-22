@@ -64,7 +64,7 @@ public class JoinScreen implements Screen {
 
     @Override
     public void loadWindow(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("JoinScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Display/JoinScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Join Screen");
