@@ -176,20 +176,44 @@ public class RuleImplementation implements MahjongRule {
         return false;
     }
 
-    private boolean canFormMelds(List<Tile> hand, int hunCount) {
-        // Base cases: if there are no tiles left to check, we have a winning hand
-        if (hand.isEmpty()) {
-            return true;
-        }
+   private boolean canFormMelds(List<Tile> hand, int hunCount) {
+       // Base cases: if there are no tiles left to check, we have a winning hand
+       if (hand.isEmpty()) {
+           return true;
+       }
 
-        // Try to form a triplet (刻子)
+       // Try to form a triplet (刻子)
+       if (tryFormTriplet(hand, hunCount)) {
+           return true;
+       }
+
+       // Check for sequence
+       if (tryFormSequence(hand, hunCount)) {
+           return true;
+       }
+
+       // Try to use hun tiles to form a triplet or sequence
+       if (hunCount > 0) {
+           if (tryFormTripletWithHun(hand, hunCount)) {
+               return true;
+           }
+           if (tryFormSequenceWithHun(hand, hunCount, 1)) {
+               return true;
+           }
+           if (tryFormSequenceWithHun(hand, hunCount, 2)) {
+               return true;
+           }
+       }
+
+       return false;
+   }
+    private boolean tryFormTriplet(List<Tile> hand, int hunCount) {
         for (int i = 0; i < hand.size() - 2; i++) {
             Tile first = hand.get(i);
             Tile second = hand.get(i + 1);
             Tile third = hand.get(i + 2);
 
             if (first.equals(second) && second.equals(third)) {
-                // Remove the triplet from the hand and check if the remaining hand can form melds
                 List<Tile> remainingHand = new ArrayList<>(hand);
                 remainingHand.remove(i);
                 remainingHand.remove(i);
@@ -200,18 +224,26 @@ public class RuleImplementation implements MahjongRule {
                 }
             }
         }
+        return false;
+    }
 
-        // Check for sequence
-        for (int i = 0; i < hand.size()-2; i++) {
+    private boolean tryFormSequence(List<Tile> hand, int hunCount) {
+        for (int i = 0; i < hand.size() - 2; i++) {
             if (hand.get(i) instanceof NumberTile) {
-                int rank = ((NumberTile) hand.get(i)).getRank();
-                Suit suit = hand.get(i).getSuit();
-                if(rank<=7) {
-                    if (containsTile(hand, new NumberTile(rank + 1, suit)) && containsTile(hand, new NumberTile(rank + 2, suit))) {
+                NumberTile first = (NumberTile) hand.get(i);
+                int rank = first.getRank();
+                Suit suit = first.getSuit();
+
+                if (rank <= 7) { // Ensure the rank is within valid range to form a sequence
+                    NumberTile second = new NumberTile(rank + 1, suit);
+                    NumberTile third = new NumberTile(rank + 2, suit);
+
+                    if (containsTile(hand, second) && containsTile(hand, third)) {
                         List<Tile> remainingHand = new ArrayList<>(hand);
-                        remainingHand.remove(hand.get(i));
-                        remainingHand.remove(new NumberTile(rank + 1, suit));
-                        remainingHand.remove(new NumberTile(rank + 2, suit));
+                        remainingHand.remove(first);
+                        removeTile(remainingHand, second);
+                        removeTile(remainingHand, third);
+
                         if (canFormMelds(remainingHand, hunCount)) {
                             return true;
                         }
@@ -219,68 +251,40 @@ public class RuleImplementation implements MahjongRule {
                 }
             }
         }
+        return false;
+    }
 
-        // Try to use hun tiles to form a triplet or sequence
-        if (hunCount > 0) {
-            // Check for using hun tiles as part of a triplet
-            for (int i = 0; i < hand.size() - 1; i++) {
-                Tile first = hand.get(i);
-                Tile second = hand.get(i + 1);
+    private boolean tryFormTripletWithHun(List<Tile> hand, int hunCount) {
+        // Check for using hun tiles as part of a triplet
+        for (int i = 0; i < hand.size() - 1; i++) {
+            Tile first = hand.get(i);
+            Tile second = hand.get(i + 1);
 
-                if (first.equals(second)) {
-                    // Remove the triplet (two tiles from hand, one hun tile) and check if the remaining hand can form melds
-                    List<Tile> remainingHand = new ArrayList<>(hand);
-                    remainingHand.remove(i);
-                    remainingHand.remove(i);
+            if (first.equals(second)) {
+                List<Tile> remainingHand = new ArrayList<>(hand);
+                remainingHand.remove(first);
+                remainingHand.remove(second);
 
-                    if (canFormMelds(remainingHand, hunCount - 1)) {
-                        return true;
-                    }
+                if (canFormMelds(remainingHand, hunCount - 1)) {
+                    return true;
                 }
             }
+        }
+        return false;
+    }
+    private boolean tryFormSequenceWithHun(List<Tile> hand, int hunCount, int offset) {
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i) instanceof NumberTile) {
+                NumberTile first = (NumberTile) hand.get(i);
+                int rank = first.getRank();
+                Suit suit = first.getSuit();
 
-            // Check for using hun tiles as part of a sequence
-            for (int i = 0; i < hand.size() - 2; i++) {
-                if (hand.get(i) instanceof NumberTile) {
-                    NumberTile first = (NumberTile) hand.get(i);
-                    NumberTile second = null;
-                    NumberTile third = null;
-
-                    for (int j = i + 1; j < hand.size(); j++) {
-                        if (hand.get(j) instanceof NumberTile) {
-                            second = (NumberTile) hand.get(j);
-                            break;
-                        }
-                    }
-
-                    for (int j = i + 2; j < hand.size(); j++) {
-                        if (hand.get(j) instanceof NumberTile) {
-                            third = (NumberTile) hand.get(j);
-                            break;
-                        }
-                    }
-
-                    // Check for sequences with one hun tile
-                    if (second != null &&
-                            first.getSuit() == second.getSuit() &&
-                            (first.getRank() + 1 == second.getRank() || first.getRank() + 2 == second.getRank())) {
-                        // Remove the sequence (two tiles from hand, one hun tile) and check if the remaining hand can form melds
+                if (rank + offset <= 9) {
+                    NumberTile next = new NumberTile(rank + offset, suit);
+                    if (containsTile(hand, next)) {
                         List<Tile> remainingHand = new ArrayList<>(hand);
-                        remainingHand.remove(i);
-                        remainingHand.remove(second);
-
-                        if (canFormMelds(remainingHand, hunCount - 1)) {
-                            return true;
-                        }
-                    }
-
-                    if (third != null &&
-                            first.getSuit() == third.getSuit() &&
-                            (first.getRank() + 1 == third.getRank() || first.getRank() + 2 == third.getRank())) {
-                        // Remove the sequence (two tiles from hand, one hun tile) and check if the remaining hand can form melds
-                        List<Tile> remainingHand = new ArrayList<>(hand);
-                        remainingHand.remove(i);
-                        remainingHand.remove(third);
+                        remainingHand.remove(first);
+                        removeTile(remainingHand, next);
 
                         if (canFormMelds(remainingHand, hunCount - 1)) {
                             return true;
@@ -289,8 +293,16 @@ public class RuleImplementation implements MahjongRule {
                 }
             }
         }
-
         return false;
+    }
+
+    private void removeTile(List<Tile> hand, Tile tile) {
+        for (int i = 0; i < hand.size(); i++) {
+            if (hand.get(i).equals(tile)) {
+                hand.remove(i);
+                return;
+            }
+        }
     }
 
 
