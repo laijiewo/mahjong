@@ -1,5 +1,8 @@
-package Display;
+package Display.GameScreenDisplay;
 
+import Display.GameScreenDisplay.JoinScreen;
+import Display.GameScreenDisplay.LaunchScreen;
+import Display.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +42,7 @@ public class MenuScreen implements Screen {
 
     @FXML
     void JoinGame(ActionEvent event) throws Exception {
-        JoinScreen  joinScreen = new JoinScreen();
+        JoinScreen joinScreen = new JoinScreen();
         joinScreen.loadWindow(new Stage());
         Stage stage = (Stage) JoinGameButton.getScene().getWindow();
         stage.close();

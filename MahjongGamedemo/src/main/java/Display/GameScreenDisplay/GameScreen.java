@@ -1,4 +1,5 @@
-package Display;
+package Display.GameScreenDisplay;
+import Display.Screen;
 import System.*;
 import Module.*;
 import javafx.scene.control.Button;

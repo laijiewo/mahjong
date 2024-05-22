@@ -43,25 +43,6 @@ public interface Game {
     public void startNewGame();
 
     /**
-     * This method is used to check whether the game is over or not.
-     *
-     * @return true if the game is over, false otherwise.
-     */
-    public boolean isGameOver();
-
-    /**
-     * This method is used to pause the game.
-     */
-    public void pauseGame();
-
-    /**
-     * This method is used to check whether the game is still paused or not.
-     *
-     * @return true if the game is paused, false otherwise.
-     */
-    public boolean checkForPause();
-
-    /**
      *This method is used to rotate dealers and is used at the beginning of each round.
      */
     public void swap();

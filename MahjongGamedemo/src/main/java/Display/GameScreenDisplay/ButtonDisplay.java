@@ -1,4 +1,4 @@
-package Display;
+package Display.GameScreenDisplay;
 
 import javafx.scene.control.Button;
 

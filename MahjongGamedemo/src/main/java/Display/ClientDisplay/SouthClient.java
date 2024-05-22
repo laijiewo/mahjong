@@ -1,4 +1,4 @@
-package Display;
+package Display.ClientDisplay;
 
 /**
  * The {@code WestClient} class extends the {@code Client} class.
@@ -14,5 +14,5 @@ package Display;
  *
  * @author Jingawng Li, Jie Mao
  */
-public class NorthClient extends Client {
+public class SouthClient extends Client {
 }

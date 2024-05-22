@@ -1,4 +1,4 @@
-package Display;
+package Display.GameScreenDisplay;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,8 +11,6 @@ import javafx.scene.control.TextField;
 import Display.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class LoginScreen implements Screen{
 

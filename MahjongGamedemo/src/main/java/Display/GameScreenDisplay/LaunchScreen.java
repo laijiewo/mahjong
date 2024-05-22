@@ -1,7 +1,7 @@
-package Display;
+package Display.GameScreenDisplay;
 
+import Display.Screen;
 import WebConnect.ServerHost;
-import com.almasb.fxgl.net.Server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LaunchScreen implements Screen{
+public class LaunchScreen implements Screen {
 
     @FXML
     private Button LaunchGameButton;

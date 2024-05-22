@@ -3,11 +3,11 @@ package WebConnect;
 import java.io.*;
 import java.net.Socket;
 
-public class ServerThread implements Runnable {
+public class ServerChatThread implements Runnable {
     Socket socket;
     String name;
 
-    ServerThread(Socket socket, String name) {
+    ServerChatThread(Socket socket, String name) {
         this.socket = socket;
         this.name = name;
     }
@@ -20,7 +20,6 @@ public class ServerThread implements Runnable {
         } catch (Exception e) {
             Thread.currentThread().interrupt();
         }
-
     }
 
     private void acceptMessages() {
@@ -50,7 +49,7 @@ public class ServerThread implements Runnable {
                 }
             }
         } catch (Exception e) {
-            System.out.println(name + " has left the chat due to an error.");
+            sendToAll(name + " has left the chat due to an error.");
         } finally {
             try {
                 if (socket != null) {

@@ -1,4 +1,4 @@
-package Display;
+package Display.ClientDisplay;
 
 /**
  * The {@code WestClient} class extends the {@code Client} class.

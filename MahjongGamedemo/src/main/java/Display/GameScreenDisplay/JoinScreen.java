@@ -1,5 +1,7 @@
-package Display;
+package Display.GameScreenDisplay;
 
+import Display.ClientDisplay.ClientTest;
+import Display.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.Objects;
-
-public class JoinScreen implements Screen{
+public class JoinScreen implements Screen {
 
     @FXML
     private TextField IpText;

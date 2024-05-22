@@ -1,4 +1,4 @@
-package Display;
+package Display.GameScreenDisplay;
 
 import javafx.application.Application;
 import javafx.scene.text.Font;

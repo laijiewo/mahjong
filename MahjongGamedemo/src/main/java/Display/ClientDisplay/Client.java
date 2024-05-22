@@ -1,4 +1,4 @@
-package Display;
+package Display.ClientDisplay;
 
 import java.io.*;
 import java.net.*;

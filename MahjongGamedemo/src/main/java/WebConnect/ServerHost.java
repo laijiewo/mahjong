@@ -70,7 +70,7 @@ public class ServerHost {
             synchronized (clientSocket) {
                 sockets.add(clientSocket);
             }
-            new Thread(new ServerThread(clientSocket, "player " + i)).start();
+            new Thread(new ServerChatThread(clientSocket, "player " + i)).start();
             i++;
         } catch (IOException e) {
             System.out.println("Accept failed.");
