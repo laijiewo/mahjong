@@ -28,12 +28,15 @@ public class ClientTest {
         this.serverHostname = serverHostname;
     }
 
-    public void setSeverPort(int severPort) {
+    public void setSeverPort(int serverPort) {
         this.serverPort = serverPort;
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        ClientTest clientTest = new ClientTest();
+        clientTest.setSeverHostname("10.27.90.52");
+        clientTest.setSeverPort(8080);
+        connect();
     }
 
     /**
@@ -41,13 +44,15 @@ public class ClientTest {
      * Prompts the user for the hostname and port number,
      * and then attempts to connect to the server.
      */
-    public void connect() throws IOException {
+    public static void connect() throws IOException {
+        String serverHostname = "10.27.90.52";
+        int serverPort = 8080;
         // Prompt the user for the hostname and port number
         System.out.println("Please enter the hostname and the port of the server:");
         //String serverHostname = scanner.next();
         int port = serverPort;
         System.out.println("Attempting to connect to host " +
-                                   serverHostname + " on port 8080.");
+                                   serverHostname + " on port "+serverPort+".");
         // Attempt to connect to the server
         System.out.println("Connecting to server...");
         echoSocket = new Socket(serverHostname, port);
@@ -63,7 +68,7 @@ public class ClientTest {
     /**
      * Starts a new thread to receive messages from the server.
      */
-    private void startReceiveMessages() {
+    private static void startReceiveMessages() {
         new Thread(() -> {
             try {
                 receiveMessage();
@@ -73,7 +78,7 @@ public class ClientTest {
         }).start();
 
         System.out.println("Type 'Bye.' to exit.");
-        connected = true;
+        //connected = true;
     }
 
     /**
@@ -130,7 +135,7 @@ public class ClientTest {
      *
      * @throws InterruptedException If the thread is interrupted while sleeping
      */
-    private void receiveMessage() throws InterruptedException {
+    private static void receiveMessage() throws InterruptedException {
         String message;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
