@@ -1,7 +1,5 @@
 package Module;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Implementation of Beijing Mahjong rules.
@@ -10,7 +8,7 @@ import java.util.List;
  */
 public class RuleImplementation implements MahjongRule {
     private Tile hunTile; // The wildcard tile (混儿牌)
-
+    private FanCalculator fanCalculator;
     /**
      * Constructs the RuleImplementation with the specified wildcard tile.
      *
@@ -18,6 +16,7 @@ public class RuleImplementation implements MahjongRule {
      */
     public RuleImplementation(Tile hunTile) {
         this.hunTile = hunTile;
+        this.fanCalculator=new FanCalculator(hunTile);
     }
 
     /**
@@ -321,6 +320,7 @@ public class RuleImplementation implements MahjongRule {
         }
         return numberTiles;
     }
+
     private boolean containsTile(List<Tile> hand, Tile tile) {
         for (Tile t : hand) {
             if (t.equals(tile)) {
@@ -329,4 +329,5 @@ public class RuleImplementation implements MahjongRule {
         }
         return false;
     }
+
 }
