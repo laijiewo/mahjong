@@ -22,14 +22,16 @@ public class Player {
      * @param site Initial seating position of the player.
      * @param hunTile The hun tile used for certain game rules.
      */
-    public Player(int Score, Site site, Tile hunTile){
+    public Player(int Score, Site site){
         this.Score = Score;
         this.site = site;
-        this.hunTile = hunTile;
         Tile_hand = new ArrayList<Tile>();
         ruleImplementation = new RuleImplementation(hunTile);
     }
 
+    public Tile setHunTile(Tile hunTile) {
+        return hunTile;
+    }
 
     /**
      * Rolls the dice using a provided Dice object.
@@ -37,7 +39,7 @@ public class Player {
      * @return The result of the dice toss.
      */
     public int rollDice(Dice Dice){
-        return Dice.toss();
+        return Dice.toss()+Dice.toss();
     }
 
     /**
@@ -50,12 +52,12 @@ public class Player {
 
     /**
      * Draws a tile from the tile wall if available.
-     * @param tileWall The tile wall from which to draw a tile.
+     * @param tileFactory The tile wall from which to draw a tile.
      * @return The drawn tile or null if no tiles are available.
      */
-    public Tile drawTiles(TileWall tileWall) {
-        if (!tileWall.StackOfTiles.isEmpty()) {
-            Tile drawTile = tileWall.StackOfTiles.pop();
+    public Tile drawTiles(TileFactory tileFactory) {
+        if (!tileFactory.createTiles().isEmpty()) {
+            Tile drawTile = tileFactory.createTiles().get(0);
             Tile_hand.add(drawTile);
             return drawTile;
         }

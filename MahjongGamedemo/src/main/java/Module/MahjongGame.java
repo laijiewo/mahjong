@@ -13,6 +13,7 @@ public class MahjongGame implements Game {
 
     @Override
     public void initializeGame() {
+        GameBoard gameBoard1=new GameBoard();
 
     }
 
