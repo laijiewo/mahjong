@@ -1,5 +1,6 @@
-package Display.GameScreenDisplay;
+package demo;
 
+import Display.GameScreenDisplay.LoginScreen;
 import javafx.application.Application;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
