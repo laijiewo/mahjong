@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.MenuScreen">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.MenuScreen">
     <children>
+      <ImageView fitHeight="1034.0" fitWidth="1034.0" layoutX="-5.0" layoutY="-254.0">
+         <image>
+            <Image url="@../backgrounds/WaitingScreen.png" />
+         </image>
+      </ImageView>
 
         <Button fx:id="JoinGameButton" layoutX="36.0" layoutY="331.0" mnemonicParsing="false" onAction="#JoinGame" prefHeight="50.0" prefWidth="240.0" style="-fx-text-fill: #308C4C;" text="JOIN GAME">
             >
             <font>
                 <Font name="Silkscreen" size="24" />
             </font></Button>
-
-
-        <Label fx:id="GameTitle" contentDisplay="CENTER" layoutX="195.0" layoutY="84.0" prefHeight="144.0" prefWidth="635.0" style="-fx-text-fill: black;" text="PIXEL MAHJONG" textAlignment="CENTER">
-            <font>
-                <Font name="Pixelmania" size="34.0" />
-            </font></Label>
       <Button fx:id="RulesButton" layoutX="36.0" layoutY="391.0" mnemonicParsing="false" onAction="#LearnRules" prefHeight="50.0" prefWidth="240.0" style="-fx-text-fill: #308C4C;" text="LEARN RULES">
          <font>
              <Font name="Silkscreen" size="24" />
@@ -38,6 +40,11 @@
              <Font name="Silkscreen" size="24" />
          </font>
       </Button>
+      <ImageView fitHeight="241.0" fitWidth="1235.0" layoutX="-105.0" layoutY="55.0">
+         <image>
+            <Image url="@../GameTitle/PIXELMAHJONG.png" />
+         </image>
+      </ImageView>
 
     </children>
 </AnchorPane>
