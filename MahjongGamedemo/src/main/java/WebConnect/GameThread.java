@@ -1,11 +1,16 @@
 package WebConnect;
 
 import Module.*;
+
+import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.util.List;
 public class GameThread implements Runnable {
-    private final List<Player> players;
+    private final List<Socket> players;
+    private Socket gameSocket;
 
-    public GameThread(List<Player> players) {
+    public GameThread(List<Socket> players) {
         this.players = players;
     }
     // TODO: Implement the game logic here
@@ -16,32 +21,45 @@ public class GameThread implements Runnable {
     public void run() {
         // TODO: Implement the game logic here
         //      1. 轮转
+        try {
+            runGame();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
-    private void sendOperationMessageToAll(Message message) {
+    private void sendOperationMessageToAll(Message message) throws IOException {
         // TODO: 向所有玩家发送操作信息
+        for (Socket player : players) {
+            ObjectOutputStream oos = new ObjectOutputStream(player.getOutputStream());
+            oos.writeObject(message);
+            oos.flush();
+        }
     }
-    private Message receiveOperationMessageFromPlayer(Player player) {
+    private Message receiveOperationMessageFromPlayer(Socket player) throws IOException, ClassNotFoundException {
         //TODO：接收玩家操作信息
-        return null;
+        ObjectInputStream ois = new ObjectInputStream(gameSocket.getInputStream());
+        return (Message) ois.readObject();
     }
-    private void runGame() {
+    private void runGame() throws IOException, ClassNotFoundException {
         // TODO: 运行游戏
         //      1. 轮转
         //      2. 发送操作信息
         //      3. 接收玩家操作信息
         while (true) {
-            for (Player player : players) {
+            for (Socket player : players) {
                 Message message = receiveOperationMessageFromPlayer(player);
-                if (message.getType() == MessageType.DRAW) {
-                    // TODO: 处理玩家操作信息
-                    //      1. 出牌
-                    //      2. 过牌
-                    //      3. 吃牌
-                    //      4. 碰牌
-                    //      5. 杠牌
-                    //      7. 其他操作
+                if (checkOperationMessage(message)) {
+                    sendOperationMessageToAll(message);
+                } else {
+                    // TODO: 处理非法操作信息
                 }
             }
         }
+    }
+    private boolean checkOperationMessage(Message message) {
+        // TODO: 检查操作信息是否合法
+        return true;
     }
 }
