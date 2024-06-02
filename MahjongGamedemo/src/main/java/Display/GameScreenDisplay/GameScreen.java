@@ -585,8 +585,8 @@ public class GameScreen implements Screen {
 
     }
 
-    private void setPlayerPhotoStyle(ImageView playerPhoto,Player player){
-        Site site = player.setSite();
+    private void setPlayerPhotoStyle(Label playerPhoto,Player player){
+        Site site = player.getPlayerSite();
         if(site==Site.East) {
             playerPhoto.setStyle(
                     "-fx-background-image: url('/UI/East.png');" +
@@ -617,30 +617,31 @@ public class GameScreen implements Screen {
             );
         }
     }
-    private void setPlayerSiteImage(ImageView playerPhoto,Site site){
+    private void setPlayerSiteImage(Label playerDirection,Player player){
+        Site site = player.getPlayerSite();
         if(site==Site.East) {
-            playerPhoto.setStyle(
+            playerDirection.setStyle(
                     "-fx-background-image: url('/UI/East.png');" +
                             " -fx-background-repeat: no-repeat;" +
                             " -fx-background-position: center center;" +
                             " -fx-background-size: stretch;"
             );
         }else if(site==Site.North){
-            playerPhoto.setStyle(
+            playerDirection.setStyle(
                     "-fx-background-image: url('/UI/North.png');" +
                             " -fx-background-repeat: no-repeat;" +
                             " -fx-background-position: center center;" +
                             " -fx-background-size: stretch;"
             );
         } else if (site==Site.South) {
-            playerPhoto.setStyle(
+            playerDirection.setStyle(
                     "-fx-background-image: url('/UI/South.png');"
                             + " -fx-background-repeat: no-repeat;"
                             + " -fx-background-position: center center;"
                             + " -fx-background-size: stretch;"
             );
         }else{
-            playerPhoto.setStyle(
+            playerDirection.setStyle(
                     "-fx-background-image: url('/UI/West.png');"
                             + " -fx-background-repeat: no-repeat;"
                             + " -fx-background-position: center center;"
