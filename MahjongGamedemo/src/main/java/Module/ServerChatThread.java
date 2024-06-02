@@ -1,4 +1,4 @@
-package WebConnect;
+package Module;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,7 +7,7 @@ public class ServerChatThread implements Runnable {
     Socket socket;
     String name;
 
-    ServerChatThread(Socket socket, String name) {
+    public ServerChatThread(Socket socket, String name) {
         this.socket = socket;
         this.name = name;
     }
@@ -58,14 +58,14 @@ public class ServerChatThread implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ServerHost.sockets.remove(socket);
+            MahjongGame.sockets.remove(socket);
             Thread.currentThread().interrupt();
         }
     }
 
     public void sendToAll(String message) {
-        synchronized (ServerHost.sockets) {
-            for (Socket socket : ServerHost.sockets) {
+        synchronized (MahjongGame.sockets) {
+            for (Socket socket : MahjongGame.sockets) {
                 try {
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                     out.println(message);
@@ -78,8 +78,8 @@ public class ServerChatThread implements Runnable {
     }
 
     public void sendToAllExcept(String message) {
-        synchronized (ServerHost.sockets) {
-            for (Socket s : ServerHost.sockets) {
+        synchronized (MahjongGame.sockets) {
+            for (Socket s : MahjongGame.sockets) {
                 if (s != socket) {
                     try {
                         PrintWriter out = new PrintWriter(s.getOutputStream(), true);

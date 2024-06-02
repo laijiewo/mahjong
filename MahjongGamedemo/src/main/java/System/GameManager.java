@@ -20,10 +20,8 @@ public class GameManager {
      * Constructor for the GameManager class.
      * This class should be created only once in the application start class.
      *
-     * @param game        The instance of the MahjongGame class.
      */
-    public GameManager(Game game) {
-        this.game = (MahjongGame) game;
+    public GameManager() {
     }
     /**
      * This method is called when there are enough players to play a game.
@@ -34,6 +32,9 @@ public class GameManager {
             // TODO: game应进行定庄、发牌、定混等操作
     }
 
+    public static void addPlayer(Player player) {
+        game.addPlayer(player);
+    }
     /**
      * Handles the action for the "Hu" button.
      * This method is triggered when a player wants to declare a win and end the current game round.
@@ -44,6 +45,9 @@ public class GameManager {
             Message message = new Message(MessageType.HU);
             player.sendMessageObjectToHost(message);
         }
+    }
+    public static void addGame(MahjongGame mahjongGame) {
+        game = mahjongGame;
     }
     /**
      * Handles the action for the "Kong" button.

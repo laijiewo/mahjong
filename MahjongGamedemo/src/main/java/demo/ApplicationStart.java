@@ -18,11 +18,8 @@ public class ApplicationStart extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Game game = new MahjongGame();
-        GameManager manager = new GameManager(game);
         LoginScreen loginScreen = new LoginScreen();
         loginScreen.loadWindow(primaryStage);
-        manager.run(primaryStage);
     }
 
 

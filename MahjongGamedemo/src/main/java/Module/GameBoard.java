@@ -48,8 +48,6 @@ public class GameBoard {
         this.Dealer = this.player1;
 
         // Initialize the MahjongGame controller
-        this.mahjongGame = new MahjongGame();
-
         // Populate the tile wall with tiles from the factory
         this.Tiles_inTheWall.addAll(tileFactory.createTiles());
 

@@ -1,7 +1,8 @@
 package Display.GameScreenDisplay;
 
 import Display.Screen;
-import WebConnect.ServerHost;
+import System.*;
+import Module.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,8 @@ public class LaunchScreen implements Screen {
             alert.setTitle("Server Host");
             alert.setHeaderText("Create Server Host");
             alert.setContentText("Successfully create game at server Port: "+port);
-            ServerHost serverHost = new ServerHost(port);
+            MahjongGame game = new MahjongGame(port);
+            GameManager.addGame(game);
         }
     }
 
