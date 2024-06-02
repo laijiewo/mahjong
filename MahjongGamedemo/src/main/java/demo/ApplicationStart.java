@@ -20,6 +20,7 @@ public class ApplicationStart extends Application {
     public void start(Stage primaryStage) throws Exception {
         LoginScreen loginScreen = new LoginScreen();
         loginScreen.loadWindow(primaryStage);
+
     }
 
 

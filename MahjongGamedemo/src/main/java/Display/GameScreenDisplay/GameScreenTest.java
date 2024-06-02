@@ -11,10 +11,7 @@ import System.*;
 
 public class GameScreenTest extends Application {
 
-    Player player1 = new Player(0, Site.East);
-    Player player2 = new Player(0, Site.South);
-    Player player3 = new Player(0, Site.West);
-    Player player4 = new Player(0, Site.North);
+
 
     @Override
     public void init() {

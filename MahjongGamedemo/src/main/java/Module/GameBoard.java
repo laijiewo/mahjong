@@ -16,10 +16,10 @@ public class GameBoard {
     private int dealerIndex; // Index to track the dealer in the players list
     private List<Player> players; // List to hold all players
     public Dice dice;
-    private MahjongGame mahjongGame; // Reference to the MahjongGame instance
 
-    public GameBoard(MahjongGame mahjongGame) {
-        this.mahjongGame = mahjongGame; // Initialize reference to MahjongGame instance
+
+
+    public GameBoard() {
 
         // Initialize the lists for tiles
         this.Hand_tilesOfPlayer = new ArrayList<>();
@@ -39,7 +39,7 @@ public class GameBoard {
         this.dealerIndex = 0; // Start with the first player as the dealer
 
         // Set players from MahjongGame
-        this.players = mahjongGame.getPlayer();
+        this.players = MahjongGame.getPlayers();
     }
 
     public Player getDealer() {

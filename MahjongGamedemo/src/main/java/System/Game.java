@@ -8,12 +8,6 @@ import Module.*;
  * @author Jingwang Li, Jie Mao
  */
 public interface Game {
-    /**
-     * This method will be called in the game first round starts to determine the dealer for this round.
-     *
-     * @return the player object of the dealer for this round.
-     */
-    public Player determineDealer();
 
     /**
      * This method is used to initialize the game and is usually called when the game is just starting or restarting the game.

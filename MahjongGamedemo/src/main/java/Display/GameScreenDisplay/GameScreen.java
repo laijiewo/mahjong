@@ -15,13 +15,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-<<<<<<< Updated upstream
+
 import java.io.IOException;
 
-=======
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> Stashed changes
+
 
 public class GameScreen implements Screen {
 
@@ -575,8 +574,7 @@ public class GameScreen implements Screen {
         Players.add(player3);
         Players.add(player4);
 
-        List<Label> playerPhotos = new ArrayList<>();
-        playerPhotos.add()
+
 
         player1Photo.setStyle(
                 "-fx-background-image: url('/UI/East.png');" +
@@ -587,6 +585,15 @@ public class GameScreen implements Screen {
 
     }
 
+    private void setPlayerPhotoStyle(ImageView playerPhoto){
+        playerPhoto.setStyle(
+                "-fx-background-image: url('/UI/East.png');" +
+                        " -fx-background-repeat: no-repeat;" +
+                        " -fx-background-position: center center;" +
+                        " -fx-background-size: stretch;"
+        );
+    }
+    private void setPlayerSiteImage(){}
 
     @Override
     public void loadWindow(Stage stage) throws Exception {

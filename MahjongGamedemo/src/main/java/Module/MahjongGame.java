@@ -10,24 +10,33 @@ import java.util.List;
 
 
 public class MahjongGame implements Game {
+    private static List<Player> players=new LinkedList<>();
     private GameBoard gameBoard;
     private RuleImplementation ruleImplementation;
     protected static LinkedList<Socket> sockets;
     private static ServerSocket serverSocket;
     private int port;
     static int i = 0;
+
     public MahjongGame(int port) throws IOException {
         this.port = port;
         startServer(port);
     }
-    @Override
-    public int determineDealer() {
-        return gameBoard.determineDealer();
+
+    public void addPlayer(Player player){
+        players.add(player);
     }
 
     @Override
     public void initializeGame() {
-        GameBoard gameBoard1=new GameBoard(this);
+        GameBoard gameBoard=new GameBoard();
+        gameBoard.determineDealer();
+        gameBoard.dealAllTiles();
+        gameBoard.shuffleTiles();
+    }
+
+    public static List<Player> getPlayers(){
+        return players;
 
     }
 
@@ -46,10 +55,6 @@ public class MahjongGame implements Game {
         }
     }
 
-    public static Player getPlayers(){
-        return
-
-    }
 
     @Override
     public void calculateScores() {

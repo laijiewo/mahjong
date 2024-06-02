@@ -11,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import Module.*;
+import System.*;
 
 public class JoinScreen implements Screen {
 
@@ -26,6 +28,8 @@ public class JoinScreen implements Screen {
     @FXML
     void JoinGame(ActionEvent event) {
         ClientTest client = new ClientTest();
+        Player player = new Player();
+        GameManager
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
