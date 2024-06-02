@@ -9,6 +9,10 @@ import java.util.*;
 public class RuleImplementation implements MahjongRule {
     private Tile hunTile; // The wildcard tile (混儿牌)
     private FanCalculator fanCalculator;
+    private List<Tile> chiTiles = new ArrayList<>();
+    private List<Tile> pengTiles = new ArrayList<>();
+    private List<Tile> gangTiles = new ArrayList<>();
+
     /**
      * Constructs the RuleImplementation with the specified wildcard tile.
      *
@@ -29,6 +33,7 @@ public class RuleImplementation implements MahjongRule {
      */
     @Override
     public boolean canChi(List<Tile> hand, Tile tile) {
+        chiTiles.clear(); // Clear previous chi tiles
         if (tile.getSuit() != Suit.WAN && tile.getSuit() != Suit.TIAO && tile.getSuit() != Suit.TONG) {
             return false; // Only number tiles can be used to Chi
         }
@@ -49,9 +54,24 @@ public class RuleImplementation implements MahjongRule {
         int rank = ((NumberTile) tile).getRank();
 
         // Check if there are two consecutive tiles that can form a sequence with the given tile
-        return (rank >= 3 && ranks[rank - 1] > 0 && ranks[rank - 2] > 0) || // e.g., 123
-                (rank <= 7 && ranks[rank + 1] > 0 && ranks[rank + 2] > 0) || // e.g., 789
-                (rank >= 2 && rank <= 8 && ranks[rank - 1] > 0 && ranks[rank + 1] > 0); // e.g., 234
+        if (rank >= 3 && ranks[rank - 1] > 0 && ranks[rank - 2] > 0) {
+            chiTiles.add(new NumberTile(rank - 2, suit));
+            chiTiles.add(new NumberTile(rank - 1, suit));
+            chiTiles.add(tile);
+            return true; // e.g., 123
+        } else if (rank <= 7 && ranks[rank + 1] > 0 && ranks[rank + 2] > 0) {
+            chiTiles.add(tile);
+            chiTiles.add(new NumberTile(rank + 1, suit));
+            chiTiles.add(new NumberTile(rank + 2, suit));
+            return true; // e.g., 789
+        } else if (rank >= 2 && rank <= 8 && ranks[rank - 1] > 0 && ranks[rank + 1] > 0) {
+            chiTiles.add(new NumberTile(rank - 1, suit));
+            chiTiles.add(tile);
+            chiTiles.add(new NumberTile(rank + 1, suit));
+            return true; // e.g., 234
+        }
+
+        return false;
     }
 
     /**
@@ -63,9 +83,11 @@ public class RuleImplementation implements MahjongRule {
      */
     @Override
     public boolean canPeng(List<Tile> hand, Tile tile) {
+        pengTiles.clear(); // Clear previous peng tiles
         int count = 0;
         for (Tile t : hand) {
             if (t.equals(tile) || t.equals(hunTile)) {
+                pengTiles.add(t);
                 count++;
             }
         }
@@ -81,9 +103,11 @@ public class RuleImplementation implements MahjongRule {
      */
     @Override
     public boolean canGang(List<Tile> hand, Tile tile) {
+        gangTiles.clear(); // Clear previous gang tiles
         int count = 0;
         for (Tile t : hand) {
             if (t.equals(tile) || t.equals(hunTile)) {
+                gangTiles.add(t);
                 count++;
             }
         }

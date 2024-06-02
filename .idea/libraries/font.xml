@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="font">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/资源文件夹/font/pixelmania.zip!/" />
+      <root url="jar://$PROJECT_DIR$/资源文件夹/font/Silkscreen.zip!/" />
+      <root url="jar://$PROJECT_DIR$/资源文件夹/font/depixel.zip!/" />
+      <root url="jar://$PROJECT_DIR$/资源文件夹/font/pixel_bug.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
