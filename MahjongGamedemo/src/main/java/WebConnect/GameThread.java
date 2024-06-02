@@ -39,7 +39,7 @@ public class GameThread implements Runnable {
     }
     private Message receiveOperationMessageFromPlayer(Socket player) throws IOException, ClassNotFoundException {
         //TODO：接收玩家操作信息
-        ObjectInputStream ois = new ObjectInputStream(gameSocket.getInputStream());
+        ObjectInputStream ois = new ObjectInputStream(player.getInputStream());
         return (Message) ois.readObject();
     }
     private void runGame() throws IOException, ClassNotFoundException {

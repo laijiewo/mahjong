@@ -1,49 +1,39 @@
 package WebConnect;
 
 import java.io.Serializable;
+import java.util.List;
+
 import Module.*;
 
 public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
     private MessageType type;
-    private String content;
+    private Tile tile = null;
+    private List<Tile> tiles = null;
 
-    // Discard and DRAW card Message
+    // Discard
     public Message(MessageType type, Tile tile) {
         this.type = type;
+        this.tile = tile;
     }
-    //CHEW Message
-    public Message(MessageType type, String content) {
+    // CHEW, PUNG, and KONG Message
+    public Message(MessageType type, List<Tile> tiles) {
         this.type = type;
-        this.content = content;
-    }
-    // KONG Message
-    public Message(MessageType type, String content, int index) {
-        this.type = type;
-        this.content = content;
+        this.tiles = tiles;
     }
 
-    // PUNG Message
-    public Message(MessageType type, String content, int index, int tileIndex) {
+    // HU, PAUSE and UNPAUSE Message
+    public Message(MessageType type) {
         this.type = type;
-        this.content = content;
-    }
-    // HU Message
-    public Message(MessageType type, String content, int index, int tileIndex, int tileValue, int huValue) {
-        this.type = type;
-    }
-    // PAUSE and UNPAUSE Message
-    public Message(MessageType type, String content, int index, int tileIndex, int tileValue, int huValue, int pauseTime) {
-
-        this.type = type;
-        this.content = content;
     }
 
     public MessageType getType() {
         return type;
     }
-
-    public String getContent() {
-        return content;
+    public Tile getTile() {
+        return tile;
+    }
+    public List<Tile> getTiles() {
+        return tiles;
     }
 }

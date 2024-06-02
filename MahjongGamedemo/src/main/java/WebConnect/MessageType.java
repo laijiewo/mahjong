@@ -1,6 +1,5 @@
 package WebConnect;
 
-import Module.*;
 public enum MessageType {
-    DISCARD, DRAW, CHEW, PUNG, KONG, HU, Pause, UNPAUSE;
+    DISCARD, DRAW, CHEW, PUNG, KONG, HU, PAUSE, UNPAUSE;
 }

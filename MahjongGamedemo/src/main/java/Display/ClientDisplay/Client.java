@@ -1,5 +1,8 @@
 package Display.ClientDisplay;
 
+import WebConnect.Message;
+import WebConnect.MessageType;
+
 import java.io.*;
 import java.net.*;
 
@@ -41,11 +44,11 @@ public class Client {
             echoSocket = new Socket(serverHostname, port);
             System.out.println("Connection successful.");
             // Start the threads to receive and send messages
-            startReceiveMessages();
+            startReceiveChatMessage();
             // Start the thread to send messages
             // TODO: 1. 当用户进入游戏后再触发startSendMessages()
             //       2. 为sendMessage添加Button，实现点击发送消息
-            startSendMessages();
+            startSendChatMessages();
 
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + serverHostname);
@@ -59,10 +62,10 @@ public class Client {
     /**
      * Starts a new thread to receive messages from the server.
      */
-    private static void startReceiveMessages() {
+    private static void startReceiveChatMessage() {
         new Thread(() -> {
             try {
-                receiveMessage();
+                receiveChatMessage();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -73,10 +76,10 @@ public class Client {
     /**
      * Starts a new thread to send messages to the server.
      */
-    private static void startSendMessages() {
+    private static void startSendChatMessages() {
         new Thread(() -> {
             try {
-                sendMessage();
+                sendChatMessage();
             } catch (Exception e) {
                 e.printStackTrace();
             }}).start();
@@ -86,7 +89,7 @@ public class Client {
      * Reads user input from the console and sends it to the server.
      * Handles the "Bye." command to exit the application.
      */
-    private static void sendMessage() {
+    private static void sendChatMessage() {
         try {
             PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -121,7 +124,7 @@ public class Client {
      *
      * @throws InterruptedException If the thread is interrupted while sleeping
      */
-    private static void receiveMessage() throws InterruptedException {
+    private static void receiveChatMessage() throws InterruptedException {
         String message;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
@@ -138,6 +141,16 @@ public class Client {
                 System.out.println("Reconnecting...");
                 Thread.sleep(3000);
                 connect();
+            }
+        }
+    }
+    private static void receiveMessageObject(Message message) {
+
+    }
+    private static void sendMessageObject(MessageType type) {
+        switch (type) {
+            case CHEW, KONG, PUNG, HU, DISCARD, PAUSE, UNPAUSE -> {
+
             }
         }
     }
