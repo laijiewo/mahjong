@@ -83,6 +83,15 @@ public class GameBoard {
     public Tile determineHunTile(){
         dealAllTiles();
         Tile hunTile=Tiles_inTheWall.get(0);
+        if(hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)){
+            NumberTile hun=(NumberTile) hunTile;
+            NumberTile finalHun =new NumberTile(hun.getRank()+1, hunTile.getSuit());
+            hunTile=(Tile) finalHun;
+        }else {
+            WindAndDragonTile hun = (WindAndDragonTile) hunTile;
+            WindAndDragonTile finalHun = new WindAndDragonTile(hun.getType()+1,hunTile.getSuit());
+            hunTile=(Tile) finalHun;
+        }
         return hunTile;
         
     }
@@ -117,6 +126,7 @@ public class GameBoard {
             dealTiles(player3);
             dealTiles(player4);
         }
+        dealTiles(Dealer);
 
     }
 
