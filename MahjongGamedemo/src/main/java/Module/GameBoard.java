@@ -13,7 +13,7 @@ public class GameBoard {
     public MahjongGame mahjongGame;
     public TileFactory tileFactory;
 
-    public Tile hunTile;
+    public Tile hunTile=null;
 
     public Player Dealer;
     public Player currentPlayer;
@@ -120,9 +120,6 @@ public class GameBoard {
 
     }
 
-    public Tile getLeastDiscardedTile(GameBoard gameBoard) {
-        return gameBoard.Tiles_discardedByPlayer().get(gameBoard.Tiles_discardedByPlayer().size() - 1);
-    }
 
     /**
      * Discards a tile from a player's hand.

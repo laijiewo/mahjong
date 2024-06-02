@@ -3,6 +3,7 @@ import System.*;
 import Display.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -76,30 +77,31 @@ public class Player {
 
     /**
      * Attempts to form a "Kong" by adding a provided tile if valid.
-     * @param gameBoard The game board, used for game state context.
      * @param tile The tile to attempt to add for a Kong.
      */
-    public void kong(GameBoard gameBoard, Tile tile){
+    public List<Tile> kong( Tile tile){
         if(ruleImplementation.canGang(Tile_hand, tile)){
             Tile_hand.add(tile);
         }
+        return Tile_hand;
     }
 
     /**
      * Attempts to add a tile to the player's hand to form a "Pung" if the rules allow.
-     * @param gameBoard The game board, providing game state context.
      * @param tile The tile to attempt to add for a Pung.
      */
-    public void pung(GameBoard gameBoard, Tile tile) {
+    public List<Tile> pung(Tile tile) {
         if(ruleImplementation.canPeng(Tile_hand, tile)){
             Tile_hand.add(tile);
         }
+        return Tile_hand;
     }
 
-    public void chi(GameBoard gameBoard, Tile tile){
+    public List<Tile> chi(Tile tile){
         if(ruleImplementation.canChi(Tile_hand,tile)){
             Tile_hand.add(tile);
         }
+        return Tile_hand;
     }
 
     /**

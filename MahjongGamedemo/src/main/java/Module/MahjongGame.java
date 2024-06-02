@@ -47,6 +47,10 @@ public class MahjongGame implements Game {
     public void startNewGame() {
 
     }
+    
+    public Tile getLeastDiscardedTile(GameBoard gameBoard) {
+        return gameBoard.Tiles_discardedByPlayer().get(gameBoard.Tiles_discardedByPlayer().size() - 1);
+    }
 
     @Override
     public void swap() {
