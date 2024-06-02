@@ -11,24 +11,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.LaunchScreen">
     <children>
-      <ImageView fitHeight="750.0" fitWidth="750.0" layoutY="-137.0">
+      <ImageView fitHeight="750.0" fitWidth="750.0" layoutY="-131.0">
          <image>
             <Image url="@../backgrounds/WaitingScreen.png" />
          </image>
       </ImageView>
         <TextField fx:id="PortText" layoutX="108.0" layoutY="393.0" opacity="0.3" prefHeight="36.0" prefWidth="178.0" />
 
-        <Button fx:id="LaunchGameButton" layoutX="28.0" layoutY="441.0" mnemonicParsing="false" onAction="#LaunchGame"
-                style="-fx-text-fill: #004E48;" text="LAUNCH GAME" >
+        <Button fx:id="LaunchGameButton" layoutX="28.0" layoutY="441.0" mnemonicParsing="false" onAction="#LaunchGame" style="-fx-text-fill: #004E48;" text="LAUNCH GAME">
             <font>
                 <Font name="Silkscreen" size="24" />
             </font></Button>
 
-        <Label layoutX="31.0" layoutY="389.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-               prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="PORT:" >
+        <Label layoutX="31.0" layoutY="389.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="PORT:">
             <font>
                 <Font name="Silkscreen" size="24" />
             </font></Label>
+      <Label fx:id="Waiting" layoutX="454.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="212.0" style="-fx-text-fill: white;" text="WAITING: 0/4">
+         <font>
+            <Font name="Silkscreen" size="24" />
+         </font>
+      </Label>
+      <Button fx:id="StartGameButton" layoutX="269.0" layoutY="441.0" mnemonicParsing="false" onAction="#StartGame" style="-fx-text-fill: #004E48;" text="START GAME">
+         <font>
+            <Font name="Silkscreen" size="24" />
+         </font>
+      </Button>
 
     </children>
 </AnchorPane>

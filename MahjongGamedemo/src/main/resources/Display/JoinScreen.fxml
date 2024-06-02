@@ -18,24 +18,26 @@
       </ImageView>
       <TextField fx:id="PortText" layoutX="108.0" layoutY="393.0" opacity="0.3" prefHeight="36.0" prefWidth="178.0" />
 
-      <Button fx:id="JoinGameButton" layoutX="28.0" layoutY="441.0" mnemonicParsing="false" onAction="#JoinGame"
-              style="-fx-text-fill: #004E48;" text="JOIN GAME" >
+      <Button fx:id="JoinGameButton" layoutX="28.0" layoutY="441.0" mnemonicParsing="false" onAction="#JoinGame" style="-fx-text-fill: #004E48;" text="JOIN GAME">
               <font>
                  <Font name="Silkscreen" size="24" />
               </font></Button>
 
-      <Label layoutX="31.0" layoutY="389.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-             prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="PORT:" >
+      <Label layoutX="31.0" layoutY="389.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="PORT:">
               <font>
                  <Font name="Silkscreen" size="24" />
               </font></Label>
 
-      <Label layoutX="31.0" layoutY="346.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-             prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="IP:" >
+      <Label layoutX="31.0" layoutY="346.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="92.0" style="-fx-text-fill: white;" text="IP:">
          <font>
             <Font name="Silkscreen" size="24" />
          </font></Label>
 
       <TextField fx:id="IpText" layoutX="108.0" layoutY="350.0" opacity="0.3" prefHeight="36.0" prefWidth="178.0" />
+      <Label fx:id="Waiting" layoutX="498.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="212.0" style="-fx-text-fill: white;" text="Waiting: 0/4">
+         <font>
+            <Font name="Silkscreen" size="24" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

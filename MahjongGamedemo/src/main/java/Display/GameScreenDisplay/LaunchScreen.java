@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -22,6 +23,20 @@ public class LaunchScreen implements Screen {
 
     @FXML
     private TextField PortText;
+    @FXML
+    private Button StartGameButton;
+
+    @FXML
+    private Label Waiting;
+
+
+    @FXML
+    void StartGame(ActionEvent event) throws Exception {
+        GameScreen gameScreen = new GameScreen();
+        gameScreen.loadWindow(new Stage());
+        Stage stage = (Stage) StartGameButton.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     void LaunchGame(ActionEvent event) throws IOException {
