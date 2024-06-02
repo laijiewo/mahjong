@@ -79,4 +79,37 @@ public class ServerHost {
         System.out.println("Got a connection from " + clientSocket.getInetAddress().getHostAddress());
         System.out.println("Waiting for input.....");
     }
+    private void sendOperationMessageToAll(Message message) throws IOException {
+        // TODO: 向所有玩家发送操作信息
+        for (Socket socket : sockets) {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            oos.writeObject(message);
+            oos.flush();
+        }
+    }
+    private Message receiveOperationMessageFromPlayer(Socket player) throws IOException, ClassNotFoundException {
+        //TODO：接收玩家操作信息
+        ObjectInputStream ois = new ObjectInputStream(player.getInputStream());
+        return (Message) ois.readObject();
+    }
+    private void runGame() throws IOException, ClassNotFoundException {
+        // TODO: 运行游戏
+        //      1. 轮转
+        //      2. 发送操作信息
+        //      3. 接收玩家操作信息
+        while (true) {
+            for (Socket socket : sockets) {
+                Message message = receiveOperationMessageFromPlayer(socket);
+                if (checkOperationMessage(message)) {
+                    sendOperationMessageToAll(message);
+                } else {
+                    // TODO: 处理非法操作信息
+                }
+            }
+        }
+    }
+    private boolean checkOperationMessage(Message message) {
+        // TODO: 检查操作信息是否合法
+        return true;
+    }
 }
