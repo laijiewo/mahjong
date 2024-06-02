@@ -20,9 +20,8 @@ public class Player {
      * Constructs a Player with initial settings.
      * @param Score Initial score of the player.
      * @param site Initial seating position of the player.
-     * @param hunTile The hun tile used for certain game rules.
      */
-    public Player(int Score, Site site){
+    public Player(int Score, Site site,Tile hunTile){
         this.Score = Score;
         this.site = site;
         Tile_hand = new ArrayList<Tile>();
@@ -93,6 +92,12 @@ public class Player {
      */
     public void pung(GameBoard gameBoard, Tile tile) {
         if(ruleImplementation.canPeng(Tile_hand, tile)){
+            Tile_hand.add(tile);
+        }
+    }
+
+    public void chi(GameBoard gameBoard, Tile tile){
+        if(ruleImplementation.canChi(Tile_hand,tile)){
             Tile_hand.add(tile);
         }
     }

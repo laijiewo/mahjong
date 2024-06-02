@@ -13,6 +13,8 @@ public class GameBoard {
     public MahjongGame mahjongGame;
     public TileFactory tileFactory;
 
+    public Tile hunTile;
+
     public Player Dealer;
     public Player currentPlayer;
 
@@ -34,10 +36,10 @@ public class GameBoard {
         this.dice = new Dice();
 
         // Create players
-        this.player1 = new Player(0,Site.East);
-        this.player2 = new Player(0,Site.South);
-        this.player3 = new Player(0,Site.West);
-        this.player4 = new Player(0,Site.North);
+        this.player1 = new Player(0,Site.East,hunTile);
+        this.player2 = new Player(0,Site.South,hunTile);
+        this.player3 = new Player(0,Site.West,hunTile);
+        this.player4 = new Player(0,Site.North,hunTile);
 
         // Set the current and dealer players initially to player1 for simplicity
         this.currentPlayer = this.player1;
@@ -116,6 +118,10 @@ public class GameBoard {
             dealTiles(player4);
         }
 
+    }
+
+    public Tile getLeastDiscardedTile(GameBoard gameBoard) {
+        return gameBoard.Tiles_discardedByPlayer().get(gameBoard.Tiles_discardedByPlayer().size() - 1);
     }
 
     /**
