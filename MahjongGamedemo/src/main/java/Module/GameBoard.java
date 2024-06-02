@@ -13,7 +13,7 @@ public class GameBoard {
     public MahjongGame mahjongGame;
     public TileFactory tileFactory;
 
-    public Tile hunTile=null;
+    public Tile hunTile;
 
     public Player Dealer;
     public Player currentPlayer;
@@ -23,7 +23,9 @@ public class GameBoard {
     public Player player2;
     public Player player3;
     public Player player4;
+    List<Player> players = Arrays.asList(player1, player2, player3, player4);
     public Dice dice;
+
 
     public GameBoard() {
         // Initialize the lists for tiles
@@ -34,13 +36,13 @@ public class GameBoard {
         // Setup the tile factory and dice
         this.tileFactory = new TileFactory();
         this.dice = new Dice();
+        this.hunTile=null;
 
         // Create players
         this.player1 = new Player(0,Site.East,hunTile);
         this.player2 = new Player(0,Site.South,hunTile);
         this.player3 = new Player(0,Site.West,hunTile);
         this.player4 = new Player(0,Site.North,hunTile);
-
         // Set the current and dealer players initially to player1 for simplicity
         this.currentPlayer = this.player1;
         this.Dealer = this.player1;
@@ -66,18 +68,11 @@ public class GameBoard {
     public ArrayList<Tile> Tiles_discardedByPlayer(){
         return Tiles_discardedByPlayer;
     }
-    public void determineDealer(){
+    public int determineDealer(){
         int count = player1.rollDice(dice);
         int Croupier = count % 4;
-        if(Croupier == 1){
-            Dealer = player1;
-        } else if (Croupier == 2) {
-            Dealer = player2;
-        } else if (Croupier == 3) {
-            Dealer = player3;
-        } else if (Croupier == 0) {
-            Dealer = player4;
-        }
+        Dealer=players.get(Croupier);
+        return Croupier;
     }
 
     public Tile determineHunTile(){
@@ -120,13 +115,10 @@ public class GameBoard {
     }
 
     public void dealAllTiles(){
-        for(int i=0;i<13;i++){
-            dealTiles(player1);
-            dealTiles(player2);
-            dealTiles(player3);
-            dealTiles(player4);
+        for (int i=0;i<54;i++){
+            for (int j=determineDealer();j!=4;j++)
+                dealTiles(players.get(j));
         }
-        dealTiles(Dealer);
 
     }
 
