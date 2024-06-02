@@ -118,6 +118,7 @@ public class Player {
     public void setSite(Site site){
         playerSite=site;
     }
+    public Site getPlayerSite(){return playerSite;}
 
     public void setHunTile(Tile tile){
         hunTile=tile;

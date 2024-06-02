@@ -585,15 +585,69 @@ public class GameScreen implements Screen {
 
     }
 
-    private void setPlayerPhotoStyle(ImageView playerPhoto){
-        playerPhoto.setStyle(
-                "-fx-background-image: url('/UI/East.png');" +
-                        " -fx-background-repeat: no-repeat;" +
-                        " -fx-background-position: center center;" +
-                        " -fx-background-size: stretch;"
-        );
+    private void setPlayerPhotoStyle(ImageView playerPhoto,Player player){
+        Site site = player.setSite();
+        if(site==Site.East) {
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/East.png');" +
+                            " -fx-background-repeat: no-repeat;" +
+                            " -fx-background-position: center center;" +
+                            " -fx-background-size: stretch;"
+            );
+        }else if(site==Site.North){
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/North.png');" +
+                            " -fx-background-repeat: no-repeat;" +
+                            " -fx-background-position: center center;" +
+                            " -fx-background-size: stretch;"
+            );
+        } else if (site==Site.South) {
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/South.png');"
+                    + " -fx-background-repeat: no-repeat;"
+                    + " -fx-background-position: center center;"
+                    + " -fx-background-size: stretch;"
+            );
+        }else{
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/West.png');"
+                    + " -fx-background-repeat: no-repeat;"
+                    + " -fx-background-position: center center;"
+                    + " -fx-background-size: stretch;"
+            );
+        }
     }
-    private void setPlayerSiteImage(){}
+    private void setPlayerSiteImage(ImageView playerPhoto,Site site){
+        if(site==Site.East) {
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/East.png');" +
+                            " -fx-background-repeat: no-repeat;" +
+                            " -fx-background-position: center center;" +
+                            " -fx-background-size: stretch;"
+            );
+        }else if(site==Site.North){
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/North.png');" +
+                            " -fx-background-repeat: no-repeat;" +
+                            " -fx-background-position: center center;" +
+                            " -fx-background-size: stretch;"
+            );
+        } else if (site==Site.South) {
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/South.png');"
+                            + " -fx-background-repeat: no-repeat;"
+                            + " -fx-background-position: center center;"
+                            + " -fx-background-size: stretch;"
+            );
+        }else{
+            playerPhoto.setStyle(
+                    "-fx-background-image: url('/UI/West.png');"
+                            + " -fx-background-repeat: no-repeat;"
+                            + " -fx-background-position: center center;"
+                            + " -fx-background-size: stretch;"
+            );
+        }
+    }
 
     @Override
     public void loadWindow(Stage stage) throws Exception {

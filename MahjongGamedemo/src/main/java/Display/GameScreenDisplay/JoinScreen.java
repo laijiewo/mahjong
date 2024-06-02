@@ -29,7 +29,6 @@ public class JoinScreen implements Screen {
     void JoinGame(ActionEvent event) {
         ClientTest client = new ClientTest();
         Player player = new Player();
-        GameManager
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){

@@ -22,8 +22,7 @@ public class GameScreenTest extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Game game = new MahjongGame();
-        GameManager manager = new GameManager(game);
+        GameManager manager = new GameManager();
         GameScreen gameScreen = new GameScreen();
         gameScreen.loadWindow(primaryStage);
         manager.run(primaryStage);
