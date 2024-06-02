@@ -320,6 +320,44 @@ class RuleImplementationTest {
         assertFalse(ruleImplementation.canGang(hand, new NumberTile(3, Suit.WAN))); // No 333 WAN
     }
 
+    @Test
+    void testChiTilesRemovedFromHand() {
+        hand.add(new NumberTile(2, Suit.WAN));
+        hand.add(new NumberTile(3, Suit.WAN));
+        assertTrue(ruleImplementation.canChi(hand, new NumberTile(1, Suit.WAN))); // 123 WAN
+
+        List<Tile> expectedHand = new ArrayList<>();
+        assertEquals(expectedHand, hand);
+    }
+
+    /*
+    测试碰操作后手牌的变化
+    */
+    @Test
+    void testPengTilesRemovedFromHand() {
+        hand.add(new NumberTile(2, Suit.WAN));
+        hand.add(new NumberTile(2, Suit.WAN));
+        assertTrue(ruleImplementation.canPeng(hand, new NumberTile(2, Suit.WAN))); // 222 WAN
+
+        List<Tile> expectedHand = new ArrayList<>();
+        // No tiles should be left in hand after Peng
+        assertEquals(expectedHand, hand);
+    }
+
+    /*
+    测试杠操作后手牌的变化
+    */
+    @Test
+    void testGangTilesRemovedFromHand() {
+        hand.add(new NumberTile(2, Suit.WAN));
+        hand.add(new NumberTile(2, Suit.WAN));
+        hand.add(new NumberTile(2, Suit.WAN));
+        assertTrue(ruleImplementation.canGang(hand, new NumberTile(2, Suit.WAN))); // 2222 WAN
+
+        List<Tile> expectedHand = new ArrayList<>();
+        // No tiles should be left in hand after Gang
+        assertEquals(expectedHand, hand);
+    }
     /*
     有混牌，
      */
@@ -553,6 +591,8 @@ class RuleImplementationTest {
 
             assertTrue(ruleImplementation.canHu(hand, new NumberTile(5, Suit.TIAO))); // Winning hand with mixed sequences and pairs using hun tile
         }
+
+
 
 
 }

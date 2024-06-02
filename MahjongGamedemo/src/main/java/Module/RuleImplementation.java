@@ -58,16 +58,19 @@ public class RuleImplementation implements MahjongRule {
             chiTiles.add(new NumberTile(rank - 2, suit));
             chiTiles.add(new NumberTile(rank - 1, suit));
             chiTiles.add(tile);
+            removeChiTilesFromHand(hand);
             return true; // e.g., 123
         } else if (rank <= 7 && ranks[rank + 1] > 0 && ranks[rank + 2] > 0) {
             chiTiles.add(tile);
             chiTiles.add(new NumberTile(rank + 1, suit));
             chiTiles.add(new NumberTile(rank + 2, suit));
+            removeChiTilesFromHand(hand);
             return true; // e.g., 789
         } else if (rank >= 2 && rank <= 8 && ranks[rank - 1] > 0 && ranks[rank + 1] > 0) {
             chiTiles.add(new NumberTile(rank - 1, suit));
             chiTiles.add(tile);
             chiTiles.add(new NumberTile(rank + 1, suit));
+            removeChiTilesFromHand(hand);
             return true; // e.g., 234
         }
 
@@ -91,7 +94,11 @@ public class RuleImplementation implements MahjongRule {
                 count++;
             }
         }
-        return count >= 2; // Need at least two tiles to Peng
+        if (count >= 2) {
+            removePengTilesFromHand(hand);
+            return true; // Need at least two tiles to Peng
+        }
+        return false;
     }
 
     /**
@@ -111,8 +118,11 @@ public class RuleImplementation implements MahjongRule {
                 count++;
             }
         }
-        return count >= 3; // Need at least three tiles to Gang
-    }
+        if (count >= 3) {
+            removeGangTilesFromHand(hand);
+            return true; // Need at least three tiles to Gang
+        }
+        return false;    }
 
     /**
      * Checks if the player can perform a "Hu" (胡) with the given tile.
@@ -327,7 +337,23 @@ public class RuleImplementation implements MahjongRule {
             }
         }
     }
+    private void removeChiTilesFromHand(List<Tile> hand) {
+        for (Tile tile : chiTiles) {
+            removeTile(hand, tile);
+        }
+    }
 
+    private void removePengTilesFromHand(List<Tile> hand) {
+        for (Tile tile : pengTiles) {
+            removeTile(hand, tile);
+        }
+    }
+
+    private void removeGangTilesFromHand(List<Tile> hand) {
+        for (Tile tile : gangTiles) {
+            removeTile(hand, tile);
+        }
+    }
 
     /**
      * Gets the number tiles from the given hand.
@@ -353,5 +379,32 @@ public class RuleImplementation implements MahjongRule {
         }
         return false;
     }
+    /**
+     * Returns the list of tiles used for the last Chi.
+     *
+     * @return the list of tiles used for Chi
+     */
+    public List<Tile> getChiTiles() {
+        return new ArrayList<>(chiTiles);
+    }
+
+    /**
+     * Returns the list of tiles used for the last Peng.
+     *
+     * @return the list of tiles used for Peng
+     */
+    public List<Tile> getPengTiles() {
+        return new ArrayList<>(pengTiles);
+    }
+
+    /**
+     * Returns the list of tiles used for the last Gang.
+     *
+     * @return the list of tiles used for Gang
+     */
+    public List<Tile> getGangTiles() {
+        return new ArrayList<>(gangTiles);
+    }
+
 
 }
