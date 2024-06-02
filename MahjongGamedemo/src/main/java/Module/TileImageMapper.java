@@ -1,0 +1,106 @@
+package Module;
+
+import javafx.scene.image.Image;
+import java.util.HashMap;
+import java.util.Map;
+
+public class TileImageMapper {
+    private Map<Tile, Image> imageMap = new HashMap<>();
+    public TileImageMapper() {
+        addWanMapping();
+        addTiaoMapping();
+        addTongMapping();
+        addWindAndDragonMapping();
+    }
+
+    public void addMapping(Tile object, String imagePath) {
+        imageMap.put(object, new Image(getClass().getResource(imagePath).toString()));
+    }
+
+    public Image getImage(Tile object) {
+        return imageMap.get(object);
+    }
+
+    public Map<Tile, Image> getImageMap() {
+        return imageMap;
+
+    }
+
+    private void addWanMapping() {
+        Tile oneWan = new NumberTile(1, Suit.WAN);
+        addMapping(oneWan, "/images/tiles/mj_28.png");
+        Tile twoWan = new NumberTile(2, Suit.WAN);
+        addMapping(twoWan, "/images/tiles/mj_29.png");
+        Tile threeWan = new NumberTile(3, Suit.WAN);
+        addMapping(threeWan, "/images/tiles/mj_30.png");
+        Tile fourWan = new NumberTile(4, Suit.WAN);
+        addMapping(fourWan, "/images/tiles/mj_31.png");
+        Tile fiveWan = new NumberTile(5, Suit.WAN);
+        addMapping(fiveWan, "/images/tiles/mj_32.png");
+        Tile sixWan = new NumberTile(6, Suit.WAN);
+        addMapping(sixWan, "/images/tiles/mj_33.png");
+        Tile sevenWan = new NumberTile(7, Suit.WAN);
+        addMapping(sevenWan, "/images/tiles/mj_34.png");
+        Tile eightWan = new NumberTile(8, Suit.WAN);
+        addMapping(eightWan, "/images/tiles/mj_35.png");
+        Tile nineWan = new NumberTile(9, Suit.WAN);
+        addMapping(nineWan, "/images/tiles/mj_36.png");
+    }
+
+    private void addTiaoMapping() {
+        Tile oneTiao = new NumberTile(1, Suit.TIAO);
+        addMapping(oneTiao, "/images/tiles/mj_37.png");
+        Tile twoTiao = new NumberTile(2, Suit.TIAO);
+        addMapping(twoTiao, "/images/tiles/mj_38.png");
+        Tile threeTiao = new NumberTile(3, Suit.TIAO);
+        addMapping(threeTiao, "/images/tiles/mj_39.png");
+        Tile fourTiao = new NumberTile(4, Suit.TIAO);
+        addMapping(fourTiao, "/images/tiles/mj_40.png");
+        Tile fiveTiao = new NumberTile(5, Suit.TIAO);
+        addMapping(fiveTiao, "/images/tiles/mj_41.png");
+        Tile sixTiao = new NumberTile(6, Suit.TIAO);
+        addMapping(sixTiao, "/images/tiles/mj_42.png");
+        Tile sevenTiao = new NumberTile(7, Suit.TIAO);
+        addMapping(sevenTiao, "/images/tiles/mj_43.png");
+        Tile eightTiao = new NumberTile(8, Suit.TIAO);
+        addMapping(eightTiao, "/images/tiles/mj_44.png");
+        Tile nineTiao = new NumberTile(9, Suit.TIAO);
+        addMapping(nineTiao, "/images/tiles/mj_45.png");
+    }
+    private void addTongMapping() {
+        Tile oneTong = new NumberTile(1, Suit.TONG);
+        addMapping(oneTong, "/images/tiles/mj_46.png");
+        Tile twoTong = new NumberTile(2, Suit.TONG);
+        addMapping(twoTong, "/images/tiles/mj_47.png");
+        Tile threeTong = new NumberTile(3, Suit.TONG);
+        addMapping(threeTong, "/images/tiles/mj_48.png");
+        Tile fourTong = new NumberTile(4, Suit.TONG);
+        addMapping(fourTong, "/images/tiles/mj_49.png");
+        Tile fiveTong =  new NumberTile(5, Suit.TONG);
+        addMapping(fiveTong, "/images/tiles/mj_50.png");
+        Tile sixTong = new NumberTile(6, Suit.TONG);
+        addMapping(sixTong, "/images/tiles/mj_51.png");
+        Tile sevenTong = new NumberTile(7, Suit.TONG);
+        addMapping(sevenTong, "/images/tiles/mj_52.png");
+        Tile eightTong = new NumberTile(8, Suit.TONG);
+        addMapping(eightTong, "/images/tiles/mj_53.png");
+        Tile nineTong = new NumberTile(9, Suit.TONG);
+        addMapping(nineTong, "/images/tiles/mj_54.png");
+    }
+    private void addWindAndDragonMapping() {
+        Tile EastWind = new WindAndDragonTile("East", Suit.WIND);
+        addMapping(EastWind, "/images/tiles/mj_55.png");
+        Tile SouthWind = new WindAndDragonTile("South", Suit.WIND);
+        addMapping(SouthWind, "/images/tiles/mj_56.png");
+        Tile WestWind = new WindAndDragonTile("West", Suit.WIND);
+        addMapping(WestWind, "/images/tiles/mj_57.png");
+        Tile NorthWind = new WindAndDragonTile("North", Suit.WIND);
+        addMapping(NorthWind, "/images/tiles/mj_58.png");
+        Tile Zhong = new WindAndDragonTile("ZHONG", Suit.DRAGON);
+        addMapping(Zhong, "/images/tiles/mj_60.png");
+        Tile Fa = new WindAndDragonTile("FA", Suit.DRAGON);
+        addMapping(Fa, "/images/tiles/mj_61.png");
+        Tile Bai = new WindAndDragonTile("BAI", Suit.DRAGON);
+        addMapping(Bai, "/images/tiles/mj_59.png");
+    }
+}
