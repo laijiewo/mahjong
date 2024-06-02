@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Player {
     private int Score;
-    private Site site;
+    private Site playerSite;
     private ArrayList<Tile> Tile_hand;
 
     private Tile hunTile;
@@ -25,20 +25,9 @@ public class Player {
     private int serverPort;
     private boolean connected = false;
 
-    /**
-     * Constructs a Player with initial settings.
-     * @param Score Initial score of the player.
-     * @param site Initial seating position of the player.
-     */
-    public Player(int Score, Site site,Tile hunTile){
-        this.Score = Score;
-        this.site = site;
-        Tile_hand = new ArrayList<Tile>();
-        ruleImplementation = new RuleImplementation(hunTile);
-    }
 
-    public Tile setHunTile(Tile hunTile) {
-        return hunTile;
+    public Player(){
+        this.Score = 0;
     }
 
     /**
@@ -124,6 +113,14 @@ public class Player {
         } else {
             return false;
         }
+    }
+
+    public void setSite(Site site){
+        playerSite=site;
+    }
+
+    public void setHunTile(Tile tile){
+        hunTile=tile;
     }
     public boolean getconnected() {
         return connected;

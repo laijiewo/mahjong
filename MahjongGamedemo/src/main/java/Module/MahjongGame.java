@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class MahjongGame implements Game {
@@ -20,13 +21,13 @@ public class MahjongGame implements Game {
         startServer(port);
     }
     @Override
-    public Player determineDealer() {
-        return gameBoard.Dealer;
+    public int determineDealer() {
+        return gameBoard.determineDealer();
     }
 
     @Override
     public void initializeGame() {
-        GameBoard gameBoard1=new GameBoard();
+        GameBoard gameBoard1=new GameBoard(this);
 
     }
 
@@ -43,6 +44,11 @@ public class MahjongGame implements Game {
         }else {
             return null;
         }
+    }
+
+    public static Player getPlayers(){
+        return
+
     }
 
     @Override
@@ -175,4 +181,5 @@ public class MahjongGame implements Game {
         // TODO: 检查操作信息是否合法
         return true;
     }
+
 }
