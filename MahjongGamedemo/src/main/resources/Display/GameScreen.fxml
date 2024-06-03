@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: url('/backgrounds/GameScreenBG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.GameScreen">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: url('/backgrounds/GameScreenBG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
       <GridPane fx:id="Tiles" layoutX="184.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
          <columnConstraints>
@@ -532,7 +532,7 @@
       </Label>
       <GridPane layoutX="421.0" layoutY="390.0">
          <children>
-            <ImageView fx:id="tile11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
+            <ImageView fx:id="tile1_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -540,7 +540,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile21" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
+            <ImageView fx:id="tile2_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -548,7 +548,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile31" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
+            <ImageView fx:id="tile3_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -556,7 +556,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile41" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
+            <ImageView fx:id="tile4_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -564,7 +564,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile51" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
+            <ImageView fx:id="tile5_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -572,7 +572,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile61" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
+            <ImageView fx:id="tile6_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -580,7 +580,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile71" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
+            <ImageView fx:id="tile7_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -588,7 +588,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile81" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="tile8_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -596,7 +596,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile91" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fx:id="tile9_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -604,7 +604,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile101" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="tile10_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -612,7 +612,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fx:id="tile11_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -620,7 +620,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile121" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fx:id="tile12_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -628,7 +628,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile131" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
+            <ImageView fx:id="tile13_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -636,7 +636,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile141" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fx:id="tile14_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -644,7 +644,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile151" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fx:id="tile15_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -652,7 +652,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile161" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ImageView fx:id="tile16_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -660,7 +660,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile171" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fx:id="tile17_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -668,7 +668,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile181" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fx:id="tile18_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -676,7 +676,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile191" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
+            <ImageView fx:id="tile19_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -684,7 +684,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile201" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="tile20_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -692,7 +692,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile211" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fx:id="tile21_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -718,7 +718,7 @@
       </GridPane>
       <GridPane layoutX="648.0" layoutY="240.0" rotate="-90.0">
          <children>
-            <ImageView fx:id="tile111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
+            <ImageView fx:id="tile1_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -726,7 +726,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile211" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
+            <ImageView fx:id="tile2_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -734,7 +734,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile311" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
+            <ImageView fx:id="tile3_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -742,7 +742,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile411" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
+            <ImageView fx:id="tile4_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -750,7 +750,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile511" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
+            <ImageView fx:id="tile5_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -758,7 +758,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile611" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
+            <ImageView fx:id="tile6_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -766,7 +766,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile711" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
+            <ImageView fx:id="tile7_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -774,7 +774,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile811" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="tile8_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -782,7 +782,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile911" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fx:id="tile9_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -790,7 +790,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1011" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="tile10_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -798,7 +798,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fx:id="tile11_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -806,7 +806,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1211" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fx:id="tile12_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -814,7 +814,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1311" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
+            <ImageView fx:id="tile13_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -822,7 +822,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1411" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fx:id="tile14_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -830,7 +830,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1511" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fx:id="tile15_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -838,7 +838,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1611" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ImageView fx:id="tile16_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -846,7 +846,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1711" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fx:id="tile17_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -854,7 +854,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1811" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fx:id="tile18_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -862,7 +862,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile1911" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
+            <ImageView fx:id="tile19_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -870,7 +870,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile2011" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="tile20_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -878,7 +878,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile2111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fx:id="tile21_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -904,7 +904,7 @@
       </GridPane>
       <GridPane layoutX="421.0" layoutY="87.0" rotate="180.0">
          <children>
-            <ImageView fx:id="tile1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
+            <ImageView fx:id="tile1_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -912,7 +912,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile2111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
+            <ImageView fx:id="tile2_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -920,7 +920,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile3111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
+            <ImageView fx:id="tile3_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -928,7 +928,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile4111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
+            <ImageView fx:id="tile4_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -936,7 +936,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile5111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
+            <ImageView fx:id="tile5_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -944,7 +944,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile6111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
+            <ImageView fx:id="tile6_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -952,7 +952,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile7111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
+            <ImageView fx:id="tile7_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -960,7 +960,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile8111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="tile8_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -968,7 +968,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile9111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fx:id="tile9_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -976,7 +976,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile10111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="tile10_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -984,7 +984,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile11111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fx:id="tile11_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -992,7 +992,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile12111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fx:id="tile12_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1000,7 +1000,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile13111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
+            <ImageView fx:id="tile13_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1008,7 +1008,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile14111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fx:id="tile14_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1016,7 +1016,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile15111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fx:id="tile15_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1024,7 +1024,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile16111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ImageView fx:id="tile16_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1032,7 +1032,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile17111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fx:id="tile17_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1040,7 +1040,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile18111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fx:id="tile18_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1048,7 +1048,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile19111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
+            <ImageView fx:id="tile19_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1056,7 +1056,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile20111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="tile20_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1064,7 +1064,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile21111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fx:id="tile21_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1090,7 +1090,7 @@
       </GridPane>
       <GridPane layoutX="175.0" layoutY="240.0" rotate="90.0">
          <children>
-            <ImageView fx:id="tile11111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
+            <ImageView fx:id="tile1_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1098,7 +1098,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile21111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
+            <ImageView fx:id="tile2_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1106,7 +1106,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile31111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
+            <ImageView fx:id="tile3_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1114,7 +1114,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile41111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
+            <ImageView fx:id="tile4_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1122,7 +1122,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile51111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
+            <ImageView fx:id="tile5_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1130,7 +1130,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile61111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
+            <ImageView fx:id="tile6_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1138,7 +1138,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile71111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
+            <ImageView fx:id="tile7_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1146,7 +1146,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile81111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="tile8_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1154,7 +1154,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile91111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fx:id="tile9_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1162,7 +1162,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile101111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="tile10_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1170,7 +1170,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile111111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fx:id="tile11_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1178,7 +1178,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile121111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fx:id="tile12_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1186,7 +1186,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile131111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
+            <ImageView fx:id="tile13_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1194,7 +1194,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile141111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fx:id="tile14_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1202,7 +1202,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile151111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fx:id="tile15_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1210,7 +1210,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile161111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ImageView fx:id="tile16_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1218,7 +1218,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile171111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fx:id="tile17_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1226,7 +1226,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile181111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fx:id="tile18_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1234,7 +1234,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile191111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
+            <ImageView fx:id="tile19_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1242,7 +1242,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile201111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="tile20_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1250,7 +1250,7 @@
                   <Image url="@../mj/mj_23.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="tile211111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fx:id="tile21_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -1275,22 +1275,22 @@
          </rowConstraints>
       </GridPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" />
-      <Label fx:id="player2Photo" alignment="CENTER" layoutX="837.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player2Photo" fx:id="player2Photo" alignment="CENTER" layoutX="837.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="player3Photo" alignment="CENTER" layoutX="222.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/WestPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player3Photo" fx:id="player3Photo" alignment="CENTER" layoutX="222.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/WestPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="player4Photo" alignment="CENTER" layoutX="106.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/NorthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player4Photo" fx:id="player4Photo" alignment="CENTER" layoutX="106.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/NorthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="player1Photo" alignment="CENTER" layoutX="820.0" layoutY="565.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/EastPlayer.png'); -fx-background-color: transparant; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player1Photo" fx:id="player1Photo" alignment="CENTER" layoutX="820.0" layoutY="565.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/EastPlayer.png'); -fx-background-color: transparant; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>

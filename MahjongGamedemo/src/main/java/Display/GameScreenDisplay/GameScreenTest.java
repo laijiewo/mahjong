@@ -22,9 +22,26 @@ public class GameScreenTest extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        Player eastplayer = new Player();
+        eastplayer.setSite(Site.East);
+
+        Player southplayer = new Player();
+        southplayer.setSite(Site.South);
+
+        Player westplayer = new Player();
+        westplayer.setSite(Site.West);
+
+        Player northplayer = new Player();
+        northplayer.setSite(Site.North);
+
         GameManager manager = new GameManager();
         GameScreen gameScreen = new GameScreen();
+
+
+        gameScreen.setPlayers(southplayer,westplayer,northplayer,eastplayer);
         gameScreen.loadWindow(primaryStage);
+
         manager.run(primaryStage);
     }
 
