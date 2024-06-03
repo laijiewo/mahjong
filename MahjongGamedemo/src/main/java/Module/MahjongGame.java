@@ -12,8 +12,8 @@ import java.util.List;
 public class MahjongGame implements Game {
     private static List<Player> players = new LinkedList<>();
     private GameBoard gameBoard;
-    private RuleImplementation ruleImplementation;
     protected static LinkedList<Socket> sockets;
+    TileImageMapper tileImageMapper;
     private static ServerSocket serverSocket;
     private int port;
     static int i = 0;
@@ -21,10 +21,14 @@ public class MahjongGame implements Game {
     public MahjongGame(int port) throws IOException {
         this.port = port;
         this.startServer(port);
+        tileImageMapper = new TileImageMapper();
     }
 
     public void addPlayer(Player player){
         players.add(player);
+    }
+    public int getNumOfPlayers() {
+        return players.size();
     }
 
     @Override

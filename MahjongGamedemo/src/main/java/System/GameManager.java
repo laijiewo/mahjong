@@ -34,6 +34,9 @@ public class GameManager {
 
     public static void addPlayer(Player player) {
         game.addPlayer(player);
+        if (game.getNumOfPlayers() == 4) {
+            game.initializeGame();
+        }
     }
     /**
      * Handles the action for the "Hu" button.
