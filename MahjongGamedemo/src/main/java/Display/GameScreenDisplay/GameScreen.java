@@ -8,15 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
-import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +24,7 @@ public class GameScreen implements Screen {
     Player NextPlayer;
     Player OppositePlayer;
     Player PreviousPlayer;
-    List<Player> Players = new ArrayList<>();
+    List<Player> players = new ArrayList<>();
     List<Label> playerDirections = new ArrayList<>();
     List<Label> playerPhotos = new ArrayList<>();
 
@@ -490,113 +486,113 @@ public class GameScreen implements Screen {
 
     @FXML
     void DiscardTile1(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(1, players.get(0));
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(11, players.get(0));
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(7, players.get(0));
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(6, players.get(0));
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(3, players.get(0));
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(14, players.get(0));
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(9, players.get(0));
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(12, players.get(0));
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(8, players.get(0));
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(13, players.get(0));
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(5, players.get(0));
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(10, players.get(0));
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(4, players.get(0));
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
-
+        GameManager.handleDiscardButtonAction(2, players.get(0));
     }
 
     @FXML
     void Pung(ActionEvent event) {
-
+        GameManager.handlePungButtonAction(players.get(0));
     }
 
     @FXML
     void Chow(ActionEvent event) {
-
+        GameManager.handleChewButtonAction(players.get(0));
     }
 
     @FXML
     void Kong(ActionEvent event) {
-
+        GameManager.handleKongButtonAction(players.get(0));
     }
 
     @FXML
     void Win(ActionEvent event) {
-
+        GameManager.handleHuButtonAction(players.get(0));
     }
 
     @FXML
     void Pause(ActionEvent event) {
-
+        GameManager.handlePauseButtonAction(players.get(0));
     }
 
     public void setPlayers(Player player1,Player player2,Player player3, Player player4){
-        Players.add(player1);
+        players.add(player1);
 
-        Players.add(player2);
+        players.add(player2);
 
-        Players.add(player3);
+        players.add(player3);
 
-        Players.add(player4);
+        players.add(player4);
 
     }
 
     private void setPlayerPhotoStyle(){
         for(int i = 0 ; i !=4; i++) {
-            Player player = Players.get(i);
+            Player player = players.get(i);
             Label playerPhoto = playerPhotos.get(i);
             Site site = player.getPlayerSite();
             if (playerPhoto != null) {
@@ -635,7 +631,7 @@ public class GameScreen implements Screen {
 
     private void setPlayerSiteImage(){
         for(int i = 0; i !=4; i++) {
-            Player player = Players.get(i);
+            Player player = players.get(i);
             Label playerDirection = playerDirections.get(i);
             Site site = player.getPlayerSite();
             if (playerDirection != null) {
