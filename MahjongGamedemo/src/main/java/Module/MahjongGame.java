@@ -14,14 +14,19 @@ public class MahjongGame implements Game {
     private GameBoard gameBoard;
     protected static LinkedList<Socket> sockets;
     TileImageMapper tileImageMapper;
-    Tile
     private static ServerSocket serverSocket;
     private int port;
     static int i = 0;
 
     public MahjongGame(int port) throws IOException {
         this.port = port;
-        this.startServer(port);
+        new Thread(() -> {
+            try {
+                startServer(port);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
         tileImageMapper = new TileImageMapper();
     }
 

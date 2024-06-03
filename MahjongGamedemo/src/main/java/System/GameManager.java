@@ -18,6 +18,7 @@ import java.util.List;
 public class GameManager {
     private static MahjongGame game = null;
     private Screen loginScreen;
+    private static Site[] sites = {Site.East, Site.South, Site.West, Site.North};
 
     /**
      * Constructor for the GameManager class.
@@ -37,7 +38,9 @@ public class GameManager {
             // TODO: game应进行定庄、发牌、定混等操作
     }
 
-    public static void addPlayer(Player player) {
+    public static void addPlayer(Player player) throws Exception{
+        int index = game.getNumOfPlayers();
+        player.setSite(sites[index]);
         game.addPlayer(player);
         if (game.getNumOfPlayers() == 4) {
             startNewGame();

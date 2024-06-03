@@ -30,6 +30,10 @@ public class GameScreenTest extends Application {
         stage3 = new Stage();
         stage4 = new Stage();
 
+        GameManager gameManager = new GameManager();
+        MahjongGame game = new MahjongGame(8081);
+        GameManager.addGame(game);
+
 
         Player eastplayer = new Player(stage1);
         Player southplayer = new Player(stage2);
@@ -37,7 +41,6 @@ public class GameScreenTest extends Application {
         Player northplayer = new Player(stage4);
         try {
             GameManager.addPlayer(eastplayer);
-            eastplayer.connect();
         } catch (Exception e) {
             System.out.println("Cannot add player");
         }
