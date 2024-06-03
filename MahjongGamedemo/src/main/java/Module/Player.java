@@ -80,6 +80,7 @@ public class Player {
     public Tile discardTiles(int Tile_number){
         Tile Tile_discard = Tile_hand.get(Tile_number);
         Tile_hand.remove(Tile_discard);
+        discard_Tiles.add(Tile_discard);
         return Tile_discard;
     }
 
@@ -88,10 +89,13 @@ public class Player {
      * @param tile The tile to attempt to add for a Kong.
      */
     public List<Tile> kong( Tile tile){
+        List<Tile> result;
         if(ruleImplementation.canGang(Tile_hand, tile)){
-            Tile_hand.add(tile);
+            result = ruleImplementation.getGangTiles();
+        } else {
+            return null;
         }
-        return Tile_hand;
+        return result;
     }
 
     /**
@@ -99,17 +103,23 @@ public class Player {
      * @param tile The tile to attempt to add for a Pung.
      */
     public List<Tile> pung(Tile tile) {
+        List<Tile> result;
         if(ruleImplementation.canPeng(Tile_hand, tile)){
-            Tile_hand.add(tile);
+            result = ruleImplementation.getPengTiles();
+        } else {
+            return null;
         }
-        return Tile_hand;
+        return result;
     }
 
     public List<Tile> chi(Tile tile){
+        List<Tile> result;
         if(ruleImplementation.canChi(Tile_hand,tile)){
-            Tile_hand.add(tile);
+            result = ruleImplementation.getChiTiles();
+        } else {
+            return null;
         }
-        return Tile_hand;
+        return result;
     }
 
     /**
