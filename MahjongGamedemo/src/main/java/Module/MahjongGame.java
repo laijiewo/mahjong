@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class MahjongGame implements Game {
-    private static List<Player> players=new LinkedList<>();
+    private static List<Player> players = new LinkedList<>();
     private GameBoard gameBoard;
     private RuleImplementation ruleImplementation;
     protected static LinkedList<Socket> sockets;
@@ -20,7 +20,7 @@ public class MahjongGame implements Game {
 
     public MahjongGame(int port) throws IOException {
         this.port = port;
-        startServer(port);
+        this.startServer(port);
     }
 
     public void addPlayer(Player player){
@@ -29,30 +29,19 @@ public class MahjongGame implements Game {
 
     @Override
     public void initializeGame() {
-        GameBoard gameBoard=new GameBoard();
+        gameBoard=new GameBoard();
         gameBoard.determineDealer();
-        gameBoard.dealAllTiles();
         gameBoard.shuffleTiles();
+        gameBoard.dealAllTiles();
     }
 
     public static List<Player> getPlayers(){
         return players;
-
     }
 
     @Override
     public Player checkVictory() {
-        if(gameBoard.player1.canHu(this,gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size()-1))){
-            return gameBoard.player1;
-        } else if (gameBoard.player2.canHu(this,gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size()-1))) {
-            return gameBoard.player2;
-        } else if (gameBoard.player3.canHu(this,gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size()-1))) {
-            return gameBoard.player3;
-        } else if (gameBoard.player4.canHu(this,gameBoard.Tiles_discardedByPlayer.get(gameBoard.Tiles_discardedByPlayer.size()-1))) {
-            return gameBoard.player4;
-        }else {
-            return null;
-        }
+        return null;
     }
 
 
@@ -63,17 +52,12 @@ public class MahjongGame implements Game {
     }
 
     @Override
-    public void shuffleTiles() {
-        gameBoard.shuffleTiles();
-    }
-
-    @Override
     public void startNewGame() {
 
     }
 
     public Tile getLeastDiscardedTile() {
-        return gameBoard.Tiles_discardedByPlayer().get(gameBoard.Tiles_discardedByPlayer().size() - 1);
+        return gameBoard.getLeastDiscardedTile();
     }
 
     @Override

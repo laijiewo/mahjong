@@ -49,16 +49,9 @@ public class Player {
 
     /**
      * Draws a tile from the tile wall if available.
-     * @param tileFactory The tile wall from which to draw a tile.
-     * @return The drawn tile or null if no tiles are available.
      */
-    public Tile drawTiles(TileFactory tileFactory) {
-        if (!tileFactory.createTiles().isEmpty()) {
-            Tile drawTile = tileFactory.createTiles().get(0);
-            Tile_hand.add(drawTile);
-            return drawTile;
-        }
-        return null;
+    public void drawTiles(Tile tile) {
+        Tile_hand.add(tile);
     }
 
     /**
@@ -106,7 +99,7 @@ public class Player {
      * @param tile The tile to check if it completes a winning hand.
      * @return true if the player can declare a win, false otherwise.
      */
-    public boolean canHu(MahjongGame mahjongGame, Tile tile) {
+    public boolean canHu(Tile tile) {
         if(ruleImplementation.canHu(Tile_hand, tile)){
             Tile_hand.add(tile);
             return true;

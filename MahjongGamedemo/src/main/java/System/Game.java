@@ -27,11 +27,6 @@ public interface Game {
     public void calculateScores();
 
     /**
-     * This method is used to shuffle the deck, usually at the beginning of a turn.
-     */
-    public void shuffleTiles();
-
-    /**
      * This method is used to start a new game.
      */
     public void startNewGame();
