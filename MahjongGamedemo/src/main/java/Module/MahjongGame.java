@@ -14,6 +14,7 @@ public class MahjongGame implements Game {
     private GameBoard gameBoard;
     protected static LinkedList<Socket> sockets;
     TileImageMapper tileImageMapper;
+    Tile
     private static ServerSocket serverSocket;
     private int port;
     static int i = 0;
@@ -37,6 +38,13 @@ public class MahjongGame implements Game {
         gameBoard.determineDealer();
         gameBoard.shuffleTiles();
         gameBoard.dealAllTiles();
+        gameBoard.determineHunTile();
+        setHunTileToPlayers();
+    }
+    public void setHunTileToPlayers() {
+        for (Player player : players) {
+            player.setHunTile(gameBoard.getHunTile());
+        }
     }
 
     public static List<Player> getPlayers(){
@@ -47,7 +55,6 @@ public class MahjongGame implements Game {
     public Player checkVictory() {
         return null;
     }
-
 
     @Override
     public void calculateScores() {

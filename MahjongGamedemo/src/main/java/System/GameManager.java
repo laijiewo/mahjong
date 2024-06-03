@@ -1,7 +1,6 @@
 package System;
 
 import Display.*;
-import Display.GameScreenDisplay.GameScreen;
 import Display.GameScreenDisplay.LoginScreen;
 import Module.*;
 import WebConnect.*;
@@ -19,7 +18,6 @@ import java.util.List;
 public class GameManager {
     private static MahjongGame game = null;
     private Screen loginScreen;
-    private Screen gameScreen;
 
     /**
      * Constructor for the GameManager class.
@@ -28,7 +26,6 @@ public class GameManager {
      */
     public GameManager() {
         this.loginScreen = new LoginScreen();
-        gameScreen = new GameScreen();
     }
     /**
      * This method is called when there are enough players to play a game.
@@ -36,13 +33,14 @@ public class GameManager {
      */
     public static void startNewGame() {
             game.initializeGame();
+            startGame();
             // TODO: game应进行定庄、发牌、定混等操作
     }
 
     public static void addPlayer(Player player) {
         game.addPlayer(player);
         if (game.getNumOfPlayers() == 4) {
-            game.initializeGame();
+            startNewGame();
         }
     }
     /**
@@ -58,6 +56,12 @@ public class GameManager {
     }
     public static void addGame(MahjongGame mahjongGame) {
         game = mahjongGame;
+    }
+    private static void startGame() {
+        List<Player> players = MahjongGame.getPlayers();
+        for (Player player : players) {
+            player.launchGameScreen();
+        }
     }
     /**
      * Handles the action for the "Kong" button.

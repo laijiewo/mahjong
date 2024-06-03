@@ -1,7 +1,9 @@
 package Module;
+import Display.GameScreenDisplay.GameScreen;
 import System.*;
 import Display.*;
 import WebConnect.Message;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
@@ -17,6 +19,8 @@ public class Player {
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
 
+    private Screen gameScreen;
+    private ArrayList<Tile> discard_Tiles;
     private Tile hunTile;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
@@ -24,10 +28,16 @@ public class Player {
     private String serverHostname;
     private int serverPort;
     private boolean connected = false;
+    private final Stage stage;
 
 
-    public Player(){
+    public Player(Stage stage){
+        this.stage = stage;
         this.Score = 0;
+        Tile_hand = new ArrayList<Tile>();
+        discard_Tiles = new ArrayList<Tile>();
+        hunTile = null;
+        gameScreen = new GameScreen();
     }
 
     /**
@@ -37,6 +47,10 @@ public class Player {
      */
     public int rollDice(Dice Dice){
         return Dice.toss()+Dice.toss();
+    }
+    public void setHunTile(Tile tile){
+        hunTile=tile;
+        ruleImplementation = new RuleImplementation(tile);
     }
 
     /**
@@ -112,14 +126,26 @@ public class Player {
         playerSite=site;
     }
     public Site getPlayerSite(){return playerSite;}
-
-    public void setHunTile(Tile tile){
-        hunTile=tile;
-    }
     public boolean getconnected() {
         return connected;
     }
+    public List<Tile> getTile_hand() {
+        return Tile_hand;
+    }
+    public List<Tile> getDiscard_Tiles() {
+        return discard_Tiles;
+    }
 
+    public void launchGameScreen() {
+        try {
+            List<Player> players = MahjongGame.getPlayers();
+            int index = players.indexOf(this);
+            ((GameScreen) gameScreen).setPlayers(players.get(index), players.get((index+1)%4), players.get((index+2)%4), players.get((index+3)%4));
+            gameScreen.loadWindow(stage);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void setServerHostname(String serverHostname) {
         this.serverHostname = serverHostname;
     }

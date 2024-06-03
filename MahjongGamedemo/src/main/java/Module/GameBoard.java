@@ -70,6 +70,21 @@ public class GameBoard {
         }
     }
 
+    public void determineHunTile() {
+        dealAllTiles();
+        Tile hunTile = Tiles_inTheWall.get(0);
+        if (hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)) {
+            NumberTile hun = (NumberTile) hunTile;
+            hunTile = new NumberTile(hun.getRank() + 1, hunTile.getSuit());
+        } else {
+            WindAndDragonTile hun = (WindAndDragonTile) hunTile;
+            hunTile = new WindAndDragonTile(hun.getType() + 1, hunTile.getSuit());
+        }
+        this.hunTile = hunTile;
+    }
+    public Tile getHunTile() {
+        return hunTile;
+    }
     public Tile discardTile(Player player, int num) {
         return player.discardTiles(num);
     }

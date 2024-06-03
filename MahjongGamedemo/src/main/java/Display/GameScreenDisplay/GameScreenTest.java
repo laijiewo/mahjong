@@ -35,14 +35,11 @@ public class GameScreenTest extends Application {
         Player northplayer = new Player();
         northplayer.setSite(Site.North);
 
-        GameManager manager = new GameManager();
         GameScreen gameScreen = new GameScreen();
-
 
         gameScreen.setPlayers(southplayer,westplayer,northplayer,eastplayer);
         gameScreen.loadWindow(primaryStage);
 
-        manager.run(primaryStage);
     }
 
 

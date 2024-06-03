@@ -24,10 +24,11 @@ public class JoinScreen implements Screen {
 
     @FXML
     private TextField PortText;
+    private Stage stage;
 
     @FXML
     void JoinGame(ActionEvent event) {
-        Player player = new Player();
+        Player player = new Player(stage);
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
@@ -67,6 +68,7 @@ public class JoinScreen implements Screen {
 
     @Override
     public void loadWindow(Stage stage) throws Exception {
+        this.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/Display/JoinScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
