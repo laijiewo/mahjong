@@ -1,5 +1,8 @@
 package System;
 
+import Display.*;
+import Display.GameScreenDisplay.GameScreen;
+import Display.GameScreenDisplay.LoginScreen;
 import Module.*;
 import WebConnect.*;
 import javafx.stage.Stage;
@@ -15,6 +18,8 @@ import java.util.List;
  */
 public class GameManager {
     private static MahjongGame game = null;
+    private Screen loginScreen;
+    private Screen gameScreen;
 
     /**
      * Constructor for the GameManager class.
@@ -22,6 +27,8 @@ public class GameManager {
      *
      */
     public GameManager() {
+        this.loginScreen = new LoginScreen();
+        gameScreen = new GameScreen();
     }
     /**
      * This method is called when there are enough players to play a game.
@@ -125,7 +132,6 @@ public class GameManager {
      * This method controls the execution of the game.
      */
     public void run(Stage stage) throws Exception {
-
+        loginScreen.loadWindow(stage);
     }
-
 }

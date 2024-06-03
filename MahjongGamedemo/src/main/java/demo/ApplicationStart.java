@@ -18,9 +18,8 @@ public class ApplicationStart extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        LoginScreen loginScreen = new LoginScreen();
-        loginScreen.loadWindow(primaryStage);
-
+        GameManager gameManager = new GameManager();
+        gameManager.run(primaryStage);
     }
 
 
