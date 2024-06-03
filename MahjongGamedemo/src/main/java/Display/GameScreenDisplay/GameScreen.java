@@ -29,108 +29,104 @@ public class GameScreen implements Screen {
     Player OppositePlayer;
     Player PreviousPlayer;
     List<Player> Players = new ArrayList<>();
+    List<Label> playerDirections = new ArrayList<>();
+    List<Label> playerPhotos = new ArrayList<>();
 
     @FXML
-    private ImageView tile5111;
+    private ImageView tile11_111;
 
     @FXML
-    private ImageView tile111;
-
-    @FXML
-    private ImageView tile61;
-
-    @FXML
-    private ImageView tile10111;
-
-    @FXML
-    private ImageView tile511;
-
-    @FXML
-    private ImageView tile911;
+    private ImageView tile19_11;
 
     @FXML
     private Button Chow;
 
     @FXML
-    private ImageView tile1311;
+    private ImageView tile7_111;
 
     @FXML
-    private ImageView tile91111;
+    private ImageView tile11_11;
 
     @FXML
-    private ImageView tile111111;
+    private ImageView tile3_1;
 
     @FXML
-    private ImageView tile1711;
+    private ImageView tile7_1;
+
+    @FXML
+    private ImageView tile8_1111;
+
+    @FXML
+    private ImageView tile12_1111;
+
+    @FXML
+    private ImageView tile6_11;
 
     @FXML
     private Button Kong;
 
     @FXML
-    private ImageView tile131111;
-
-    @FXML
-    private ImageView tile101;
-
-    @FXML
-    private ImageView tile2111;
-
-    @FXML
     private ImageView optile10;
-
-    @FXML
-    private ImageView tile51;
 
     @FXML
     private ImageView optile11;
 
     @FXML
-    private Label playerDirection1;
+    private ImageView tile16_11;
 
     @FXML
-    private ImageView tile21111;
+    private ImageView tile12_1;
+
+    @FXML
+    private Label playerDirection1;
 
     @FXML
     private Label playerDirection3;
 
     @FXML
+    private ImageView tile18_111;
+
+    @FXML
     private Label playerDirection2;
+
+    @FXML
+    private ImageView tile16_1;
 
     @FXML
     private Label playerDirection4;
 
     @FXML
-    private ImageView optile12;
+    private ImageView tile7_1111;
 
     @FXML
-    private ImageView tile18111;
+    private ImageView tile13_1111;
+
+    @FXML
+    private ImageView tile3_11;
+
+    @FXML
+    private ImageView tile10_1111;
+
+    @FXML
+    private ImageView optile12;
 
     @FXML
     private ImageView optile13;
 
     @FXML
-    private ImageView tile191;
-
-    @FXML
-    private ImageView tile131;
+    private ImageView tile9_111;
 
     @FXML
     private Button Pause;
 
     @FXML
-    private ImageView tile7111;
+    private ImageView tile15_1111;
 
     @FXML
     private GridPane OPTiles;
 
     @FXML
-    private ImageView tile1011;
-
-    @FXML
-    private ImageView tile411;
-
-    @FXML
-    private ImageView tile41;
+    private ImageView tile15_111;
 
     @FXML
     private ImageView pretile10;
@@ -142,16 +138,22 @@ public class GameScreen implements Screen {
     private ImageView pretile12;
 
     @FXML
-    private ImageView tile811;
-
-    @FXML
     private ImageView pretile13;
 
     @FXML
-    private ImageView tile41111;
+    private ImageView tile17_11;
 
     @FXML
     private Label player1Photo;
+
+    @FXML
+    private ImageView tile2_111;
+
+    @FXML
+    private ImageView tile16_1111;
+
+    @FXML
+    private ImageView tile2_1;
 
     @FXML
     private ImageView nexttile12;
@@ -160,28 +162,25 @@ public class GameScreen implements Screen {
     private ImageView nexttile13;
 
     @FXML
-    private ImageView tile1411;
+    private ImageView tile8_11;
 
     @FXML
     private ImageView nexttile10;
 
     @FXML
+    private ImageView tile6_1;
+
+    @FXML
     private ImageView nexttile11;
+
+    @FXML
+    private ImageView tile17_111;
 
     @FXML
     private Button T1;
 
     @FXML
-    private ImageView tile1811;
-
-    @FXML
     private Button T2;
-
-    @FXML
-    private ImageView tile19111;
-
-    @FXML
-    private ImageView tile151111;
 
     @FXML
     private Button T3;
@@ -190,28 +189,16 @@ public class GameScreen implements Screen {
     private Button T4;
 
     @FXML
-    private ImageView tile31;
-
-    @FXML
-    private ImageView tile61111;
-
-    @FXML
     private Button T5;
 
     @FXML
     private Button T6;
 
     @FXML
-    private ImageView tile121;
-
-    @FXML
-    private ImageView tile4111;
+    private ImageView tile21_111;
 
     @FXML
     private Button T7;
-
-    @FXML
-    private ImageView tile13111;
 
     @FXML
     private Button T8;
@@ -220,7 +207,19 @@ public class GameScreen implements Screen {
     private Button T9;
 
     @FXML
-    private ImageView tile211111;
+    private ImageView tile6_111;
+
+    @FXML
+    private ImageView tile13_111;
+
+    @FXML
+    private ImageView tile13_1;
+
+    @FXML
+    private ImageView tile14_11;
+
+    @FXML
+    private ImageView tile17_1;
 
     @FXML
     private Label player4Photo;
@@ -238,7 +237,13 @@ public class GameScreen implements Screen {
     private ImageView pretile6;
 
     @FXML
+    private ImageView tile5_11;
+
+    @FXML
     private ImageView pretile5;
+
+    @FXML
+    private ImageView tile6_1111;
 
     @FXML
     private Button T12;
@@ -259,19 +264,28 @@ public class GameScreen implements Screen {
     private ImageView pretile2;
 
     @FXML
+    private ImageView tile20_1;
+
+    @FXML
     private Button T13;
 
     @FXML
     private ImageView pretile1;
 
     @FXML
-    private ImageView tile171111;
+    private ImageView tile9_1111;
 
     @FXML
-    private ImageView tile16111;
+    private ImageView tile4_111;
+
+    @FXML
+    private ImageView tile20_11;
 
     @FXML
     private ImageView pretile9;
+
+    @FXML
+    private ImageView tile3_1111;
 
     @FXML
     private ImageView optile5;
@@ -286,22 +300,22 @@ public class GameScreen implements Screen {
     private ImageView nexttile2;
 
     @FXML
-    private ImageView tile21;
-
-    @FXML
     private ImageView optile3;
 
     @FXML
     private ImageView nexttile3;
 
     @FXML
+    private ImageView tile21_11;
+
+    @FXML
+    private ImageView tile18_1111;
+
+    @FXML
     private ImageView optile4;
 
     @FXML
     private ImageView nexttile4;
-
-    @FXML
-    private ImageView tile14111;
 
     @FXML
     private ImageView optile1;
@@ -316,13 +330,13 @@ public class GameScreen implements Screen {
     private ImageView nexttile6;
 
     @FXML
-    private ImageView tile311;
+    private ImageView tile8_111;
+
+    @FXML
+    private ImageView tile10_111;
 
     @FXML
     private ImageView nexttile7;
-
-    @FXML
-    private ImageView tile1111;
 
     @FXML
     private ImageView nexttile8;
@@ -331,76 +345,73 @@ public class GameScreen implements Screen {
     private ImageView nexttile9;
 
     @FXML
-    private ImageView tile101111;
+    private ImageView tile15_11;
 
     @FXML
-    private ImageView tile711;
-
-    @FXML
-    private ImageView tile20111;
+    private ImageView tile2_1111;
 
     @FXML
     private ImageView optile9;
 
     @FXML
-    private ImageView tile9111;
-
-    @FXML
     private ImageView optile7;
 
     @FXML
-    private ImageView tile81111;
+    private ImageView tile21_1111;
 
     @FXML
     private ImageView optile8;
 
     @FXML
-    private ImageView tile191111;
+    private ImageView tile2_11;
 
     @FXML
-    private ImageView tile201111;
+    private ImageView tile19_1111;
 
     @FXML
-    private ImageView tile17111;
+    private ImageView tile20_1111;
 
     @FXML
-    private ImageView tile1511;
+    private ImageView tile1_1;
 
     @FXML
-    private ImageView tile161;
+    private ImageView tile12_111;
 
     @FXML
-    private ImageView tile1911;
+    private ImageView tile5_1;
 
     @FXML
-    private ImageView tile141;
+    private ImageView tile9_1;
 
     @FXML
-    private ImageView tile11;
+    private ImageView tile1_1111;
 
     @FXML
-    private ImageView tile11111;
+    private ImageView tile1_111;
 
     @FXML
-    private ImageView tile6111;
+    private ImageView tile4_1111;
 
     @FXML
-    private ImageView tile91;
+    private ImageView tile14_1;
 
     @FXML
-    private ImageView tile121111;
+    private ImageView tile18_1;
 
     @FXML
-    private ImageView tile141111;
+    private ImageView tile19_111;
+
+    @FXML
+    private ImageView tile12_11;
 
     @FXML
     private GridPane Tiles;
 
     @FXML
-    private Button Pung;
+    private ImageView tile21_1;
 
     @FXML
-    private ImageView tile31111;
+    private Button Pung;
 
     @FXML
     private Label player3Photo;
@@ -409,64 +420,73 @@ public class GameScreen implements Screen {
     private Button Win;
 
     @FXML
-    private ImageView tile151;
+    private ImageView tile7_11;
 
     @FXML
-    private ImageView tile12111;
+    private ImageView tile3_111;
 
     @FXML
-    private ImageView tile211;
+    private ImageView tile16_111;
 
     @FXML
-    private ImageView tile3111;
+    private ImageView tile13_11;
 
     @FXML
-    private ImageView tile1211;
+    private ImageView tile4_11;
 
     @FXML
-    private ImageView tile611;
+    private ImageView tile10_1;
 
     @FXML
-    private ImageView tile161111;
+    private ImageView tile5_1111;
 
     @FXML
-    private ImageView tile81;
+    private ImageView tile4_1;
 
     @FXML
-    private ImageView tile1611;
+    private ImageView tile8_1;
 
     @FXML
-    private ImageView tile181;
-
-    @FXML
-    private ImageView tile15111;
-
-    @FXML
-    private ImageView tile51111;
-
-    @FXML
-    private ImageView tile181111;
-
-    @FXML
-    private ImageView tile71;
-
-    @FXML
-    private ImageView tile2011;
-
-    @FXML
-    private ImageView tile201;
+    private ImageView tile19_1;
 
     @FXML
     private Label player2Photo;
 
     @FXML
-    private ImageView tile8111;
+    private ImageView tile11_1111;
 
     @FXML
-    private ImageView tile171;
+    private ImageView tile11_1;
 
     @FXML
-    private ImageView tile71111;
+    private ImageView tile15_1;
+
+    @FXML
+    private ImageView tile18_11;
+
+    @FXML
+    private ImageView tile14_111;
+
+    @FXML
+    private ImageView tile20_111;
+
+    @FXML
+    private ImageView tile10_11;
+
+    @FXML
+    private ImageView tile1_11;
+
+    @FXML
+    private ImageView tile5_111;
+
+    @FXML
+    private ImageView tile9_11;
+
+    @FXML
+    private ImageView tile17_1111;
+
+    @FXML
+    private ImageView tile14_1111;
 
     @FXML
     void DiscardTile1(ActionEvent event) {
@@ -564,99 +584,131 @@ public class GameScreen implements Screen {
     }
 
     public void setPlayers(Player player1,Player player2,Player player3, Player player4){
-        MainPlayer=player1;
-        NextPlayer=player2;
-        OppositePlayer=player3;
-        PreviousPlayer=player4;
-
         Players.add(player1);
+        playerPhotos.add(player1Photo);
+        playerDirections.add(playerDirection1);
+
         Players.add(player2);
+        playerPhotos.add(player2Photo);
+        playerDirections.add(playerDirection2);
+
         Players.add(player3);
+        playerPhotos.add(player3Photo);
+        playerDirections.add(playerDirection3);
+
         Players.add(player4);
-
-
-
-        player1Photo.setStyle(
-                "-fx-background-image: url('/UI/East.png');" +
-                        " -fx-background-repeat: no-repeat;" +
-                        " -fx-background-position: center center;" +
-                        " -fx-background-size: stretch;"
-        );
+        playerPhotos.add(player4Photo);
+        playerDirections.add(playerDirection4);
 
     }
 
-    private void setPlayerPhotoStyle(Label playerPhoto,Player player){
-        Site site = player.getPlayerSite();
-        if(site==Site.East) {
-            playerPhoto.setStyle(
-                    "-fx-background-image: url('/UI/East.png');" +
-                            " -fx-background-repeat: no-repeat;" +
-                            " -fx-background-position: center center;" +
-                            " -fx-background-size: stretch;"
-            );
-        }else if(site==Site.North){
-            playerPhoto.setStyle(
-                    "-fx-background-image: url('/UI/North.png');" +
-                            " -fx-background-repeat: no-repeat;" +
-                            " -fx-background-position: center center;" +
-                            " -fx-background-size: stretch;"
-            );
-        } else if (site==Site.South) {
-            playerPhoto.setStyle(
-                    "-fx-background-image: url('/UI/South.png');"
-                    + " -fx-background-repeat: no-repeat;"
-                    + " -fx-background-position: center center;"
-                    + " -fx-background-size: stretch;"
-            );
-        }else{
-            playerPhoto.setStyle(
-                    "-fx-background-image: url('/UI/West.png');"
-                    + " -fx-background-repeat: no-repeat;"
-                    + " -fx-background-position: center center;"
-                    + " -fx-background-size: stretch;"
-            );
+    private void setPlayerPhotoStyle(){
+        for(int i = 0 ; i !=4; i++) {
+            Player player = Players.get(i);
+            Label playerPhoto = playerPhotos.get(i);
+            Site site = player.getPlayerSite();
+            if (playerPhoto != null) {
+                if (site == Site.East) {
+                    playerPhoto.setStyle(
+                            "-fx-background-image: url('/UI/East.png');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: stretch;"
+                    );
+                } else if (site == Site.North) {
+                    playerPhoto.setStyle(
+                            "-fx-background-image: url('/UI/North.png');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: stretch;"
+                    );
+                } else if (site == Site.South) {
+                    playerPhoto.setStyle(
+                            "-fx-background-image: url('/UI/South.png');"
+                                    + " -fx-background-repeat: no-repeat;"
+                                    + " -fx-background-position: center center;"
+                                    + " -fx-background-size: stretch;"
+                    );
+                } else {
+                    playerPhoto.setStyle(
+                            "-fx-background-image: url('/UI/West.png');"
+                                    + " -fx-background-repeat: no-repeat;"
+                                    + " -fx-background-position: center center;"
+                                    + " -fx-background-size: stretch;"
+                    );
+                }
+            }
         }
     }
-    private void setPlayerSiteImage(Label playerDirection,Player player){
-        Site site = player.getPlayerSite();
-        if(site==Site.East) {
-            playerDirection.setStyle(
-                    "-fx-background-image: url('/UI/East.png');" +
-                            " -fx-background-repeat: no-repeat;" +
-                            " -fx-background-position: center center;" +
-                            " -fx-background-size: stretch;"
-            );
-        }else if(site==Site.North){
-            playerDirection.setStyle(
-                    "-fx-background-image: url('/UI/North.png');" +
-                            " -fx-background-repeat: no-repeat;" +
-                            " -fx-background-position: center center;" +
-                            " -fx-background-size: stretch;"
-            );
-        } else if (site==Site.South) {
-            playerDirection.setStyle(
-                    "-fx-background-image: url('/UI/South.png');"
-                            + " -fx-background-repeat: no-repeat;"
-                            + " -fx-background-position: center center;"
-                            + " -fx-background-size: stretch;"
-            );
-        }else{
-            playerDirection.setStyle(
-                    "-fx-background-image: url('/UI/West.png');"
-                            + " -fx-background-repeat: no-repeat;"
-                            + " -fx-background-position: center center;"
-                            + " -fx-background-size: stretch;"
-            );
+
+    private void setPlayerSiteImage(){
+        for(int i = 0; i !=4; i++) {
+            Player player = Players.get(i);
+            Label playerDirection = playerDirections.get(i);
+            Site site = player.getPlayerSite();
+            if (playerDirection != null) {
+                if (site == Site.East) {
+                    playerDirection.setStyle(
+                            "-fx-background-image: url('/UI/East.png');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: stretch;"
+                    );
+                } else if (site == Site.North) {
+                    playerDirection.setStyle(
+                            "-fx-background-image: url('/UI/North.png');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: stretch;"
+                    );
+                } else if (site == Site.South) {
+                    playerDirection.setStyle(
+                            "-fx-background-image: url('/UI/South.png');"
+                                    + " -fx-background-repeat: no-repeat;"
+                                    + " -fx-background-position: center center;"
+                                    + " -fx-background-size: stretch;"
+                    );
+                } else {
+                    playerDirection.setStyle(
+                            "-fx-background-image: url('/UI/West.png');"
+                                    + " -fx-background-repeat: no-repeat;"
+                                    + " -fx-background-position: center center;"
+                                    + " -fx-background-size: stretch;"
+                    );
+                }
+            } else {
+                System.out.println("failed to change site");
+            }
         }
+    }
+
+    @FXML
+    private void initialize() {
+        // 确保控件已经初始化
+        assert player1Photo != null : "fx:id=\"player1Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert player2Photo != null : "fx:id=\"player2Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert player3Photo != null : "fx:id=\"player3Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert player4Photo != null : "fx:id=\"player4Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert playerDirection1 != null : "fx:id=\"playerDirection1\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert playerDirection2 != null : "fx:id=\"playerDirection2\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert playerDirection3 != null : "fx:id=\"playerDirection3\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        assert playerDirection4 != null : "fx:id=\"playerDirection4\" was not injected: check your FXML file 'GameScreen.fxml'.";
     }
 
     @Override
     public void loadWindow(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Display/GameScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display/GameScreen.fxml"));
+        loader.setController(this); // 设置当前类为控制器
+        Parent root = loader.load(); // 加载 FXML 文件
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Game Screen");
         stage.show();
+
+        // 调用设置方法
+        setPlayerPhotoStyle();
+        setPlayerSiteImage();
     }
 }
 
