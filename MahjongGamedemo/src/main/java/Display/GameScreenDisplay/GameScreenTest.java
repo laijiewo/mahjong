@@ -55,26 +55,38 @@ public class GameScreenTest extends Application {
         hand.add(new NumberTile(4, Suit.TIAO));
         hand.add(new NumberTile(5, Suit.TIAO));
         eastplayer.setTile_hand(hand);
+        eastplayer.shuffleTile_hand();
+        southplayer.setTile_hand(hand);
+        westplayer.setTile_hand(hand);
+        northplayer.setTile_hand(hand);
 
 
         try {
             GameManager.addPlayer(eastplayer);
         } catch (Exception e) {
+            System.out.println(1);
+            e.printStackTrace();
             System.out.println("Cannot add player");
         }
         try {
             GameManager.addPlayer(southplayer);
         } catch (Exception e) {
+            System.out.println(2);
+            e.printStackTrace();
             System.out.println("Cannot add player");
         }
         try {
             GameManager.addPlayer(westplayer);
         } catch (Exception e) {
+            System.out.println(3);
+            e.printStackTrace();
             System.out.println("Cannot add player");
         }
         try {
             GameManager.addPlayer(northplayer);
         } catch (Exception e) {
+            System.out.println(4);
+            e.printStackTrace();
             System.out.println("Cannot add player");
         }
 

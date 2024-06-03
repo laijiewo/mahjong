@@ -614,7 +614,7 @@ public class GameScreen implements Screen {
 
         int indexofPlayer = 0;
         for (GridPane gridPane : gridPaneList) {
-            Player player = Players.get(indexofPlayer);
+            Player player = players.get(indexofPlayer);
             int indexofTile = 0;
 
             List<ImageView> imageViewList = getAllImageViews(gridPane);
@@ -639,7 +639,7 @@ public class GameScreen implements Screen {
 
         int indexofPlayer = 0;
         for (GridPane gridPane : gridPaneList) {
-            Player player = Players.get(indexofPlayer);
+            Player player = players.get(indexofPlayer);
             int indexofTile = 0;
 
             List<ImageView> imageViewList = getAllImageViews(gridPane);
@@ -657,7 +657,7 @@ public class GameScreen implements Screen {
         TileImageMapper mapper = new TileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
-        Player player = MainPlayer;
+        Player player = players.get(0);
         int indexofTile = 0;
 
         List<Button> buttons = new ArrayList<>();
@@ -808,8 +808,6 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
-        paintHandTiles();
-        paintDiscardPiles();
     }
 
     @Override
@@ -826,6 +824,8 @@ public class GameScreen implements Screen {
         // 调用设置方法
         setPlayerPhotoStyle();
         setPlayerSiteImage();
+        paintHandTiles();
+        paintDiscardPiles();
     }
 }
 

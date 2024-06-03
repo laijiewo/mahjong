@@ -1,6 +1,5 @@
 package Module;
 import Display.GameScreenDisplay.GameScreen;
-import System.*;
 import Display.*;
 import WebConnect.Message;
 import javafx.stage.Stage;
@@ -8,8 +7,8 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Represents a player in a Mahjong game, managing their actions and hand.
@@ -43,6 +42,9 @@ public class Player {
 
     public void setTile_hand(ArrayList<Tile> Tile_hand){
         this.Tile_hand=Tile_hand;
+    }
+    public void shuffleTile_hand(){
+        Collections.sort(Tile_hand);
     }
     /**
      * Rolls the dice using a provided Dice object.

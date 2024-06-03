@@ -18,6 +18,7 @@ public class NumberTile extends Tile{
     public NumberTile(int rank,Suit suit) {
         super(suit);
         if (rank < 1 || rank > 9) {
+            System.out.println(rank);
             throw new IllegalArgumentException("Rank must be between 1 and 9.");
         }
         this.rank = rank;
