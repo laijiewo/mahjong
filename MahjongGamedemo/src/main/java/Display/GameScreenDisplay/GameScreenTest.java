@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import System.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameScreenTest extends Application {
 
@@ -39,6 +40,23 @@ public class GameScreenTest extends Application {
         Player southplayer = new Player(stage2);
         Player westplayer = new Player(stage3);
         Player northplayer = new Player(stage4);
+        ArrayList<Tile> hand = new ArrayList<Tile>();
+        hand.add(new NumberTile(9, Suit.WAN));
+        hand.add(new NumberTile(3, Suit.WAN));
+        hand.add(new NumberTile(4, Suit.WAN));
+        hand.add(new NumberTile(5, Suit.WAN));
+        hand.add(new NumberTile(6, Suit.WAN));
+        hand.add(new NumberTile(7, Suit.WAN));
+        hand.add(new NumberTile(8, Suit.WAN));
+        hand.add(new NumberTile(6, Suit.TIAO));
+        hand.add(new NumberTile(1, Suit.TIAO));
+        hand.add(new NumberTile(2, Suit.TIAO));
+        hand.add(new NumberTile(3, Suit.TIAO));
+        hand.add(new NumberTile(4, Suit.TIAO));
+        hand.add(new NumberTile(5, Suit.TIAO));
+        eastplayer.setTile_hand(hand);
+
+
         try {
             GameManager.addPlayer(eastplayer);
         } catch (Exception e) {
@@ -59,6 +77,7 @@ public class GameScreenTest extends Application {
         } catch (Exception e) {
             System.out.println("Cannot add player");
         }
+
     }
 
 

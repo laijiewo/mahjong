@@ -41,6 +41,9 @@ public class Player {
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
 
+    public void setTile_hand(ArrayList<Tile> Tile_hand){
+        this.Tile_hand=Tile_hand;
+    }
     /**
      * Rolls the dice using a provided Dice object.
      * @param Dice The dice to roll.

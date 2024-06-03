@@ -23,6 +23,7 @@ class FallenTileImageMapperTest extends Application {
         tilePane.setPrefColumns(5); // Set the preferred number of columns
 
         // Get the map of images
+
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
         TileFactory tileFactory = new TileFactory();

@@ -1,12 +1,16 @@
 package Display.GameScreenDisplay;
 import Display.Screen;
+import Module.ImageMap.FallenTileImageMapper;
+import Module.ImageMap.TileImageMapper;
 import System.*;
 import Module.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
@@ -20,6 +24,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class GameScreen implements Screen {
@@ -49,6 +54,9 @@ public class GameScreen implements Screen {
 
     @FXML
     private ImageView tile3_1;
+
+    @FXML
+    private GridPane OppositeTiles;
 
     @FXML
     private ImageView tile7_1;
@@ -102,6 +110,9 @@ public class GameScreen implements Screen {
     private ImageView tile13_1111;
 
     @FXML
+    private GridPane PreviousDiscardPile;
+
+    @FXML
     private ImageView tile3_11;
 
     @FXML
@@ -121,9 +132,6 @@ public class GameScreen implements Screen {
 
     @FXML
     private ImageView tile15_1111;
-
-    @FXML
-    private GridPane OPTiles;
 
     @FXML
     private ImageView tile15_111;
@@ -216,6 +224,9 @@ public class GameScreen implements Screen {
     private ImageView tile13_1;
 
     @FXML
+    private GridPane NextTiles;
+
+    @FXML
     private ImageView tile14_11;
 
     @FXML
@@ -277,6 +288,9 @@ public class GameScreen implements Screen {
 
     @FXML
     private ImageView tile4_111;
+
+    @FXML
+    private GridPane OppositeDiscardPile;
 
     @FXML
     private ImageView tile20_11;
@@ -396,6 +410,9 @@ public class GameScreen implements Screen {
     private ImageView tile14_1;
 
     @FXML
+    private GridPane PlayerDiscardPile;
+
+    @FXML
     private ImageView tile18_1;
 
     @FXML
@@ -405,7 +422,7 @@ public class GameScreen implements Screen {
     private ImageView tile12_11;
 
     @FXML
-    private GridPane Tiles;
+    private GridPane PreviousTiles;
 
     @FXML
     private ImageView tile21_1;
@@ -421,6 +438,9 @@ public class GameScreen implements Screen {
 
     @FXML
     private ImageView tile7_11;
+
+    @FXML
+    private GridPane NextDiscardPile;
 
     @FXML
     private ImageView tile3_111;
@@ -484,6 +504,9 @@ public class GameScreen implements Screen {
 
     @FXML
     private ImageView tile17_1111;
+
+    @FXML
+    private GridPane PlayerTiles;
 
     @FXML
     private ImageView tile14_1111;
@@ -581,6 +604,109 @@ public class GameScreen implements Screen {
     @FXML
     void Pause(ActionEvent event) {
 
+    }
+
+    public void paintDiscardPiles(){
+        List<GridPane> gridPaneList = new ArrayList<>();
+        gridPaneList.add(PlayerDiscardPile);
+        gridPaneList.add(NextDiscardPile);
+        gridPaneList.add(OppositeDiscardPile);
+        gridPaneList.add(PreviousDiscardPile);
+
+        FallenTileImageMapper mapper = new FallenTileImageMapper();
+        Map<Tile, Image> imageMap = mapper.getImageMap();
+
+        int indexofPlayer = 0;
+        for (GridPane gridPane : gridPaneList) {
+            Player player = Players.get(indexofPlayer);
+            int indexofTile = 0;
+
+            List<ImageView> imageViewList = getAllImageViews(gridPane);
+
+            for (ImageView imageView :imageViewList) {
+                Tile tile = player.getDiscard_Tiles().get(indexofTile);
+                imageView.setImage(imageMap.get(tile));
+            }
+            indexofPlayer++;
+        }
+
+    }
+
+    public void paintOtherHandTiles(){
+        List<GridPane> gridPaneList = new ArrayList<>();
+        gridPaneList.add(NextTiles);
+        gridPaneList.add(OppositeTiles);
+        gridPaneList.add(PreviousTiles);
+
+        FallenTileImageMapper mapper = new FallenTileImageMapper();
+        Map<Tile, Image> imageMap = mapper.getImageMap();
+
+        int indexofPlayer = 0;
+        for (GridPane gridPane : gridPaneList) {
+            Player player = Players.get(indexofPlayer);
+            int indexofTile = 0;
+
+            List<ImageView> imageViewList = getAllImageViews(gridPane);
+
+            for (ImageView imageView :imageViewList) {
+                Tile tile = player.getTile_hand().get(indexofTile);
+                imageView.setImage(imageMap.get(tile));
+            }
+            indexofPlayer++;
+        }
+
+    }
+
+    public void paintHandTiles(){
+        TileImageMapper mapper = new TileImageMapper();
+        Map<Tile, Image> imageMap = mapper.getImageMap();
+
+        Player player = MainPlayer;
+        int indexofTile = 0;
+
+        List<Button> buttons = new ArrayList<>();
+        for (Node node : PlayerTiles.getChildren()) {
+            if (node instanceof Button) {
+                buttons.add((Button) node);
+            }
+        }
+
+        for (Button button :buttons) {
+            indexofTile++;
+            Tile tile = player.getTile_hand().get(indexofTile);
+            Image image = imageMap.get(tile);
+            String imageUrl = image.getUrl();
+
+            button.setStyle("-fx-text-fill: #308C4C;" +
+                    " -fx-background-color: transparent;" +
+                    " -fx-background-image: url('" + imageUrl + "');" +
+                    " -fx-background-repeat: no-repeat;" +
+                    " -fx-background-position: center center;" +
+                    " -fx-background-size: 175%;");
+        }
+    }
+
+
+    public static List<Label> getAllLabels(GridPane gridPane) {
+        List<Label> labels = new ArrayList<>();
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Label) {
+                labels.add((Label) node);
+            }
+        }
+
+        return labels;
+    }
+
+    public static List<ImageView> getAllImageViews(GridPane gridPane) {
+        List<ImageView> imageViews = new ArrayList<>();
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof ImageView) {
+                imageViews.add((ImageView) node);
+            }
+        }
+
+        return imageViews;
     }
 
     public void setPlayers(Player player1,Player player2,Player player3, Player player4){
@@ -686,6 +812,8 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
+        paintHandTiles();
+        paintDiscardPiles();
     }
 
     @Override
