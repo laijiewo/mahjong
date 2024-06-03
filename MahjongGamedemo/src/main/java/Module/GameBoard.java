@@ -79,4 +79,10 @@ public class GameBoard {
         Collections.shuffle(newList);
         this.Tiles_inTheWall = new ArrayList<>(newList);
     }
+    public Tile getLeastDiscardedTile() {
+        return Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
+    }
+    public int getTileCountInTheWall() {
+        return Tiles_inTheWall.size();
+    }
 }

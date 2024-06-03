@@ -34,6 +34,9 @@ public class GameManager {
 
     public static void addPlayer(Player player) {
         game.addPlayer(player);
+        if (game.getNumOfPlayers() == 4) {
+            game.initializeGame();
+        }
     }
     /**
      * Handles the action for the "Hu" button.
@@ -66,10 +69,6 @@ public class GameManager {
      * This method is triggered when a player wants to declare a Pung, which is claiming three of the same tile.
      */
     public static void handlePungButtonAction(Player player) {
-        Player currentPlayer = game.getCurrentPlayer();
-        if (!currentPlayer.equals(player)) {
-            return;
-        }
 
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.pung(discardedTile);

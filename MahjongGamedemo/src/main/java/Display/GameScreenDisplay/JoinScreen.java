@@ -27,21 +27,21 @@ public class JoinScreen implements Screen {
 
     @FXML
     void JoinGame(ActionEvent event) {
-        ClientTest client = new ClientTest();
         Player player = new Player();
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
-            client.setServerHostname(ip);
-            client.setServerPort(port);
+            player.setServerHostname(ip);
+            player.setServerPort(port);
             try {
-                client.connect();
-                if (client.getconnected()) {
+                player.connect();
+                if (player.getconnected()) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Connected to Server");
                     alert.setHeaderText("Connected to Server");
                     alert.setContentText("You are connected to the server");
                     alert.showAndWait();
+                    GameManager.addPlayer(player);
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
