@@ -9,6 +9,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import System.*;
 
+import java.io.IOException;
+
 public class GameScreenTest extends Application {
 
 
@@ -22,24 +24,39 @@ public class GameScreenTest extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Stage stage1, stage2, stage3, stage4;
+        stage1 = new Stage();
+        stage2 = new Stage();
+        stage3 = new Stage();
+        stage4 = new Stage();
 
-        Player eastplayer = new Player();
-        eastplayer.setSite(Site.East);
 
-        Player southplayer = new Player();
-        southplayer.setSite(Site.South);
-
-        Player westplayer = new Player();
-        westplayer.setSite(Site.West);
-
-        Player northplayer = new Player();
-        northplayer.setSite(Site.North);
-
-        GameScreen gameScreen = new GameScreen();
-
-        gameScreen.setPlayers(southplayer,westplayer,northplayer,eastplayer);
-        gameScreen.loadWindow(primaryStage);
-
+        Player eastplayer = new Player(stage1);
+        Player southplayer = new Player(stage2);
+        Player westplayer = new Player(stage3);
+        Player northplayer = new Player(stage4);
+        try {
+            GameManager.addPlayer(eastplayer);
+            eastplayer.connect();
+        } catch (Exception e) {
+            System.out.println("Cannot add player");
+        }
+        try {
+            GameManager.addPlayer(southplayer);
+        } catch (Exception e) {
+            System.out.println("Cannot add player");
+        }
+        try {
+            GameManager.addPlayer(westplayer);
+        } catch (Exception e) {
+            System.out.println("Cannot add player");
+        }
+        try {
+            GameManager.addPlayer(northplayer);
+        } catch (Exception e) {
+            System.out.println("Cannot add player");
+        }
+        GameManager.startNewGame();
     }
 
 
