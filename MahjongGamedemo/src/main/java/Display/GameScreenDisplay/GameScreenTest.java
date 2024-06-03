@@ -59,7 +59,6 @@ public class GameScreenTest extends Application {
         } catch (Exception e) {
             System.out.println("Cannot add player");
         }
-        GameManager.startNewGame();
     }
 
 
