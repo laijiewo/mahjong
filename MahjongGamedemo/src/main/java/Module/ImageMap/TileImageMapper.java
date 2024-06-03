@@ -1,9 +1,10 @@
-package Module;
+package Module.ImageMap;
 
 import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+import Module.*;
 public class TileImageMapper {
     private Map<Tile, Image> imageMap = new HashMap<>();
     public TileImageMapper() {

@@ -18,7 +18,7 @@ public class Player {
     private int Score;
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
-
+    private ArrayList<Tile> Chew_Pong_Kung_Tiles;
     private Screen gameScreen;
     private ArrayList<Tile> discard_Tiles;
     private Tile hunTile;
@@ -34,10 +34,11 @@ public class Player {
     public Player(Stage stage){
         this.stage = stage;
         this.Score = 0;
-        Tile_hand = new ArrayList<Tile>();
-        discard_Tiles = new ArrayList<Tile>();
+        Tile_hand = new ArrayList<>();
+        discard_Tiles = new ArrayList<>();
         hunTile = null;
         gameScreen = new GameScreen();
+        Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
 
     /**

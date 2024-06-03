@@ -1,4 +1,5 @@
 package Module;
+import Module.ImageMap.TileImageMapper;
 import System.*;
 import WebConnect.Message;
 
