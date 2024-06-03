@@ -585,20 +585,12 @@ public class GameScreen implements Screen {
 
     public void setPlayers(Player player1,Player player2,Player player3, Player player4){
         Players.add(player1);
-        playerPhotos.add(player1Photo);
-        playerDirections.add(playerDirection1);
 
         Players.add(player2);
-        playerPhotos.add(player2Photo);
-        playerDirections.add(playerDirection2);
 
         Players.add(player3);
-        playerPhotos.add(player3Photo);
-        playerDirections.add(playerDirection3);
 
         Players.add(player4);
-        playerPhotos.add(player4Photo);
-        playerDirections.add(playerDirection4);
 
     }
 
@@ -610,28 +602,28 @@ public class GameScreen implements Screen {
             if (playerPhoto != null) {
                 if (site == Site.East) {
                     playerPhoto.setStyle(
-                            "-fx-background-image: url('/UI/East.png');" +
+                            "-fx-background-image: url('/UI/EastPlayer.png');" +
                                     " -fx-background-repeat: no-repeat;" +
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
                 } else if (site == Site.North) {
                     playerPhoto.setStyle(
-                            "-fx-background-image: url('/UI/North.png');" +
+                            "-fx-background-image: url('/UI/NorthPlayer.png');" +
                                     " -fx-background-repeat: no-repeat;" +
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
                 } else if (site == Site.South) {
                     playerPhoto.setStyle(
-                            "-fx-background-image: url('/UI/South.png');"
+                            "-fx-background-image: url('/UI/SouthPlayer.png');"
                                     + " -fx-background-repeat: no-repeat;"
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
                 } else {
                     playerPhoto.setStyle(
-                            "-fx-background-image: url('/UI/West.png');"
+                            "-fx-background-image: url('/UI/WestPlayer.png');"
                                     + " -fx-background-repeat: no-repeat;"
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
@@ -684,15 +676,16 @@ public class GameScreen implements Screen {
 
     @FXML
     private void initialize() {
-        // 确保控件已经初始化
-        assert player1Photo != null : "fx:id=\"player1Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert player2Photo != null : "fx:id=\"player2Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert player3Photo != null : "fx:id=\"player3Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert player4Photo != null : "fx:id=\"player4Photo\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert playerDirection1 != null : "fx:id=\"playerDirection1\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert playerDirection2 != null : "fx:id=\"playerDirection2\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert playerDirection3 != null : "fx:id=\"playerDirection3\" was not injected: check your FXML file 'GameScreen.fxml'.";
-        assert playerDirection4 != null : "fx:id=\"playerDirection4\" was not injected: check your FXML file 'GameScreen.fxml'.";
+        playerPhotos.add(player1Photo);
+        playerPhotos.add(player2Photo);
+        playerPhotos.add(player3Photo);
+        playerPhotos.add(player4Photo);
+
+        playerDirections.add(playerDirection1);
+        playerDirections.add(playerDirection2);
+        playerDirections.add(playerDirection3);
+        playerDirections.add(playerDirection4);
+
     }
 
     @Override
