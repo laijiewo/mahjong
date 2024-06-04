@@ -625,6 +625,7 @@ public class GameScreen implements Screen {
             int indexOfImage = 0;
             for (Tile tile : tiles) {
                 ImageView imageView = imageViewList.get(indexOfImage);
+                imageView.setVisible(true);
                 imageView.setImage(imageMap.get(tile));
                 indexOfImage++;
             }
