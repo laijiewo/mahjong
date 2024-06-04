@@ -640,6 +640,8 @@ public class GameScreen implements Screen {
         gridPaneList.add(OppositeTiles);
         gridPaneList.add(PreviousTiles);
 
+        double rotationDegree = 360;
+
         FallenTileImageMapper mapper = new FallenTileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
@@ -648,11 +650,13 @@ public class GameScreen implements Screen {
             Player player = players.get(indexofPlayer);
             List<Tile> tiles = player.getChew_Pong_Kung_Tiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
+            rotationDegree-=90;
 
             int indexOfImage = 0;
             for (Tile tile : tiles) {
                 ImageView imageView = imageViewList.get(indexOfImage);
                 imageView.setImage(imageMap.get(tile));
+                imageView.setRotate(rotationDegree);
                 indexOfImage++;
             }
             indexofPlayer++;
