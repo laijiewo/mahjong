@@ -25,6 +25,8 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -55,7 +57,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="13">
+            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="15">
                <font>
                   <Font size="11.0" />
                </font>
@@ -1291,7 +1293,7 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <Label id="player1Photo" fx:id="player1Photo" alignment="CENTER" layoutX="820.0" layoutY="565.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/EastPlayer.png'); -fx-background-color: transparant; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player1Photo" fx:id="player1Photo" alignment="CENTER" layoutX="850.0" layoutY="565.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/EastPlayer.png'); -fx-background-color: transparant; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>
