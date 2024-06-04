@@ -30,26 +30,29 @@ public class GameScreenTest extends Application {
         stage3 = new Stage();
         stage4 = new Stage();
 
+        int port = 8081;
+        String ip = "127.0.0.1";
+
         GameManager gameManager = new GameManager();
-        MahjongGame game = new MahjongGame(8081);
+        MahjongGame game = new MahjongGame(port);
         GameManager.addGame(game);
 
 
         Player eastplayer = new Player(stage1);
-        eastplayer.setServerPort(8081);
-        eastplayer.setServerHostname("10.19.63.25");
+        eastplayer.setServerPort(port);
+        eastplayer.setServerHostname(ip);
         eastplayer.connect();
         Player southplayer = new Player(stage2);
-        southplayer.setServerPort(8081);
-        southplayer.setServerHostname("10.19.63.25");
+        southplayer.setServerPort(port);
+        southplayer.setServerHostname(ip);
         southplayer.connect();
         Player westplayer = new Player(stage3);
-        westplayer.setServerPort(8081);
-        westplayer.setServerHostname("10.19.63.25");
+        westplayer.setServerPort(port);
+        westplayer.setServerHostname(ip);
         westplayer.connect();
         Player northplayer = new Player(stage4);
-        northplayer.setServerPort(8081);
-        northplayer.setServerHostname("10.19.63.25");
+        northplayer.setServerPort(port);
+        northplayer.setServerHostname(ip);
         northplayer.connect();
 
         ArrayList<Tile> hand = new ArrayList<Tile>();

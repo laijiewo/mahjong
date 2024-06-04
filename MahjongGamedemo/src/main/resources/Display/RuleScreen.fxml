@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.RuleScreen">
+   <children>
+      <ScrollPane layoutX="71.0" layoutY="49.0" prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0">
+               <children>
+                  <TextArea prefHeight="640.0" prefWidth="1024.0" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;111111111111111111111111111111111111111111111&#10;&#10;&#10;111111111111111111&#10;&#10;111111&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;11111111111111111111111111111111&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;11111111111111111111111111&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;111111111111111111111111111111111&#10;&#10;&#10;&#10;&#10;111111111&#10;111111111111111111111111&#10;111111111111111111&#10;111111111111111&#10;111111111111111" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

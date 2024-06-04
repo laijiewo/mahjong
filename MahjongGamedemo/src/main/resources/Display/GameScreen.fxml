@@ -30,72 +30,72 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="T1" layoutX="388.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile1" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T1">
+            <Button fx:id="T1" layoutX="388.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile1" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T11" layoutX="837.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile11" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T11" GridPane.columnIndex="10">
+            <Button fx:id="T11" layoutX="837.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile11" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="10">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T7" layoutX="657.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile7" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T7" GridPane.columnIndex="6">
+            <Button fx:id="T7" layoutX="657.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile7" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="6">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T6" layoutX="612.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile6" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T6" GridPane.columnIndex="5">
+            <Button fx:id="T6" layoutX="612.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile6" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="5">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T3" layoutX="478.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile3" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T3" GridPane.columnIndex="2">
+            <Button fx:id="T3" layoutX="478.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile3" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="2">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T14" GridPane.columnIndex="13">
+            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="13">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T9" layoutX="747.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile9" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T9" GridPane.columnIndex="8">
+            <Button fx:id="T9" layoutX="747.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile9" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="8">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T12" layoutX="882.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile12" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T12" GridPane.columnIndex="11">
+            <Button fx:id="T12" layoutX="882.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile12" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="11">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T8" layoutX="702.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile8" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T8" GridPane.columnIndex="7">
+            <Button fx:id="T8" layoutX="702.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile8" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="7">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T13" layoutX="927.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile13" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T13" GridPane.columnIndex="12">
+            <Button fx:id="T13" layoutX="927.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile13" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="12">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T5" layoutX="568.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile5" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T5" GridPane.columnIndex="4">
+            <Button fx:id="T5" layoutX="568.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile5" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="4">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T10" layoutX="792.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile10" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T10" GridPane.columnIndex="9">
+            <Button fx:id="T10" layoutX="792.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile10" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="9">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T4" layoutX="523.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile4" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T4" GridPane.columnIndex="3">
+            <Button fx:id="T4" layoutX="523.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile4" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="3">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T2" layoutX="433.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile2" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" text="T2" GridPane.columnIndex="1">
+            <Button fx:id="T2" layoutX="433.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile2" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="1">
                <font>
                   <Font size="11.0" />
                </font>
