@@ -1,11 +1,13 @@
 package Message;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
 import Module.Tile.Tile;
 
 public class Message implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
     private MessageType type;
     private Tile tile = null;
@@ -13,9 +15,8 @@ public class Message implements Serializable {
     private List<Tile> tiles = null;
 
     // Discard
-    public Message(int index, MessageType type, Tile tile) {
+    public Message(int index, MessageType type) {
         this.type = type;
-        this.tile = tile;
         this.index = index;
     }
     // CHEW, PUNG, and KONG Message

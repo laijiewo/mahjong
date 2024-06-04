@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class Player {
     private int Score;
-    private static ObjectOutputStream oos;
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
@@ -170,6 +169,9 @@ public class Player {
             throw new RuntimeException(e);
         }
     }
+    public void updateScreen() {
+        ((GameScreen) gameScreen).updateScreen();
+    }
     public void setServerHostname(String serverHostname) {
         this.serverHostname = serverHostname;
     }
@@ -188,7 +190,6 @@ public class Player {
         int port = serverPort;
         // Attempt to connect to the server
         echoSocket = new Socket(serverHostname, port);
-        oos = new ObjectOutputStream(echoSocket.getOutputStream());
         connected = true;
     }
 
@@ -271,10 +272,11 @@ public class Player {
     }
     public void sendMessageObjectToHost(Message message) {
         try {
+            ObjectOutputStream oos = new ObjectOutputStream(echoSocket.getOutputStream());;
             oos.writeObject(message);
             oos.flush();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
     public void receiveMessageObjectFromHost() {

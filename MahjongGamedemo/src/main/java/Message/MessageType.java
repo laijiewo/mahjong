@@ -1,5 +1,7 @@
 package Message;
 
-public enum MessageType {
+import java.io.Serializable;
+
+public enum MessageType implements Serializable {
     DISCARD, DRAW, CHEW, PUNG, KONG, HU, PAUSE, UNPAUSE;
 }

@@ -35,11 +35,16 @@ public class GameManager {
      *
      */
     public static void startNewGame() {
-            game.initializeGame();
-            startGame();
-            // TODO: game应进行定庄、发牌、定混等操作
-    }
+        game.initializeGame();
+        startGame();
+        // TODO: game应进行定庄、发牌、定混等操作
 
+    }
+    public static void updateScreen() {
+        for (Player player : game.getPlayers()) {
+            player.updateScreen();
+        }
+    }
     public static void addPlayer(Player player) throws Exception{
         int index = game.getNumOfPlayers();
         player.setSite(sites[index]);
@@ -118,8 +123,8 @@ public class GameManager {
      * This method is triggered when a player chooses to discard a tile from their hand.
      */
     public static void handleDiscardButtonAction(int tileIndex, Player player) {
-        Tile discardedTile = player.getTile_hand().get(tileIndex);
-        Message message = new Message(tileIndex, MessageType.DISCARD, discardedTile);
+        Message message = new Message(tileIndex, MessageType.DISCARD);
+        System.out.println(player.getTile_hand().get(tileIndex).getSuit());
         player.sendMessageObjectToHost(message);
     }
     /**

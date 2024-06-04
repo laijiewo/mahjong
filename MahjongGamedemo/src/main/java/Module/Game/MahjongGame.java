@@ -1,9 +1,11 @@
 package Module.Game;
+
 import Module.ImageMap.TileImageMapper;
 import Module.Tile.Tile;
 import System.*;
 import Message.Message;
 import Message.MessageType;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,7 +15,7 @@ import java.util.List;
 
 public class MahjongGame implements Game {
     private static List<Player> players;
-    private GameBoard gameBoard;
+    private static GameBoard gameBoard;
     protected static LinkedList<Socket> sockets;
     TileImageMapper tileImageMapper;
     private static ServerSocket serverSocket;
@@ -33,29 +35,31 @@ public class MahjongGame implements Game {
         players = new LinkedList<>();
     }
 
-    public void addPlayer(Player player){
+    public void addPlayer(Player player) {
         players.add(player);
     }
+
     public int getNumOfPlayers() {
         return players.size();
     }
 
     @Override
     public void initializeGame() {
-        gameBoard=new GameBoard();
+        gameBoard = new GameBoard();
         gameBoard.determineDealer();
         gameBoard.shuffleTiles();
         gameBoard.dealAllTiles();
         gameBoard.determineHunTile();
         setHunTileToPlayers();
     }
+
     public void setHunTileToPlayers() {
         for (Player player : players) {
             player.setHunTile(gameBoard.getHunTile());
         }
     }
 
-    public static List<Player> getPlayers(){
+    public static List<Player> getPlayers() {
         return players;
     }
 
@@ -86,21 +90,14 @@ public class MahjongGame implements Game {
 
     @Override
     public boolean isRoundOver() {
-        if (checkVictory()!=null){
+        if (checkVictory() != null) {
             return true;
-        }else {
+        } else {
             return false;
         }
 
     }
-    private Player getPlayerBySocket(Socket socket) {
-        for (Player player : players) {
-            if (player.getEchoSocket() == socket) {
-                return player;
-            }
-        }
-        return null;
-    }
+
     private void startServer(int port) throws IOException {
         this.port = port;
         sockets = new LinkedList<>();
@@ -111,16 +108,21 @@ public class MahjongGame implements Game {
             System.out.println("Could not listen on port: " + port);
             System.exit(1);
         }
-        try {
-            runGame();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            System.out.println(sockets.size() + " clients connected.");
+            listenForConnections();
+            if (sockets.isEmpty()) {
+                System.out.println("No clients connected.");
+                break;
+            }
         }
         serverSocket.close();
     }
+
     public String getHostIPAddress() {
         return serverSocket.getInetAddress().getHostAddress();
     }
+
     public int getPort() {
         return port;
     }
@@ -151,8 +153,7 @@ public class MahjongGame implements Game {
             synchronized (clientSocket) {
                 sockets.add(clientSocket);
             }
-            new Thread(new ServerChatThread(clientSocket, "player " + i)).start();
-            i++;
+            new Thread(new ServerGameThread(clientSocket)).start();
         } catch (IOException e) {
             System.out.println("Accept failed.");
             System.exit(1);
@@ -160,6 +161,7 @@ public class MahjongGame implements Game {
         System.out.println("Got a connection from " + clientSocket.getInetAddress().getHostAddress());
         System.out.println("Waiting for input.....");
     }
+
     private void sendOperationMessageToAll(Message message) throws IOException {
         // TODO: 向所有玩家发送操作信息
         for (Socket socket : sockets) {
@@ -168,34 +170,7 @@ public class MahjongGame implements Game {
             oos.flush();
         }
     }
-    private Message receiveOperationMessageFromPlayer(Socket player) throws IOException, ClassNotFoundException {
-        //TODO：接收玩家操作信息
-        ObjectInputStream ois = new ObjectInputStream(player.getInputStream());
-        return (Message) ois.readObject();
+    public static void handleDiscardMessage(Message message) {
+        gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex());
     }
-    public void runGame() throws IOException, ClassNotFoundException {
-        // TODO: 运行游戏
-        //      1. 轮转
-        //      2. 发送操作信息
-        //      3. 接收玩家操作信息
-        System.out.println(4);
-        while (true) {
-            for (Socket socket : sockets) {
-                Message message = receiveOperationMessageFromPlayer(socket);
-                MessageType type = message.getType();
-                System.out.println(3);
-                switch (type) {
-                    case DISCARD:
-                        System.out.println(2);
-                        handleDiscardMessage(message, socket);
-                        System.out.println(1);
-                        break;
-                }
-            }
-        }
-    }
-    private void handleDiscardMessage(Message message, Socket socket) {
-        getPlayerBySocket(socket).discardTiles(message.getIndex());
-    }
-
 }

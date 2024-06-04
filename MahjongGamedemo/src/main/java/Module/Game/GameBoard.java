@@ -15,23 +15,19 @@ import java.util.*;
  * Represents the game board for a Mahjong game, managing the state and interactions within a game session.
  */
 public class GameBoard {
-    public ArrayList<Tile> Hand_tilesOfPlayer;
-    public ArrayList<Tile> Tiles_discardedByPlayer;
-    public ArrayList<Tile> Tiles_inTheWall;
-    public TileFactory tileFactory;
+    private ArrayList<Tile> Tiles_discardedByPlayer;
+    private ArrayList<Tile> Tiles_inTheWall;
+    private TileFactory tileFactory;
 
-    public Tile hunTile;
+    private Tile hunTile;
 
     private int dealerIndex; // Index to track the dealer in the players list
     private List<Player> players; // List to hold all players
-    public Dice dice;
-
-
+    private Dice dice;
 
     public GameBoard() {
 
         // Initialize the lists for tiles
-        this.Hand_tilesOfPlayer = new ArrayList<>();
         this.Tiles_discardedByPlayer = new ArrayList<>();
         this.Tiles_inTheWall = new ArrayList<>();
 
@@ -66,11 +62,12 @@ public class GameBoard {
     }
 
     public void dealAllTiles() {
-        int numTiles = 13 * players.size();
+        int numTiles = 13 * players.size() + 1;
         for (int i = 0; i < numTiles; i++) {
             Player currentPlayer = players.get((dealerIndex + i) % players.size());
             dealTiles(currentPlayer);
         }
+        System.out.println(players.get(dealerIndex).getPlayerSite());
     }
 
     public void dealTiles(Player player) {
@@ -80,7 +77,6 @@ public class GameBoard {
     }
 
     public void determineHunTile() {
-        dealAllTiles();
         Tile hunTile = Tiles_inTheWall.get(0);
         if (hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)) {
             NumberTile hun = (NumberTile) hunTile;

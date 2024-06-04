@@ -512,72 +512,72 @@ public class GameScreen implements Screen {
 
     @FXML
     void DiscardTile1(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(1, players.get(0));
+        GameManager.handleDiscardButtonAction(0, players.get(0));
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(11, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile7(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(7, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile6(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(6, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile3(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(3, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile14(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(14, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile9(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(9, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile12(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(12, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile8(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(8, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile13(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(13, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile5(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(5, players.get(0));
-    }
-
-    @FXML
-    void DiscardTile10(ActionEvent event) {
         GameManager.handleDiscardButtonAction(10, players.get(0));
     }
 
     @FXML
-    void DiscardTile4(ActionEvent event) {
+    void DiscardTile7(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(6, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile6(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(5, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile3(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(2, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile14(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(13, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile9(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(8, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile12(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(11, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile8(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(7, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile13(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(12, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile5(ActionEvent event) {
         GameManager.handleDiscardButtonAction(4, players.get(0));
     }
 
     @FXML
+    void DiscardTile10(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(9, players.get(0));
+    }
+
+    @FXML
+    void DiscardTile4(ActionEvent event) {
+        GameManager.handleDiscardButtonAction(3, players.get(0));
+    }
+
+    @FXML
     void DiscardTile2(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(2, players.get(0));
+        GameManager.handleDiscardButtonAction(1, players.get(0));
     }
 
     @FXML
@@ -669,26 +669,24 @@ public class GameScreen implements Screen {
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
         Player player = players.get(0);
-        int indexofTile = 0;
 
         List<Button> buttons = new ArrayList<>();
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
-        for (Button button :buttons) {
-            Tile tile = player.getTile_hand().get(indexofTile);
-            if (tile == null) {
-                return;
-            }
+        List<Tile> tiles = player.getTile_hand();
+        int indexOfButton = 0;
+        for (Tile tile : tiles) {
+            Button button = buttons.get(indexOfButton);
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 
             button.setStyle("-fx-text-fill: #308C4C;" +
-                    " -fx-background-color: transparent;" +
-                    " -fx-background-image: url('" + imageUrl + "');" +
-                    " -fx-background-repeat: no-repeat;" +
-                    " -fx-background-position: center center;" +
-                    " -fx-background-size: 175%;");
-            indexofTile++;
+                                    " -fx-background-color: transparent;" +
+                                    " -fx-background-image: url('" + imageUrl + "');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: 175%;");
+            indexOfButton++;
         }
     }
 
@@ -834,6 +832,11 @@ public class GameScreen implements Screen {
         // 调用设置方法
         setPlayerPhotoStyle();
         setPlayerSiteImage();
+        paintHandTiles();
+        paintDiscardPiles();
+        paintOtherHandTiles();
+    }
+    public void updateScreen() {
         paintHandTiles();
         paintDiscardPiles();
         paintOtherHandTiles();
