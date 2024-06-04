@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: url('/backgrounds/GameScreenBG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: url('/backgrounds/GameScreenBG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <GridPane fx:id="PlayerTiles" layoutX="184.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
          <columnConstraints>
@@ -105,29 +106,29 @@
          <children>
             <Button fx:id="Pung" layoutX="737.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Pung" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="PUNG">
                <font>
-                  <Font size="9.0" />
+                  <Font name="Pixel Bug" size="12" />
                </font>
             </Button>
             <Button fx:id="Chow" layoutX="682.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Chow" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="CHOW">
                <font>
-                  <Font size="9.0" />
+                  <Font name="PixelBug" size="12" />
                </font>
             </Button>
             <Button fx:id="Kong" layoutX="792.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Kong" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="KONG">
                <font>
-                  <Font size="9.0" />
+                  <Font name="PixelBug" size="12" />
                </font>
             </Button>
             <Button fx:id="Win" layoutX="847.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Win" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="WIN">
                <font>
-                  <Font size="9.0" />
+                  <Font name="Pixel Bug" size="12" />
                </font>
             </Button>
          </children>
       </Group>
-      <Button fx:id="Pause" layoutX="950.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Pause" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C;" text="Pause">
+      <Button fx:id="Pause" layoutX="950.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Pause" prefHeight="45.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/Pause/B_Button13.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 90%;" text="Pause">
          <font>
-            <Font size="9.0" />
+            <Font name="PixelBug" size="12   " />
          </font>
       </Button>
       <GridPane fx:id="OppositeTiles" layoutX="326.0" layoutY="37.0" scaleX="1.2" scaleY="1.2">
