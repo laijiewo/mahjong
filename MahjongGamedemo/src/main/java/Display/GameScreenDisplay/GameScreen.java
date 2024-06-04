@@ -675,14 +675,6 @@ public class GameScreen implements Screen {
 
         List<Tile> tiles = player.getTile_hand();
         int indexOfButton = 0;
-        for(Button button : buttons){
-            button.setStyle("-fx-text-fill: #308C4C;" +
-                    " -fx-background-color: transparent;" +
-                    " -fx-background-image: url('/mj/mj_24.png');" +
-                    " -fx-background-repeat: no-repeat;" +
-                    " -fx-background-position: center center;" +
-                    " -fx-background-size: 175%;");
-        }
 
         for (Tile tile : tiles) {
             Button button = buttons.get(indexOfButton);
@@ -696,23 +688,29 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: 175%;");
             indexOfButton++;
-
-
         }
 
-        if((indexOfButton == 13)){
-            Button button = buttons.get(indexOfButton);
-            button.setDisable(true);
-            button.setVisible(false);
-        }else{
-            Button button = buttons.get(indexOfButton);
-            button.setDisable(false);
-            button.setVisible(false);
+        if (indexOfButton == 14) {
+            return;
         }
-
-
+        Button button = buttons.get(indexOfButton);
+        button.setDisable(indexOfButton == 13);
+        button.setVisible(false);
     }
 
+    public void clearButtons() {
+        List<Button> buttons = new ArrayList<>();
+        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
+
+        for(Button button : buttons){
+            button.setStyle("-fx-text-fill: #308C4C;" +
+                                    " -fx-background-color: transparent;" +
+                                    " -fx-background-image: url('/mj/mj_24.png');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: 175%;");
+        }
+    }
 
     public static List<Label> getAllLabels(GridPane gridPane) {
         List<Label> labels = new ArrayList<>();
@@ -856,10 +854,9 @@ public class GameScreen implements Screen {
         setPlayerPhotoStyle();
         setPlayerSiteImage();
         paintHandTiles();
-        paintDiscardPiles();
-        paintOtherHandTiles();
     }
     public void updateScreen() {
+        clearButtons();
         paintHandTiles();
         paintDiscardPiles();
         paintOtherHandTiles();

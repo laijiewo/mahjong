@@ -62,6 +62,7 @@ public class GameManager {
         if (player.canHu(discardedTile)) {
             Message message = new Message(MessageType.HU);
             player.sendMessageObjectToHost(message);
+
         }
     }
     public static void addGame(MahjongGame mahjongGame) {
@@ -84,6 +85,8 @@ public class GameManager {
         if (!tiles.isEmpty()) {
             Message message = new Message(MessageType.KONG, tiles);
             player.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not kong!");
         }
     }
     /**
@@ -91,12 +94,13 @@ public class GameManager {
      * This method is triggered when a player wants to declare a Pung, which is claiming three of the same tile.
      */
     public static void handlePungButtonAction(Player player) {
-
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.pung(discardedTile);
         if (!tiles.isEmpty()) {
             Message message = new Message(MessageType.PUNG, tiles);
             player.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not pung!");
         }
     }
     /**
@@ -104,18 +108,13 @@ public class GameManager {
      * This method is triggered when a player wants to declare a Chow, which is claiming a sequence of three tiles in the same suit.
      */
     public static void handleChewButtonAction(Player player) {
-        /*
-         * TODO: Implement Chow action.
-         *      1. 用户点击"Chow"按钮，应用该函数
-         *      2. 首先判断是否能胡？
-         *      3. 如果能胡，根据牌的信息建立Message Object
-         *      4. 调用client中sentMessageObject 函数，向主机发送信息
-         */
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.chi(discardedTile);
         if (!tiles.isEmpty()) {
             Message message = new Message(MessageType.CHEW, tiles);
             player.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not chew!");
         }
     }
     /**
@@ -124,7 +123,6 @@ public class GameManager {
      */
     public static void handleDiscardButtonAction(int tileIndex, Player player) {
         Message message = new Message(tileIndex, MessageType.DISCARD);
-        System.out.println(player.getTile_hand().get(tileIndex).getSuit());
         player.sendMessageObjectToHost(message);
     }
     /**

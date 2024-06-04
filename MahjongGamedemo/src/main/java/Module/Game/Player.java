@@ -22,8 +22,6 @@ public class Player {
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
     private Screen gameScreen;
     private ArrayList<Tile> discard_Tiles;
-
-    private Tile hunTile;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
     private static boolean isRunning = true;
@@ -38,7 +36,6 @@ public class Player {
         this.Score = 0;
         Tile_hand = new ArrayList<>();
         discard_Tiles = new ArrayList<>();
-        hunTile = null;
         gameScreen = new GameScreen();
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
@@ -57,7 +54,6 @@ public class Player {
         return Dice.toss()+Dice.toss();
     }
     public void setHunTile(Tile tile){
-        hunTile=tile;
         ruleImplementation = new RuleImplementation(tile);
     }
 
@@ -156,8 +152,8 @@ public class Player {
     public List<Tile> getChew_Pong_Kung_Tiles() {
         return Chew_Pong_Kung_Tiles;
     }
-    public List<Tile> setChew_Pong_Kung_Tiles(ArrayList<Tile> tiles) {
-        return Chew_Pong_Kung_Tiles = tiles;
+    public void addChew_Pong_Kung_Tiles(ArrayList<Tile> tiles) {
+        Chew_Pong_Kung_Tiles.addAll(tiles);
     }
     public void launchGameScreen() {
         try {

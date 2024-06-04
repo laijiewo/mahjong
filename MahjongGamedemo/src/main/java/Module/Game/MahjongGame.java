@@ -9,6 +9,7 @@ import Message.MessageType;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -170,7 +171,27 @@ public class MahjongGame implements Game {
             oos.flush();
         }
     }
+    public static void setCurrentActivePlayer() {
+
+    }
     public static void handleDiscardMessage(Message message) {
+        // TODO: 发牌应在操作前
+        List<Tile> discards = gameBoard.getCurrentActivePlayer().getDiscard_Tiles();
+        if (!(discards.isEmpty() && gameBoard.getCurrentActivePlayer() == gameBoard.getDealer())) {
+            gameBoard.dealTiles();
+            gameBoard.getCurrentActivePlayer().updateScreen();
+        }
         gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex());
+    }
+    public static void handleChewMessage(Message message) {
+        // 添加玩家的chew_pong_kong_Tiles
+        List<Tile> chewTiles = message.getTiles();
+        gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) chewTiles);
+    }
+    public static void handlePungMessage(Message message) {
+
+    }
+    public static void handleKongMessage(Message message) {
+
     }
 }

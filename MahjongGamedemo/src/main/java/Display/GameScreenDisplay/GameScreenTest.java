@@ -56,42 +56,42 @@ public class GameScreenTest extends Application {
         northplayer.setServerHostname(ip);
         northplayer.connect();
 
-        ArrayList<Tile> hand = new ArrayList<Tile>();
-        ArrayList<Tile> pungTiles = new ArrayList<Tile>();
-        hand.add(new NumberTile(9, Suit.WAN));
-        hand.add(new NumberTile(3, Suit.WAN));
-        hand.add(new NumberTile(4, Suit.WAN));
-        hand.add(new NumberTile(5, Suit.WAN));
-        hand.add(new NumberTile(6, Suit.WAN));
-        hand.add(new NumberTile(7, Suit.WAN));
-        hand.add(new NumberTile(8, Suit.WAN));
-        hand.add(new NumberTile(6, Suit.TIAO));
-        hand.add(new NumberTile(1, Suit.TIAO));
-        hand.add(new NumberTile(2, Suit.TIAO));
-        pungTiles.add(new NumberTile(4, Suit.TIAO));
-        pungTiles.add(new NumberTile(4, Suit.TIAO));
-        pungTiles.add(new NumberTile(4, Suit.TIAO));
-
-        eastplayer.setDiscard_Tiles(hand);
-        eastplayer.setChew_Pong_Kung_Tiles(pungTiles);
-
-        ArrayList<Tile> hand1 = new ArrayList<Tile>();
-        hand1.add(new NumberTile(9, Suit.WAN));
-        hand1.add(new NumberTile(3, Suit.WAN));
-        hand1.add(new NumberTile(4, Suit.WAN));
-        hand1.add(new NumberTile(5, Suit.WAN));
-        southplayer.setDiscard_Tiles(hand1);
-
-        ArrayList<Tile> hand2 = new ArrayList<Tile>();
-        hand2.add(new NumberTile(7, Suit.WAN));
-        hand2.add(new NumberTile(8, Suit.WAN));
-        hand2.add(new NumberTile(6, Suit.TIAO));
-        westplayer.setDiscard_Tiles(hand2);
-
-        ArrayList<Tile> hand3 = new ArrayList<Tile>();
-        hand3.add(new NumberTile(1, Suit.TIAO));
-        hand3.add(new NumberTile(2, Suit.TIAO));
-        northplayer.setDiscard_Tiles(hand3);
+//        ArrayList<Tile> hand = new ArrayList<Tile>();
+//        ArrayList<Tile> pungTiles = new ArrayList<Tile>();
+//        hand.add(new NumberTile(9, Suit.WAN));
+//        hand.add(new NumberTile(3, Suit.WAN));
+//        hand.add(new NumberTile(4, Suit.WAN));
+//        hand.add(new NumberTile(5, Suit.WAN));
+//        hand.add(new NumberTile(6, Suit.WAN));
+//        hand.add(new NumberTile(7, Suit.WAN));
+//        hand.add(new NumberTile(8, Suit.WAN));
+//        hand.add(new NumberTile(6, Suit.TIAO));
+//        hand.add(new NumberTile(1, Suit.TIAO));
+//        hand.add(new NumberTile(2, Suit.TIAO));
+//        pungTiles.add(new NumberTile(4, Suit.TIAO));
+//        pungTiles.add(new NumberTile(4, Suit.TIAO));
+//        pungTiles.add(new NumberTile(4, Suit.TIAO));
+//
+//        eastplayer.setDiscard_Tiles(hand);
+//        eastplayer.setChew_Pong_Kung_Tiles(pungTiles);
+//
+//        ArrayList<Tile> hand1 = new ArrayList<Tile>();
+//        hand1.add(new NumberTile(9, Suit.WAN));
+//        hand1.add(new NumberTile(3, Suit.WAN));
+//        hand1.add(new NumberTile(4, Suit.WAN));
+//        hand1.add(new NumberTile(5, Suit.WAN));
+//        southplayer.setDiscard_Tiles(hand1);
+//
+//        ArrayList<Tile> hand2 = new ArrayList<Tile>();
+//        hand2.add(new NumberTile(7, Suit.WAN));
+//        hand2.add(new NumberTile(8, Suit.WAN));
+//        hand2.add(new NumberTile(6, Suit.TIAO));
+//        westplayer.setDiscard_Tiles(hand2);
+//
+//        ArrayList<Tile> hand3 = new ArrayList<Tile>();
+//        hand3.add(new NumberTile(1, Suit.TIAO));
+//        hand3.add(new NumberTile(2, Suit.TIAO));
+//        northplayer.setDiscard_Tiles(hand3);
 
         try {
             GameManager.addPlayer(eastplayer);

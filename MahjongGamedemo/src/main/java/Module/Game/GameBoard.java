@@ -21,7 +21,7 @@ public class GameBoard {
 
     private Tile hunTile;
 
-    private int dealerIndex; // Index to track the dealer in the players list
+    private int dealerIndex, currentActivePlayerIndex; // Index to track the dealer in the players list
     private List<Player> players; // List to hold all players
     private Dice dice;
 
@@ -40,9 +40,6 @@ public class GameBoard {
         this.Tiles_inTheWall.addAll(tileFactory.createTiles());
         Collections.shuffle(this.Tiles_inTheWall);
 
-        // Set the initial dealer
-        this.dealerIndex = 0; // Start with the first player as the dealer
-
         // Set players from MahjongGame
         this.players = MahjongGame.getPlayers();
     }
@@ -52,27 +49,29 @@ public class GameBoard {
     }
 
     public Player getCurrentActivePlayer() {
-        return players.get(dealerIndex); // Assuming the dealer is also the current active player
+        return players.get(currentActivePlayerIndex); // Assuming the dealer is also the current active player
     }
 
     public int determineDealer() {
         int count = players.get(dealerIndex).rollDice(dice);
         dealerIndex = count % players.size();
+        currentActivePlayerIndex = dealerIndex;
         return dealerIndex;
     }
 
     public void dealAllTiles() {
         int numTiles = 13 * players.size() + 1;
         for (int i = 0; i < numTiles; i++) {
-            Player currentPlayer = players.get((dealerIndex + i) % players.size());
-            dealTiles(currentPlayer);
+            dealTiles();
         }
-        System.out.println(players.get(dealerIndex).getPlayerSite());
+        currentActivePlayerIndex = dealerIndex;
+        System.out.println(dealerIndex + "  " + currentActivePlayerIndex);
     }
 
-    public void dealTiles(Player player) {
+    public void dealTiles() {
         if (!Tiles_inTheWall.isEmpty()) {
-            player.drawTiles(Tiles_inTheWall.remove(0));
+            players.get(currentActivePlayerIndex).drawTiles(Tiles_inTheWall.remove(0));
+            currentActivePlayerIndex = (currentActivePlayerIndex + 1) % 4;
         }
     }
 

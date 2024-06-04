@@ -29,10 +29,11 @@ public class ServerGameThread implements Runnable {
                 System.out.println(type);
                 switch (type) {
                     case DISCARD -> {
-                        System.out.println(2);
                         MahjongGame.handleDiscardMessage(message);
                         GameManager.updateScreen();
-                        System.out.println(1);
+                    }
+                    case PUNG -> {
+
                     }
                 }
             }

@@ -101,9 +101,9 @@ public class TileImageMapper {
         Tile NorthWind = new WindAndDragonTile("North", Suit.WIND);
         addMapping(NorthWind, "/mj/mj_58.png");
         Tile Zhong = new WindAndDragonTile("ZHONG", Suit.DRAGON);
-        addMapping(Zhong, "/mj/mj_60.png");
+        addMapping(Zhong, "/mj/mj_61.png");
         Tile Fa = new WindAndDragonTile("FA", Suit.DRAGON);
-        addMapping(Fa, "/mj/mj_61.png");
+        addMapping(Fa, "/mj/mj_60.png");
         Tile Bai = new WindAndDragonTile("BAI", Suit.DRAGON);
         addMapping(Bai, "/mj/mj_59.png");
     }
