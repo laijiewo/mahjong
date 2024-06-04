@@ -1,11 +1,14 @@
 package Module;
 
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Tile.Suit;
+import Module.utils.FanCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

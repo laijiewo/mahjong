@@ -1,5 +1,8 @@
 package Module;
 
+import Module.Tile.Tile;
+import Module.Tile.TileFactory;
+import Module.Tile.WindAndDragonTile;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,8 +10,6 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import static org.junit.Assert.*;
 
 public class TileFactoryTest {
 

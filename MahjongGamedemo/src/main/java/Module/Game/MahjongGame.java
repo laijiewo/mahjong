@@ -1,8 +1,9 @@
-package Module;
+package Module.Game;
 import Module.ImageMap.TileImageMapper;
+import Module.Tile.Tile;
 import System.*;
-import WebConnect.Message;
-
+import Message.Message;
+import Message.MessageType;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -92,6 +93,14 @@ public class MahjongGame implements Game {
         }
 
     }
+    private Player getPlayerBySocket(Socket socket) {
+        for (Player player : players) {
+            if (player.getEchoSocket() == socket) {
+                return player;
+            }
+        }
+        return null;
+    }
     private void startServer(int port) throws IOException {
         this.port = port;
         sockets = new LinkedList<>();
@@ -102,14 +111,10 @@ public class MahjongGame implements Game {
             System.out.println("Could not listen on port: " + port);
             System.exit(1);
         }
-        new Thread(MahjongGame::sendMessageToAll).start();
-        while (true) {
-            System.out.println(sockets.size() + " clients connected.");
-            listenForConnections();
-            if (sockets.isEmpty()) {
-                System.out.println("No clients connected.");
-                break;
-            }
+        try {
+            runGame();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         serverSocket.close();
     }
@@ -168,25 +173,29 @@ public class MahjongGame implements Game {
         ObjectInputStream ois = new ObjectInputStream(player.getInputStream());
         return (Message) ois.readObject();
     }
-    private void runGame() throws IOException, ClassNotFoundException {
+    public void runGame() throws IOException, ClassNotFoundException {
         // TODO: 运行游戏
         //      1. 轮转
         //      2. 发送操作信息
         //      3. 接收玩家操作信息
+        System.out.println(4);
         while (true) {
             for (Socket socket : sockets) {
                 Message message = receiveOperationMessageFromPlayer(socket);
-                if (checkOperationMessage(message)) {
-                    sendOperationMessageToAll(message);
-                } else {
-                    // TODO: 处理非法操作信息
+                MessageType type = message.getType();
+                System.out.println(3);
+                switch (type) {
+                    case DISCARD:
+                        System.out.println(2);
+                        handleDiscardMessage(message, socket);
+                        System.out.println(1);
+                        break;
                 }
             }
         }
     }
-    private boolean checkOperationMessage(Message message) {
-        // TODO: 检查操作信息是否合法
-        return true;
+    private void handleDiscardMessage(Message message, Socket socket) {
+        getPlayerBySocket(socket).discardTiles(message.getIndex());
     }
 
 }

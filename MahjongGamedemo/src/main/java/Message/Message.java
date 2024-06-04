@@ -1,20 +1,22 @@
-package WebConnect;
+package Message;
 
 import java.io.Serializable;
 import java.util.List;
 
-import Module.*;
+import Module.Tile.Tile;
 
 public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
     private MessageType type;
     private Tile tile = null;
+    private int index;
     private List<Tile> tiles = null;
 
     // Discard
-    public Message(MessageType type, Tile tile) {
+    public Message(int index, MessageType type, Tile tile) {
         this.type = type;
         this.tile = tile;
+        this.index = index;
     }
     // CHEW, PUNG, and KONG Message
     public Message(MessageType type, List<Tile> tiles) {
@@ -26,7 +28,9 @@ public class Message implements Serializable {
     public Message(MessageType type) {
         this.type = type;
     }
-
+    public int getIndex() {
+        return index;
+    }
     public MessageType getType() {
         return type;
     }

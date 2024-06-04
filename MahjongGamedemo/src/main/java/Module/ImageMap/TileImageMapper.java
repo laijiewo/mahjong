@@ -1,10 +1,13 @@
 package Module.ImageMap;
 
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Suit;
+import Module.Tile.WindAndDragonTile;
 import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 
-import Module.*;
 public class TileImageMapper {
     private Map<Tile, Image> imageMap = new HashMap<>();
     public TileImageMapper() {

@@ -1,4 +1,8 @@
-package Module;
+package Module.utils;
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Suit;
+
 import java.util.*;
 
 public class FanCalculator {

@@ -1,5 +1,6 @@
 package Module;
 
+import Module.utils.Dice;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

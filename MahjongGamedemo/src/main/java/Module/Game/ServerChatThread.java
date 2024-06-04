@@ -1,4 +1,6 @@
-package Module;
+package Module.Game;
+
+import Module.Game.MahjongGame;
 
 import java.io.*;
 import java.net.Socket;
@@ -24,10 +26,10 @@ public class ServerChatThread implements Runnable {
 
     private void acceptMessages() {
         try {
-            PrintWriter out = new PrintWriter(socket.getOutputStream(),
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"),
                                               true);
             BufferedReader in = new BufferedReader(
-                    new InputStreamReader(socket.getInputStream()));
+                    new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -67,7 +69,8 @@ public class ServerChatThread implements Runnable {
         synchronized (MahjongGame.sockets) {
             for (Socket socket : MahjongGame.sockets) {
                 try {
-                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                    PrintWriter out = new PrintWriter(
+                            new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
                     out.println(message);
                     out.flush();
                 } catch (IOException e) {
@@ -82,7 +85,8 @@ public class ServerChatThread implements Runnable {
             for (Socket s : MahjongGame.sockets) {
                 if (s != socket) {
                     try {
-                        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+                        PrintWriter out = new PrintWriter(
+                                new OutputStreamWriter(s.getOutputStream(), "UTF-8"), true);
                         out.println(message);
                         out.flush();
                     } catch (IOException e) {

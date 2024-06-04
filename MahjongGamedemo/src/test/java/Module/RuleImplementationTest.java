@@ -1,5 +1,10 @@
 package Module;
 
+import Module.Rule.RuleImplementation;
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Tile.Suit;
+import Module.Tile.WindAndDragonTile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +22,7 @@ class RuleImplementationTest {
     @BeforeEach
     void setUp() {
         //hunTile = new NumberTile(1, Suit.WAN); // Let's assume the hun tile is 1 WAN
-        hunTile=new WindAndDragonTile("West",Suit.WIND);
+        hunTile=new WindAndDragonTile("West", Suit.WIND);
         ruleImplementation = new RuleImplementation(hunTile);
         hand = new ArrayList<>();
     }

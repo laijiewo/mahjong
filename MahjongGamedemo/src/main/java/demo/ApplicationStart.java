@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import System.*;
-import Module.*;
 
 public class ApplicationStart extends Application {
 

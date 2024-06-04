@@ -1,4 +1,13 @@
-package Module;
+package Module.Game;
+
+import Module.Game.MahjongGame;
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Rule.*;
+import Module.utils.*;
+import Module.Tile.*;
+import Module.Tile.TileFactory;
+import Module.Tile.WindAndDragonTile;
 
 import java.util.*;
 
@@ -75,7 +84,7 @@ public class GameBoard {
         Tile hunTile = Tiles_inTheWall.get(0);
         if (hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)) {
             NumberTile hun = (NumberTile) hunTile;
-            hunTile = new NumberTile((hun.getRank() + 1) % 9, hunTile.getSuit());
+            hunTile = new NumberTile((hun.getRank() % 9) + 1, hunTile.getSuit());
         } else {
             WindAndDragonTile hun = (WindAndDragonTile) hunTile;
             hunTile = new WindAndDragonTile(hun.getType() + 1, hunTile.getSuit());

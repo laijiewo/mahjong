@@ -1,17 +1,15 @@
-package Module;
-import System.*;
-import Display.*;
+package Module.Tile;
+import Module.Tile.Suit;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
-import java.util.stream.Collector;
+import java.io.Serializable;
 
 /**
  * Represents a generic tile in games such as Mahjong. This class serves as a base class
  * for different types of tiles that might have specific attributes and behaviors.
  * @author Yixin Niu
  */
-public class Tile implements Comparable<Tile>{
+public class Tile implements Comparable<Tile>, Serializable {
     private Suit suit;
     /**
      * Constructs a new tile with the specified suit.

@@ -1,7 +1,11 @@
-package Module;
+package Module.Tile;
+
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Suit;
+import Module.Tile.WindAndDragonTile;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

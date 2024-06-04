@@ -2,10 +2,14 @@ package System;
 
 import Display.*;
 import Display.GameScreenDisplay.LoginScreen;
-import Module.*;
-import WebConnect.*;
+import Module.Game.MahjongGame;
+import Module.Game.Player;
+import Module.Game.Site;
+import Module.Tile.Tile;
+import Message.*;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -63,7 +67,6 @@ public class GameManager {
         for (Player player : players) {
             player.sort_hand();
             player.launchGameScreen();
-
         }
     }
     /**
@@ -115,8 +118,8 @@ public class GameManager {
      * This method is triggered when a player chooses to discard a tile from their hand.
      */
     public static void handleDiscardButtonAction(int tileIndex, Player player) {
-        Tile discardedTile = player.discardTiles(tileIndex);
-        Message message = new Message(MessageType.DISCARD, discardedTile);
+        Tile discardedTile = player.getTile_hand().get(tileIndex);
+        Message message = new Message(tileIndex, MessageType.DISCARD, discardedTile);
         player.sendMessageObjectToHost(message);
     }
     /**

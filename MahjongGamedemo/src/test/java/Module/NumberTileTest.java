@@ -1,9 +1,9 @@
 package Module;
 
+import Module.Tile.NumberTile;
+import Module.Tile.Tile.Suit;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class NumberTileTest {
 

@@ -1,4 +1,4 @@
-package Module;
+package Module.Tile;
 
 public enum Suit{
     /**

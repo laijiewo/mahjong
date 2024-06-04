@@ -1,4 +1,10 @@
-package Module;
+package Module.Rule;
+import Module.Rule.MahjongRule;
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Suit;
+import Module.utils.*;
+
 import java.util.*;
 
 /**
@@ -46,7 +52,7 @@ public class RuleImplementation implements MahjongRule {
         int[] ranks = new int[10]; // ranks[0] is unused, ranks[1-9] store the count of each rank
         Suit suit = tile.getSuit();
         for (Tile t : sortedHand) {
-            if (t instanceof NumberTile&&t.getSuit()==suit) {
+            if (t instanceof NumberTile &&t.getSuit()==suit) {
                 ranks[((NumberTile) t).getRank()]++;
             }
         }

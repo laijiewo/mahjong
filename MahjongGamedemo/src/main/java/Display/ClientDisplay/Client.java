@@ -1,7 +1,7 @@
 package Display.ClientDisplay;
 
-import WebConnect.Message;
-import WebConnect.MessageType;
+import Message.Message;
+import Message.MessageType;
 
 import java.io.*;
 import java.net.*;

@@ -1,4 +1,6 @@
-package Module;
+package Module.Rule;
+import Module.Tile.Tile;
+
 import java.util.List;
 
 /**

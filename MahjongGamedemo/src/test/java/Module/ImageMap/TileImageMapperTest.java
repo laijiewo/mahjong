@@ -1,13 +1,13 @@
 package Module.ImageMap;
 
+import Module.Tile.Tile;
+import Module.Tile.TileFactory;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
-
-import Module.*;
 
 import java.util.List;
 import java.util.Map;

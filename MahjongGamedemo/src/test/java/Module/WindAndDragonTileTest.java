@@ -1,9 +1,9 @@
 package Module;
 
+import Module.Tile.Tile.Suit;
+import Module.Tile.WindAndDragonTile;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class WindAndDragonTileTest {
     @Test

@@ -1,4 +1,4 @@
-package Module;
+package Module.utils;
 
 import java.util.Random;
 

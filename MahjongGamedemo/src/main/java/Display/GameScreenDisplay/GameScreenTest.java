@@ -1,15 +1,14 @@
 package Display.GameScreenDisplay;
-import Module.*;
-import javafx.application.Application;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import Display.GameScreenDisplay.LoginScreen;
+import Module.Game.MahjongGame;
+import Module.Game.Player;
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Suit;
 import javafx.application.Application;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import System.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameScreenTest extends Application {

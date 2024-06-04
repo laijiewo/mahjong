@@ -1,4 +1,6 @@
-package Module;
+package Module.Tile;
+
+import Module.Tile.Suit;
 
 import java.util.Objects;
 

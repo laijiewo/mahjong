@@ -1,9 +1,11 @@
 package Display.GameScreenDisplay;
 import Display.Screen;
+import Module.Game.Player;
+import Module.Game.Site;
 import Module.ImageMap.FallenTileImageMapper;
 import Module.ImageMap.TileImageMapper;
+import Module.Tile.Tile;
 import System.*;
-import Module.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -672,7 +674,6 @@ public class GameScreen implements Screen {
             if (tile == null) {
                 return;
             }
-            System.out.println(tile.getSuit());
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 

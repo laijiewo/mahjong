@@ -1,5 +1,8 @@
 package Module;
 
+import Module.Tile.NumberTile;
+import Module.Tile.Tile;
+import Module.Tile.Tile.Suit;
 import org.junit.Assert;
 import org.junit.Test;
 

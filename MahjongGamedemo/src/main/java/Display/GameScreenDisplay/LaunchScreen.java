@@ -1,8 +1,8 @@
 package Display.GameScreenDisplay;
 
 import Display.Screen;
+import Module.Game.MahjongGame;
 import System.*;
-import Module.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,9 +1,11 @@
-package Module;
+package Module.Game;
 import Display.GameScreenDisplay.GameScreen;
 import Display.*;
-import WebConnect.Message;
+import Module.Tile.Tile;
+import Message.Message;
 import javafx.stage.Stage;
-
+import Module.Rule.*;
+import Module.utils.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,11 +17,13 @@ import java.util.List;
  */
 public class Player {
     private int Score;
+    private static ObjectOutputStream oos;
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
     private Screen gameScreen;
     private ArrayList<Tile> discard_Tiles;
+
     private Tile hunTile;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
@@ -184,26 +188,18 @@ public class Player {
         int port = serverPort;
         // Attempt to connect to the server
         echoSocket = new Socket(serverHostname, port);
+        oos = new ObjectOutputStream(echoSocket.getOutputStream());
         connected = true;
-        // Start the threads to receive and send messages
-        startReceiveMessages();
-        // Start the thread to send messages
-        // TODO: 1. 当用户进入游戏后再触发startSendMessages()
-        //       2. 为sendMessage添加Button，实现点击发送消息
-        startSendMessages();
     }
 
+    public Socket getEchoSocket() {
+        return echoSocket;
+    }
     /**
      * Starts a new thread to receive messages from the server.
      */
     private static void startReceiveMessages() {
-        new Thread(() -> {
-            try {
-                receiveMessage();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
+
 
         System.out.println("Type 'Bye.' to exit.");
         //connected = true;
@@ -213,13 +209,7 @@ public class Player {
      * Starts a new thread to send messages to the server.
      */
     private static void startSendMessages() {
-        new Thread(() -> {
-            try {
-                sendMessage();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
+
     }
 
     /**
@@ -229,9 +219,8 @@ public class Player {
      */
     private static void sendMessage() {
         try {
-            PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    echoSocket.getInputStream()));
+            PrintWriter out = new PrintWriter(
+                    new OutputStreamWriter(echoSocket.getOutputStream(), "UTF-8"), true);
             BufferedReader stdIn = new BufferedReader(
                     new InputStreamReader(System.in));
             String userInput;
@@ -242,14 +231,12 @@ public class Player {
                     System.out.println("See you again!");
                     out.println(userInput);
                     out.close();
-                    in.close();
                     stdIn.close();
                     return;
                 }
                 out.println(userInput);
             }
             out.close();
-            in.close();
             stdIn.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -284,10 +271,8 @@ public class Player {
     }
     public void sendMessageObjectToHost(Message message) {
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(echoSocket.getOutputStream());
             oos.writeObject(message);
             oos.flush();
-            oos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

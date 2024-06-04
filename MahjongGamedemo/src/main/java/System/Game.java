@@ -1,6 +1,7 @@
 package System;
 
-import Module.*;
+import Module.Game.Player;
+
 /**
  * This interface defines the methods that a game object should implement.
  * This interface should be implemented by the MahjongGame class.

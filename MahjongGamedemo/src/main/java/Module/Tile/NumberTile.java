@@ -1,4 +1,5 @@
-package Module;
+package Module.Tile;
+
 import java.util.Objects;
 /**
  * Represents a tile with a numerical rank and suit in Mahjong.
