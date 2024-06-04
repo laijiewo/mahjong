@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -615,13 +616,15 @@ public class GameScreen implements Screen {
         int indexofPlayer = 0;
         for (GridPane gridPane : gridPaneList) {
             Player player = players.get(indexofPlayer);
-            int indexofTile = 0;
 
+            List<Tile> tiles = player.getDiscard_Tiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
 
-            for (ImageView imageView :imageViewList) {
-                Tile tile = player.getDiscard_Tiles().get(indexofTile);
+            int indexOfImage = 0;
+            for (Tile tile : tiles) {
+                ImageView imageView = imageViewList.get(indexOfImage);
                 imageView.setImage(imageMap.get(tile));
+                indexOfImage++;
             }
             indexofPlayer++;
         }
@@ -637,16 +640,17 @@ public class GameScreen implements Screen {
         FallenTileImageMapper mapper = new FallenTileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
-        int indexofPlayer = 0;
+        int indexofPlayer = 1;
         for (GridPane gridPane : gridPaneList) {
             Player player = players.get(indexofPlayer);
-            int indexofTile = 0;
-
+            List<Tile> tiles = player.getChew_Pong_Kung_Tiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
 
-            for (ImageView imageView :imageViewList) {
-                Tile tile = player.getTile_hand().get(indexofTile);
+            int indexOfImage = 0;
+            for (Tile tile : tiles) {
+                ImageView imageView = imageViewList.get(indexOfImage);
                 imageView.setImage(imageMap.get(tile));
+                indexOfImage++;
             }
             indexofPlayer++;
         }
@@ -661,15 +665,14 @@ public class GameScreen implements Screen {
         int indexofTile = 0;
 
         List<Button> buttons = new ArrayList<>();
-        for (Node node : PlayerTiles.getChildren()) {
-            if (node instanceof Button) {
-                buttons.add((Button) node);
-            }
-        }
+        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
         for (Button button :buttons) {
-            indexofTile++;
             Tile tile = player.getTile_hand().get(indexofTile);
+            if (tile == null) {
+                return;
+            }
+            System.out.println(tile.getSuit());
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 
@@ -679,6 +682,7 @@ public class GameScreen implements Screen {
                     " -fx-background-repeat: no-repeat;" +
                     " -fx-background-position: center center;" +
                     " -fx-background-size: 175%;");
+            indexofTile++;
         }
     }
 
@@ -826,6 +830,7 @@ public class GameScreen implements Screen {
         setPlayerSiteImage();
         paintHandTiles();
         paintDiscardPiles();
+        paintOtherHandTiles();
     }
 }
 

@@ -6,8 +6,6 @@ import Module.*;
 import WebConnect.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,7 +61,9 @@ public class GameManager {
     private static void startGame() {
         List<Player> players = MahjongGame.getPlayers();
         for (Player player : players) {
+            player.sort_hand();
             player.launchGameScreen();
+
         }
     }
     /**

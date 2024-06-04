@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class MahjongGame implements Game {
-    private static List<Player> players = new LinkedList<>();
+    private static List<Player> players;
     private GameBoard gameBoard;
     protected static LinkedList<Socket> sockets;
     TileImageMapper tileImageMapper;
@@ -29,6 +29,7 @@ public class MahjongGame implements Game {
             }
         }).start();
         tileImageMapper = new TileImageMapper();
+        players = new LinkedList<>();
     }
 
     public void addPlayer(Player player){

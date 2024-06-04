@@ -39,11 +39,10 @@ public class Player {
         gameScreen = new GameScreen();
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
-
-    public void setTile_hand(ArrayList<Tile> Tile_hand){
-        this.Tile_hand=Tile_hand;
+    public void setDiscard_Tiles(ArrayList<Tile> discard_Tiles){
+        this.discard_Tiles=discard_Tiles;
     }
-    public void shuffleTile_hand(){
+    public void sort_hand(){
         Collections.sort(Tile_hand);
     }
     /**
@@ -151,7 +150,12 @@ public class Player {
     public List<Tile> getDiscard_Tiles() {
         return discard_Tiles;
     }
-
+    public List<Tile> getChew_Pong_Kung_Tiles() {
+        return Chew_Pong_Kung_Tiles;
+    }
+    public List<Tile> setChew_Pong_Kung_Tiles(ArrayList<Tile> tiles) {
+        return Chew_Pong_Kung_Tiles = tiles;
+    }
     public void launchGameScreen() {
         try {
             List<Player> players = MahjongGame.getPlayers();

@@ -37,10 +37,24 @@ public class GameScreenTest extends Application {
 
 
         Player eastplayer = new Player(stage1);
+        eastplayer.setServerPort(8081);
+        eastplayer.setServerHostname("10.19.63.25");
+        eastplayer.connect();
         Player southplayer = new Player(stage2);
+        southplayer.setServerPort(8081);
+        southplayer.setServerHostname("10.19.63.25");
+        southplayer.connect();
         Player westplayer = new Player(stage3);
+        westplayer.setServerPort(8081);
+        westplayer.setServerHostname("10.19.63.25");
+        westplayer.connect();
         Player northplayer = new Player(stage4);
+        northplayer.setServerPort(8081);
+        northplayer.setServerHostname("10.19.63.25");
+        northplayer.connect();
+
         ArrayList<Tile> hand = new ArrayList<Tile>();
+        ArrayList<Tile> pungTiles = new ArrayList<Tile>();
         hand.add(new NumberTile(9, Suit.WAN));
         hand.add(new NumberTile(3, Suit.WAN));
         hand.add(new NumberTile(4, Suit.WAN));
@@ -51,15 +65,30 @@ public class GameScreenTest extends Application {
         hand.add(new NumberTile(6, Suit.TIAO));
         hand.add(new NumberTile(1, Suit.TIAO));
         hand.add(new NumberTile(2, Suit.TIAO));
-        hand.add(new NumberTile(3, Suit.TIAO));
-        hand.add(new NumberTile(4, Suit.TIAO));
-        hand.add(new NumberTile(5, Suit.TIAO));
-        eastplayer.setTile_hand(hand);
-        eastplayer.shuffleTile_hand();
-        southplayer.setTile_hand(hand);
-        westplayer.setTile_hand(hand);
-        northplayer.setTile_hand(hand);
+        pungTiles.add(new NumberTile(4, Suit.TIAO));
+        pungTiles.add(new NumberTile(4, Suit.TIAO));
+        pungTiles.add(new NumberTile(4, Suit.TIAO));
 
+        eastplayer.setDiscard_Tiles(hand);
+        eastplayer.setChew_Pong_Kung_Tiles(pungTiles);
+
+        ArrayList<Tile> hand1 = new ArrayList<Tile>();
+        hand1.add(new NumberTile(9, Suit.WAN));
+        hand1.add(new NumberTile(3, Suit.WAN));
+        hand1.add(new NumberTile(4, Suit.WAN));
+        hand1.add(new NumberTile(5, Suit.WAN));
+        southplayer.setDiscard_Tiles(hand1);
+
+        ArrayList<Tile> hand2 = new ArrayList<Tile>();
+        hand2.add(new NumberTile(7, Suit.WAN));
+        hand2.add(new NumberTile(8, Suit.WAN));
+        hand2.add(new NumberTile(6, Suit.TIAO));
+        westplayer.setDiscard_Tiles(hand2);
+
+        ArrayList<Tile> hand3 = new ArrayList<Tile>();
+        hand3.add(new NumberTile(1, Suit.TIAO));
+        hand3.add(new NumberTile(2, Suit.TIAO));
+        northplayer.setDiscard_Tiles(hand3);
 
         try {
             GameManager.addPlayer(eastplayer);
