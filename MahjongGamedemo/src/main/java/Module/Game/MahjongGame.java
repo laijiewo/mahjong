@@ -27,6 +27,7 @@ public class MahjongGame implements Game {
     private static final Object lock = new Object();
     private static boolean isRotating = false;
     private static ScheduledExecutorService scheduler;
+    private static ScheduledFuture<?> scheduledFuture;
     static int i = 0;
 
     public MahjongGame(int port) throws IOException {
@@ -64,7 +65,12 @@ public class MahjongGame implements Game {
         setHunTileToPlayers();
         isGameStart = true;
 
-        scheduler.scheduleAtFixedRate(this::swap, 20, 20, TimeUnit.SECONDS);
+        scheduledFuture = scheduler.schedule(() -> {
+            scheduledFuture = scheduler.schedule(() -> {
+                GameManager.handleDiscardButtonAction(13,gameBoard.getCurrentActivePlayer());
+            }, 100, TimeUnit.SECONDS);
+        }, 0, TimeUnit.SECONDS);;
+
     }
 
     public static void setHunTileToPlayers() {
@@ -195,7 +201,15 @@ public class MahjongGame implements Game {
             return;
         }
         gameBoard.setLeastDiscardedTile(gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex()));
-        scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
+        if (scheduledFuture != null && !scheduledFuture.isDone()) {
+            scheduledFuture.cancel(true);
+        }
+        scheduledFuture = scheduler.schedule(() -> {
+            MahjongGame.rotate();
+            scheduledFuture = scheduler.schedule(() -> {
+                GameManager.handleDiscardButtonAction(13,gameBoard.getCurrentActivePlayer());
+            }, 100, TimeUnit.SECONDS);
+        }, 0, TimeUnit.SECONDS);
     }
     public static void handleChewMessage(Message message) {
         // 添加玩家的chew_pong_kong_Tiles
