@@ -14,6 +14,7 @@ public class ApplicationStart extends Application {
         Font.loadFont(getClass().getResourceAsStream("/fonts/Pixelmania.ttf"), 20);
         Font.loadFont(getClass().getResourceAsStream("/fonts/DePixelKlein.ttf"), 20);
         Font.loadFont(getClass().getResourceAsStream("/fonts/Pixel Bug.otf"), 20);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/PixelGameFont.ttf"), 20);
 
     }
     @Override

@@ -300,7 +300,7 @@ public class GameScreen implements Screen {
         Platform.runLater(() -> {
             int remainingtiles = MahjongGame.getTileCountInTheTileWall();
             RemainingTiles.setText(remainingtiles+"/136");
-            RemainingTiles.setFont(new Font("Pixel Bug",12));
+            RemainingTiles.setFont(new Font("PixelGameFont",12));
         });
     }
 
@@ -358,6 +358,9 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: 175%;");
             indexOfButton++;
+            if(tile.equals(GameBoard.getHunTile())){
+                button.setDisable(true);
+            }
         }
 
         if (indexOfButton == 14) {
@@ -385,17 +388,6 @@ public class GameScreen implements Screen {
         button.setVisible(true);
     }
 
-    public static List<Label> getAllLabels(GridPane gridPane) {
-        List<Label> labels = new ArrayList<>();
-        for (Node node : gridPane.getChildren()) {
-            if (node instanceof Label) {
-                labels.add((Label) node);
-            }
-        }
-
-        return labels;
-    }
-
     public static List<ImageView> getAllImageViews(GridPane gridPane) {
         List<ImageView> imageViews = new ArrayList<>();
         for (Node node : gridPane.getChildren()) {
@@ -403,18 +395,13 @@ public class GameScreen implements Screen {
                 imageViews.add((ImageView) node);
             }
         }
-
-
         return imageViews;
     }
 
     public void setPlayers(Player player1,Player player2,Player player3, Player player4){
         players.add(player1);
-
         players.add(player2);
-
         players.add(player3);
-
         players.add(player4);
 
     }

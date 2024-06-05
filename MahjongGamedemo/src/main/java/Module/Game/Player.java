@@ -10,6 +10,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -45,6 +46,19 @@ public class Player {
 
     public void sort_hand(){
         Collections.sort(Tile_hand);
+
+        List<Tile> tilesToRemove = new ArrayList<>();
+        List<Tile> tilesToAdd = new ArrayList<>();
+
+        for (Tile tile : Tile_hand) {
+            if (!tile.equals(GameBoard.getHunTile())) {
+                tilesToRemove.add(tile);
+                tilesToAdd.add(tile);
+            }
+        }
+
+        Tile_hand.removeAll(tilesToRemove);
+        Tile_hand.addAll(tilesToAdd);
     }
     /**
      * Rolls the dice using a provided Dice object.
