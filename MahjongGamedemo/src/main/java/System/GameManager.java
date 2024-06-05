@@ -43,6 +43,7 @@ public class GameManager {
     public static void updateScreen() {
         for (Player player : game.getPlayers()) {
             player.updateScreen();
+            player.sort_hand();
         }
     }
     public static void addPlayer(Player player) throws Exception{

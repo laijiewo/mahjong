@@ -42,6 +42,7 @@ public class Player {
     public void setDiscard_Tiles(ArrayList<Tile> discard_Tiles){
         this.discard_Tiles=discard_Tiles;
     }
+
     public void sort_hand(){
         Collections.sort(Tile_hand);
     }
