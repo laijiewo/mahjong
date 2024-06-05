@@ -30,10 +30,15 @@ public class ServerGameThread implements Runnable {
                 switch (type) {
                     case DISCARD -> {
                         MahjongGame.handleDiscardMessage(message);
-                        GameManager.updateScreen();
+                    }
+                    case CHEW -> {
+                        MahjongGame.handleChewMessage(message);
                     }
                     case PUNG -> {
-
+                        MahjongGame.handlePungMessage(message);
+                    }
+                    case KONG -> {
+                        MahjongGame.handleKongMessage(message);
                     }
                 }
             }

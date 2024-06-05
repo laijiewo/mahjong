@@ -23,6 +23,9 @@ public class MahjongGame implements Game {
     TileImageMapper tileImageMapper;
     private static ServerSocket serverSocket;
     private int port;
+    private boolean isGameStart;
+    private static final Object lock = new Object();
+    private static boolean isRotating = false;
     private static ScheduledExecutorService scheduler;
     static int i = 0;
 
@@ -59,6 +62,7 @@ public class MahjongGame implements Game {
         gameBoard.dealAllTiles();
         gameBoard.determineHunTile();
         setHunTileToPlayers();
+        isGameStart = true;
 
         scheduler.scheduleAtFixedRate(this::swap, 20, 20, TimeUnit.SECONDS);
     }
@@ -90,6 +94,9 @@ public class MahjongGame implements Game {
         return players.indexOf(gameBoard.getCurrentActivePlayer());
     }
 
+    public boolean isGameStart() {
+        return isGameStart;
+    }
 
     public Tile getLeastDiscardedTile() {
         return gameBoard.getLeastDiscardedTile();
@@ -97,27 +104,17 @@ public class MahjongGame implements Game {
 
     @Override
     public void swap() {
-        List<Tile> discards = gameBoard.getCurrentActivePlayer().getDiscard_Tiles();
-        if (!(discards.isEmpty() && gameBoard.getCurrentActivePlayer() == gameBoard.getDealer())) {
-            gameBoard.swap();
-            gameBoard.dealTiles();
-            gameBoard.getCurrentActivePlayer().updateScreen();
-        } else {
-            gameBoard.swap();
-            gameBoard.dealTiles();
-            gameBoard.getCurrentActivePlayer().updateScreen();
-        }
+        rotate();
     }
 
     public static void rotate() {
-        System.out.println(getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
+//      System.out.println("Before rotate: " + getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
         gameBoard.swap();
         gameBoard.dealTiles();
-        gameBoard.getCurrentActivePlayer().updateScreen();
-        System.out.println(getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
-
-
+        GameManager.updateScreen();
+//      System.out.println("After rotate: " + getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
     }
+
     @Override
     public boolean isRoundOver() {
         if (checkVictory() != null) {
@@ -197,18 +194,25 @@ public class MahjongGame implements Game {
             System.out.println("You can't discard the hun tile.");
             return;
         }
-        gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex());
+        gameBoard.setLeastDiscardedTile(gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex()));
         scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
     public static void handleChewMessage(Message message) {
         // 添加玩家的chew_pong_kong_Tiles
         List<Tile> chewTiles = message.getTiles();
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) chewTiles);
+        scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
     public static void handlePungMessage(Message message) {
-
+        // 添加玩家的pung_Tiles
+        List<Tile> pungTiles = message.getTiles();
+        gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) pungTiles);
+        scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
     public static void handleKongMessage(Message message) {
-
+        // 添加玩家的kong_Tiles
+        List<Tile> kongTiles = message.getTiles();
+        gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) kongTiles);
+        scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
 }
