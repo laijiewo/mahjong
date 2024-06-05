@@ -82,6 +82,10 @@ public class MahjongGame implements Game {
     public void startNewGame() {
 
     }
+    public static int getCurrentPlayerIndex() {
+        return players.indexOf(gameBoard.getCurrentActivePlayer());
+    }
+
 
     public Tile getLeastDiscardedTile() {
         return gameBoard.getLeastDiscardedTile();
@@ -101,7 +105,6 @@ public class MahjongGame implements Game {
         }
 
     }
-
     public boolean playerCanDiscard(Player player) {
         return gameBoard.getCurrentActivePlayer() == player;
     }
@@ -117,7 +120,9 @@ public class MahjongGame implements Game {
         }
         while (true) {
             System.out.println(sockets.size() + " clients connected.");
-            listenForConnections();
+            Socket clientSocket = serverSocket.accept();
+            sockets.add(clientSocket);
+            new Thread(new ServerGameThread(clientSocket)).start();
             if (sockets.isEmpty()) {
                 System.out.println("No clients connected.");
                 break;
@@ -153,21 +158,6 @@ public class MahjongGame implements Game {
         }
     }
 
-    public static void listenForConnections() {
-        Socket clientSocket = null;
-        try {
-            clientSocket = serverSocket.accept();
-            synchronized (clientSocket) {
-                sockets.add(clientSocket);
-            }
-            new Thread(new ServerGameThread(clientSocket)).start();
-        } catch (IOException e) {
-            System.out.println("Accept failed.");
-            System.exit(1);
-        }
-        System.out.println("Got a connection from " + clientSocket.getInetAddress().getHostAddress());
-        System.out.println("Waiting for input.....");
-    }
 
     private void sendOperationMessageToAll(Message message) throws IOException {
         // TODO: 向所有玩家发送操作信息
@@ -177,9 +167,7 @@ public class MahjongGame implements Game {
             oos.flush();
         }
     }
-    public static void setCurrentActivePlayer() {
 
-    }
     public static void handleDiscardMessage(Message message) {
         // TODO: 发牌应在操作前
         List<Tile> discards = gameBoard.getCurrentActivePlayer().getDiscard_Tiles();
