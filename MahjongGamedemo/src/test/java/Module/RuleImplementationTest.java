@@ -3,7 +3,7 @@ package Module;
 import Module.Rule.RuleImplementation;
 import Module.Tile.NumberTile;
 import Module.Tile.Tile;
-import Module.Tile.Tile.Suit;
+import Module.Tile.Suit;
 import Module.Tile.WindAndDragonTile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

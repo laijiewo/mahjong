@@ -380,6 +380,9 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: 175%;");
         }
+        Button button = buttons.get(13);
+        button.setDisable(false);
+        button.setVisible(true);
     }
 
     public static List<Label> getAllLabels(GridPane gridPane) {

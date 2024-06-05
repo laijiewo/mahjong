@@ -49,7 +49,6 @@ public class GameBoard {
     }
 
     public Player getCurrentActivePlayer() {
-        System.out.println(currentActivePlayerIndex + " " + players.get(currentActivePlayerIndex).getPlayerSite());
         return players.get(currentActivePlayerIndex); // Assuming the dealer is also the current active player
     }
 
@@ -83,9 +82,18 @@ public class GameBoard {
         if (hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)) {
             NumberTile hun = (NumberTile) hunTile;
             hunTile = new NumberTile((hun.getRank() % 9) + 1, hunTile.getSuit());
-        } else {
+        } else if (hunTile.getSuit().equals(Suit.DRAGON)){
+            String[] dragonTypes = {"ZHONG", "FA", "BAI"};
             WindAndDragonTile hun = (WindAndDragonTile) hunTile;
-            hunTile = new WindAndDragonTile(hun.getType() + 1, hunTile.getSuit());
+            String type = hun.getType();
+            int indexOfNewType = (Arrays.asList(dragonTypes).indexOf(type) + 1) % 3;
+            hunTile = new WindAndDragonTile(dragonTypes[indexOfNewType], hunTile.getSuit());
+        } else {
+            String[] windTypes = {"East", "South", "West", "North"};
+            WindAndDragonTile hun = (WindAndDragonTile) hunTile;
+            String type = hun.getType();
+            int indexOfNewType = (Arrays.asList(windTypes).indexOf(type) + 1) % 4;
+            hunTile = new WindAndDragonTile(windTypes[indexOfNewType], hunTile.getSuit());
         }
         this.hunTile = hunTile;
     }

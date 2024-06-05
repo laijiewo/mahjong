@@ -33,7 +33,7 @@ public class Tile implements Comparable<Tile>, Serializable {
      *
      * @param suit the new suit of the tile.
      */
-    protected void setSuit(Suit suit) {
+    public void setSuit(Suit suit) {
         this.suit = suit;
     }
 

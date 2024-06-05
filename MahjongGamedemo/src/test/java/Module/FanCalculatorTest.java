@@ -2,7 +2,7 @@ package Module;
 
 import Module.Tile.NumberTile;
 import Module.Tile.Tile;
-import Module.Tile.Tile.Suit;
+import Module.Tile.Suit;
 import Module.utils.FanCalculator;
 import org.junit.jupiter.api.Test;
 
