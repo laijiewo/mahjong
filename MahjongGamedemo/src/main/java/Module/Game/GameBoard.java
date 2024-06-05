@@ -16,10 +16,10 @@ import java.util.*;
  */
 public class GameBoard {
     private ArrayList<Tile> Tiles_discardedByPlayer;
-    private ArrayList<Tile> Tiles_inTheWall;
+    private static ArrayList<Tile> Tiles_inTheWall;
     private TileFactory tileFactory;
 
-    private Tile hunTile;
+    private static Tile hunTile;
 
     private int dealerIndex, currentActivePlayerIndex; // Index to track the dealer in the players list
     private List<Player> players; // List to hold all players
@@ -86,7 +86,7 @@ public class GameBoard {
         }
         this.hunTile = hunTile;
     }
-    public Tile getHunTile() {
+    public static Tile getHunTile() {
         return hunTile;
     }
     public Tile discardTile(Player player, int num) {
@@ -101,7 +101,7 @@ public class GameBoard {
     public Tile getLeastDiscardedTile() {
         return Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
     }
-    public int getTileCountInTheWall() {
+    public static int getTileCountInTheWall() {
         return Tiles_inTheWall.size();
     }
 }
