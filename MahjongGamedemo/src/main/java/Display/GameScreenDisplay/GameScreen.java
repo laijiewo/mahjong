@@ -502,7 +502,9 @@ public class GameScreen implements Screen {
 
         FallenTileImageMapper mapper = new FallenTileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
-        HunTile.setImage(imageMap.get(GameBoard.getHunTile()));
+        Tile huntile = GameBoard.getHunTile();
+        HunTile.setImage(imageMap.get(huntile));
+        System.out.println(huntile.getSuit());
     }
 
     @Override
