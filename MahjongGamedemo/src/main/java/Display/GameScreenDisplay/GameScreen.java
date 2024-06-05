@@ -1,5 +1,6 @@
 package Display.GameScreenDisplay;
 import Display.Screen;
+import Module.Game.GameBoard;
 import Module.Game.Player;
 import Module.Game.Site;
 import Module.ImageMap.FallenTileImageMapper;
@@ -37,52 +38,13 @@ public class GameScreen implements Screen {
     List<Label> playerPhotos = new ArrayList<>();
 
     @FXML
-    private ImageView tile11_111;
-
-    @FXML
-    private ImageView tile19_11;
-
-    @FXML
     private Button Chow;
-
-    @FXML
-    private ImageView tile7_111;
-
-    @FXML
-    private ImageView tile11_11;
-
-    @FXML
-    private ImageView tile3_1;
 
     @FXML
     private GridPane OppositeTiles;
 
     @FXML
-    private ImageView tile7_1;
-
-    @FXML
-    private ImageView tile8_1111;
-
-    @FXML
-    private ImageView tile12_1111;
-
-    @FXML
-    private ImageView tile6_11;
-
-    @FXML
     private Button Kong;
-
-    @FXML
-    private ImageView optile10;
-
-    @FXML
-    private ImageView optile11;
-
-    @FXML
-    private ImageView tile16_11;
-
-    @FXML
-    private ImageView tile12_1;
 
     @FXML
     private Label playerDirection1;
@@ -91,97 +53,23 @@ public class GameScreen implements Screen {
     private Label playerDirection3;
 
     @FXML
-    private ImageView tile18_111;
-
-    @FXML
     private Label playerDirection2;
-
-    @FXML
-    private ImageView tile16_1;
 
     @FXML
     private Label playerDirection4;
 
-    @FXML
-    private ImageView tile7_1111;
-
-    @FXML
-    private ImageView tile13_1111;
 
     @FXML
     private GridPane PreviousDiscardPile;
 
-    @FXML
-    private ImageView tile3_11;
-
-    @FXML
-    private ImageView tile10_1111;
-
-    @FXML
-    private ImageView optile12;
-
-    @FXML
-    private ImageView optile13;
-
-    @FXML
-    private ImageView tile9_111;
 
     @FXML
     private Button Pause;
 
-    @FXML
-    private ImageView tile15_1111;
-
-    @FXML
-    private ImageView tile15_111;
-
-    @FXML
-    private ImageView pretile10;
-
-    @FXML
-    private ImageView pretile11;
-
-    @FXML
-    private ImageView pretile12;
-
-    @FXML
-    private ImageView pretile13;
-
-    @FXML
-    private ImageView tile17_11;
 
     @FXML
     private Label player1Photo;
 
-    @FXML
-    private ImageView tile2_111;
-
-    @FXML
-    private ImageView tile16_1111;
-
-    @FXML
-    private ImageView tile2_1;
-
-    @FXML
-    private ImageView nexttile12;
-
-    @FXML
-    private ImageView nexttile13;
-
-    @FXML
-    private ImageView tile8_11;
-
-    @FXML
-    private ImageView nexttile10;
-
-    @FXML
-    private ImageView tile6_1;
-
-    @FXML
-    private ImageView nexttile11;
-
-    @FXML
-    private ImageView tile17_111;
 
     @FXML
     private Button T1;
@@ -201,8 +89,6 @@ public class GameScreen implements Screen {
     @FXML
     private Button T6;
 
-    @FXML
-    private ImageView tile21_111;
 
     @FXML
     private Button T7;
@@ -213,218 +99,46 @@ public class GameScreen implements Screen {
     @FXML
     private Button T9;
 
-    @FXML
-    private ImageView tile6_111;
-
-    @FXML
-    private ImageView tile13_111;
-
-    @FXML
-    private ImageView tile13_1;
 
     @FXML
     private GridPane NextTiles;
 
-    @FXML
-    private ImageView tile14_11;
-
-    @FXML
-    private ImageView tile17_1;
 
     @FXML
     private Label player4Photo;
 
-    @FXML
-    private ImageView pretile8;
-
-    @FXML
-    private ImageView pretile7;
 
     @FXML
     private Button T10;
 
-    @FXML
-    private ImageView pretile6;
-
-    @FXML
-    private ImageView tile5_11;
-
-    @FXML
-    private ImageView pretile5;
-
-    @FXML
-    private ImageView tile6_1111;
 
     @FXML
     private Button T12;
 
-    @FXML
-    private ImageView pretile4;
 
     @FXML
     private Button T11;
 
-    @FXML
-    private ImageView pretile3;
 
     @FXML
     private Button T14;
 
-    @FXML
-    private ImageView pretile2;
-
-    @FXML
-    private ImageView tile20_1;
 
     @FXML
     private Button T13;
 
-    @FXML
-    private ImageView pretile1;
-
-    @FXML
-    private ImageView tile9_1111;
-
-    @FXML
-    private ImageView tile4_111;
 
     @FXML
     private GridPane OppositeDiscardPile;
 
-    @FXML
-    private ImageView tile20_11;
-
-    @FXML
-    private ImageView pretile9;
-
-    @FXML
-    private ImageView tile3_1111;
-
-    @FXML
-    private ImageView optile5;
-
-    @FXML
-    private ImageView nexttile1;
-
-    @FXML
-    private ImageView optile6;
-
-    @FXML
-    private ImageView nexttile2;
-
-    @FXML
-    private ImageView optile3;
-
-    @FXML
-    private ImageView nexttile3;
-
-    @FXML
-    private ImageView tile21_11;
-
-    @FXML
-    private ImageView tile18_1111;
-
-    @FXML
-    private ImageView optile4;
-
-    @FXML
-    private ImageView nexttile4;
-
-    @FXML
-    private ImageView optile1;
-
-    @FXML
-    private ImageView nexttile5;
-
-    @FXML
-    private ImageView optile2;
-
-    @FXML
-    private ImageView nexttile6;
-
-    @FXML
-    private ImageView tile8_111;
-
-    @FXML
-    private ImageView tile10_111;
-
-    @FXML
-    private ImageView nexttile7;
-
-    @FXML
-    private ImageView nexttile8;
-
-    @FXML
-    private ImageView nexttile9;
-
-    @FXML
-    private ImageView tile15_11;
-
-    @FXML
-    private ImageView tile2_1111;
-
-    @FXML
-    private ImageView optile9;
-
-    @FXML
-    private ImageView optile7;
-
-    @FXML
-    private ImageView tile21_1111;
-
-    @FXML
-    private ImageView optile8;
-
-    @FXML
-    private ImageView tile2_11;
-
-    @FXML
-    private ImageView tile19_1111;
-
-    @FXML
-    private ImageView tile20_1111;
-
-    @FXML
-    private ImageView tile1_1;
-
-    @FXML
-    private ImageView tile12_111;
-
-    @FXML
-    private ImageView tile5_1;
-
-    @FXML
-    private ImageView tile9_1;
-
-    @FXML
-    private ImageView tile1_1111;
-
-    @FXML
-    private ImageView tile1_111;
-
-    @FXML
-    private ImageView tile4_1111;
-
-    @FXML
-    private ImageView tile14_1;
 
     @FXML
     private GridPane PlayerDiscardPile;
 
-    @FXML
-    private ImageView tile18_1;
-
-    @FXML
-    private ImageView tile19_111;
-
-    @FXML
-    private ImageView tile12_11;
 
     @FXML
     private GridPane PreviousTiles;
 
-    @FXML
-    private ImageView tile21_1;
 
     @FXML
     private Button Pung;
@@ -435,80 +149,23 @@ public class GameScreen implements Screen {
     @FXML
     private Button Win;
 
-    @FXML
-    private ImageView tile7_11;
 
     @FXML
     private GridPane NextDiscardPile;
 
-    @FXML
-    private ImageView tile3_111;
-
-    @FXML
-    private ImageView tile16_111;
-
-    @FXML
-    private ImageView tile13_11;
-
-    @FXML
-    private ImageView tile4_11;
-
-    @FXML
-    private ImageView tile10_1;
-
-    @FXML
-    private ImageView tile5_1111;
-
-    @FXML
-    private ImageView tile4_1;
-
-    @FXML
-    private ImageView tile8_1;
-
-    @FXML
-    private ImageView tile19_1;
 
     @FXML
     private Label player2Photo;
 
     @FXML
-    private ImageView tile11_1111;
-
-    @FXML
-    private ImageView tile11_1;
-
-    @FXML
-    private ImageView tile15_1;
-
-    @FXML
-    private ImageView tile18_11;
-
-    @FXML
-    private ImageView tile14_111;
-
-    @FXML
-    private ImageView tile20_111;
-
-    @FXML
-    private ImageView tile10_11;
-
-    @FXML
-    private ImageView tile1_11;
-
-    @FXML
-    private ImageView tile5_111;
-
-    @FXML
-    private ImageView tile9_11;
-
-    @FXML
-    private ImageView tile17_1111;
-
-    @FXML
     private GridPane PlayerTiles;
 
     @FXML
-    private ImageView tile14_1111;
+    ImageView HunTile;
+
+    @FXML
+    Label RemainingTiles;
+
 
     @FXML
     void DiscardTile1(ActionEvent event) {
@@ -631,7 +288,8 @@ public class GameScreen implements Screen {
             }
             indexofPlayer++;
         }
-
+        int remainingtiles = GameBoard.getTileCountInTheWall();
+        RemainingTiles.setText(remainingtiles+"/136");
     }
 
     public void paintOtherHandTiles(){
@@ -730,6 +388,7 @@ public class GameScreen implements Screen {
                 imageViews.add((ImageView) node);
             }
         }
+
 
         return imageViews;
     }
@@ -837,20 +496,23 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
+        FallenTileImageMapper mapper = new FallenTileImageMapper();
+        Map<Tile, Image> imageMap = mapper.getImageMap();
+        HunTile.setImage(imageMap.get(GameBoard.getHunTile()));
     }
 
     @Override
     public void loadWindow(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display/GameScreen.fxml"));
-        loader.setController(this); // 设置当前类为控制器
-        Parent root = loader.load(); // 加载 FXML 文件
+        loader.setController(this);
+        Parent root = loader.load();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Game Screen");
         stage.show();
 
-        // 调用设置方法
+
         setPlayerPhotoStyle();
         setPlayerSiteImage();
         paintHandTiles();

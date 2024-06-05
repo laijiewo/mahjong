@@ -1277,7 +1277,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" />
+      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" />
       <Label id="player2Photo" fx:id="player2Photo" alignment="CENTER" layoutX="837.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
@@ -1298,6 +1298,14 @@
             <Font size="9.0" />
          </font>
       </Label>
+      <ImageView fx:id="HunTile" fitHeight="39.0" fitWidth="27.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.7; -fx-scale-y: 1.7;">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <image>
+            <Image url="@../mj/mj_21.png" />
+         </image>
+      </ImageView>
 
           </children>
 </AnchorPane>
