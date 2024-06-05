@@ -19,8 +19,8 @@ import java.util.List;
  */
 public class GameManager {
     private static MahjongGame game = null;
-    private Screen loginScreen;
-    private static Site[] sites = {Site.East, Site.South, Site.West, Site.North};
+    private final Screen loginScreen;
+    private static final Site[] sites = {Site.East, Site.South, Site.West, Site.North};
 
     /**
      * Constructor for the GameManager class.
@@ -122,8 +122,12 @@ public class GameManager {
      * This method is triggered when a player chooses to discard a tile from their hand.
      */
     public static void handleDiscardButtonAction(int tileIndex, Player player) {
-        Message message = new Message(tileIndex, MessageType.DISCARD);
-        player.sendMessageObjectToHost(message);
+        if (game.playerCanDiscard(player)) {
+            Message message = new Message(tileIndex, MessageType.DISCARD);
+            player.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not discard!");
+        }
     }
     /**
      * Handles the action for the "Pause" button.

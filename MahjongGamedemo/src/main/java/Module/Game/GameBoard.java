@@ -49,6 +49,7 @@ public class GameBoard {
     }
 
     public Player getCurrentActivePlayer() {
+        System.out.println(currentActivePlayerIndex + " " + players.get(currentActivePlayerIndex).getPlayerSite());
         return players.get(currentActivePlayerIndex); // Assuming the dealer is also the current active player
     }
 
@@ -63,6 +64,7 @@ public class GameBoard {
         int numTiles = 13 * players.size() + 1;
         for (int i = 0; i < numTiles; i++) {
             dealTiles();
+            swap();
         }
         currentActivePlayerIndex = dealerIndex;
         System.out.println(dealerIndex + "  " + currentActivePlayerIndex);
@@ -71,10 +73,11 @@ public class GameBoard {
     public void dealTiles() {
         if (!Tiles_inTheWall.isEmpty()) {
             players.get(currentActivePlayerIndex).drawTiles(Tiles_inTheWall.remove(0));
-            currentActivePlayerIndex = (currentActivePlayerIndex + 1) % 4;
         }
     }
-
+    public void swap() {
+        currentActivePlayerIndex = (currentActivePlayerIndex + 1) % 4;
+    }
     public void determineHunTile() {
         Tile hunTile = Tiles_inTheWall.get(0);
         if (hunTile.getSuit().equals(Suit.WAN) || hunTile.getSuit().equals(Suit.TIAO) || hunTile.getSuit().equals(Suit.TONG)) {
@@ -101,7 +104,7 @@ public class GameBoard {
     public Tile getLeastDiscardedTile() {
         return Tiles_discardedByPlayer.get(Tiles_discardedByPlayer.size()-1);
     }
-    public static int getTileCountInTheWall() {
+    public int getTileCountInTheWall() {
         return Tiles_inTheWall.size();
     }
 }

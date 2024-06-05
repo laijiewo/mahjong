@@ -43,6 +43,9 @@ public class MahjongGame implements Game {
     public int getNumOfPlayers() {
         return players.size();
     }
+    public static int getTileCountInTheTileWall() {
+        return gameBoard.getTileCountInTheWall();
+    }
 
     @Override
     public void initializeGame() {
@@ -86,7 +89,7 @@ public class MahjongGame implements Game {
 
     @Override
     public void swap() {
-
+        gameBoard.swap();
     }
 
     @Override
@@ -99,6 +102,9 @@ public class MahjongGame implements Game {
 
     }
 
+    public boolean playerCanDiscard(Player player) {
+        return gameBoard.getCurrentActivePlayer() == player;
+    }
     private void startServer(int port) throws IOException {
         this.port = port;
         sockets = new LinkedList<>();
@@ -177,11 +183,17 @@ public class MahjongGame implements Game {
     public static void handleDiscardMessage(Message message) {
         // TODO: 发牌应在操作前
         List<Tile> discards = gameBoard.getCurrentActivePlayer().getDiscard_Tiles();
+        List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
         if (!(discards.isEmpty() && gameBoard.getCurrentActivePlayer() == gameBoard.getDealer())) {
             gameBoard.dealTiles();
             gameBoard.getCurrentActivePlayer().updateScreen();
         }
+        if (tiles.get(message.getIndex()).equals(GameBoard.getHunTile())) {
+            System.out.println("You can't discard the hun tile.");
+            return;
+        }
         gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex());
+        gameBoard.swap();
     }
     public static void handleChewMessage(Message message) {
         // 添加玩家的chew_pong_kong_Tiles

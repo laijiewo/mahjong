@@ -1,6 +1,7 @@
 package Display.GameScreenDisplay;
 import Display.Screen;
 import Module.Game.GameBoard;
+import Module.Game.MahjongGame;
 import Module.Game.Player;
 import Module.Game.Site;
 import Module.ImageMap.FallenTileImageMapper;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -288,8 +290,10 @@ public class GameScreen implements Screen {
             }
             indexofPlayer++;
         }
-        int remainingtiles = GameBoard.getTileCountInTheWall();
-        RemainingTiles.setText(remainingtiles+"/136");
+        Platform.runLater(() -> {
+            int remainingtiles = MahjongGame.getTileCountInTheTileWall();
+            RemainingTiles.setText(remainingtiles+"/136");
+        });
     }
 
     public void paintOtherHandTiles(){
@@ -518,10 +522,12 @@ public class GameScreen implements Screen {
         paintHandTiles();
     }
     public void updateScreen() {
-        clearButtons();
-        paintHandTiles();
-        paintDiscardPiles();
-        paintOtherHandTiles();
+        Platform.runLater(() -> {
+            clearButtons();
+            paintHandTiles();
+            paintDiscardPiles();
+            paintOtherHandTiles();
+        });
     }
 }
 
