@@ -8,19 +8,26 @@ import Module.ImageMap.FallenTileImageMapper;
 import Module.ImageMap.TileImageMapper;
 import Module.Tile.Tile;
 import System.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 
 
 import java.util.ArrayList;
@@ -293,6 +300,7 @@ public class GameScreen implements Screen {
         Platform.runLater(() -> {
             int remainingtiles = MahjongGame.getTileCountInTheTileWall();
             RemainingTiles.setText(remainingtiles+"/136");
+            RemainingTiles.setFont(new Font("Pixel Bug",12));
         });
     }
 
@@ -447,40 +455,63 @@ public class GameScreen implements Screen {
         }
     }
 
-    private void setPlayerSiteImage(){
+    private void paintPlayerSite(){
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.YELLOW);
+        dropShadow.setRadius(10);
+        dropShadow.setSpread(0.5);
+
         for(int i = 0; i !=4; i++) {
             Player player = players.get(i);
             Label playerDirection = playerDirections.get(i);
             Site site = player.getPlayerSite();
+            int currentActivePlayer = MahjongGame.getCurrentPlayerIndex();
+
             if (playerDirection != null) {
                 if (site == Site.East) {
+                    playerDirection.setEffect(null);
                     playerDirection.setStyle(
                             "-fx-background-image: url('/UI/East.png');" +
                                     " -fx-background-repeat: no-repeat;" +
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                } else if (site == Site.North) {
+                    if(currentActivePlayer == 0){
+                        playerDirection.setEffect(dropShadow);
+                    }
+                } else if (site == Site.South) {
+                    playerDirection.setEffect(null);
                     playerDirection.setStyle(
-                            "-fx-background-image: url('/UI/North.png');" +
+                            "-fx-background-image: url('/UI/South.png');" +
                                     " -fx-background-repeat: no-repeat;" +
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                } else if (site == Site.South) {
-                    playerDirection.setStyle(
-                            "-fx-background-image: url('/UI/South.png');"
-                                    + " -fx-background-repeat: no-repeat;"
-                                    + " -fx-background-position: center center;"
-                                    + " -fx-background-size: stretch;"
-                    );
-                } else {
+                    if(currentActivePlayer == 1){
+                        playerDirection.setEffect(dropShadow);
+                    }
+                } else if (site == Site.West) {
+                    playerDirection.setEffect(null);
                     playerDirection.setStyle(
                             "-fx-background-image: url('/UI/West.png');"
                                     + " -fx-background-repeat: no-repeat;"
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
+                    if(currentActivePlayer == 2){
+                        playerDirection.setEffect(dropShadow);
+                    }
+                } else {
+                    playerDirection.setEffect(null);
+                    playerDirection.setStyle(
+                            "-fx-background-image: url('/UI/North.png');"
+                                    + " -fx-background-repeat: no-repeat;"
+                                    + " -fx-background-position: center center;"
+                                    + " -fx-background-size: stretch;"
+                    );
+                    if(currentActivePlayer == 3){
+                        playerDirection.setEffect(dropShadow);
+                    }
                 }
             } else {
                 System.out.println("failed to change site");
@@ -520,15 +551,17 @@ public class GameScreen implements Screen {
 
 
         setPlayerPhotoStyle();
-        setPlayerSiteImage();
+        paintPlayerSite();
         paintHandTiles();
     }
+
     public void updateScreen() {
         Platform.runLater(() -> {
             clearButtons();
             paintHandTiles();
             paintDiscardPiles();
             paintOtherHandTiles();
+            paintPlayerSite();
         });
     }
 }

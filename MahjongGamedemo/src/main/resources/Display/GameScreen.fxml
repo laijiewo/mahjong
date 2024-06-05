@@ -387,6 +387,11 @@
             </ImageView>
          </children>
       </GridPane>
+      <ImageView fitHeight="120.0" fitWidth="122.0" layoutX="438.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../UI/Grid_03.png" />
+         </image>
+      </ImageView>
       <GridPane fx:id="NextTiles" layoutX="843.0" layoutY="117.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -1091,6 +1096,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" />
       <GridPane fx:id="PreviousDiscardPile" layoutX="175.0" layoutY="240.0" rotate="90.0">
          <children>
             <ImageView fx:id="tile1_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" visible="false">
@@ -1277,7 +1283,6 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" />
       <Label id="player2Photo" fx:id="player2Photo" alignment="CENTER" layoutX="837.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
@@ -1303,7 +1308,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <image>
-            <Image url="@../mj/mj_21.png" />
+            <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
 
