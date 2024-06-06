@@ -43,5 +43,5 @@ public interface MahjongRule {
      * @param tile the tile to be used for Hu
      * @return true if the player can Hu, false otherwise
      */
-    public boolean canHu(List<Tile> hand, Tile tile,List<Tile>hunTile,List<Tile>meldsTile);
+    boolean canHu(List<Tile> hand, Tile tile);
 }
