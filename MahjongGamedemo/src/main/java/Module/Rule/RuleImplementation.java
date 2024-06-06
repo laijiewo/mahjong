@@ -95,12 +95,13 @@ public class RuleImplementation implements MahjongRule {
         pengTiles.clear(); // Clear previous peng tiles
         int count = 0;
         for (Tile t : hand) {
-            if (t.equals(tile) || t.equals(hunTile)) {
+            if (t.equals(tile)) {
                 pengTiles.add(t);
                 count++;
             }
         }
-        if (count >= 2) {
+        pengTiles.add(tile);
+        if (count == 3) {
             removePengTilesFromHand(hand);
             return true; // Need at least two tiles to Peng
         }
@@ -119,12 +120,13 @@ public class RuleImplementation implements MahjongRule {
         gangTiles.clear(); // Clear previous gang tiles
         int count = 0;
         for (Tile t : hand) {
-            if (t.equals(tile) || t.equals(hunTile)) {
+            if (t.equals(tile)) {
                 gangTiles.add(t);
                 count++;
             }
         }
-        if (count >= 3) {
+        hand.add(tile);
+        if (count == 4) {
             removeGangTilesFromHand(hand);
             return true; // Need at least three tiles to Gang
         }
