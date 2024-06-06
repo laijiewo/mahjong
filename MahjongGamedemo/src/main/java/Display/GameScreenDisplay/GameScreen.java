@@ -179,71 +179,85 @@ public class GameScreen implements Screen {
     @FXML
     void DiscardTile1(ActionEvent event) {
         discard(0);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
         discard(10);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
         discard(6);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
         discard(5);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
         discard(2);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
         discard(13);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
         discard(8);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
         discard(11);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
         discard(7);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
         discard(12);
+        shutDownButtons();;
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
         discard(4);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
         discard(9);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
         discard(3);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
         discard(1);
+        shutDownButtons();
     }
 
     public void discard(int index) {
@@ -471,6 +485,16 @@ public class GameScreen implements Screen {
     public void setHunTile(Tile huntile) {
         this.huntile = huntile;
     }
+
+    public void shutDownButtons(){
+        List<Button> buttons = new ArrayList<>();
+        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
+
+        for(Button button : buttons){
+            button.setDisable(true);
+        }
+    }
+
     private void setPlayerPhotoStyle(){
         for(int i = 0; i != 4; i++) {
             PlayerInformation player = players.get(i);
