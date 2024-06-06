@@ -452,6 +452,10 @@ public class GameScreen implements Screen {
         return imageViews;
     }
 
+    public void updateTimer(){
+
+    }
+
     public void updateGameInformation(Message message) {
         List<PlayerInformation> playerInformationList = ((GameInformationMessage) message).getPlayersFromMessage();
         players.clear();

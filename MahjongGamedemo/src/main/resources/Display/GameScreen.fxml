@@ -1096,7 +1096,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE" >
+      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="PixelGameFont" size="12" />
          </font>
@@ -1315,6 +1315,11 @@
             <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
+      <Label fx:id="timer" alignment="CENTER" layoutX="630.0" layoutY="486.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="45.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
 
           </children>
 </AnchorPane>

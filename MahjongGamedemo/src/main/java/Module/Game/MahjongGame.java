@@ -336,18 +336,16 @@ public class MahjongGame implements Game {
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
         int tempindex = 0;
-        int index = 999;
         for (Player player : players) {
             if(player.equals(gameBoard.getCurrentActivePlayer())){
-                index = tempindex;
+                int preindex = (tempindex-1+4)%4;
+                if(players.get(preindex).canchi(chowTile)){
+                    return players.get(preindex);
+                }
             }
             tempindex++;
         }
-        int preindex = (index-1+4)%4;
-        if(index==999||!players.get(preindex).canchi(chowTile)){
-            return null;
-        }
-        return players.get(preindex);
+        return null;
     }
 
     public static Player playerToPung(){
