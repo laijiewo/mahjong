@@ -1,6 +1,5 @@
-package Display.GameScreenDisplay;
+package Display;
 
-import Display.Screen;
 import Module.Game.MahjongGame;
 import System.*;
 import javafx.event.ActionEvent;

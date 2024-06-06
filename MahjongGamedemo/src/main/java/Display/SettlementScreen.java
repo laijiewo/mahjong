@@ -1,8 +1,5 @@
-package Display.GameScreenDisplay;
-import Display.GameScreenDisplay.ButtonDisplay;
+package Display;
 import Display.Screen;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 public class SettlementScreen implements Screen {

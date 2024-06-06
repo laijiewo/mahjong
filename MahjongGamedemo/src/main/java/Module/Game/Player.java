@@ -1,5 +1,5 @@
 package Module.Game;
-import Display.GameScreenDisplay.GameScreen;
+import Display.GameScreen;
 import Display.*;
 import Module.Tile.Tile;
 import Message.*;
@@ -12,7 +12,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**

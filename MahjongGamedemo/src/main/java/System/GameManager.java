@@ -1,16 +1,14 @@
 package System;
 
 import Display.*;
-import Display.GameScreenDisplay.LoginScreen;
+import Display.LoginScreen;
 import Module.Game.MahjongGame;
 import Module.Game.Player;
 import Module.Game.Site;
-import Module.Tile.Tile;
 import Message.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * This class controls the game flow and the game state.
