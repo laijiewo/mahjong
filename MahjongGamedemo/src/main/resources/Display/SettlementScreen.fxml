@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,9 +10,33 @@
 <?import javafx.scene.layout.*?>
 <?import Display.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Display.GameScreenDisplay.SettlementScreen"
-            prefHeight="640" prefWidth="1024">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640" prefWidth="1024" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.SettlementScreen">
+   <children>
+      <ImageView fitHeight="649.0" fitWidth="1024.0" layoutY="-1.0">
+         <image>
+            <Image url="@../backgrounds/GameScreenBG.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-56.0" layoutY="14.0" prefHeight="156.0" prefWidth="634.0" text="WINNER:" textFill="#fff700">
+         <font>
+            <Font size="48.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ffee00" />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="426.0" prefHeight="156.0" prefWidth="634.0" text="SCORE:    10000000" textFill="#fff700">
+         <effect>
+            <DropShadow color="#ffee00" />
+         </effect>
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="185.0" fitWidth="187.0" layoutX="790.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../UI/Player_E.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

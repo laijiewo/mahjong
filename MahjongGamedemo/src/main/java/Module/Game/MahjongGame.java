@@ -25,6 +25,7 @@ public class MahjongGame implements Game {
     private int port;
     private boolean isGameStart;
     private static ScheduledExecutorService scheduler;
+    private static ScheduledFuture<?> scheduledFuture;
     static int i = 0;
 
     public MahjongGame(int port) throws IOException {
@@ -62,7 +63,12 @@ public class MahjongGame implements Game {
         setHunTileToPlayers();
         isGameStart = true;
 
-        scheduler.scheduleAtFixedRate(this::swap, 20, 20, TimeUnit.SECONDS);
+        scheduledFuture = scheduler.schedule(() -> {
+            scheduledFuture = scheduler.schedule(() -> {
+                GameManager.handleDiscardButtonAction(13,gameBoard.getCurrentActivePlayer());
+            }, 100, TimeUnit.SECONDS);
+        }, 0, TimeUnit.SECONDS);;
+
     }
 
     public void setHunTileToPlayers() {
@@ -226,7 +232,15 @@ public class MahjongGame implements Game {
         }
         System.out.println("Player " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
         gameBoard.setLeastDiscardedTile(gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex()));
-        scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
+        if (scheduledFuture != null && !scheduledFuture.isDone()) {
+            scheduledFuture.cancel(true);
+        }
+        scheduledFuture = scheduler.schedule(() -> {
+            MahjongGame.rotate();
+            scheduledFuture = scheduler.schedule(() -> {
+                GameManager.handleDiscardButtonAction(13,gameBoard.getCurrentActivePlayer());
+            }, 100, TimeUnit.SECONDS);
+        }, 0, TimeUnit.SECONDS);
     }
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
