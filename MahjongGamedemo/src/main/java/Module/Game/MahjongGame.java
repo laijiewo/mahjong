@@ -251,7 +251,7 @@ public class MahjongGame implements Game {
                     gameBoard.dealTiles();
                     gameBoard.getCurrentActivePlayer().discardTiles(13);
                 }, 100, TimeUnit.SECONDS);
-            }, 10, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
         } else {
             //如果没人能吃碰杠
             scheduledFuture = scheduler.schedule(() -> {
