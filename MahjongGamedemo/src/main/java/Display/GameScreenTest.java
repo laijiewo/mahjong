@@ -1,4 +1,4 @@
-package Display.GameScreenDisplay;
+package Display;
 import Module.Game.MahjongGame;
 import Module.Game.Player;
 import Module.Tile.NumberTile;

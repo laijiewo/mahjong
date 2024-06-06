@@ -1,5 +1,7 @@
-package Display.GameScreenDisplay;
+package Display;
 
+import Display.JoinScreen;
+import Display.LaunchScreen;
 import Display.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package Display.GameScreenDisplay;
+package Display;
 import Display.Screen;
 import Message.*;
 import Module.Game.*;

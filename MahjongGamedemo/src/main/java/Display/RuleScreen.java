@@ -1,5 +1,4 @@
-package Display.GameScreenDisplay;
-import Display.GameScreenDisplay.ButtonDisplay;
+package Display;
 import Display.Screen;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
@@ -10,7 +9,6 @@ import javafx.stage.Stage;
 
 public class RuleScreen implements Screen {
     private Background Background;
-    private static Button Return_toMenuButton = ButtonDisplay.Return_toMenuButton;
 
 
 
