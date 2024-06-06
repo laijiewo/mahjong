@@ -194,6 +194,9 @@ public class MahjongGame implements Game {
     }
     public void update() {
         try {
+            for (Player player : players) {
+                player.sort_hand();
+            }
             sendGameMessageToAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
