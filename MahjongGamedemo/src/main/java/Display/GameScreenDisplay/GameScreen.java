@@ -269,7 +269,7 @@ public class GameScreen implements Screen {
     @FXML
     void Chow(ActionEvent event) {
         List<Tile> tiles = mainPlayer.chi(leastDiscardedTile);
-        if (tiles != null) {
+        if (tiles != null && playerIndex == currentActivePlayer) {
             Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
