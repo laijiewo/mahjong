@@ -3,7 +3,7 @@ package Module.Game;
 import Module.ImageMap.TileImageMapper;
 import Module.Tile.Tile;
 import System.*;
-import Message.Message;
+import Message.*;
 import Message.MessageType;
 
 import java.io.*;
@@ -24,8 +24,6 @@ public class MahjongGame implements Game {
     private static ServerSocket serverSocket;
     private int port;
     private boolean isGameStart;
-    private static final Object lock = new Object();
-    private static boolean isRotating = false;
     private static ScheduledExecutorService scheduler;
     static int i = 0;
 
@@ -56,7 +54,7 @@ public class MahjongGame implements Game {
 
     @Override
     public void initializeGame() {
-        gameBoard = new GameBoard();
+        gameBoard = new GameBoard(players);
         gameBoard.determineDealer();
         gameBoard.shuffleTiles();
         gameBoard.dealAllTiles();
@@ -67,13 +65,16 @@ public class MahjongGame implements Game {
         scheduler.scheduleAtFixedRate(this::swap, 20, 20, TimeUnit.SECONDS);
     }
 
-    public static void setHunTileToPlayers() {
-        for (Player player : players) {
-            player.setHunTile(gameBoard.getHunTile());
+    public void setHunTileToPlayers() {
+        Message message = new HunTileMessage(gameBoard.getHunTile());
+        try {
+            sendMessageToAll(message);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public static List<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
@@ -158,28 +159,56 @@ public class MahjongGame implements Game {
         return port;
     }
 
-    public static void sendMessageToAll() {
-        try (BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
-            String message;
-            while ((message = stdIn.readLine()) != null) {
-                for (Socket socket : sockets) {
-                    try {
-                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                        out.println(message);
-                        out.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+//    public static void sendMessageToAll() {
+//        try (BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
+//            String message;
+//            while ((message = stdIn.readLine()) != null) {
+//                for (Socket socket : sockets) {
+//                    try {
+//                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+//                        out.println(message);
+//                        out.flush();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void startGame() throws IOException {
+        sendGameMessageToAll();
+        Message message = new launchGameMessage();
+        sendMessageToAll(message);
+    }
+    public void update() {
+        try {
+            sendGameMessageToAll();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
-
-
-    private void sendOperationMessageToAll(Message message) throws IOException {
-        // TODO: 向所有玩家发送操作信息
+    private void sendGameMessageToAll() throws IOException {
+        List<PlayerInformation> playerInformation = new ArrayList<>();
+        for (Player player : players) {
+            playerInformation.add(new PlayerInformation(player));
+        }
+        int i = 0;
+        for (Socket socket : sockets) {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            List<PlayerInformation> playerInformation1 = new ArrayList<>();
+            for (int j = 0; j < 4; j++) {
+                playerInformation1.add(playerInformation.get((i + j) % 4));
+            }
+            Message message = new GameInformationMessage(playerInformation1, gameBoard.getTilesInTheWall(), getCurrentPlayerIndex(), getLeastDiscardedTile(), i);
+            oos.writeObject(message);
+            oos.flush();
+            i++;
+        }
+    }
+    private void sendMessageToAll(Message message) throws IOException {
         for (Socket socket : sockets) {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             oos.writeObject(message);
@@ -187,29 +216,34 @@ public class MahjongGame implements Game {
         }
     }
 
-    public static void handleDiscardMessage(Message message) {
-        // TODO: 发牌应在操作前
+    public static void handleDiscardMessage(Message mes) {
+        DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
-        if (tiles.get(message.getIndex()).equals(GameBoard.getHunTile())) {
+        System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
+        if (tiles.get(message.getIndex()).equals(gameBoard.getHunTile())) {
             System.out.println("You can't discard the hun tile.");
             return;
         }
+        System.out.println("Player " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
         gameBoard.setLeastDiscardedTile(gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex()));
         scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
-    public static void handleChewMessage(Message message) {
+    public static void handleChewMessage(Message mes) {
+        Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的chew_pong_kong_Tiles
         List<Tile> chewTiles = message.getTiles();
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) chewTiles);
         scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
-    public static void handlePungMessage(Message message) {
+    public static void handlePungMessage(Message mes) {
+        Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的pung_Tiles
         List<Tile> pungTiles = message.getTiles();
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) pungTiles);
         scheduler.schedule(MahjongGame::rotate, 0, TimeUnit.SECONDS);
     }
-    public static void handleKongMessage(Message message) {
+    public static void handleKongMessage(Message mes) {
+        Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的kong_Tiles
         List<Tile> kongTiles = message.getTiles();
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) kongTiles);

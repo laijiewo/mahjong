@@ -39,19 +39,19 @@ public class GameScreenTest extends Application {
         GameManager.addGame(game);
 
 
-        Player eastplayer = new Player(stage1);
+        Player eastplayer = new Player();
         eastplayer.setServerPort(port);
         eastplayer.setServerHostname(ip);
         eastplayer.connect();
-        Player southplayer = new Player(stage2);
+        Player southplayer = new Player();
         southplayer.setServerPort(port);
         southplayer.setServerHostname(ip);
         southplayer.connect();
-        Player westplayer = new Player(stage3);
+        Player westplayer = new Player();
         westplayer.setServerPort(port);
         westplayer.setServerHostname(ip);
         westplayer.connect();
-        Player northplayer = new Player(stage4);
+        Player northplayer = new Player();
         northplayer.setServerPort(port);
         northplayer.setServerHostname(ip);
         northplayer.connect();

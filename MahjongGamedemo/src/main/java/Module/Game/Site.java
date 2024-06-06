@@ -1,5 +1,7 @@
 package Module.Game;
 
-public enum Site {
+import java.io.Serializable;
+
+public enum Site implements Serializable {
     East,South,West,North
 }

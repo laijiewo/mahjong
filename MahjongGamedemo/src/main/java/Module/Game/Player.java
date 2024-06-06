@@ -2,10 +2,12 @@ package Module.Game;
 import Display.GameScreenDisplay.GameScreen;
 import Display.*;
 import Module.Tile.Tile;
-import Message.Message;
-import javafx.stage.Stage;
+import Message.*;
+import javafx.application.Platform;
 import Module.Rule.*;
 import Module.utils.*;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Represents a player in a Mahjong game, managing their actions and hand.
  */
-public class Player {
+public class Player implements Serializable {
     private int Score;
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
@@ -26,17 +28,19 @@ public class Player {
     private static Socket echoSocket;
     private static boolean isRunning = true;
     private String serverHostname;
+    private Tile hunTile;
     private int serverPort;
     private boolean connected = false;
-    private final Stage stage;
+    private boolean isScreenLaunched = false;
+    private GameInformationMessage gameInformationMessage;
 
 
-    public Player(Stage stage){
-        this.stage = stage;
+    public Player(){
         this.Score = 0;
         Tile_hand = new ArrayList<>();
         discard_Tiles = new ArrayList<>();
         gameScreen = new GameScreen();
+        ((GameScreen) gameScreen).setPlayer(this);
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
     public void setDiscard_Tiles(ArrayList<Tile> discard_Tiles){
@@ -54,7 +58,9 @@ public class Player {
         return Dice.toss()+Dice.toss();
     }
     public void setHunTile(Tile tile){
-        ruleImplementation = new RuleImplementation(tile);
+        hunTile=tile;
+        ruleImplementation = new RuleImplementation(hunTile);
+        ((GameScreen) gameScreen).setHunTile(tile);
     }
 
     /**
@@ -156,17 +162,15 @@ public class Player {
         Chew_Pong_Kung_Tiles.addAll(tiles);
     }
     public void launchGameScreen() {
-        try {
-            List<Player> players = MahjongGame.getPlayers();
-            int index = players.indexOf(this);
-            ((GameScreen) gameScreen).setPlayers(players.get(index), players.get((index+1)%4), players.get((index+2)%4), players.get((index+3)%4));
-            gameScreen.loadWindow(stage);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void updateScreen() {
-        ((GameScreen) gameScreen).updateScreen();
+        Platform.runLater(() -> {
+            try {
+                ((GameScreen) gameScreen).updateGameInformation(gameInformationMessage);
+                isScreenLaunched = true;
+                gameScreen.loadWindow(new Stage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
     public void setServerHostname(String serverHostname) {
         this.serverHostname = serverHostname;
@@ -175,6 +179,13 @@ public class Player {
     public void setServerPort(int serverPort) {
         this.serverPort = serverPort;
     }
+    public int getCurrentPlayerIndex() {
+        return gameInformationMessage.getCurrentPlayerIndexFromMessage();
+    }
+    public List<Tile> getTileInTheWall() {
+        return gameInformationMessage.getTilesInTheWallFromMessage();
+    }
+
 
     /**
      * Establishes a connection to the server.
@@ -187,86 +198,43 @@ public class Player {
         // Attempt to connect to the server
         echoSocket = new Socket(serverHostname, port);
         connected = true;
+        new Thread(this::startReceiveGameMessages).start();
     }
 
     public Socket getEchoSocket() {
         return echoSocket;
     }
+    public void joinToHost() {
+        Message message = new joinMessage();
+        sendMessageObjectToHost(message);
+    }
     /**
      * Starts a new thread to receive messages from the server.
      */
-    private static void startReceiveMessages() {
-
-
-        System.out.println("Type 'Bye.' to exit.");
-        //connected = true;
-    }
-
-    /**
-     * Starts a new thread to send messages to the server.
-     */
-    private static void startSendMessages() {
-
-    }
-
-    /**
-     * Sends messages to the server.
-     * Reads user input from the console and sends it to the server.
-     * Handles the "Bye." command to exit the application.
-     */
-    private static void sendMessage() {
-        try {
-            PrintWriter out = new PrintWriter(
-                    new OutputStreamWriter(echoSocket.getOutputStream(), "UTF-8"), true);
-            BufferedReader stdIn = new BufferedReader(
-                    new InputStreamReader(System.in));
-            String userInput;
-
-            while ((userInput = stdIn.readLine()) != null) {
-                if (userInput.equals("Bye.")) {
-                    isRunning = false;
-                    System.out.println("See you again!");
-                    out.println(userInput);
-                    out.close();
-                    stdIn.close();
-                    return;
+    private void startReceiveGameMessages() {
+        while (true) {
+            try {
+                ObjectInputStream ois = new ObjectInputStream(echoSocket.getInputStream());
+                Message mes = (Message) ois.readObject();
+                if (mes.getType() == MessageType.GAME_INFORMATION) {
+                    gameInformationMessage = (GameInformationMessage) mes;
+                    if (isScreenLaunched) {
+                        ((GameScreen) gameScreen).updateScreen(gameInformationMessage);
+                    }
+                } else if (mes.getType() == MessageType.HUN_TILE) {
+                    setHunTile(((HunTileMessage) mes).getHunTile());
+                } else if (mes.getType() == MessageType.LAUNCH_GAME) {
+                    launchGameScreen();
                 }
-                out.println(userInput);
-            }
-            out.close();
-            stdIn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Receives messages from the server.
-     * Continuously reads messages from the server and prints them to the console.
-     * If an error occurs, it attempts to reconnect to the server after a delay.
-     *
-     * @throws InterruptedException If the thread is interrupted while sleeping
-     */
-    private static void receiveMessage() throws InterruptedException {
-        String message;
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
-            while (isRunning && (message = reader.readLine()) != null) {
-                if (message.contains("player")) {
-                    System.out.println(message);
-                } else {
-                    System.out.println("Server: " + message);
-                }
-            }
-        } catch (IOException e) {
-            if (isRunning) {
-                System.out.println("An error occurred while receiving message: " + e.getMessage());
-                System.out.println("Reconnecting...");
-                Thread.sleep(3000);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
     }
     public void sendMessageObjectToHost(Message message) {
+        System.out.println("dis " + discard_Tiles.size());
         try {
             ObjectOutputStream oos = new ObjectOutputStream(echoSocket.getOutputStream());;
             oos.writeObject(message);
@@ -275,13 +243,64 @@ public class Player {
             e.printStackTrace();
         }
     }
-    public void receiveMessageObjectFromHost() {
-        try {
-            ObjectInputStream ois = new ObjectInputStream(echoSocket.getInputStream());
-            Message message = (Message) ois.readObject();
-            ois.close();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
+//    /**
+//     * Sends messages to the server.
+//     * Reads user input from the console and sends it to the server.
+//     * Handles the "Bye." command to exit the application.
+//     */
+//    private static void sendMessage() {
+//        try {
+//            PrintWriter out = new PrintWriter(
+//                    new OutputStreamWriter(echoSocket.getOutputStream(), "UTF-8"), true);
+//            BufferedReader stdIn = new BufferedReader(
+//                    new InputStreamReader(System.in));
+//            String userInput;
+//
+//            while ((userInput = stdIn.readLine()) != null) {
+//                if (userInput.equals("Bye.")) {
+//                    isRunning = false;
+//                    System.out.println("See you again!");
+//                    out.println(userInput);
+//                    out.close();
+//                    stdIn.close();
+//                    return;
+//                }
+//                out.println(userInput);
+//            }
+//            out.close();
+//            stdIn.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//    /**
+//     * Receives messages from the server.
+//     * Continuously reads messages from the server and prints them to the console.
+//     * If an error occurs, it attempts to reconnect to the server after a delay.
+//     *
+//     * @throws InterruptedException If the thread is interrupted while sleeping
+//     */
+//    private static void receiveMessage() throws InterruptedException {
+//        String message;
+//        try {
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+//            while (isRunning && (message = reader.readLine()) != null) {
+//                if (message.contains("player")) {
+//                    System.out.println(message);
+//                } else {
+//                    System.out.println("Server: " + message);
+//                }
+//            }
+//        } catch (IOException e) {
+//            if (isRunning) {
+//                System.out.println("An error occurred while receiving message: " + e.getMessage());
+//                System.out.println("Reconnecting...");
+//                Thread.sleep(3000);
+//            }
+//        }
+//    }
+
 }

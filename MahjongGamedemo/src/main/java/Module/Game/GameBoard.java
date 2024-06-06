@@ -15,7 +15,6 @@ import java.util.*;
  * Represents the game board for a Mahjong game, managing the state and interactions within a game session.
  */
 public class GameBoard {
-    private ArrayList<Tile> Tiles_discardedByPlayer;
     private static ArrayList<Tile> Tiles_inTheWall;
     private TileFactory tileFactory;
     private Tile leastDiscardedTile;
@@ -25,10 +24,9 @@ public class GameBoard {
     private List<Player> players; // List to hold all players
     private Dice dice;
 
-    public GameBoard() {
+    public GameBoard(List<Player> players) {
 
         // Initialize the lists for tiles
-        this.Tiles_discardedByPlayer = new ArrayList<>();
         this.Tiles_inTheWall = new ArrayList<>();
 
         // Setup the tile factory and dice
@@ -41,7 +39,7 @@ public class GameBoard {
         Collections.shuffle(this.Tiles_inTheWall);
 
         // Set players from MahjongGame
-        this.players = MahjongGame.getPlayers();
+        this.players = players;
     }
 
     public Player getDealer() {
@@ -97,7 +95,7 @@ public class GameBoard {
         }
         this.hunTile = hunTile;
     }
-    public static Tile getHunTile() {
+    public Tile getHunTile() {
         return hunTile;
     }
 
@@ -111,6 +109,9 @@ public class GameBoard {
     }
     public void setLeastDiscardedTile(Tile leastDiscardedTile) {
         this.leastDiscardedTile = leastDiscardedTile;
+    }
+    public List<Tile> getTilesInTheWall() {
+        return Tiles_inTheWall;
     }
     public int getTileCountInTheWall() {
         return Tiles_inTheWall.size();

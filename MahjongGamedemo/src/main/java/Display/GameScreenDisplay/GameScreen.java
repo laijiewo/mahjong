@@ -1,16 +1,11 @@
 package Display.GameScreenDisplay;
 import Display.Screen;
-import Module.Game.GameBoard;
-import Module.Game.MahjongGame;
-import Module.Game.Player;
-import Module.Game.Site;
+import Message.*;
+import Module.Game.*;
 import Module.ImageMap.FallenTileImageMapper;
 import Module.ImageMap.TileImageMapper;
 import Module.Tile.Tile;
 import System.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,7 +22,6 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
 
 
 import java.util.ArrayList;
@@ -42,9 +36,13 @@ public class GameScreen implements Screen {
     Player NextPlayer;
     Player OppositePlayer;
     Player PreviousPlayer;
-    List<Player> players = new ArrayList<>();
+    List<PlayerInformation> players = new ArrayList<>();
     List<Label> playerDirections = new ArrayList<>();
     List<Label> playerPhotos = new ArrayList<>();
+    Player mainPlayer;
+    int currentActivePlayer, playerIndex;
+    Tile huntile, leastDiscardedTile;
+    List<Tile> tilesInTheWall = new ArrayList<>();
 
     @FXML
     private Button Chow;
@@ -178,97 +176,128 @@ public class GameScreen implements Screen {
 
     @FXML
     void DiscardTile1(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(0, players.get(0));
+        discard(0);
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(10, players.get(0));
+        discard(10);
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(6, players.get(0));
+        discard(6);
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(5, players.get(0));
+        discard(5);
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(2, players.get(0));
+        discard(2);
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(13, players.get(0));
+        discard(14);
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(8, players.get(0));
+        discard(8);
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(11, players.get(0));
+        discard(11);
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(7, players.get(0));
+        discard(7);
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(12, players.get(0));
+        discard(12);
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(4, players.get(0));
+        discard(4);
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(9, players.get(0));
+        discard(9);
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(3, players.get(0));
+        discard(3);
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
-        GameManager.handleDiscardButtonAction(1, players.get(0));
+        discard(1);
     }
 
+    public void discard(int index) {
+        System.out.println(playerIndex + "      " + currentActivePlayer);
+        if (playerIndex == currentActivePlayer) {
+            Message message = new DiscardMessage(index);
+            mainPlayer.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not discard!");
+        }
+    }
     @FXML
     void Pung(ActionEvent event) {
-        GameManager.handlePungButtonAction(players.get(0));
+        List<Tile> tiles = mainPlayer.pung(leastDiscardedTile);
+        if (tiles != null) {
+            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, tiles);
+            mainPlayer.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not pung!");
+        }
     }
 
     @FXML
     void Chow(ActionEvent event) {
-        GameManager.handleChewButtonAction(players.get(0));
+        List<Tile> tiles = mainPlayer.chi(leastDiscardedTile);
+        if (tiles != null) {
+            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles);
+            mainPlayer.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not chew!");
+        }
     }
 
     @FXML
     void Kong(ActionEvent event) {
-        GameManager.handleKongButtonAction(players.get(0));
+        List<Tile> tiles = mainPlayer.kong(leastDiscardedTile);
+        if (tiles != null) {
+            Message message = new Chew_Pung_KongMessage(MessageType.KONG, tiles);
+            mainPlayer.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not kong!");
+        }
     }
 
     @FXML
     void Win(ActionEvent event) {
-        GameManager.handleHuButtonAction(players.get(0));
+        if (mainPlayer.canHu(leastDiscardedTile)) {
+            Message message = new Message(MessageType.HU);
+            mainPlayer.sendMessageObjectToHost(message);
+        } else {
+            System.out.println("Can not hu!");
+        }
     }
 
     @FXML
     void Pause(ActionEvent event) {
-        GameManager.handlePauseButtonAction(players.get(0));
     }
 
     public void paintDiscardPiles(){
@@ -283,9 +312,10 @@ public class GameScreen implements Screen {
 
         int indexofPlayer = 0;
         for (GridPane gridPane : gridPaneList) {
-            Player player = players.get(indexofPlayer);
+            PlayerInformation player = players.get(indexofPlayer);
 
-            List<Tile> tiles = player.getDiscard_Tiles();
+            List<Tile> tiles = player.getDiscardedTiles();
+            System.out.println("Discarded tiles of player " + tiles.size());
             List<ImageView> imageViewList = getAllImageViews(gridPane);
 
             int indexOfImage = 0;
@@ -298,7 +328,7 @@ public class GameScreen implements Screen {
             indexofPlayer++;
         }
         Platform.runLater(() -> {
-            int remainingtiles = MahjongGame.getTileCountInTheTileWall();
+            int remainingtiles = tilesInTheWall.size();
             RemainingTiles.setText(remainingtiles+"/136");
             RemainingTiles.setFont(new Font("Pixel Bug",12));
         });
@@ -317,8 +347,8 @@ public class GameScreen implements Screen {
 
         int indexofPlayer = 1;
         for (GridPane gridPane : gridPaneList) {
-            Player player = players.get(indexofPlayer);
-            List<Tile> tiles = player.getChew_Pong_Kung_Tiles();
+            PlayerInformation player = players.get(indexofPlayer);
+            List<Tile> tiles = player.getChew_Pung_Kong_Tiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
             rotationDegree-=90;
 
@@ -338,12 +368,12 @@ public class GameScreen implements Screen {
         TileImageMapper mapper = new TileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
 
-        Player player = players.get(0);
+        PlayerInformation player = players.get(0);
 
         List<Button> buttons = new ArrayList<>();
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
-        List<Tile> tiles = player.getTile_hand();
+        List<Tile> tiles = player.getHand_Tiles();
         int indexOfButton = 0;
 
         for (Tile tile : tiles) {
@@ -408,22 +438,32 @@ public class GameScreen implements Screen {
         return imageViews;
     }
 
-    public void setPlayers(Player player1,Player player2,Player player3, Player player4){
-        players.add(player1);
+    public void updateGameInformation(Message message) {
+        List<PlayerInformation> playerInformationList = ((GameInformationMessage) message).getPlayersFromMessage();
+        players.clear();
+        players.add(playerInformationList.get(0));
 
-        players.add(player2);
+        players.add(playerInformationList.get(1));
 
-        players.add(player3);
+        players.add(playerInformationList.get(2));
 
-        players.add(player4);
-
+        players.add(playerInformationList.get(3));
+        currentActivePlayer = ((GameInformationMessage) message).getCurrentPlayerIndexFromMessage();
+        tilesInTheWall = ((GameInformationMessage) message).getTilesInTheWallFromMessage();
+        leastDiscardedTile = ((GameInformationMessage) message).getLeastDiscardedTileFromMessage();
+        playerIndex = ((GameInformationMessage) message).getPlayerIndexFromMessage();
     }
-
+    public void setPlayer(Player player) {
+        this.mainPlayer = player;
+    }
+    public void setHunTile(Tile huntile) {
+        this.huntile = huntile;
+    }
     private void setPlayerPhotoStyle(){
-        for(int i = 0 ; i !=4; i++) {
-            Player player = players.get(i);
+        for(int i = 0; i != 4; i++) {
+            PlayerInformation player = players.get(i);
             Label playerPhoto = playerPhotos.get(i);
-            Site site = player.getPlayerSite();
+            Site site = player.getSite();
             if (playerPhoto != null) {
                 if (site == Site.East) {
                     playerPhoto.setStyle(
@@ -464,12 +504,10 @@ public class GameScreen implements Screen {
         dropShadow.setRadius(10);
         dropShadow.setSpread(0.5);
 
-        for(int i = 0; i !=4; i++) {
-            Player player = players.get(i);
+        for(int i = 0; i != 4; i++) {
+            PlayerInformation player = players.get(i);
             Label playerDirection = playerDirections.get(i);
-            Site site = player.getPlayerSite();
-            int currentActivePlayer = MahjongGame.getCurrentPlayerIndex();
-
+            Site site = player.getSite();
             if (playerDirection != null) {
                 if (site == Site.East) {
                     playerDirection.setEffect(null);
@@ -536,9 +574,7 @@ public class GameScreen implements Screen {
 
         FallenTileImageMapper mapper = new FallenTileImageMapper();
         Map<Tile, Image> imageMap = mapper.getImageMap();
-        Tile huntile = GameBoard.getHunTile();
         HunTile.setImage(imageMap.get(huntile));
-        System.out.println(huntile.getSuit());
     }
 
     @Override
@@ -552,13 +588,13 @@ public class GameScreen implements Screen {
         stage.setTitle("Game Screen");
         stage.show();
 
-
         setPlayerPhotoStyle();
         paintPlayerSite();
         paintHandTiles();
     }
 
-    public void updateScreen() {
+    public void updateScreen(Message message) {
+        updateGameInformation(message);
         Platform.runLater(() -> {
             clearButtons();
             paintHandTiles();
