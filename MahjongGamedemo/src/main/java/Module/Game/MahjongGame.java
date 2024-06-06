@@ -29,6 +29,8 @@ public class MahjongGame implements Game {
     private static ScheduledExecutorService scheduler;
     private static ScheduledFuture<?> scheduledFuture;
     static int i = 0;
+    static long TASK_INTERVAL_SECONDS = 20;
+    static long scheduledTime=0;
 
     public MahjongGame(int port) throws IOException {
         this.port = port;
@@ -71,6 +73,14 @@ public class MahjongGame implements Game {
             }, 100, TimeUnit.SECONDS);
         }, 0, TimeUnit.SECONDS);;
 
+    }
+
+    private static long getRemainingTime() {
+        if (scheduledFuture == null || scheduledFuture.isDone() || scheduledFuture.isCancelled()) {
+            return 0;
+        }
+        long elapsedTime = (System.currentTimeMillis() - scheduledTime) / 1000;
+        return TASK_INTERVAL_SECONDS - elapsedTime;
     }
 
     public static void setHunTileToPlayers() {
