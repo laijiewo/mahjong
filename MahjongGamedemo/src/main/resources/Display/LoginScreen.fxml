@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.GameScreenDisplay.LoginScreen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image:url('/backgrounds/startgame.jpg');                    -fx-background-size: cover;                    -fx-background-repeat: no-repeat;                    -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.LoginScreen">
    <children>
       <ImageView fitHeight="1034.0" fitWidth="1034.0" layoutX="-5.0" layoutY="-247.0">
          <image>
