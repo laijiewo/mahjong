@@ -179,85 +179,71 @@ public class GameScreen implements Screen {
     @FXML
     void DiscardTile1(ActionEvent event) {
         discard(0);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
         discard(10);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
         discard(6);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
         discard(5);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
         discard(2);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
         discard(13);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
         discard(8);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
         discard(11);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
         discard(7);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
         discard(12);
-        shutDownButtons();;
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
         discard(4);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
         discard(9);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
         discard(3);
-        shutDownButtons();
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
         discard(1);
-        shutDownButtons();
     }
 
     public void discard(int index) {
@@ -268,6 +254,8 @@ public class GameScreen implements Screen {
         } else {
             System.out.println("Can not discard!");
         }
+        shutDownButtons();
+        paintHandTiles();
     }
     @FXML
     void Pung(ActionEvent event) {
