@@ -1320,7 +1320,13 @@
             <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
-      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE" />
+      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE" >
+         <font>
+            <Font name="PixelGameFont" size="12" />
+         </font>
+      </Label>
 
-          </children>
+
+
+    </children>
 </AnchorPane>
