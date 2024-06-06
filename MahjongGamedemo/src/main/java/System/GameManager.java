@@ -84,6 +84,7 @@ public class GameManager {
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.kong(discardedTile);
         if (!tiles.isEmpty()) {
+            game.setCurrentPlayer(player);
             Message message = new Message(MessageType.KONG, tiles);
             player.sendMessageObjectToHost(message);
         } else {
@@ -98,6 +99,7 @@ public class GameManager {
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.pung(discardedTile);
         if (!tiles.isEmpty()) {
+            game.setCurrentPlayer(player);
             Message message = new Message(MessageType.PUNG, tiles);
             player.sendMessageObjectToHost(message);
         } else {
@@ -112,6 +114,7 @@ public class GameManager {
         Tile discardedTile = game.getLeastDiscardedTile();
         List<Tile> tiles = player.chi(discardedTile);
         if (!tiles.isEmpty()) {
+            game.setCurrentPlayer(player);
             Message message = new Message(MessageType.CHEW, tiles);
             player.sendMessageObjectToHost(message);
         } else {
@@ -124,6 +127,7 @@ public class GameManager {
      */
     public static void handleDiscardButtonAction(int tileIndex, Player player) {
         if (game.playerCanDiscard(player)) {
+            game.setCurrentPlayer(player);
             Message message = new Message(tileIndex, MessageType.DISCARD);
             player.sendMessageObjectToHost(message);
         } else {

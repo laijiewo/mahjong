@@ -30,6 +30,7 @@ public class Player {
     private int serverPort;
     private boolean connected = false;
     private final Stage stage;
+    private Tile dealTile;
 
 
     public Player(Stage stage){
@@ -43,6 +44,7 @@ public class Player {
     public void setDiscard_Tiles(ArrayList<Tile> discard_Tiles){
         this.discard_Tiles=discard_Tiles;
     }
+    public Tile getDealTile(){return dealTile;}
 
     public void sort_hand(){
         Collections.sort(Tile_hand);
@@ -136,6 +138,9 @@ public class Player {
         }
         return result;
     }
+    public boolean canchi(Tile tile){return (ruleImplementation.canChi(Tile_hand,tile));}
+    public boolean canpeng(Tile tile){return (ruleImplementation.canPeng(Tile_hand,tile));}
+    public boolean cangang(Tile tile){return (ruleImplementation.canGang(Tile_hand,tile));}
 
     /**
      * Determines if the player can declare a win ("Mahjong") based on the current hand and a given tile.
@@ -143,12 +148,13 @@ public class Player {
      * @return true if the player can declare a win, false otherwise.
      */
     public boolean canHu(Tile tile) {
-        if(ruleImplementation.canHu(Tile_hand, tile)){
+        /*if(ruleImplementation.canHu(Tile_hand, tile)){
             Tile_hand.add(tile);
             return true;
         } else {
             return false;
-        }
+        }*/
+        return true;
     }
 
     public void setSite(Site site){

@@ -59,6 +59,10 @@ public class GameBoard {
         return dealerIndex;
     }
 
+    public void setCurrentActivePlayerIndex(int index){
+        currentActivePlayerIndex = index;
+    }
+
     public void dealAllTiles() {
         int numTiles = 13 * players.size() + 1;
         for (int i = 0; i < numTiles; i++) {
@@ -109,10 +113,14 @@ public class GameBoard {
     public Tile getLeastDiscardedTile() {
         return leastDiscardedTile;
     }
+
     public void setLeastDiscardedTile(Tile leastDiscardedTile) {
         this.leastDiscardedTile = leastDiscardedTile;
     }
+
     public int getTileCountInTheWall() {
         return Tiles_inTheWall.size();
     }
+
+    public int getPlayerIndex(Player player){return players.indexOf(player);}
 }

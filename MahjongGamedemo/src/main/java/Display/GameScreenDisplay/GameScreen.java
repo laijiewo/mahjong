@@ -335,19 +335,21 @@ public class GameScreen implements Screen {
     }
 
     public void paintHandTiles(){
-        TileImageMapper mapper = new TileImageMapper();
-        Map<Tile, Image> imageMap = mapper.getImageMap();
-
         Player player = players.get(0);
 
         List<Button> buttons = new ArrayList<>();
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
-        List<Tile> tiles = player.getTile_hand();
+        List<Tile> handtiles = player.getTile_hand();
+        List<Tile> chewpongkongtiles = player.getChew_Pong_Kung_Tiles();
         int indexOfButton = 0;
 
-        for (Tile tile : tiles) {
+        for (Tile tile : handtiles) {
+            TileImageMapper mapper = new TileImageMapper();
+            Map<Tile, Image> imageMap = mapper.getImageMap();
             Button button = buttons.get(indexOfButton);
+            button.setVisible(true);
+            button.setDisable(false);
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 
@@ -361,6 +363,23 @@ public class GameScreen implements Screen {
             if(tile.equals(GameBoard.getHunTile())){
                 button.setDisable(true);
             }
+        }
+
+        for (Tile tile : chewpongkongtiles) {
+            FallenTileImageMapper mapper = new FallenTileImageMapper();
+            Map<Tile, Image> imageMap = mapper.getImageMap();
+            Button button = buttons.get(indexOfButton);
+            Image image = imageMap.get(tile);
+            String imageUrl = image.getUrl();
+
+            button.setStyle("-fx-text-fill: #308C4C;" +
+                    " -fx-background-color: transparent;" +
+                    " -fx-background-image: url('" + imageUrl + "');" +
+                    " -fx-background-repeat: no-repeat;" +
+                    " -fx-background-position: center center;" +
+                    " -fx-background-size: 175%;");
+            indexOfButton++;
+            button.setDisable(true);
         }
 
         if (indexOfButton == 14) {
@@ -384,8 +403,8 @@ public class GameScreen implements Screen {
                                     " -fx-background-size: 175%;");
         }
         Button button = buttons.get(13);
-        button.setDisable(false);
-        button.setVisible(true);
+        button.setDisable(true);
+        button.setVisible(false);
     }
 
     public static List<ImageView> getAllImageViews(GridPane gridPane) {
