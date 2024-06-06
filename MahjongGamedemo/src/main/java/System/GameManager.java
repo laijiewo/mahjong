@@ -41,93 +41,25 @@ public class GameManager {
 
     }
     public static void updateScreen() {
-        for (Player player : game.getPlayers()) {
-            player.updateScreen();
-            player.sort_hand();
-        }
+        game.update();
     }
     public static void addPlayer(Player player) throws Exception{
         int index = game.getNumOfPlayers();
         player.setSite(sites[index]);
         game.addPlayer(player);
+        System.out.println(sites[index]);
         if (game.getNumOfPlayers() == 4) {
             startNewGame();
-        }
-    }
-    /**
-     * Handles the action for the "Hu" button.
-     * This method is triggered when a player wants to declare a win and end the current game round.
-     */
-    public static void handleHuButtonAction(Player player) {
-        Tile discardedTile = game.getLeastDiscardedTile();
-        if (player.canHu(discardedTile)) {
-            Message message = new Message(MessageType.HU);
-            player.sendMessageObjectToHost(message);
-
         }
     }
     public static void addGame(MahjongGame mahjongGame) {
         game = mahjongGame;
     }
     private static void startGame() {
-        List<Player> players = MahjongGame.getPlayers();
-        for (Player player : players) {
-            player.sort_hand();
-            player.launchGameScreen();
-        }
-    }
-    /**
-     * Handles the action for the "Kong" button.
-     * This method is triggered when a player wants to perform a Kong, which is claiming four of the same tile.
-     */
-    public static void handleKongButtonAction(Player player) {
-        Tile discardedTile = game.getLeastDiscardedTile();
-        List<Tile> tiles = player.kong(discardedTile);
-        if (!tiles.isEmpty()) {
-            Message message = new Message(MessageType.KONG, tiles);
-            player.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not kong!");
-        }
-    }
-    /**
-     * Handles the action for the "Pung" button.
-     * This method is triggered when a player wants to declare a Pung, which is claiming three of the same tile.
-     */
-    public static void handlePungButtonAction(Player player) {
-        Tile discardedTile = game.getLeastDiscardedTile();
-        List<Tile> tiles = player.pung(discardedTile);
-        if (!tiles.isEmpty()) {
-            Message message = new Message(MessageType.PUNG, tiles);
-            player.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not pung!");
-        }
-    }
-    /**
-     * Handles the action for the "Chow" button.
-     * This method is triggered when a player wants to declare a Chow, which is claiming a sequence of three tiles in the same suit.
-     */
-    public static void handleChewButtonAction(Player player) {
-        Tile discardedTile = game.getLeastDiscardedTile();
-        List<Tile> tiles = player.chi(discardedTile);
-        if (!tiles.isEmpty()) {
-            Message message = new Message(MessageType.CHEW, tiles);
-            player.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not chew!");
-        }
-    }
-    /**
-     * Handles the action for the "Discard" button.
-     * This method is triggered when a player chooses to discard a tile from their hand.
-     */
-    public static void handleDiscardButtonAction(int tileIndex, Player player) {
-        if (game.playerCanDiscard(player)) {
-            Message message = new Message(tileIndex, MessageType.DISCARD);
-            player.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not discard!");
+        try {
+            game.startGame();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     /**

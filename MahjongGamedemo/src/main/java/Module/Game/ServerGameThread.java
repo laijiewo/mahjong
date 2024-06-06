@@ -28,6 +28,13 @@ public class ServerGameThread implements Runnable {
                 MessageType type = message.getType();
                 System.out.println(type);
                 switch (type) {
+                    case JOIN -> {
+                        try {
+                            GameManager.addPlayer(new Player());
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                     case DISCARD -> {
                         MahjongGame.handleDiscardMessage(message);
                     }

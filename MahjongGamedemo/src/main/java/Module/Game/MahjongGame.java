@@ -261,6 +261,7 @@ public class MahjongGame implements Game {
                 gameBoard.dealTiles();
                 GameManager.updateScreen();
                 scheduledTime = System.currentTimeMillis();
+
                 scheduledFuture = scheduler.schedule(() -> {
                     //等待100秒，如果没打牌则自动打出
                     gameBoard.dealTiles();
@@ -311,6 +312,7 @@ public class MahjongGame implements Game {
             scheduledFuture = scheduler.schedule(() -> {
                 gameBoard.getCurrentActivePlayer().discardTiles(13);
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+
         }, 0, TimeUnit.SECONDS);
     }
     public static void handleKongMessage(Message mes) {

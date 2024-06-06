@@ -23,11 +23,9 @@ public class JoinScreen implements Screen {
 
     @FXML
     private TextField PortText;
-    private Stage stage;
-
     @FXML
     void JoinGame(ActionEvent event) {
-        Player player = new Player(stage);
+        Player player = new Player();
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
@@ -41,7 +39,7 @@ public class JoinScreen implements Screen {
                     alert.setHeaderText("Connected to Server");
                     alert.setContentText("You are connected to the server");
                     alert.showAndWait();
-                    GameManager.addPlayer(player);
+                    player.joinToHost();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -67,7 +65,6 @@ public class JoinScreen implements Screen {
 
     @Override
     public void loadWindow(Stage stage) throws Exception {
-        this.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/Display/JoinScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
