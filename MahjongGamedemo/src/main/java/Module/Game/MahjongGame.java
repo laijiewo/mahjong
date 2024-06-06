@@ -344,7 +344,7 @@ public class MahjongGame implements Game {
             tempindex++;
         }
         int preindex = (index-1+4)%4;
-        if(index==999){
+        if(index==999||!players.get(preindex).canchi(chowTile)){
             return null;
         }
         return players.get(preindex);
