@@ -13,6 +13,7 @@ import java.util.*;
 
 /**
  * Represents the game board for a Mahjong game, managing the state and interactions within a game session.
+ *@author Jingwang Li,Lanyun Xiao
  */
 public class GameBoard {
     private static ArrayList<Tile> Tiles_inTheWall;
@@ -55,6 +56,10 @@ public class GameBoard {
         dealerIndex = count % players.size();
         currentActivePlayerIndex = dealerIndex;
         return dealerIndex;
+    }
+
+    public void setCurrentActivePlayerIndex(int index){
+        currentActivePlayerIndex = index;
     }
 
     public void dealAllTiles() {

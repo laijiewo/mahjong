@@ -1,4 +1,5 @@
 package Module.Rule;
+import Module.Game.Player;
 import Module.Rule.MahjongRule;
 import Module.Tile.NumberTile;
 import Module.Tile.Tile;
@@ -14,7 +15,7 @@ import java.util.*;
  */
 public class RuleImplementation implements MahjongRule {
     private Tile hunTile; // The wildcard tile (混儿牌)
-    private FanCalculator fanCalculator;
+//    private FanCalculator fanCalculator;
     private List<Tile> chiTiles = new ArrayList<>();
     private List<Tile> pengTiles = new ArrayList<>();
     private List<Tile> gangTiles = new ArrayList<>();
@@ -24,9 +25,9 @@ public class RuleImplementation implements MahjongRule {
      *
      * @param hunTile the wildcard tile
      */
-    public RuleImplementation(Tile hunTile) {
+    public RuleImplementation(Tile hunTile, Player player) {
         this.hunTile = hunTile;
-        this.fanCalculator=new FanCalculator(hunTile);
+//        this.fanCalculator=new FanCalculator(hunTile, player);
     }
 
     /**
@@ -134,15 +135,12 @@ public class RuleImplementation implements MahjongRule {
      * Checks if the player can perform a "Hu" (胡) with the given tile.
      *
      * @param hand the player's hand
-     * @param tile the tile to be used for Hu
      * @return true if the player can Hu, false otherwise
      */
     @Override
-    public boolean canHu(List<Tile> hand, Tile tile,List<Tile>hunTile,List<Tile>meldsTile) {
+    public boolean canHu(List<Tile> hand, List<Tile>meldsTile) {
         List<Tile> newHand = new ArrayList<>(hand);
-        newHand.addAll(hunTile);
         newHand.addAll(meldsTile);
-        newHand.add(tile); // Add the tile to the hand for checking
         Collections.sort(newHand); // Sort the hand to ensure tiles are in order
         return checkHu(newHand);
     }

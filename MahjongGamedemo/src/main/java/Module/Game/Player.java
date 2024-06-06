@@ -17,6 +17,8 @@ import java.util.List;
 
 /**
  * Represents a player in a Mahjong game, managing their actions and hand.
+ *
+ * @author Jingwang Li, Lanyun Xiao
  */
 public class Player implements Serializable {
     private int Score;
@@ -55,7 +57,7 @@ public class Player implements Serializable {
         List<Tile> tilesToAdd = new ArrayList<>();
 
         for (Tile tile : Tile_hand) {
-            if (!tile.equals(GameBoard.getHunTile())) {
+            if (!tile.equals(hunTile)) {
                 tilesToRemove.add(tile);
                 tilesToAdd.add(tile);
             }
@@ -74,7 +76,7 @@ public class Player implements Serializable {
     }
     public void setHunTile(Tile tile){
         hunTile=tile;
-        ruleImplementation = new RuleImplementation(hunTile);
+        ruleImplementation = new RuleImplementation(hunTile, this);
         ((GameScreen) gameScreen).setHunTile(tile);
     }
 
@@ -142,15 +144,16 @@ public class Player implements Serializable {
         }
         return result;
     }
+    public boolean canchi(Tile tile){return (ruleImplementation.canChi(Tile_hand,tile));}
+    public boolean canpeng(Tile tile){return (ruleImplementation.canPeng(Tile_hand,tile));}
+    public boolean cangang(Tile tile){return (ruleImplementation.canGang(Tile_hand,tile));}
 
     /**
      * Determines if the player can declare a win ("Mahjong") based on the current hand and a given tile.
-     * @param tile The tile to check if it completes a winning hand.
      * @return true if the player can declare a win, false otherwise.
      */
-    public boolean canHu(Tile tile) {
-        if(ruleImplementation.canHu(Tile_hand, tile)){
-            Tile_hand.add(tile);
+    public boolean canHu() {
+        if(ruleImplementation.canHu(Tile_hand, Chew_Pong_Kung_Tiles)){
             return true;
         } else {
             return false;

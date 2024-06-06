@@ -29,7 +29,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * @author Jingwang Li, Lanyun Xiao
+ */
 public class GameScreen implements Screen {
 
     Player MainPlayer;
@@ -201,7 +203,7 @@ public class GameScreen implements Screen {
 
     @FXML
     void DiscardTile14(ActionEvent event) {
-        discard(14);
+        discard(13);
     }
 
     @FXML
@@ -288,7 +290,7 @@ public class GameScreen implements Screen {
 
     @FXML
     void Win(ActionEvent event) {
-        if (mainPlayer.canHu(leastDiscardedTile)) {
+        if (mainPlayer.canHu()) {
             Message message = new Message(MessageType.HU);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
@@ -330,7 +332,7 @@ public class GameScreen implements Screen {
         Platform.runLater(() -> {
             int remainingtiles = tilesInTheWall.size();
             RemainingTiles.setText(remainingtiles+"/136");
-            RemainingTiles.setFont(new Font("Pixel Bug",12));
+            RemainingTiles.setFont(new Font("PixelGameFont",12));
         });
     }
 
@@ -374,10 +376,13 @@ public class GameScreen implements Screen {
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
         List<Tile> tiles = player.getHand_Tiles();
+        List<Tile> chewpongkongtiles = player.getChew_Pung_Kong_Tiles();
         int indexOfButton = 0;
 
         for (Tile tile : tiles) {
             Button button = buttons.get(indexOfButton);
+            button.setVisible(true);
+            button.setDisable(false);
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 
@@ -388,6 +393,26 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: 175%;");
             indexOfButton++;
+            if(tile.equals(huntile)){
+                button.setDisable(true);
+            }
+        }
+
+        for (Tile tile : chewpongkongtiles) {
+            FallenTileImageMapper fallenMapper = new FallenTileImageMapper();
+            Map<Tile, Image> imageMap1 = fallenMapper.getImageMap();
+            Button button = buttons.get(indexOfButton);
+            Image image = imageMap1.get(tile);
+            String imageUrl = image.getUrl();
+
+            button.setStyle("-fx-text-fill: #308C4C;" +
+                                    " -fx-background-color: transparent;" +
+                                    " -fx-background-image: url('" + imageUrl + "');" +
+                                    " -fx-background-repeat: no-repeat;" +
+                                    " -fx-background-position: center center;" +
+                                    " -fx-background-size: 175%;");
+            indexOfButton++;
+            button.setDisable(true);
         }
 
         if (indexOfButton == 14) {
@@ -411,19 +436,8 @@ public class GameScreen implements Screen {
                                     " -fx-background-size: 175%;");
         }
         Button button = buttons.get(13);
-        button.setDisable(false);
-        button.setVisible(true);
-    }
-
-    public static List<Label> getAllLabels(GridPane gridPane) {
-        List<Label> labels = new ArrayList<>();
-        for (Node node : gridPane.getChildren()) {
-            if (node instanceof Label) {
-                labels.add((Label) node);
-            }
-        }
-
-        return labels;
+        button.setDisable(true);
+        button.setVisible(false);
     }
 
     public static List<ImageView> getAllImageViews(GridPane gridPane) {
@@ -433,8 +447,6 @@ public class GameScreen implements Screen {
                 imageViews.add((ImageView) node);
             }
         }
-
-
         return imageViews;
     }
 
