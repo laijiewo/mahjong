@@ -263,7 +263,7 @@ public class MahjongGame implements Game {
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
-        if (playerToEat() != null || playerToPung() != null || playerToKong() != null) {
+        if (playerToEat() != null || playerToPung() != null) {
             //如果有玩家能吃或者能碰能杠
             scheduledFuture = scheduler.schedule(() -> {
                 //延迟十秒等待，如果没人吃碰杠，那就切换下一个玩家并且抓牌
