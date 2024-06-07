@@ -53,6 +53,7 @@ public class GameScreen implements Screen {
     Map<Tile, Image> imageMap;
     Map<Tile, Image> fallenImageMap;
     RuleImplementation rule;
+    int time = 20;
 
     @FXML
     private Button Chow;
@@ -446,7 +447,8 @@ public class GameScreen implements Screen {
 
     public void setTimer() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            timer.setText(MahjongGame.getRemainingTime() + "");
+            time -= 1;
+            timer.setText(time + " s");
         }));
         timeline.setCycleCount(Timeline.INDEFINITE); // Run indefinitely
         timeline.play(); // Start the timeline
@@ -605,8 +607,8 @@ public class GameScreen implements Screen {
         fallenImageMap = fallenMapper.getImageMap();
         HunTile.setImage(fallenImageMap.get(huntile));
         rule = new RuleImplementation(huntile);
+        new Thread(this::setTimer).start();
 
-        setTimer();
     }
 
     @Override
@@ -638,6 +640,7 @@ public class GameScreen implements Screen {
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
+            time = 20;
         });
     }
 }
