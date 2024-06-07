@@ -631,13 +631,13 @@ public class GameScreen implements Screen {
     public void updateScreen(Message message) {
         updateGameInformation(message);
         Platform.runLater(() -> {
+            clearButtons();
+            paintHandTiles();
             if (playerIndex == currentActivePlayer) {
                 releaseButtons();
             } else {
                 shutDownButtons();
             }
-            clearButtons();
-            paintHandTiles();
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
