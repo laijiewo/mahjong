@@ -180,6 +180,9 @@ public class GameScreen implements Screen {
     @FXML
     Label RemainingTiles;
 
+    @FXML
+    Label timer;
+
 
     @FXML
     void DiscardTile1(ActionEvent event) {
@@ -439,7 +442,9 @@ public class GameScreen implements Screen {
     }
 
     public void updateTimer(){
-
+        while(true){
+            timer.setText(MahjongGame.getRemainingTime()+"");
+        }
     }
 
     public void updateGameInformation(Message message) {
@@ -587,6 +592,7 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection2);
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
+
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
         TileImageMapper mapper = new TileImageMapper();
         FallenTileImageMapper fallenMapper = new FallenTileImageMapper();
@@ -625,6 +631,7 @@ public class GameScreen implements Screen {
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
+            updateTimer();
         });
     }
 }
