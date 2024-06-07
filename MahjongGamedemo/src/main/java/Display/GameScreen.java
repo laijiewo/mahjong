@@ -402,6 +402,12 @@ public class GameScreen implements Screen {
             }
         }
 
+        if (playerIndex == currentActivePlayer) {
+            releaseButtons();
+        } else {
+            shutDownButtons();
+        }
+        
         for (Tile tile : chewpongkongtiles) {
             Button button = buttons.get(indexOfButton);
             button.setVisible(true);
@@ -674,11 +680,6 @@ public class GameScreen implements Screen {
         Platform.runLater(() -> {
             clearButtons();
             paintHandTiles();
-            if (playerIndex == currentActivePlayer) {
-                releaseButtons();
-            } else {
-                shutDownButtons();
-            }
             showChew_Pung_Kong_Tiles();
             paintDiscardPiles();
             paintOtherHandTiles();
