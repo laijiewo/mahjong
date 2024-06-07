@@ -251,10 +251,14 @@ public class MahjongGame implements Game {
 
 
     public static void waitingTASK_INTERVAL(){
-        scheduledFuture = scheduler.schedule(GameManager::updateScreen, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+        scheduledFuture = scheduler.schedule(() -> {
+        }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
     }
 
+
     public static void handleDiscardMessage(Message mes) {
+        GameManager.updateScreen();
+
         DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
         System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
@@ -301,8 +305,18 @@ public class MahjongGame implements Game {
                     handleDiscardMessage(discardMessage);
                 }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
             }, 0, TimeUnit.SECONDS);
+        }else {
+            scheduledFuture = scheduler.schedule(() -> {
+                //摸牌
+                MahjongGame.rotate();
+                scheduledTime = System.currentTimeMillis();
+                scheduledFuture = scheduler.schedule(() -> {
+                    //下一个玩家等待20秒，如果没有打牌则自动打出
+                    Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
+                    handleDiscardMessage(discardMessage);
+                }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
         }
-        rotate();
     }
 
     public static void handleChewMessage(Message mes) {

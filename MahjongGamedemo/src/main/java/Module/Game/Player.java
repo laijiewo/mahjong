@@ -139,9 +139,10 @@ public class Player implements Serializable {
         }
         return result;
     }
-    public boolean canchi(Tile tile){return (ruleImplementation.canChi(Tile_hand,tile));}
-    public boolean canpeng(Tile tile){return (ruleImplementation.canPeng(Tile_hand,tile));}
-    public boolean cangang(Tile tile){return (ruleImplementation.canGang(Tile_hand,tile));}
+
+    public boolean canchi(Tile tile) {return ruleImplementation.canChi(new ArrayList<>(Tile_hand), tile);}
+    public boolean canpeng(Tile tile){return (ruleImplementation.canPeng(new ArrayList<>(Tile_hand),tile));}
+    public boolean cangang(Tile tile){return (ruleImplementation.canGang(new ArrayList<>(Tile_hand),tile));}
 
     /**
      * Determines if the player can declare a win ("Mahjong") based on the current hand and a given tile.
