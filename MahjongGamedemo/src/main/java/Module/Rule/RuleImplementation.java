@@ -105,6 +105,7 @@ public class RuleImplementation implements MahjongRule {
             }
         }
         pengTiles.add(tile);
+        count++;
         if (count == 3) {
             removePengTilesFromHand(hand);
             return true; // Need at least two tiles to Peng
@@ -129,7 +130,8 @@ public class RuleImplementation implements MahjongRule {
                 count++;
             }
         }
-        hand.add(tile);
+        gangTiles.add(tile);
+        count++;
         if (count == 4) {
             removeGangTilesFromHand(hand);
             return true; // Need at least three tiles to Gang

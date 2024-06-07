@@ -74,7 +74,6 @@ public class MahjongGame implements Game {
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
-                GameManager.updateScreen();
             }, 0, TimeUnit.SECONDS);
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);;
 
@@ -252,13 +251,10 @@ public class MahjongGame implements Game {
 
 
     public static void waitingTASK_INTERVAL(){
-        scheduledFuture = scheduler.schedule(() -> {
-        }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+        scheduledFuture = scheduler.schedule(GameManager::updateScreen, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
     }
 
     public static void handleDiscardMessage(Message mes) {
-        GameManager.updateScreen();
-
         DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
         System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
@@ -275,11 +271,13 @@ public class MahjongGame implements Game {
 
         if (playerToKong() != null || playerToPung() != null) {
             waitingTASK_INTERVAL();
+            System.out.println("111111111111111111111111111111111111111111");
             if(playerToEat() != null){
                 waitingTASK_INTERVAL();
             }
-            //如果没人能碰杠
+            //如果没人碰杠吃
             scheduledFuture = scheduler.schedule(() -> {
+                System.out.println("22222222222222222222222222222222222222222");
                 //摸牌
                 MahjongGame.rotate();
                 scheduledTime = System.currentTimeMillis();
@@ -287,7 +285,6 @@ public class MahjongGame implements Game {
                     //下一个玩家等待20秒，如果没有打牌则自动打出
                     Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                     handleDiscardMessage(discardMessage);
-                    GameManager.updateScreen();
                 }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
             }, 0, TimeUnit.SECONDS);
         }
@@ -302,11 +299,10 @@ public class MahjongGame implements Game {
                     //下一个玩家等待20秒，如果没有打牌则自动打出
                     Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                     handleDiscardMessage(discardMessage);
-                    GameManager.updateScreen();
                 }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
             }, 0, TimeUnit.SECONDS);
         }
-
+        rotate();
     }
 
     public static void handleChewMessage(Message mes) {
@@ -325,7 +321,6 @@ public class MahjongGame implements Game {
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
-                GameManager.updateScreen();
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
         }, 0, TimeUnit.SECONDS);
     }
@@ -346,7 +341,6 @@ public class MahjongGame implements Game {
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
-                GameManager.updateScreen();
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
 
         }, 0, TimeUnit.SECONDS);
@@ -367,14 +361,14 @@ public class MahjongGame implements Game {
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
-                GameManager.updateScreen();
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
         }, 0, TimeUnit.SECONDS);
     }
 
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
-        if (gameBoard.getCurrentActivePlayer().canchi(chowTile)) {
+        int index = (players.indexOf(gameBoard.getCurrentActivePlayer()) + 1) % 4;
+        if (players.get(index).canchi(chowTile)) {
             return gameBoard.getCurrentActivePlayer();
         }
         return null;
