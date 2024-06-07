@@ -400,6 +400,7 @@ public class GameScreen implements Screen {
 
         for (Tile tile : chewpongkongtiles) {
             Button button = buttons.get(indexOfButton);
+            button.setVisible(true);
             Image image = fallenImageMap.get(tile);
             String imageUrl = image.getUrl();
 

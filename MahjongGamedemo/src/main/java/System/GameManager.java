@@ -18,7 +18,6 @@ import java.io.IOException;
 public class GameManager {
     private static MahjongGame game = null;
     private final Screen loginScreen;
-    private static final Site[] sites = {Site.East, Site.South, Site.West, Site.North};
 
     /**
      * Constructor for the GameManager class.
@@ -42,13 +41,13 @@ public class GameManager {
         game.update();
     }
     public static void addPlayer(Player player) throws Exception{
-        int index = game.getNumOfPlayers();
-        player.setSite(sites[index]);
         game.addPlayer(player);
-        System.out.println(sites[index]);
         if (game.getNumOfPlayers() == 4) {
             startNewGame();
         }
+    }
+    public static void removePlayer(Player player) {
+        game.removePlayer(player);
     }
     public static void addGame(MahjongGame mahjongGame) {
         game = mahjongGame;

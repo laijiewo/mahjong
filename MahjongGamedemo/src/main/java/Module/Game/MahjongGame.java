@@ -30,7 +30,6 @@ public class MahjongGame implements Game {
     private static ScheduledExecutorService scheduler;
     private static ScheduledFuture<?> scheduledFuture;
     static int i = 0;
-    static long scheduledTime = 0;
     static long TASK_INTERVAL_SECONDS = 20;
 
     public MahjongGame(int port) throws IOException {
@@ -50,7 +49,9 @@ public class MahjongGame implements Game {
     public void addPlayer(Player player) {
         players.add(player);
     }
-
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
     public int getNumOfPlayers() {
         return players.size();
     }
@@ -60,6 +61,7 @@ public class MahjongGame implements Game {
 
     @Override
     public void initializeGame() {
+        setPlayersSites();
         gameBoard = new GameBoard(players);
         gameBoard.determineDealer();
         gameBoard.shuffleTiles();
@@ -68,9 +70,7 @@ public class MahjongGame implements Game {
         setHunTileToPlayers();
         isGameStart = true;
 
-        scheduledTime = System.currentTimeMillis();
         scheduledFuture = scheduler.schedule(() -> {
-            scheduledTime = System.currentTimeMillis();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
@@ -78,15 +78,14 @@ public class MahjongGame implements Game {
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);;
 
     }
-
-    public static long getRemainingTime() {
-        if (scheduledFuture == null || scheduledFuture.isDone() || scheduledFuture.isCancelled()) {
-            return 0;
+    public void setPlayersSites() {
+        Site[] sites = {Site.East, Site.South, Site.West, Site.North};
+        int i = 0;
+        for (Player player : players) {
+            player.setSite(sites[i]);
+            i++;
         }
-        long elapsedTime = (System.currentTimeMillis() - scheduledTime) / 1000;
-        return TASK_INTERVAL_SECONDS - elapsedTime;
     }
-
     public void setHunTileToPlayers() {
         Message message = new HunTileMessage(gameBoard.getHunTile());
         try {
@@ -277,7 +276,6 @@ public class MahjongGame implements Game {
                         System.out.println("没碰杠也没吃");
                         //摸牌
                         MahjongGame.rotate();
-                        scheduledTime = System.currentTimeMillis();
                         scheduledFuture = scheduler.schedule(() -> {
                             Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                             handleDiscardMessage(discardMessage);
@@ -287,7 +285,6 @@ public class MahjongGame implements Game {
                     System.out.println("没碰杠也不能吃");
                     //摸牌
                     MahjongGame.rotate();
-                    scheduledTime = System.currentTimeMillis();
                     scheduledFuture = scheduler.schedule(() -> {
                         //下一个玩家等待20秒，如果没有打牌则自动打出
                         Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -304,7 +301,6 @@ public class MahjongGame implements Game {
                     System.out.println("不能碰杠但能吃没吃");
                     //摸牌
                     MahjongGame.rotate();
-                    scheduledTime = System.currentTimeMillis();
                     scheduledFuture = scheduler.schedule(() -> {
                         Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                         handleDiscardMessage(discardMessage);
@@ -314,7 +310,6 @@ public class MahjongGame implements Game {
                 System.out.println("不能碰杠也不能吃");
                 //摸牌
                 MahjongGame.rotate();
-                scheduledTime = System.currentTimeMillis();
                 scheduledFuture = scheduler.schedule(() -> {
                     //下一个玩家等待20秒，如果没有打牌则自动打出
                     Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -337,7 +332,6 @@ public class MahjongGame implements Game {
         scheduledFuture = scheduler.schedule(() -> {
             //如果玩家吃牌，则他立即打牌
             GameManager.updateScreen();
-            scheduledTime = System.currentTimeMillis();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
@@ -356,7 +350,6 @@ public class MahjongGame implements Game {
         }
         scheduledFuture = scheduler.schedule(() -> {
             //玩家碰牌，则他立刻打牌
-            scheduledTime = System.currentTimeMillis();
             GameManager.updateScreen();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -376,7 +369,6 @@ public class MahjongGame implements Game {
         scheduledFuture = scheduler.schedule(() -> {
             //玩家杠牌，则他立刻抓牌打牌
             GameManager.updateScreen();
-            scheduledTime = System.currentTimeMillis();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                 handleDiscardMessage(discardMessage);
@@ -412,10 +404,4 @@ public class MahjongGame implements Game {
         }
         return null;
     }
-
-    public void setCurrentPlayer(Player player){
-        int index = players.indexOf(player);
-        gameBoard.setCurrentActivePlayerIndex(index);
-    }
-
 }

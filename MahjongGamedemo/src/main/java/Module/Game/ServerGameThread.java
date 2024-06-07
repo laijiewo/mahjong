@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class ServerGameThread implements Runnable {
     Socket socket;
-
+    Player player;
     public ServerGameThread(Socket socket) {
         this.socket = socket;
     }
@@ -20,6 +20,12 @@ public class ServerGameThread implements Runnable {
             Message message = null;
             try {
                 message = acceptMessages();
+                if (message == null) {
+                    System.out.println("" + socket + " is closed");
+                    GameManager.removePlayer(player);
+                    Thread.currentThread().interrupt();
+                    break;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -30,7 +36,8 @@ public class ServerGameThread implements Runnable {
                 switch (type) {
                     case JOIN -> {
                         try {
-                            GameManager.addPlayer(new Player());
+                            player = new Player();
+                            GameManager.addPlayer(player);
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
@@ -54,12 +61,19 @@ public class ServerGameThread implements Runnable {
 
     private Message acceptMessages() {
         if (socket.isClosed()) {
-            System.out.println("" + socket + " is closed");
+            MahjongGame.sockets.remove(socket);
+            return null;
         }
         try {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             return (Message) ois.readObject();
         }catch (Exception e){
+            try {
+                socket.close();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            MahjongGame.sockets.remove(socket);
             return null;
         }
     }
