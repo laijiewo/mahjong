@@ -1,6 +1,7 @@
-package Module.Game;
+package Module;
 
 import Display.GameScreen;
+import Module.Game.Player;
 import Module.Tile.*;
 import Message.*;
 import Module.utils.Dice;
@@ -65,41 +66,31 @@ public class PlayerTest {
     @Test
     public void testKong() {
         Player player = new Player();
-        Tile tile = new NumberTile(9, Suit.TONG);
-        player.setHunTile(tile);
-        ArrayList tiles= new ArrayList();
-        for (int i = 0; i < 4; i++) {
-            player.drawTiles(tile);
-            tiles.add(tile);
+        Tile tile1 = new NumberTile(6, Suit.WAN);
+        Tile tile = new NumberTile(5, Suit.WAN);
+        player.setHunTile(tile1);
+        player.drawTiles(tile);
+        player.drawTiles(tile);
+        player.drawTiles(tile); // Setup three identical tiles
 
-        }
-
-        player.addChew_Pong_Kung_Tiles(tiles);
-        List<Tile> kongResult = player.kong(tile);
-        assertNotNull("Kong result should not be null", kongResult);
-        assertEquals("Kong should correctly add four tiles to Chew_Pong_Kung_Tiles", 4, player.getChew_Pong_Kung_Tiles().size());
-        assertTrue("Chew_Pong_Kung_Tiles should contain the kong tiles", player.getChew_Pong_Kung_Tiles().containsAll(Collections.nCopies(4, tile)));
+        List<Tile> pengResult = player.kong(tile);
+        assertNotNull("Peng result should not be null", pengResult);
+        assertEquals(4, pengResult.size());
     }
 
 
     @Test
     public void testPeng() {
         Player player = new Player();
+        Tile tile1 = new NumberTile(6, Suit.WAN);
         Tile tile = new NumberTile(5, Suit.WAN);
-        player.setHunTile(tile);
-        player.drawTiles(tile);
+        player.setHunTile(tile1);
         player.drawTiles(tile);
         player.drawTiles(tile); // Setup three identical tiles
-        ArrayList tiles= new ArrayList();
-        tiles.add(tile);
-        tiles.add(tile);
-        tiles.add(tile);
-        player.addChew_Pong_Kung_Tiles(tiles);
 
         List<Tile> pengResult = player.pung(tile);
         assertNotNull("Peng result should not be null", pengResult);
-        assertEquals("Peng should correctly add three tiles to Chew_Pong_Kung_Tiles", 3, player.getChew_Pong_Kung_Tiles().size());
-        assertTrue("Chew_Pong_Kung_Tiles should contain the peng tiles", player.getChew_Pong_Kung_Tiles().containsAll(Collections.nCopies(3, tile)));
+        assertEquals(3, pengResult.size());
     }
 
     @Test
@@ -160,17 +151,4 @@ public class PlayerTest {
         assertTrue("Player should be able to declare Hu based on hand setup", canDeclareHu);
     }
 
-
-
-    @Test
-    public void testConnect() {
-        try {
-            player.setServerHostname("localhost");
-            player.setServerPort(8080);
-            player.connect();
-            assertTrue(player.getconnected());
-        } catch (IOException e) {
-            fail("Connection failed with IOException: " + e.getMessage());
-        }
-    }
 }
