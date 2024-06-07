@@ -7,6 +7,8 @@ import Module.ImageMap.TileImageMapper;
 import Module.Rule.RuleImplementation;
 import Module.Tile.Tile;
 import System.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 
 
 import java.util.ArrayList;
@@ -441,10 +444,12 @@ public class GameScreen implements Screen {
         return imageViews;
     }
 
-    public void updateTimer(){
-        while(true){
-            timer.setText(MahjongGame.getRemainingTime()+"");
-        }
+    public void setTimer() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            timer.setText(MahjongGame.getRemainingTime() + "");
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE); // Run indefinitely
+        timeline.play(); // Start the timeline
     }
 
     public void updateGameInformation(Message message) {
@@ -600,6 +605,8 @@ public class GameScreen implements Screen {
         fallenImageMap = fallenMapper.getImageMap();
         HunTile.setImage(fallenImageMap.get(huntile));
         rule = new RuleImplementation(huntile);
+
+        setTimer();
     }
 
     @Override
@@ -631,7 +638,6 @@ public class GameScreen implements Screen {
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
-            updateTimer();
         });
     }
 }
