@@ -264,8 +264,7 @@ public class GameScreen implements Screen {
     void Pung(ActionEvent event) {
         boolean canPung = rule.canPeng(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (canPung) {
-            List<Tile> tiles = rule.getPengTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, tiles, playerIndex);
+            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not pung!");
@@ -276,8 +275,7 @@ public class GameScreen implements Screen {
     void Chow(ActionEvent event) {
         boolean canChow = rule.canChi(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (playerIndex == currentActivePlayer && canChow) {
-            List<Tile> tiles = rule.getChiTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles, playerIndex);
+            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not chew!");
@@ -288,8 +286,7 @@ public class GameScreen implements Screen {
     void Kong(ActionEvent event) {
         boolean canKong = rule.canGang(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (canKong) {
-            List<Tile> tiles = rule.getGangTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.KONG, tiles, playerIndex);
+            Message message = new Chew_Pung_KongMessage(MessageType.KONG, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not kong!");

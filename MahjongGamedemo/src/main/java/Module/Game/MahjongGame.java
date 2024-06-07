@@ -204,20 +204,20 @@ public class MahjongGame implements Game {
 //    }
 
     public void startGame() throws IOException {
-        sortPlayersName();
+        sortPlayersTiles();
         sendGameMessageToAll();
         Message message = new launchGameMessage();
         sendMessageToAll(message);
     }
     public void update() {
         try {
-            sortPlayersName();
+            sortPlayersTiles();
             sendGameMessageToAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    private void sortPlayersName() {
+    private void sortPlayersTiles() {
         for (Player player : players) {
             player.sort_hand();
         }
@@ -292,12 +292,11 @@ public class MahjongGame implements Game {
 
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
-        players.get(message.getPlayerIndex()).chi(gameBoard.getLeastDiscardedTile());
+        ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).chi(gameBoard.getLeastDiscardedTile());
         // 添加玩家的chew_pong_kong_Tiles
-        List<Tile> chewTiles = message.getTiles();
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         // TODO： 逻辑有问题，玩家应同样chew，然后增加到自己的手牌中
-        players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles((ArrayList<Tile>) chewTiles);
+        players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
@@ -312,12 +311,11 @@ public class MahjongGame implements Game {
     }
     public static void handlePungMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
-        players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
+        ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
         // 添加玩家的pung_Tiles
-        List<Tile> pungTiles = message.getTiles();
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         // TODO： 逻辑有问题，pungMessage应传入playerIndex，然后选则玩家进行pung操作
-        players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles((ArrayList<Tile>) pungTiles);
+        players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
@@ -333,12 +331,11 @@ public class MahjongGame implements Game {
     }
     public static void handleKongMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
-        players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
+        ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
         // 添加玩家的kong_Tiles
-        List<Tile> kongTiles = message.getTiles();
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         // TODO： 逻辑有问题，kongMessage应传入playerIndex，然后选则玩家进行kong操作
-        gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) kongTiles);
+        gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
