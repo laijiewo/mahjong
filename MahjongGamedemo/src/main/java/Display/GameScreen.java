@@ -190,71 +190,86 @@ public class GameScreen implements Screen {
 
     @FXML
     void DiscardTile1(ActionEvent event) {
+        shutDownButtons();
         discard(0);
+
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
+        shutDownButtons();
         discard(10);
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
+        shutDownButtons();
         discard(6);
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
+        shutDownButtons();
         discard(5);
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
+        shutDownButtons();
         discard(2);
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
+        shutDownButtons();
         discard(13);
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
+        shutDownButtons();
         discard(8);
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
+        shutDownButtons();
         discard(11);
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
+        shutDownButtons();
         discard(7);
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
+        shutDownButtons();
         discard(12);
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
+        shutDownButtons();
         discard(4);
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
+        shutDownButtons();
         discard(9);
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
+        shutDownButtons();
         discard(3);
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
+        shutDownButtons();
         discard(1);
     }
 
@@ -627,6 +642,11 @@ public class GameScreen implements Screen {
         rule = new RuleImplementation(huntile);
         new Thread(this::setTimer).start();
 
+        if (playerIndex == currentActivePlayer) {
+            releaseButtons();
+        } else {
+            shutDownButtons();
+        }
     }
 
     @Override
