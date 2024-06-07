@@ -250,6 +250,12 @@ public class MahjongGame implements Game {
         }
     }
 
+
+    public static void waitingTASK_INTERVAL(){
+        scheduledFuture = scheduler.schedule(() -> {
+        }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+    }
+
     public static void handleDiscardMessage(Message mes) {
         GameManager.updateScreen();
 
@@ -267,33 +273,40 @@ public class MahjongGame implements Game {
             scheduledFuture.cancel(true);
         }
 
-        if (playerToEat() != null || playerToPung() != null) {
-            //如果有玩家能吃或者能碰能杠
+        if (playerToKong() != null || playerToPung() != null) {
+            waitingTASK_INTERVAL();
+            if(playerToEat() != null){
+                waitingTASK_INTERVAL();
+            }
+            //如果没人能碰杠
             scheduledFuture = scheduler.schedule(() -> {
-                //延迟十秒等待，如果没人吃碰杠，那就切换下一个玩家并且抓牌
-                MahjongGame.rotate();
-                scheduledTime = System.currentTimeMillis();
-
-                scheduledFuture = scheduler.schedule(() -> {
-                    //等待20秒，如果没打牌则自动打出
-                    Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
-                    handleDiscardMessage(discardMessage);
-                    GameManager.updateScreen();
-                }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-        } else {
-            //如果没人能吃碰杠
-            scheduledFuture = scheduler.schedule(() -> {
+                //摸牌
                 MahjongGame.rotate();
                 scheduledTime = System.currentTimeMillis();
                 scheduledFuture = scheduler.schedule(() -> {
-                    //下一个玩家等待100秒，如果没有打牌则自动打出
+                    //下一个玩家等待20秒，如果没有打牌则自动打出
                     Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                     handleDiscardMessage(discardMessage);
                     GameManager.updateScreen();
                 }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
             }, 0, TimeUnit.SECONDS);
         }
+        if (playerToEat() != null) {
+            waitingTASK_INTERVAL();
+            //如果没人能吃
+            scheduledFuture = scheduler.schedule(() -> {
+                //摸牌
+                MahjongGame.rotate();
+                scheduledTime = System.currentTimeMillis();
+                scheduledFuture = scheduler.schedule(() -> {
+                    //下一个玩家等待20秒，如果没有打牌则自动打出
+                    Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
+                    handleDiscardMessage(discardMessage);
+                    GameManager.updateScreen();
+                }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
+        }
+
     }
 
     public static void handleChewMessage(Message mes) {
@@ -371,6 +384,16 @@ public class MahjongGame implements Game {
         Tile pungTile = gameBoard.getLeastDiscardedTile();
         for (Player player : players) {
             if(player.canpeng(pungTile)){
+                return player;
+            }
+        }
+        return null;
+    }
+
+    public static Player playerToKong(){
+        Tile pungTile = gameBoard.getLeastDiscardedTile();
+        for (Player player : players) {
+            if(player.cangang(pungTile)){
                 return player;
             }
         }
