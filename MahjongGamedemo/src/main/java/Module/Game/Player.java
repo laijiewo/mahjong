@@ -72,7 +72,7 @@ public class Player implements Serializable {
     }
     public void setHunTile(Tile tile){
         hunTile=tile;
-        ruleImplementation = new RuleImplementation(hunTile, this);
+        ruleImplementation = new RuleImplementation(hunTile);
         ((GameScreen) gameScreen).setHunTile(tile);
     }
 

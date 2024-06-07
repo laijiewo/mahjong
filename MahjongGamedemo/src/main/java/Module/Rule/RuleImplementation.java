@@ -25,7 +25,7 @@ public class RuleImplementation implements MahjongRule {
      *
      * @param hunTile the wildcard tile
      */
-    public RuleImplementation(Tile hunTile, Player player) {
+    public RuleImplementation(Tile hunTile) {
         this.hunTile = hunTile;
 //        this.fanCalculator=new FanCalculator(hunTile, player);
     }

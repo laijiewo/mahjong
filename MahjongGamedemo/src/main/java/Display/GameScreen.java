@@ -265,7 +265,7 @@ public class GameScreen implements Screen {
         boolean canPung = rule.canPeng(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (canPung) {
             List<Tile> tiles = rule.getPengTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, tiles);
+            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, tiles, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not pung!");
@@ -277,7 +277,7 @@ public class GameScreen implements Screen {
         boolean canChow = rule.canChi(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (playerIndex == currentActivePlayer && canChow) {
             List<Tile> tiles = rule.getChiTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles);
+            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not chew!");
@@ -289,7 +289,7 @@ public class GameScreen implements Screen {
         boolean canKong = rule.canGang(players.get(0).getHand_Tiles(), leastDiscardedTile);
         if (canKong) {
             List<Tile> tiles = rule.getGangTiles();
-            Message message = new Chew_Pung_KongMessage(MessageType.KONG, tiles);
+            Message message = new Chew_Pung_KongMessage(MessageType.KONG, tiles, playerIndex);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
             System.out.println("Can not kong!");
@@ -596,7 +596,7 @@ public class GameScreen implements Screen {
         imageMap = mapper.getImageMap();
         fallenImageMap = fallenMapper.getImageMap();
         HunTile.setImage(fallenImageMap.get(huntile));
-        rule = new RuleImplementation(huntile, mainPlayer);
+        rule = new RuleImplementation(huntile);
     }
 
     @Override
