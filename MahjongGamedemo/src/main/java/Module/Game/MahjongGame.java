@@ -76,7 +76,6 @@ public class MahjongGame implements Game {
                 handleDiscardMessage(discardMessage);
                 GameManager.updateScreen();
             }, 0, TimeUnit.SECONDS);
-
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);;
 
     }
@@ -250,6 +249,8 @@ public class MahjongGame implements Game {
     }
 
     public static void handleDiscardMessage(Message mes) {
+        GameManager.updateScreen();
+
         DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
         System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
@@ -263,6 +264,7 @@ public class MahjongGame implements Game {
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
+
         if (playerToEat() != null || playerToPung() != null) {
             //如果有玩家能吃或者能碰能杠
             scheduledFuture = scheduler.schedule(() -> {
