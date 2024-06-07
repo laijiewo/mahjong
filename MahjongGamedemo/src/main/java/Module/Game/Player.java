@@ -45,9 +45,6 @@ public class Player implements Serializable {
         ((GameScreen) gameScreen).setPlayer(this);
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
-    public void setDiscard_Tiles(ArrayList<Tile> discard_Tiles){
-        this.discard_Tiles=discard_Tiles;
-    }
 
     public void sort_hand(){
         Collections.sort(Tile_hand);
@@ -133,10 +130,9 @@ public class Player implements Serializable {
         }
         return result;
     }
-
     public List<Tile> chi(Tile tile){
         List<Tile> result;
-        if(ruleImplementation.canChi(Tile_hand,tile)){
+        if(ruleImplementation.canChi(Tile_hand, tile)){
             result = ruleImplementation.getChiTiles();
         } else {
             return null;

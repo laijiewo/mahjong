@@ -40,6 +40,9 @@ public class RuleImplementation implements MahjongRule {
      */
     @Override
     public boolean canChi(List<Tile> hand, Tile tile) {
+        if (tile == null) {
+            return false;
+        }
         chiTiles.clear(); // Clear previous chi tiles
         if (tile.getSuit() != Suit.WAN && tile.getSuit() != Suit.TIAO && tile.getSuit() != Suit.TONG) {
             return false; // Only number tiles can be used to Chi

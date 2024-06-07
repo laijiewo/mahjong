@@ -1,9 +1,7 @@
 package Module.Game;
 
-import Module.Game.MahjongGame;
 import Module.Tile.NumberTile;
 import Module.Tile.Tile;
-import Module.Rule.*;
 import Module.utils.*;
 import Module.Tile.*;
 import Module.Tile.TileFactory;
@@ -16,14 +14,14 @@ import java.util.*;
  *@author Jingwang Li,Lanyun Xiao
  */
 public class GameBoard {
-    private static ArrayList<Tile> Tiles_inTheWall;
-    private TileFactory tileFactory;
+    private ArrayList<Tile> Tiles_inTheWall;
+    private final TileFactory tileFactory;
     private Tile leastDiscardedTile;
-    private static Tile hunTile;
+    private Tile hunTile;
 
     private int dealerIndex, currentActivePlayerIndex; // Index to track the dealer in the players list
-    private List<Player> players; // List to hold all players
-    private Dice dice;
+    private final List<Player> players; // List to hold all players
+    private final Dice dice;
 
     public GameBoard(List<Player> players) {
 
@@ -51,11 +49,10 @@ public class GameBoard {
         return players.get(currentActivePlayerIndex); // Assuming the dealer is also the current active player
     }
 
-    public int determineDealer() {
+    public void determineDealer() {
         int count = players.get(dealerIndex).rollDice(dice);
         dealerIndex = count % players.size();
         currentActivePlayerIndex = dealerIndex;
-        return dealerIndex;
     }
 
     public void setCurrentActivePlayerIndex(int index){

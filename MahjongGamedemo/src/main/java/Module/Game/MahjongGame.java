@@ -73,7 +73,10 @@ public class MahjongGame implements Game {
             scheduledTime = System.currentTimeMillis();
             scheduledFuture = scheduler.schedule(() -> {
                 gameBoard.getCurrentActivePlayer().discardTiles(13);
-            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+                swap();
+                GameManager.updateScreen();
+            }, 0, TimeUnit.SECONDS);
+
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);;
 
     }
@@ -90,6 +93,9 @@ public class MahjongGame implements Game {
         Message message = new HunTileMessage(gameBoard.getHunTile());
         try {
             sendMessageToAll(message);
+            for (Player player : players) {
+                player.setHunTile(gameBoard.getHunTile());
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -199,18 +205,22 @@ public class MahjongGame implements Game {
 //    }
 
     public void startGame() throws IOException {
+        sortPlayers();
         sendGameMessageToAll();
         Message message = new launchGameMessage();
         sendMessageToAll(message);
     }
     public void update() {
         try {
-            for (Player player : players) {
-                player.sort_hand();
-            }
+            sortPlayers();
             sendGameMessageToAll();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+    private void sortPlayers() {
+        for (Player player : players) {
+            player.sort_hand();
         }
     }
     private void sendGameMessageToAll() throws IOException {
@@ -280,27 +290,30 @@ public class MahjongGame implements Game {
             }, 0, TimeUnit.SECONDS);
         }
     }
+
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的chew_pong_kong_Tiles
         List<Tile> chewTiles = message.getTiles();
+        // TODO： 逻辑有问题，玩家应同样chew，然后增加到自己的手牌中
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) chewTiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
+        scheduledFuture = scheduler.schedule(() -> {
+            //如果玩家吃牌，则他立即打牌
+            GameManager.updateScreen();
+            scheduledTime = System.currentTimeMillis();
             scheduledFuture = scheduler.schedule(() -> {
-                //如果玩家吃牌，则他立即打牌
-                GameManager.updateScreen();
-                scheduledTime = System.currentTimeMillis();
-                scheduledFuture = scheduler.schedule(() -> {
-                    gameBoard.getCurrentActivePlayer().discardTiles(13);
-                }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-            }, 0, TimeUnit.SECONDS);
-        }
+                gameBoard.getCurrentActivePlayer().discardTiles(13);
+            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+        }, 0, TimeUnit.SECONDS);
+    }
     public static void handlePungMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的pung_Tiles
         List<Tile> pungTiles = message.getTiles();
+        // TODO： 逻辑有问题，pungMessage应传入playerIndex，然后选则玩家进行pung操作
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) pungTiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
@@ -319,6 +332,7 @@ public class MahjongGame implements Game {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         // 添加玩家的kong_Tiles
         List<Tile> kongTiles = message.getTiles();
+        // TODO： 逻辑有问题，kongMessage应传入playerIndex，然后选则玩家进行kong操作
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles((ArrayList<Tile>) kongTiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);

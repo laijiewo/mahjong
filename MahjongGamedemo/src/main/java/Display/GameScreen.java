@@ -4,6 +4,7 @@ import Message.*;
 import Module.Game.*;
 import Module.ImageMap.FallenTileImageMapper;
 import Module.ImageMap.TileImageMapper;
+import Module.Rule.RuleImplementation;
 import Module.Tile.Tile;
 import System.*;
 import javafx.event.ActionEvent;
@@ -45,6 +46,10 @@ public class GameScreen implements Screen {
     int currentActivePlayer, playerIndex;
     Tile huntile, leastDiscardedTile;
     List<Tile> tilesInTheWall = new ArrayList<>();
+    List<Button> buttons = new ArrayList<>();
+    Map<Tile, Image> imageMap;
+    Map<Tile, Image> fallenImageMap;
+    RuleImplementation rule;
 
     @FXML
     private Button Chow;
@@ -254,13 +259,12 @@ public class GameScreen implements Screen {
         } else {
             System.out.println("Can not discard!");
         }
-        shutDownButtons();
-        paintHandTiles();
     }
     @FXML
     void Pung(ActionEvent event) {
-        List<Tile> tiles = mainPlayer.pung(leastDiscardedTile);
-        if (tiles != null) {
+        boolean canPung = rule.canPeng(players.get(0).getHand_Tiles(), leastDiscardedTile);
+        if (canPung) {
+            List<Tile> tiles = rule.getPengTiles();
             Message message = new Chew_Pung_KongMessage(MessageType.PUNG, tiles);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
@@ -270,8 +274,9 @@ public class GameScreen implements Screen {
 
     @FXML
     void Chow(ActionEvent event) {
-        List<Tile> tiles = mainPlayer.chi(leastDiscardedTile);
-        if (tiles != null && playerIndex == currentActivePlayer) {
+        boolean canChow = rule.canChi(players.get(0).getHand_Tiles(), leastDiscardedTile);
+        if (playerIndex == currentActivePlayer && canChow) {
+            List<Tile> tiles = rule.getChiTiles();
             Message message = new Chew_Pung_KongMessage(MessageType.CHEW, tiles);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
@@ -281,8 +286,9 @@ public class GameScreen implements Screen {
 
     @FXML
     void Kong(ActionEvent event) {
-        List<Tile> tiles = mainPlayer.kong(leastDiscardedTile);
-        if (tiles != null) {
+        boolean canKong = rule.canGang(players.get(0).getHand_Tiles(), leastDiscardedTile);
+        if (canKong) {
+            List<Tile> tiles = rule.getGangTiles();
             Message message = new Chew_Pung_KongMessage(MessageType.KONG, tiles);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
@@ -311,9 +317,6 @@ public class GameScreen implements Screen {
         gridPaneList.add(OppositeDiscardPile);
         gridPaneList.add(PreviousDiscardPile);
 
-        FallenTileImageMapper mapper = new FallenTileImageMapper();
-        Map<Tile, Image> imageMap = mapper.getImageMap();
-
         int indexofPlayer = 0;
         for (GridPane gridPane : gridPaneList) {
             PlayerInformation player = players.get(indexofPlayer);
@@ -326,7 +329,7 @@ public class GameScreen implements Screen {
             for (Tile tile : tiles) {
                 ImageView imageView = imageViewList.get(indexOfImage);
                 imageView.setVisible(true);
-                imageView.setImage(imageMap.get(tile));
+                imageView.setImage(fallenImageMap.get(tile));
                 indexOfImage++;
             }
             indexofPlayer++;
@@ -346,9 +349,6 @@ public class GameScreen implements Screen {
 
         double rotationDegree = 360;
 
-        FallenTileImageMapper mapper = new FallenTileImageMapper();
-        Map<Tile, Image> imageMap = mapper.getImageMap();
-
         int indexofPlayer = 1;
         for (GridPane gridPane : gridPaneList) {
             PlayerInformation player = players.get(indexofPlayer);
@@ -359,7 +359,7 @@ public class GameScreen implements Screen {
             int indexOfImage = 0;
             for (Tile tile : tiles) {
                 ImageView imageView = imageViewList.get(indexOfImage);
-                imageView.setImage(imageMap.get(tile));
+                imageView.setImage(fallenImageMap.get(tile));
                 imageView.setRotate(rotationDegree);
                 indexOfImage++;
             }
@@ -369,13 +369,7 @@ public class GameScreen implements Screen {
     }
 
     public void paintHandTiles(){
-        TileImageMapper mapper = new TileImageMapper();
-        Map<Tile, Image> imageMap = mapper.getImageMap();
-
         PlayerInformation player = players.get(0);
-
-        List<Button> buttons = new ArrayList<>();
-        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
 
         List<Tile> tiles = player.getHand_Tiles();
         List<Tile> chewpongkongtiles = player.getChew_Pung_Kong_Tiles();
@@ -401,10 +395,8 @@ public class GameScreen implements Screen {
         }
 
         for (Tile tile : chewpongkongtiles) {
-            FallenTileImageMapper fallenMapper = new FallenTileImageMapper();
-            Map<Tile, Image> imageMap1 = fallenMapper.getImageMap();
             Button button = buttons.get(indexOfButton);
-            Image image = imageMap1.get(tile);
+            Image image = fallenImageMap.get(tile);
             String imageUrl = image.getUrl();
 
             button.setStyle("-fx-text-fill: #308C4C;" +
@@ -426,9 +418,6 @@ public class GameScreen implements Screen {
     }
 
     public void clearButtons() {
-        List<Button> buttons = new ArrayList<>();
-        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
-
         for(Button button : buttons){
             button.setStyle("-fx-text-fill: #308C4C;" +
                                     " -fx-background-color: transparent;" +
@@ -479,11 +468,13 @@ public class GameScreen implements Screen {
     }
 
     public void shutDownButtons(){
-        List<Button> buttons = new ArrayList<>();
-        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
-
         for(Button button : buttons){
             button.setDisable(true);
+        }
+    }
+    public void releaseButtons(){
+        for(Button button : buttons){
+            button.setDisable(false);
         }
     }
 
@@ -599,10 +590,13 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection2);
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
-
-        FallenTileImageMapper mapper = new FallenTileImageMapper();
-        Map<Tile, Image> imageMap = mapper.getImageMap();
-        HunTile.setImage(imageMap.get(huntile));
+        buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
+        TileImageMapper mapper = new TileImageMapper();
+        FallenTileImageMapper fallenMapper = new FallenTileImageMapper();
+        imageMap = mapper.getImageMap();
+        fallenImageMap = fallenMapper.getImageMap();
+        HunTile.setImage(fallenImageMap.get(huntile));
+        rule = new RuleImplementation(huntile, mainPlayer);
     }
 
     @Override
@@ -624,6 +618,11 @@ public class GameScreen implements Screen {
     public void updateScreen(Message message) {
         updateGameInformation(message);
         Platform.runLater(() -> {
+            if (playerIndex == currentActivePlayer) {
+                releaseButtons();
+            } else {
+                shutDownButtons();
+            }
             clearButtons();
             paintHandTiles();
             paintDiscardPiles();
