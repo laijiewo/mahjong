@@ -70,6 +70,7 @@ public class MahjongGame implements Game {
         setHunTileToPlayers();
         isGameStart = true;
 
+
         scheduledFuture = scheduler.schedule(() -> {
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -250,6 +251,7 @@ public class MahjongGame implements Game {
 
     public static void handleDiscardMessage(Message mes) {
         GameManager.updateScreen();
+
         DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
         System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
@@ -343,6 +345,7 @@ public class MahjongGame implements Game {
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
         System.out.println(gameBoard.getLeastDiscardedTile().getSuit() + "    ");
         // 添加玩家的pung_Tiles
+
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {

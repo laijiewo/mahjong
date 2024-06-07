@@ -191,71 +191,85 @@ public class GameScreen implements Screen {
     @FXML
     void DiscardTile1(ActionEvent event) {
         discard(0);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile11(ActionEvent event) {
         discard(10);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile7(ActionEvent event) {
         discard(6);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile6(ActionEvent event) {
         discard(5);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile3(ActionEvent event) {
         discard(2);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile14(ActionEvent event) {
         discard(13);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile9(ActionEvent event) {
         discard(8);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile12(ActionEvent event) {
         discard(11);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile8(ActionEvent event) {
         discard(7);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile13(ActionEvent event) {
         discard(12);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile5(ActionEvent event) {
         discard(4);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile10(ActionEvent event) {
         discard(9);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile4(ActionEvent event) {
         discard(3);
+        shutDownButtons();
     }
 
     @FXML
     void DiscardTile2(ActionEvent event) {
         discard(1);
+        shutDownButtons();
     }
 
     public void discard(int index) {
@@ -610,6 +624,7 @@ public class GameScreen implements Screen {
         rule = new RuleImplementation(huntile);
         new Thread(this::setTimer).start();
 
+
     }
 
     @Override
@@ -626,6 +641,12 @@ public class GameScreen implements Screen {
         setPlayerPhotoStyle();
         paintPlayerSite();
         paintHandTiles();
+
+        if (playerIndex == currentActivePlayer) {
+            releaseButtons();
+        } else {
+            shutDownButtons();
+        }
     }
 
     public void updateScreen(Message message) {
@@ -633,11 +654,11 @@ public class GameScreen implements Screen {
         Platform.runLater(() -> {
             clearButtons();
             paintHandTiles();
-            if (playerIndex == currentActivePlayer) {
+/*            if (playerIndex == currentActivePlayer) {
                 releaseButtons();
             } else {
                 shutDownButtons();
-            }
+            }*/
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
