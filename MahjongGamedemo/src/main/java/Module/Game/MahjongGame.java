@@ -376,6 +376,15 @@ public class MahjongGame implements Game {
         }, 0, TimeUnit.SECONDS);
     }
 
+    public static void handleHuMessage(int playerIndex) throws IOException {
+        System.out.println("" + gameBoard.getCurrentActivePlayer().getPlayerSite() + " win the game!");
+        Message message = new HuMessage(playerIndex);
+        for (Socket socket : sockets) {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            oos.writeObject(message);
+            oos.flush();
+        }
+    }
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
         int index = (players.indexOf(gameBoard.getCurrentActivePlayer()) + 1) % 4;

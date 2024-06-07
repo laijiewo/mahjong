@@ -149,7 +149,7 @@ public class Player implements Serializable {
      * @return true if the player can declare a win, false otherwise.
      */
     public boolean canHu() {
-        if(ruleImplementation.canHu(Tile_hand, Chew_Pong_Kung_Tiles)){
+        if(ruleImplementation.canHu(new ArrayList<>(Tile_hand), new ArrayList<>(Chew_Pong_Kung_Tiles))){
             return true;
         } else {
             return false;
@@ -208,9 +208,10 @@ public class Player implements Serializable {
      */
     public void connect() throws IOException {
         //String serverHostname = scanner.next();
-        int port = serverPort;
-        // Attempt to connect to the server
-        echoSocket = new Socket(serverHostname, port);
+//        int port = serverPort;
+//        // Attempt to connect to the server
+//        echoSocket = new Socket(serverHostname, port);
+        echoSocket = new Socket("192.168.43.197", 8080);
         connected = true;
         new Thread(this::startReceiveGameMessages).start();
     }
@@ -239,10 +240,15 @@ public class Player implements Serializable {
                     setHunTile(((HunTileMessage) mes).getHunTile());
                 } else if (mes.getType() == MessageType.LAUNCH_GAME) {
                     launchGameScreen();
+                } else if (mes.getType() == MessageType.HU) {
+                    int winnerIndex = ((HuMessage) mes).getWinnerIndex();
+                    ((GameScreen) gameScreen).launchResultScreen(winnerIndex);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }

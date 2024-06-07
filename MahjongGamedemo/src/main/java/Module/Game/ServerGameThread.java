@@ -54,6 +54,13 @@ public class ServerGameThread implements Runnable {
                     case KONG -> {
                         MahjongGame.handleKongMessage(message);
                     }
+                    case HU -> {
+                        try {
+                            MahjongGame.handleHuMessage(((HuMessage) message).getWinnerIndex());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             }
         }

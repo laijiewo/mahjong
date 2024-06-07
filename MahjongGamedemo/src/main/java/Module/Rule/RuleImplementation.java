@@ -145,7 +145,7 @@ public class RuleImplementation implements MahjongRule {
      * @return true if the player can Hu, false otherwise
      */
     @Override
-    public boolean canHu(List<Tile> hand, List<Tile>meldsTile) {
+    public boolean canHu(List<Tile> hand, List<Tile> meldsTile) {
         List<Tile> newHand = new ArrayList<>(hand);
         newHand.addAll(meldsTile);
         Collections.sort(newHand); // Sort the hand to ensure tiles are in order

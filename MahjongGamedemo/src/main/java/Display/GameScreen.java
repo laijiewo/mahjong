@@ -269,45 +269,34 @@ public class GameScreen implements Screen {
     }
     @FXML
     void Pung(ActionEvent event) {
-        boolean canPung = rule.canPeng(players.get(0).getHand_Tiles(), leastDiscardedTile);
-        if (canPung) {
-            Message message = new Chew_Pung_KongMessage(MessageType.PUNG, playerIndex);
-            mainPlayer.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not pung!");
-        }
+        Pung.setDisable(true);
+        Pung.setVisible(false);
+        Message message = new Chew_Pung_KongMessage(MessageType.PUNG, playerIndex);
+        mainPlayer.sendMessageObjectToHost(message);
     }
 
     @FXML
     void Chow(ActionEvent event) {
-        boolean canChow = rule.canChi(players.get(0).getHand_Tiles(), leastDiscardedTile);
-        if (playerIndex == currentActivePlayer && canChow) {
-            Message message = new Chew_Pung_KongMessage(MessageType.CHEW, playerIndex);
-            mainPlayer.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not chew!");
-        }
+        Chow.setDisable(true);
+        Chow.setVisible(false);
+        Message message = new Chew_Pung_KongMessage(MessageType.CHEW, playerIndex);
+        mainPlayer.sendMessageObjectToHost(message);
     }
 
     @FXML
     void Kong(ActionEvent event) {
-        boolean canKong = rule.canGang(players.get(0).getHand_Tiles(), leastDiscardedTile);
-        if (canKong) {
-            Message message = new Chew_Pung_KongMessage(MessageType.KONG, playerIndex);
-            mainPlayer.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not kong!");
-        }
+        Kong.setDisable(true);
+        Kong.setVisible(false);
+        Message message = new Chew_Pung_KongMessage(MessageType.KONG, playerIndex);
+        mainPlayer.sendMessageObjectToHost(message);
     }
 
     @FXML
     void Win(ActionEvent event) {
-        if (mainPlayer.canHu()) {
-            Message message = new Message(MessageType.HU);
-            mainPlayer.sendMessageObjectToHost(message);
-        } else {
-            System.out.println("Can not hu!");
-        }
+        Win.setDisable(true);
+        Win.setVisible(false);
+        Message message = new Message(MessageType.HU);
+        mainPlayer.sendMessageObjectToHost(message);
     }
 
     @FXML
@@ -488,6 +477,25 @@ public class GameScreen implements Screen {
         }
     }
 
+    private void showChew_Pung_Kong_Tiles() {
+        boolean canPung = rule.canPeng(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        boolean canChow = rule.canChi(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        boolean canKong = rule.canGang(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        boolean canHu = rule.canHu(new ArrayList<>(players.get(0).getHand_Tiles()), new ArrayList<>(players.get(0).getChew_Pung_Kong_Tiles()));
+        if (canHu) {
+            Win.setDisable(false);
+            Win.setVisible(true);
+        } else if (canKong) {
+            Kong.setDisable(false);
+            Kong.setVisible(true);
+        } else if (canPung){
+            Pung.setDisable(false);
+            Pung.setVisible(true);
+        } else if ((playerIndex-1) % 4 == currentActivePlayer && canChow) {
+            Chow.setDisable(false);
+            Chow.setVisible(true);
+        }
+    }
     private void setPlayerPhotoStyle(){
         for(int i = 0; i != 4; i++) {
             PlayerInformation player = players.get(i);
@@ -601,6 +609,15 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
+        Kong.setDisable(true);
+        Kong.setVisible(false);
+        Chow.setDisable(true);
+        Chow.setVisible(false);
+        Pung.setDisable(true);
+        Pung.setVisible(false);
+        Win.setDisable(true);
+        Win.setVisible(false);
+
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
         TileImageMapper mapper = new TileImageMapper();
         FallenTileImageMapper fallenMapper = new FallenTileImageMapper();
@@ -626,8 +643,12 @@ public class GameScreen implements Screen {
         setPlayerPhotoStyle();
         paintPlayerSite();
         paintHandTiles();
+        showChew_Pung_Kong_Tiles();
     }
-
+    public void launchResultScreen(int winnerIndex) throws Exception {
+        SettlementScreen settlementScreen = new SettlementScreen();
+        settlementScreen.loadWindow(new Stage());
+    }
     public void updateScreen(Message message) {
         updateGameInformation(message);
         Platform.runLater(() -> {
@@ -638,6 +659,7 @@ public class GameScreen implements Screen {
             } else {
                 shutDownButtons();
             }
+            showChew_Pung_Kong_Tiles();
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
