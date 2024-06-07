@@ -512,7 +512,7 @@ public class GameScreen implements Screen {
         } else if (canPung){
             Pung.setDisable(false);
             Pung.setVisible(true);
-        } else if ((playerIndex-1) % 4 == currentActivePlayer && canChow) {
+        } else if (playerIndex == (currentActivePlayer + 1)  % 4 && canChow) {
             Chow.setDisable(false);
             Chow.setVisible(true);
         }
