@@ -41,8 +41,8 @@ public class GameBoard {
         this.players = players;
     }
 
-    public Player getDealer() {
-        return players.get(dealerIndex);
+    public int getDealerIndex() {
+        return dealerIndex;
     }
 
     public Player getCurrentActivePlayer() {

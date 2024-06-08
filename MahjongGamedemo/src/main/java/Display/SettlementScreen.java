@@ -1,6 +1,7 @@
 package Display;
 import Display.Screen;
 import Module.Game.Player;
+import Module.Game.PlayerInformation;
 import Module.Game.Site;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -70,13 +71,13 @@ public class SettlementScreen implements Screen {
     private Label wintype12;
 
     int FANS;
-    Player winner;
+    PlayerInformation winner;
     int point;
     List<String> wintypeList;
     List<Label> wintypelabels;
 
     private Image getPlayerImage(){
-        Site site = winner.getPlayerSite();
+        Site site = winner.getSite();
         switch (site){
             case East:
                 return new Image("/UI/Player_E.png");
@@ -90,7 +91,7 @@ public class SettlementScreen implements Screen {
         return null;
     }
 
-    public void setWinner(Player winner){
+    public void setWinner(PlayerInformation winner){
         this.winner = winner;
     }
     public void setPoint(int point){

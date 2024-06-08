@@ -13,26 +13,27 @@ public class FanCalculator {
     List<String> HuTypes = new ArrayList<>();
 
     private Tile hunTile; // The wildcard tile (混儿牌)
+    private int tileCount;
 
-    public FanCalculator(Tile hunTile, Player player) {
+    public FanCalculator(Tile hunTile, int tileCount) {
         this.hunTile = hunTile;
+        this.tileCount = tileCount;
     }
     public List<String> getHuTypes() {
         return HuTypes;
     }
-    public int calculateFan(List<Tile> hand, boolean isPlayerTurn, boolean isDealer, Tile finalTile) {
-        int  tileCount= MahjongGame.getTileCountInTheTileWall();
-        boolean selfDrawn = selfDraw(hand,finalTile, isPlayerTurn,isDealer,tileCount);
+    public int calculateFan(List<Tile> hand, boolean isDealer) {
+        boolean selfDrawn = selfDraw(hand,isDealer,tileCount);
         Set<String> fanTypes = new HashSet<>();
         int fan = 0;
 
-        if (selfDrawn && fanTypes.add("selfDrawn")) {
-            HuTypes.add("selfDrawn");
-            System.out.println("zimo");
+        if (selfDrawn && fanTypes.add("normalType")) {
+            HuTypes.add("normalType");
+            System.out.println("normalType");
             fan += 1; // 自摸
         }
 
-        if (isMenQing(hand,finalTile,isDealer,tileCount) && fanTypes.add("menQing")) {
+        if (isMenQing(hand,isDealer,tileCount) && fanTypes.add("menQing")) {
             HuTypes.add("menQing");
             System.out.println("menqing");
             fan += 1; // 门清
@@ -44,7 +45,7 @@ public class FanCalculator {
             System.out.println("duiduihu");
         }
 
-        if (isZhuaWuKui(finalTile,hand) && fanTypes.add("zhuaWuKui")) {
+        if (isZhuaWuKui(hand) && fanTypes.add("zhuaWuKui")) {
             HuTypes.add("zhuaWuKui");
             fan += 1; // 捉五魁
             System.out.println("zhuawukui");
@@ -107,17 +108,15 @@ public class FanCalculator {
         return fan;
     }
 
-    private boolean selfDraw(List<Tile> hand, Tile finalTile, boolean isPlayerTurn,boolean isDealer,int tileCount) {
+    private boolean selfDraw(List<Tile> hand,boolean isDealer,int tileCount) {
         // 自摸的判断条件：最后一张牌是自己摸的并且是自己回合
-        if (!isPlayerTurn || finalTile == null||isDiHu(hand,isDealer,tileCount)||isHunGang(hand)) {
+        if (isDiHu(hand,isDealer,tileCount)||isHunGang(hand)) {
             return false;
         }
-        List<Tile> newHand = new ArrayList<>(hand);
         return true;
     }
 
-    private boolean isMenQing(List<Tile> hand,Tile finalTile,boolean isDealer,int tileCount) {
-        hand.add(finalTile);
+    private boolean isMenQing(List<Tile> hand,boolean isDealer,int tileCount) {
         Collections.sort(hand);
         System.out.println(hand.size());
         if(isDiHu(hand,isDealer,tileCount)||isTianHu(hand,isDealer,tileCount)||isHunGang(hand)||isRenHu(hand,isDealer,tileCount)){
@@ -177,14 +176,14 @@ public class FanCalculator {
 
 
 
-    private boolean isZhuaWuKui(Tile finalTile,List<Tile>hand) {
+    private boolean isZhuaWuKui(List<Tile>hand) {
         //System.out.println(hand.size());
         // 判断是否捉五魁：和牌时只和一张“五万”
         if(isHunGang(hand)){
             return false;
         }
-        if (finalTile instanceof NumberTile) {
-            NumberTile numberTile = (NumberTile) finalTile;
+        Tile finalTile = hand.get(hand.size() - 1);
+        if (finalTile instanceof NumberTile numberTile) {
             return numberTile.getRank() == 5 && numberTile.getSuit() == Suit.WAN;
         }
         return false;

@@ -6,6 +6,7 @@ import Module.ImageMap.FallenTileImageMapper;
 import Module.ImageMap.TileImageMapper;
 import Module.Rule.RuleImplementation;
 import Module.Tile.Tile;
+import Module.utils.FanCalculator;
 import System.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -54,6 +55,7 @@ public class GameScreen implements Screen {
     Map<Tile, Image> fallenImageMap;
     RuleImplementation rule;
     int time = 20;
+    boolean isDealer;
 
     @FXML
     private Button Chow;
@@ -310,16 +312,13 @@ public class GameScreen implements Screen {
     void Win(ActionEvent event) throws Exception {
         Win.setDisable(true);
         Win.setVisible(false);
-        Message message = new HuMessage(playerIndex);
+        FanCalculator fanCalculator = new FanCalculator(huntile, tilesInTheWall.size());
+        int fans = fanCalculator.calculateFan(players.get(0).getHand_Tiles(), isDealer);
+        PlayerInformation winner = players.get(0);
+        int point = 2 ^ (fans - 1) * 100;
+        List<String> wintype = fanCalculator.getHuTypes();
+        Message message = new HuMessage(fans, point, winner, wintype);
         mainPlayer.sendMessageObjectToHost(message);
-
-        SettlementScreen settlementScreen = new SettlementScreen();
-        settlementScreen.setWinner();
-        settlementScreen.setFans();
-        settlementScreen.setPoint();
-        settlementScreen.setWintypelist();
-
-        settlementScreen.loadWindow(new Stage());
     }
 
     @FXML
@@ -487,6 +486,7 @@ public class GameScreen implements Screen {
         tilesInTheWall = ((GameInformationMessage) message).getTilesInTheWallFromMessage();
         leastDiscardedTile = ((GameInformationMessage) message).getLeastDiscardedTileFromMessage();
         playerIndex = ((GameInformationMessage) message).getPlayerIndexFromMessage();
+        isDealer = ((GameInformationMessage) message).getDealerIndexFromMessage() == playerIndex;
     }
     public void setPlayer(Player player) {
         this.mainPlayer = player;
@@ -679,9 +679,15 @@ public class GameScreen implements Screen {
         paintHandTiles();
         showChew_Pung_Kong_Tiles();
     }
-    public void launchResultScreen(int winnerIndex) throws Exception {
-        SettlementScreen settlementScreen = new SettlementScreen();
+    public void launchResultScreen(Message message) throws Exception {
+        HuMessage mes = (HuMessage) message;
         Platform.runLater(() -> {
+            SettlementScreen settlementScreen = new SettlementScreen();
+            settlementScreen.setWinner(mes.getWinner());
+            settlementScreen.setFans(mes.getFans());
+            settlementScreen.setPoint(mes.getPoint());
+            settlementScreen.setWintypelist(mes.getWintype());
+
             try {
                 settlementScreen.loadWindow(new Stage());
             } catch (Exception e) {

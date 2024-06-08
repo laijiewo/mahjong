@@ -252,8 +252,7 @@ public class Player implements Serializable {
                 } else if (mes.getType() == MessageType.LAUNCH_GAME) {
                     launchGameScreen();
                 } else if (mes.getType() == MessageType.HU) {
-                    int winnerIndex = ((HuMessage) mes).getWinnerIndex();
-                    ((GameScreen) gameScreen).launchResultScreen(winnerIndex);
+                    ((GameScreen) gameScreen).launchResultScreen(mes);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

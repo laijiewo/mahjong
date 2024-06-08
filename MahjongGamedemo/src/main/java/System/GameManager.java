@@ -60,22 +60,6 @@ public class GameManager {
         }
     }
     /**
-     * Handles the action for the "Pause" button.
-     * This method is triggered when a player wants to pause the game.
-     */
-    public static void handlePauseButtonAction(Player player) {
-        Message message = new Message(MessageType.PAUSE);
-        player.sendMessageObjectToHost(message);
-    }
-    /**
-     * Handles the action for the "Continue" button.
-     * This method is triggered when a player wants to resume the game after a pause.
-     */
-    public static void handleContinueButtonAction(Player player) {
-        Message message = new Message(MessageType.UNPAUSE);
-        player.sendMessageObjectToHost(message);
-    }
-    /**
      * This method controls the execution of the game.
      */
     public void run(Stage stage) throws Exception {

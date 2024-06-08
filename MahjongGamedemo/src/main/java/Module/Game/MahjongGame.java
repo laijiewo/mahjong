@@ -236,7 +236,7 @@ public class MahjongGame implements Game {
                 for (int j = 0; j < 4; j++) {
                     playerInformation1.add(playerInformation.get((i + j) % 4));
                 }
-                Message message = new GameInformationMessage(playerInformation1, gameBoard.getTilesInTheWall(), getCurrentPlayerIndex(), getLeastDiscardedTile(), i);
+                Message message = new GameInformationMessage(playerInformation1, gameBoard.getTilesInTheWall(), getCurrentPlayerIndex(), getLeastDiscardedTile(), i, gameBoard.getDealerIndex());
                 oos.writeObject(message);
                 oos.flush();
                 i++;
@@ -380,12 +380,9 @@ public class MahjongGame implements Game {
     }
 
     public static void handleHuMessage(Message mes) throws IOException {
-        int playerIndex = ((HuMessage) mes).getWinnerIndex();
-        System.out.println("" + gameBoard.getCurrentActivePlayer().getPlayerSite() + " win the game!");
-        Message message = new HuMessage(playerIndex);
         for (Socket socket : sockets) {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            oos.writeObject(message);
+            oos.writeObject(mes);
             oos.flush();
         }
     }
