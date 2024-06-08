@@ -7,9 +7,14 @@ import Module.Tile.WindAndDragonTile;
 import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * The TileImageMapper class maps Mahjong tiles to their corresponding images.
+ */
 public class TileImageMapper {
     private Map<Tile, Image> imageMap = new HashMap<>();
+    /**
+     * Constructs a TileImageMapper and initializes the mappings for all tile types.
+     */
     public TileImageMapper() {
         addWanMapping();
         addTiaoMapping();
@@ -17,19 +22,39 @@ public class TileImageMapper {
         addWindAndDragonMapping();
     }
 
+    /**
+     * Adds a mapping between a tile and its image.
+     *
+     * @param object The tile to be mapped.
+     * @param imagePath The path to the image of the tile.
+     */
     public void addMapping(Tile object, String imagePath) {
         imageMap.put(object, new Image(imagePath));
     }
 
+    /**
+     * Retrieves the image corresponding to a tile.
+     *
+     * @param object The tile whose image is to be retrieved.
+     * @return The image corresponding to the tile.
+     */
     public Image getImage(Tile object) {
         return imageMap.get(object);
     }
 
+    /**
+     * Gets the map of tiles and their corresponding images.
+     *
+     * @return The map of tiles and their corresponding images.
+     */
     public Map<Tile, Image> getImageMap() {
         return imageMap;
 
     }
 
+    /**
+     * Adds mappings for Wan (Character) tiles.
+     */
     private void addWanMapping() {
         Tile oneWan = new NumberTile(1, Suit.WAN);
         addMapping(oneWan, "/mj/mj_28.png");
@@ -51,6 +76,9 @@ public class TileImageMapper {
         addMapping(nineWan, "/mj/mj_36.png");
     }
 
+    /**
+     * Adds mappings for Tiao (Bamboo) tiles.
+     */
     private void addTiaoMapping() {
         Tile oneTiao = new NumberTile(1, Suit.TIAO);
         addMapping(oneTiao, "/mj/mj_37.png");
@@ -71,6 +99,10 @@ public class TileImageMapper {
         Tile nineTiao = new NumberTile(9, Suit.TIAO);
         addMapping(nineTiao, "/mj/mj_45.png");
     }
+
+    /**
+     * Adds mappings for Tong (Circle) tiles.
+     */
     private void addTongMapping() {
         Tile oneTong = new NumberTile(1, Suit.TONG);
         addMapping(oneTong, "/mj/mj_46.png");
@@ -91,6 +123,10 @@ public class TileImageMapper {
         Tile nineTong = new NumberTile(9, Suit.TONG);
         addMapping(nineTong, "/mj/mj_54.png");
     }
+
+    /**
+     * Adds mappings for Wind and Dragon tiles.
+     */
     private void addWindAndDragonMapping() {
         Tile EastWind = new WindAndDragonTile("East", Suit.WIND);
         addMapping(EastWind, "/mj/mj_55.png");

@@ -1,5 +1,6 @@
-package Module.ImageMap;
+package Module;
 
+import Module.ImageMap.FallenTileImageMapper;
 import Module.Tile.Tile;
 import Module.Tile.TileFactory;
 import javafx.application.Application;

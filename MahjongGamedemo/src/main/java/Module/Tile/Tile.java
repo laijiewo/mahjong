@@ -37,9 +37,15 @@ public class Tile implements Comparable<Tile>, Serializable {
         this.suit = suit;
     }
 
-
+    /**
+     * Compares this tile to another tile for order based on the suit of the tiles.
+     *
+     * @param other The tile to be compared.
+     * @return A negative integer, zero, or a positive integer as this tile's suit is less than,
+     *         equal to, or greater than the suit of the specified tile.
+     */
     @Override
-    public int compareTo(@NotNull Tile other) {
+    public int compareTo( Tile other) {
         return Integer.compare(this.getSuit().ordinal(), other.getSuit().ordinal());
     }
 }
