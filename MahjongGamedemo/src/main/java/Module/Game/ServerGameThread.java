@@ -6,14 +6,23 @@ import System.*;
 
 import java.io.*;
 import java.net.Socket;
-
+/**
+ * ServerGameThread handles communication between the server and a connected player.
+ */
 public class ServerGameThread implements Runnable {
     Socket socket;
     Player player;
+    /**
+     * Constructs a ServerGameThread with a specified socket.
+     *
+     * @param socket The socket connected to the player.
+     */
     public ServerGameThread(Socket socket) {
         this.socket = socket;
     }
-
+    /**
+     * The main run method for the thread, handling incoming messages and delegating actions based on message type.
+     */
     @Override
     public void run() {
         while (true) {
@@ -32,6 +41,7 @@ public class ServerGameThread implements Runnable {
             handleMessage(message);
         }
     }
+
     private void handleMessage(Message message) {
         if (message != null) {
             MessageType type = message.getType();
@@ -66,7 +76,11 @@ public class ServerGameThread implements Runnable {
             }
         }
     }
-
+    /**
+     * Accepts incoming messages from the socket.
+     *
+     * @return The received message or null if the socket is closed or an error occurs.
+     */
     private Message acceptMessages() {
         if (socket.isClosed()) {
             MahjongGame.sockets.remove(socket);

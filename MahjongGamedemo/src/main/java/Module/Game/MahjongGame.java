@@ -14,9 +14,14 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * @author Jingwang Li, Lanyun Xiao
+ * Represents a Mahjong game.
+ *
+ * Handles game initialization, player management, and communication between clients and server.
+ * Also manages the game board, tile shuffling, and tile dealing.
+ * Implements the Game interface.
+ *
+ * Authors: Jingwang Li, Lanyun Xiao
  */
-
 public class MahjongGame implements Game {
     private static List<Player> players;
     private static GameBoard gameBoard;
@@ -32,6 +37,12 @@ public class MahjongGame implements Game {
     static int i = 0;
     static long TASK_INTERVAL_SECONDS = 20;
 
+    /**
+     * Constructs a MahjongGame and starts the server.
+     *
+     * @param port The port number for the server.
+     * @throws IOException If an I/O error occurs.
+     */
     public MahjongGame(int port) throws IOException {
         this.port = port;
         scheduler = Executors.newScheduledThreadPool(4);
@@ -46,16 +57,37 @@ public class MahjongGame implements Game {
         players = new LinkedList<>();
     }
 
+    /**
+     * Adds a player to the game.
+     *
+     * @param player The player to be added.
+     */
     public void addPlayer(Player player) {
         players.add(player);
     }
+
+    /**
+     * Removes a player from the game.
+     *
+     * @param player The player to be removed.
+     */
     public void removePlayer(Player player) {
         players.remove(player);
     }
+
+    /**
+     * Gets the number of players in the game.
+     *
+     * @return The number of players.
+     */
     public int getNumOfPlayers() {
         return players.size();
     }
 
+    /**
+     * Initializes the game, sets player sites, shuffles and deals tiles,
+     * determines the dealer, and sets the Hun tile for players.
+     */
     @Override
     public void initializeGame() {
         setPlayersSites();
@@ -75,6 +107,10 @@ public class MahjongGame implements Game {
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);;
 
     }
+
+    /**
+     * Sets the sites for each player.
+     */
     public void setPlayersSites() {
         Site[] sites = {Site.East, Site.South, Site.West, Site.North};
         int i = 0;
@@ -83,6 +119,10 @@ public class MahjongGame implements Game {
             i++;
         }
     }
+
+    /**
+     * Sets the Hun tile for each player and sends the Hun tile message to all players.
+     */
     public void setHunTileToPlayers() {
         Message message = new HunTileMessage(gameBoard.getHunTile());
         try {
@@ -95,42 +135,80 @@ public class MahjongGame implements Game {
         }
     }
 
+    /**
+     * Checks if any player has won the game.
+     *
+     * @return The winning player, or null if no player has won.
+     */
     @Override
     public Player checkVictory() {
         return null;
     }
 
+    /**
+     * Calculates the scores for the players.
+     */
     @Override
     public void calculateScores() {
     }
 
+    /**
+     * Starts a new game.
+     */
     @Override
     public void startNewGame() {
 
     }
+
+    /**
+     * Gets the index of the current player.
+     *
+     * @return The index of the current player.
+     */
     public static int getCurrentPlayerIndex() {
         return players.indexOf(gameBoard.getCurrentActivePlayer());
     }
 
+    /**
+     * Checks if the game has started.
+     *
+     * @return True if the game has started, false otherwise.
+     */
     public boolean isGameStart() {
         return isGameStart;
     }
 
+    /**
+     * Gets the tile that was least recently discarded.
+     *
+     * @return The least recently discarded tile.
+     */
     public Tile getLeastDiscardedTile() {
         return gameBoard.getLeastDiscardedTile();
     }
 
+    /**
+     * Swaps the positions of players and re-deals the tiles.
+     */
     @Override
     public void swap() {
         rotate();
     }
 
+    /**
+     * Rotates the players and re-deals the tiles.
+     */
     public static void rotate() {
         gameBoard.swap();
         gameBoard.dealTiles();
         GameManager.updateScreen();
     }
 
+    /**
+     * Checks if the round is over.
+     *
+     * @return True if the round is over, false otherwise.
+     */
     @Override
     public boolean isRoundOver() {
         if (checkVictory() != null) {
@@ -139,9 +217,23 @@ public class MahjongGame implements Game {
             return false;
         }
     }
+
+    /**
+     * Checks if the current player can discard a tile.
+     *
+     * @param player The player to check.
+     * @return True if the player can discard a tile, false otherwise.
+     */
     public boolean playerCanDiscard(Player player) {
         return gameBoard.getCurrentActivePlayer() == player;
     }
+
+    /**
+     * Starts the server on the specified port.
+     *
+     * @param port The port number.
+     * @throws IOException If an I/O error occurs.
+     */
     private void startServer(int port) throws IOException {
         this.port = port;
         sockets = new LinkedList<>();
@@ -165,6 +257,11 @@ public class MahjongGame implements Game {
         serverSocket.close();
     }
 
+    /**
+     * Starts the game by sorting player tiles and sending a game launch message to all players.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     public void startGame() throws IOException {
         sortPlayersTiles();
         sendGameMessageToAll();
@@ -174,6 +271,10 @@ public class MahjongGame implements Game {
             player.setIsLaunched(true);
         }
     }
+
+    /**
+     * Updates the game state.
+     */
     public void update() {
         try {
             sortPlayersTiles();
@@ -182,11 +283,21 @@ public class MahjongGame implements Game {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Sorts the tiles in each player's hand.
+     */
     private void sortPlayersTiles() {
         for (Player player : players) {
             player.sort_hand();
         }
     }
+
+    /**
+     * Sends the game state to all players.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     private void sendGameMessageToAll() throws IOException {
         List<PlayerInformation> playerInformation = new ArrayList<>();
         for (Player player : players) {
@@ -207,6 +318,13 @@ public class MahjongGame implements Game {
             }
         }
     }
+
+    /**
+     * Sends a message to all players.
+     *
+     * @param message The message to send.
+     * @throws IOException If an I/O error occurs.
+     */
     private void sendMessageToAll(Message message) throws IOException {
         for (Socket socket : sockets) {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -214,6 +332,13 @@ public class MahjongGame implements Game {
             oos.flush();
         }
     }
+
+    /**
+     * Sends a message to a specific player.
+     *
+     * @param message The message to send.
+     * @param player The player to send the message to.
+     */
     private static void sendMessageToSomeOne(Message message, Player player) {
         int index = players.indexOf(player);
         ObjectOutputStream oos = null;
@@ -225,6 +350,12 @@ public class MahjongGame implements Game {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Sends a shutdown message to all players.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     private static void sendShutDownMessageToAll() throws IOException {
         Message message = new Message(MessageType.SHUT_DOWN_BUTTONS);
         for (Socket socket : sockets) {
@@ -233,6 +364,12 @@ public class MahjongGame implements Game {
             oos.flush();
         }
     }
+
+    /**
+     * Handles a discard message.
+     *
+     * @param mes The discard message.
+     */
     public static void handleDiscardMessage(Message mes) {
         GameManager.updateScreen();
         DiscardMessage message = (DiscardMessage) mes;
@@ -260,6 +397,13 @@ public class MahjongGame implements Game {
         }
     }
 
+    /**
+     * Handles the scenario when a discarded tile can be used for Pung or Kong.
+     *
+     * @param playerToKong The player who can perform a Kong.
+     * @param playerToPung The player who can perform a Pung.
+     * @param playerToEat The player who can perform a Chew.
+     */
     private static void discardWithSomeOneCanPungOrKong(Player playerToKong, Player playerToPung, Player playerToEat) {
         if (playerToKong != null) {
             Message message1 = new Message(MessageType.KONG);
@@ -284,6 +428,11 @@ public class MahjongGame implements Game {
         }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
     }
 
+    /**
+     * Handles the scenario when a discarded tile can be used for Chew.
+     *
+     * @param playerToEat The player who can perform a Chew.
+     */
     private static void discardWithSomeOneCanChew(Player playerToEat) {
         if (playerToEat() != null) {
             Message message1 = new Message(MessageType.CHEW);
@@ -309,6 +458,11 @@ public class MahjongGame implements Game {
         }
     }
 
+    /**
+     * Handles a Chew message.
+     *
+     * @param mes The Chew message.
+     */
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).chi(gameBoard.getLeastDiscardedTile());
@@ -330,19 +484,24 @@ public class MahjongGame implements Game {
         }, 0, TimeUnit.SECONDS);
     }
 
+    /**
+     * Handles a Pung message.
+     *
+     * @param mes The Pung message.
+     */
     public static void handlePungMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
         players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
-        // 添加玩家的pung_Tiles
+        // Add Pung tiles to player's hand
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
         scheduledFuture = scheduler.schedule(() -> {
-            //玩家碰牌，则他立刻打牌
+            // If a player performs Pung, they immediately discard a tile
             GameManager.updateScreen();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -351,19 +510,24 @@ public class MahjongGame implements Game {
         }, 0, TimeUnit.SECONDS);
     }
 
+    /**
+     * Handles a Kong message.
+     *
+     * @param mes The Kong message.
+     */
     public static void handleKongMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
         players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
-        // 添加玩家的kong_Tiles
+        //Add Kong tiles to player's hand
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles(tiles);
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
         }
         scheduledFuture = scheduler.schedule(() -> {
-            //玩家杠牌，则他立刻抓牌打牌
+            // If a player performs Kong, they immediately draw and discard a tile
             GameManager.updateScreen();
             scheduledFuture = scheduler.schedule(() -> {
                 Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
@@ -372,6 +536,12 @@ public class MahjongGame implements Game {
         }, 0, TimeUnit.SECONDS);
     }
 
+    /**
+     * Handles a Hu message.
+     *
+     * @param mes The Hu message.
+     * @throws IOException If an I/O error occurs.
+     */
     public static void handleHuMessage(Message mes) throws IOException {
         for (Socket socket : sockets) {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -388,6 +558,11 @@ public class MahjongGame implements Game {
         System.exit(0);
     }
 
+    /**
+     * Determines which player can perform Chew.
+     *
+     * @return The player who can perform Chew, or null if no player can perform Chew.
+     */
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
         int index = (players.indexOf(gameBoard.getCurrentActivePlayer()) + 1) % 4;
@@ -397,6 +572,11 @@ public class MahjongGame implements Game {
         return null;
     }
 
+    /**
+     * Determines which player can perform Pung.
+     *
+     * @return The player who can perform Pung, or null if no player can perform Pung.
+     */
     public static Player playerToPung(){
         Tile pungTile = gameBoard.getLeastDiscardedTile();
         for (Player player : players) {
@@ -407,6 +587,11 @@ public class MahjongGame implements Game {
         return null;
     }
 
+    /**
+     * Determines which player can perform Kong.
+     *
+     * @return The player who can perform Kong, or null if no player can perform Kong.
+     */
     public static Player playerToKong(){
         Tile pungTile = gameBoard.getLeastDiscardedTile();
         for (Player player : players) {
