@@ -17,8 +17,8 @@ public class GameBoard {
     private ArrayList<Tile> Tiles_inTheWall;
     private final TileFactory tileFactory;
     private Tile leastDiscardedTile;
+    private int leastDiscardedPlayerIndex;
     private Tile hunTile;
-
     private int dealerIndex, currentActivePlayerIndex; // Index to track the dealer in the players list
     private final List<Player> players; // List to hold all players
     private final Dice dice;
@@ -109,8 +109,12 @@ public class GameBoard {
     public Tile getLeastDiscardedTile() {
         return leastDiscardedTile;
     }
-    public void setLeastDiscardedTile(Tile leastDiscardedTile) {
+    public void setLeastDiscardedTile(Tile leastDiscardedTile, int discardPlayerIndex) {
         this.leastDiscardedTile = leastDiscardedTile;
+        leastDiscardedPlayerIndex = discardPlayerIndex;
+    }
+    public int getLeastDiscardedPlayerIndex() {
+        return leastDiscardedPlayerIndex;
     }
     public List<Tile> getTilesInTheWall() {
         return Tiles_inTheWall;

@@ -59,7 +59,7 @@ public class GameBoardTest {
     @Test
     void testSetAndGetLeastDiscardedTile() {
         Tile testTile = new NumberTile(1, Suit.WAN);
-        gameBoard.setLeastDiscardedTile(testTile);
+        gameBoard.setLeastDiscardedTile(testTile, 0);
         assertEquals(testTile, gameBoard.getLeastDiscardedTile(), "Set and get least discarded tile should be consistent");
     }
 

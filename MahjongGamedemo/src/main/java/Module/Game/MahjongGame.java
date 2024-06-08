@@ -271,7 +271,8 @@ public class MahjongGame implements Game {
             return;
         }
         System.out.println("Player " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
-        gameBoard.setLeastDiscardedTile(gameBoard.getCurrentActivePlayer().discardTiles(message.getIndex()));
+        Player player = gameBoard.getCurrentActivePlayer();
+        gameBoard.setLeastDiscardedTile(player.discardTiles(message.getIndex()), getCurrentPlayerIndex());
 
         if (scheduledFuture != null && !scheduledFuture.isDone()) {
             scheduledFuture.cancel(true);
@@ -350,7 +351,7 @@ public class MahjongGame implements Game {
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).chi(gameBoard.getLeastDiscardedTile());
-        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
+        players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
         // 添加玩家的chew_pong_kong_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
@@ -371,7 +372,7 @@ public class MahjongGame implements Game {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
         System.out.println(gameBoard.getLeastDiscardedTile().getSuit() + "    ");
-        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
+        players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
         // 添加玩家的pung_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
@@ -391,7 +392,7 @@ public class MahjongGame implements Game {
     public static void handleKongMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
-        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
+        players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
         // 添加玩家的kong_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
