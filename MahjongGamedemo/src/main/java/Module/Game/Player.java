@@ -171,6 +171,9 @@ public class Player implements Serializable {
     public List<Tile> getDiscard_Tiles() {
         return discard_Tiles;
     }
+    public void withdrawDiscardTile(){
+        discard_Tiles.remove(discard_Tiles.size()-1);
+    }
     public List<Tile> getChew_Pong_Kung_Tiles() {
         return Chew_Pong_Kung_Tiles;
     }
