@@ -694,10 +694,10 @@ public class GameScreen implements Screen {
 
     private void playBackgroundMusic() {
         try {
-            Media media = new Media(this.getClass().getResource("/bgm/bgm.m4a").toExternalForm());
-            mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop the music
-            mediaPlayer.play();
+            String musicFile = this.getClass().getResource("/bgm/bgm.m4a").toExternalForm(); // 确保路径正确
+            Thread musicThread = new Thread(new MusicPlayer(musicFile));
+            musicThread.setDaemon(true); // 设置为守护线程，确保程序退出时音乐线程也会结束
+            musicThread.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
