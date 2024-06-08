@@ -192,6 +192,8 @@ public class GameScreen implements Screen {
     @FXML
     Label timer;
 
+    private MediaPlayer mediaPlayer;
+
 
     @FXML
     void DiscardTile1(ActionEvent event) {
@@ -687,15 +689,20 @@ public class GameScreen implements Screen {
             shutDownButtons();
         }
 
-        playBackgroundMusic("/bgm/bgm.m4a");
+        playBackgroundMusic();
     }
 
-    private void playBackgroundMusic(String musicFilePath) {
-        Media media = new Media(new File(musicFilePath).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop the music
-        mediaPlayer.play();
+    private void playBackgroundMusic() {
+        try {
+            Media media = new Media(this.getClass().getResource("/bgm/bgm.m4a").toExternalForm());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop the music
+            mediaPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
 
     public void shutDownFunctionButtons() {
