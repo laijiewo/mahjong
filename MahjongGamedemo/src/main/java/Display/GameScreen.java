@@ -505,11 +505,8 @@ public class GameScreen implements Screen {
         }
     }
     public void showChewButton() {
-        boolean canChow = rule.canChi(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
-        if (playerIndex == (currentActivePlayer + 1)  % 4 && canChow) {
-            Chow.setDisable(false);
-            Chow.setVisible(true);
-        }
+        Chow.setDisable(false);
+        Chow.setVisible(true);
     }
     public void showPungButton() {
         boolean canPung = rule.canPeng(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
@@ -531,6 +528,11 @@ public class GameScreen implements Screen {
             Win.setDisable(false);
             Win.setVisible(true);
         }
+    }
+    public void gameOver() {
+        System.out.println("Game Over!");
+        Stage stage = (Stage) Chow.getScene().getWindow();
+        stage.close();
     }
     private void setPlayerPhotoStyle(){
         for(int i = 0; i != 4; i++) {
