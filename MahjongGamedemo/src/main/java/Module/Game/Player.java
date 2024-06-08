@@ -24,7 +24,7 @@ public class Player implements Serializable {
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
-    private Screen gameScreen;
+    private GameScreen gameScreen;
     private ArrayList<Tile> discard_Tiles;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
@@ -42,7 +42,7 @@ public class Player implements Serializable {
         Tile_hand = new ArrayList<>();
         discard_Tiles = new ArrayList<>();
         gameScreen = new GameScreen();
-        ((GameScreen) gameScreen).setPlayer(this);
+        gameScreen.setPlayer(this);
         Chew_Pong_Kung_Tiles = new ArrayList<>();
     }
 
@@ -183,7 +183,7 @@ public class Player implements Serializable {
     public void launchGameScreen() {
         Platform.runLater(() -> {
             try {
-                ((GameScreen) gameScreen).updateGameInformation(gameInformationMessage);
+                gameScreen.updateGameInformation(gameInformationMessage);
                 isScreenLaunched = true;
                 gameScreen.loadWindow(new Stage());
             } catch (Exception e) {
@@ -239,22 +239,25 @@ public class Player implements Serializable {
                 if (mes.getType() == MessageType.GAME_INFORMATION) {
                     gameInformationMessage = (GameInformationMessage) mes;
                     if (isScreenLaunched) {
-                        ((GameScreen) gameScreen).updateScreen(gameInformationMessage);
+                        gameScreen.updateScreen(gameInformationMessage);
                     }
                 } else if (mes.getType() == MessageType.HUN_TILE) {
                     setHunTile(((HunTileMessage) mes).getHunTile());
                 } else if (mes.getType() == MessageType.LAUNCH_GAME) {
                     launchGameScreen();
                 } else if (mes.getType() == MessageType.HU) {
-                    ((GameScreen) gameScreen).launchResultScreen(mes);
+                    gameScreen.launchResultScreen(mes);
                 } else if (mes.getType() == MessageType.CHEW) {
-                    ((GameScreen) gameScreen).showChewButton();
+                    gameScreen.showChewButton();
+                    gameScreen.shutDownButtons();
                 } else if (mes.getType() == MessageType.PUNG) {
-                    ((GameScreen) gameScreen).showPungButton();
+                    gameScreen.showPungButton();
+                    gameScreen.shutDownButtons();
                 } else if (mes.getType() == MessageType.KONG) {
-                    ((GameScreen) gameScreen).showKongButton();
+                    gameScreen.showKongButton();
+                    gameScreen.shutDownButtons();
                 } else if (mes.getType() == MessageType.GAME_OVER) {
-
+                    exitGame();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -275,7 +278,15 @@ public class Player implements Serializable {
             e.printStackTrace();
         }
     }
-
+    private void exitGame() {
+        gameScreen.gameOver();
+        isRunning = false;
+        try {
+            echoSocket.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 //    /**
 //     * Sends messages to the server.

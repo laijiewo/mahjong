@@ -415,6 +415,18 @@ public class MahjongGame implements Game {
             oos.writeObject(mes);
             oos.flush();
         }
+        Message message = new Message(MessageType.GAME_OVER);
+        for (Socket socket : sockets) {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            oos.writeObject(message);
+            oos.flush();
+        }
+        while (true) {
+            if (sockets.isEmpty()) {
+                serverSocket.close();
+                System.exit(0);
+            }
+        }
     }
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
