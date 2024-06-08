@@ -112,7 +112,7 @@ public class SettlementScreen implements Screen {
             i++;
         }
         while(i != wintypelist.size()){
-            wintypelabels.get(i).setText("");
+            wintypelabels.get(i).setText("   ");
             i++;
         }
     }
