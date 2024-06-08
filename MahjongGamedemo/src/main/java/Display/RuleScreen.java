@@ -23,10 +23,9 @@ public class RuleScreen implements Screen {
 
     @Override
     public void loadWindow(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/Display/RuleScreem.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Display/RuleScreen.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Rule Screen");
-        textarea.setStyle("-fx-text-fill: white;");
         stage.setScene(scene);
         stage.show();
         this.stage = stage;
