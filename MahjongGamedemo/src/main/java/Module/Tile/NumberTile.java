@@ -44,11 +44,25 @@ public class NumberTile extends Tile{
         NumberTile that = (NumberTile) obj;
         return rank == that.rank && getSuit() == that.getSuit();
     }
-
+    /**
+     * Overrides the hashCode method to provide a hash code based on the rank and suit of the tile.
+     *
+     * @return The hash code for the tile.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(rank, getSuit());
     }
+
+    /**
+     * Compares this tile to another tile for order. If the other tile is a NumberTile,
+     * it first compares based on suit, and if the suits are equal, it compares based on rank.
+     * If the other tile is not a NumberTile, it falls back to the superclass's compareTo method.
+     *
+     * @param other The tile to be compared.
+     * @return A negative integer, zero, or a positive integer as this tile is less than,
+     *         equal to, or greater than the specified tile.
+     */
     @Override
     public int compareTo(Tile other) {
         if (other instanceof NumberTile) {
