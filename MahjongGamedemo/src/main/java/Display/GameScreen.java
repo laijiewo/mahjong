@@ -555,9 +555,11 @@ public class GameScreen implements Screen {
         }
     }
     public void gameOver() {
-        System.out.println("Game Over!");
-        Stage stage = (Stage) Chow.getScene().getWindow();
-        stage.close();
+        Platform.runLater(() -> {
+            System.out.println("Game Over!");
+            Stage stage = (Stage) Chow.getScene().getWindow();
+            stage.close();
+        });
     }
     private void setPlayerPhotoStyle(){
         for(int i = 0; i != 4; i++) {
@@ -689,19 +691,9 @@ public class GameScreen implements Screen {
             shutDownButtons();
         }
 
-        playBackgroundMusic();
     }
 
-    private void playBackgroundMusic() {
-        try {
-            String musicFile = this.getClass().getResource("/bgm/bgm.m4a").toExternalForm(); // 确保路径正确
-            Thread musicThread = new Thread(new MusicPlayer(musicFile));
-            musicThread.setDaemon(true); // 设置为守护线程，确保程序退出时音乐线程也会结束
-            musicThread.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
 
