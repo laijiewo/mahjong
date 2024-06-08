@@ -19,15 +19,13 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <ImageView fitHeight="80.0" fitWidth="132.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="80.0" fitWidth="132.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../UI/timer_03.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="PlayerTiles" layoutX="194.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
+      <GridPane fx:id="PlayerTiles" layoutX="204.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -72,7 +70,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="15">
+            <Button fx:id="T14" layoutX="981.0" layoutY="1082.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#DiscardTile14" prefHeight="65.0" prefWidth="45.0" style="-fx-text-fill: #308C4C; -fx-background-color: transparent; -fx-background-image: url('/mj/mj_24.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: 175%;" GridPane.columnIndex="13">
                <font>
                   <Font size="11.0" />
                </font>
@@ -1297,7 +1295,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label id="player2Photo" fx:id="player2Photo" alignment="CENTER" layoutX="837.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+      <Label id="player2Photo" fx:id="player2Photo" alignment="CENTER" layoutX="790.0" layoutY="44.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/SouthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
          </font>
@@ -1312,7 +1310,7 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <ImageView fx:id="HunTile" fitHeight="40.0" fitWidth="40.0" layoutX="146.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.7; -fx-scale-y: 1.7;">
+      <ImageView fx:id="HunTile" fitHeight="40.0" fitWidth="40.0" layoutX="146.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.7; -fx-scale-y: 1.7;">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -1320,9 +1318,9 @@
             <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
-      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
+      <Label fx:id="timer" alignment="CENTER" layoutX="6.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
          <font>
-            <Font name="PixelGameFont" size="12" />
+            <Font name="PixelGameFont" size="20" />
          </font>
       </Label>
 

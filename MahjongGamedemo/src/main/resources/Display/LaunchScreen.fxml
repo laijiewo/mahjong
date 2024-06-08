@@ -32,11 +32,6 @@
             <Font name="Silkscreen" size="24" />
          </font>
       </Label>
-      <Button fx:id="StartGameButton" layoutX="269.0" layoutY="441.0" mnemonicParsing="false" onAction="#StartGame" style="-fx-text-fill: #004E48;" text="START GAME">
-         <font>
-            <Font name="Silkscreen" size="24" />
-         </font>
-      </Button>
 
     </children>
 </AnchorPane>
