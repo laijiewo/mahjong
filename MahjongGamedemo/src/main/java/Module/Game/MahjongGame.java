@@ -325,6 +325,7 @@ public class MahjongGame implements Game {
     public static void handleChewMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).chi(gameBoard.getLeastDiscardedTile());
+        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
 
         // 添加玩家的chew_pong_kong_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
@@ -345,6 +346,8 @@ public class MahjongGame implements Game {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
         System.out.println(gameBoard.getLeastDiscardedTile().getSuit() + "    ");
+        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
+
         // 添加玩家的pung_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         players.get(message.getPlayerIndex()).addChew_Pong_Kung_Tiles(tiles);
@@ -363,6 +366,8 @@ public class MahjongGame implements Game {
     public static void handleKongMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
+        players.get(getCurrentPlayerIndex()).withdrawDiscardTile();
+
         // 添加玩家的kong_Tiles
         gameBoard.setCurrentActivePlayerIndex(message.getPlayerIndex());
         gameBoard.getCurrentActivePlayer().addChew_Pong_Kung_Tiles(tiles);
