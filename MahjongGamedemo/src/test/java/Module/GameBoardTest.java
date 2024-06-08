@@ -32,7 +32,7 @@ public class GameBoardTest {
     void testDealerAndActivePlayerInitiallyTheSame() {
         // Assuming the dealer is determined in the constructor or another initializing method
         gameBoard.determineDealer();
-        assertEquals(gameBoard.getDealer(), gameBoard.getCurrentActivePlayer(), "Dealer should initially be the active player");
+        assertEquals(players.get(gameBoard.getDealerIndex()), gameBoard.getCurrentActivePlayer(), "Dealer should initially be the active player");
     }
 
     @Test

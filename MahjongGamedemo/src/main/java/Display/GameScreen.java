@@ -679,7 +679,7 @@ public class GameScreen implements Screen {
         paintHandTiles();
         showChew_Pung_Kong_Tiles();
     }
-    public void launchResultScreen(Message message) throws Exception {
+    public void launchResultScreen(Message message) {
         HuMessage mes = (HuMessage) message;
         Platform.runLater(() -> {
             SettlementScreen settlementScreen = new SettlementScreen();

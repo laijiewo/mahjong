@@ -25,7 +25,6 @@ public class Player implements Serializable {
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
     private Screen gameScreen;
-    private Tile dealtTile;
     private ArrayList<Tile> discard_Tiles;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
@@ -62,10 +61,6 @@ public class Player implements Serializable {
 
         Tile_hand.removeAll(tilesToRemove);
         Tile_hand.addAll(tilesToAdd);
-        if (isScreenLaunched && dealtTile!=null) {
-            Tile_hand.add(dealtTile);
-            dealtTile = null;
-        }
     }
     /**
      * Rolls the dice using a provided Dice object.
@@ -95,11 +90,7 @@ public class Player implements Serializable {
      * Draws a tile from the tile wall if available.
      */
     public void drawTiles(Tile tile) {
-        if (isScreenLaunched) {
-            dealtTile = tile;
-        } else {
-            Tile_hand.add(tile);
-        }
+        Tile_hand.add(tile);
     }
 
     /**
