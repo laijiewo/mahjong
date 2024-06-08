@@ -206,6 +206,9 @@ public class MahjongGame implements Game {
         sendGameMessageToAll();
         Message message = new launchGameMessage();
         sendMessageToAll(message);
+        for (Player player : players) {
+            player.setIsLaunched(true);
+        }
     }
     public void update() {
         try {

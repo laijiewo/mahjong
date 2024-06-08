@@ -25,6 +25,7 @@ public class Player implements Serializable {
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
     private Screen gameScreen;
+    private Tile dealtTile;
     private ArrayList<Tile> discard_Tiles;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
@@ -61,6 +62,10 @@ public class Player implements Serializable {
 
         Tile_hand.removeAll(tilesToRemove);
         Tile_hand.addAll(tilesToAdd);
+        if (isScreenLaunched && dealtTile!=null) {
+            Tile_hand.add(dealtTile);
+            dealtTile = null;
+        }
     }
     /**
      * Rolls the dice using a provided Dice object.
@@ -75,7 +80,9 @@ public class Player implements Serializable {
         ruleImplementation = new RuleImplementation(hunTile);
         ((GameScreen) gameScreen).setHunTile(tile);
     }
-
+    public void setIsLaunched(boolean isLaunched) {
+        isScreenLaunched = isLaunched;
+    }
     /**
      * Gets the current score of the player.
      * @return Current score.
@@ -88,7 +95,11 @@ public class Player implements Serializable {
      * Draws a tile from the tile wall if available.
      */
     public void drawTiles(Tile tile) {
-        Tile_hand.add(tile);
+        if (isScreenLaunched) {
+            dealtTile = tile;
+        } else {
+            Tile_hand.add(tile);
+        }
     }
 
     /**
@@ -211,7 +222,7 @@ public class Player implements Serializable {
 //        int port = serverPort;
 //        // Attempt to connect to the server
 //        echoSocket = new Socket(serverHostname, port);
-        echoSocket = new Socket("192.168.43.197", 8080);
+        echoSocket = new Socket("10.27.90.52", 8080);
         connected = true;
         new Thread(this::startReceiveGameMessages).start();
     }
