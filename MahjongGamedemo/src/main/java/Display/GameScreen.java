@@ -511,7 +511,7 @@ public class GameScreen implements Screen {
         boolean canChow = rule.canChi(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
         boolean canKong = rule.canGang(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
         boolean canHu = rule.canHu(new ArrayList<>(players.get(0).getHand_Tiles()), new ArrayList<>(players.get(0).getChew_Pung_Kong_Tiles()));
-        if (true) {
+        if (canHu) {
             Win.setDisable(false);
             Win.setVisible(true);
         } else if (canKong) {
