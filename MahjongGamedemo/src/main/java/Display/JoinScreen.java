@@ -26,7 +26,6 @@ public class JoinScreen implements Screen {
     @FXML
     void JoinGame(ActionEvent event) {
         Player player = new Player();
-        player.joinToHost();
         String ip = IpText.getText();
         int port = Integer.parseInt(PortText.getText());
         if(ip!="" && port!=0){
