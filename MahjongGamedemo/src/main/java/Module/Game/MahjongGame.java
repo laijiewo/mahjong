@@ -39,7 +39,7 @@ public class MahjongGame implements Game {
             try {
                 startServer(port);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Game Over");
             }
         }).start();
         tileImageMapper = new TileImageMapper();
@@ -54,9 +54,6 @@ public class MahjongGame implements Game {
     }
     public int getNumOfPlayers() {
         return players.size();
-    }
-    public static int getTileCountInTheTileWall() {
-        return gameBoard.getTileCountInTheWall();
     }
 
     @Override
@@ -98,10 +95,6 @@ public class MahjongGame implements Game {
         }
     }
 
-    public List<Player> getPlayers() {
-        return players;
-    }
-
     @Override
     public Player checkVictory() {
         return null;
@@ -133,11 +126,9 @@ public class MahjongGame implements Game {
     }
 
     public static void rotate() {
-//      System.out.println("Before rotate: " + getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
         gameBoard.swap();
         gameBoard.dealTiles();
         GameManager.updateScreen();
-//      System.out.println("After rotate: " + getCurrentPlayerIndex() + " " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " " + gameBoard.getCurrentActivePlayer().getTile_hand().size());
     }
 
     @Override
@@ -173,33 +164,6 @@ public class MahjongGame implements Game {
         }
         serverSocket.close();
     }
-
-    public String getHostIPAddress() {
-        return serverSocket.getInetAddress().getHostAddress();
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-//    public static void sendMessageToAll() {
-//        try (BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
-//            String message;
-//            while ((message = stdIn.readLine()) != null) {
-//                for (Socket socket : sockets) {
-//                    try {
-//                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-//                        out.println(message);
-//                        out.flush();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public void startGame() throws IOException {
         sortPlayersTiles();
@@ -273,12 +237,9 @@ public class MahjongGame implements Game {
         GameManager.updateScreen();
         DiscardMessage message = (DiscardMessage) mes;
         List<Tile> tiles = gameBoard.getCurrentActivePlayer().getTile_hand();
-        System.out.println("Player           1231234 " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
         if (tiles.get(message.getIndex()).equals(gameBoard.getHunTile())) {
-            System.out.println("You can't discard the hun tile.");
             return;
         }
-        System.out.println("Player " + gameBoard.getCurrentActivePlayer().getPlayerSite() + " discarded tile " + tiles.get(message.getIndex()));
         Player player = gameBoard.getCurrentActivePlayer();
         gameBoard.setLeastDiscardedTile(player.discardTiles(message.getIndex()), getCurrentPlayerIndex());
 
@@ -287,92 +248,65 @@ public class MahjongGame implements Game {
         }
 
         GameManager.updateScreen();
+
         Player playerToKong = playerToKong();
         Player playerToPung = playerToPung();
         Player playerToEat = playerToEat();
+
         if (playerToKong != null || playerToPung != null) {
-//            scheduledFuture = scheduler.schedule(() -> {
-//            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-            System.out.println("能碰杠");
-            if (playerToKong != null) {
-                Message message1 = new Message(MessageType.KONG);
-                sendMessageToSomeOne(message1, playerToKong);
-                try {
-                    sendShutDownMessageToAll();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else if (playerToPung != null) {
-                Message message2 = new Message(MessageType.PUNG);
-                sendMessageToSomeOne(message2, playerToPung);
-                try {
-                    sendShutDownMessageToAll();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            scheduledFuture = scheduler.schedule(() -> {
-                if (playerToEat() != null) {
-                    System.out.println("没碰杠但能吃");
-                    Message message1 = new Message(MessageType.CHEW);
-                    sendMessageToSomeOne(message1, playerToEat);
-                    try {
-                        sendShutDownMessageToAll();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    scheduledFuture = scheduler.schedule(() -> {
-                        System.out.println("没碰杠也没吃");
-                        //摸牌
-                        MahjongGame.rotate();
-                        scheduledFuture = scheduler.schedule(() -> {
-                            Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
-                            handleDiscardMessage(discardMessage);
-                        }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-                    }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-                } else {
-                    System.out.println("没碰杠也不能吃");
-                    //摸牌
-                    MahjongGame.rotate();
-                    scheduledFuture = scheduler.schedule(() -> {
-                        //下一个玩家等待20秒，如果没有打牌则自动打出
-                        Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
-                        handleDiscardMessage(discardMessage);
-                    }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-                }
-            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-
+            discardWithSomeOneCanPungOrKong(playerToKong, playerToPung, playerToEat);
         } else{
-            System.out.println("不能碰杠");
-            if (playerToEat() != null) {
-                System.out.println("不能碰杠但能吃");
-                Message message1 = new Message(MessageType.CHEW);
-                sendMessageToSomeOne(message1, playerToEat);
-                try {
-                    sendShutDownMessageToAll();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                scheduledFuture = scheduler.schedule(() -> {
-                    System.out.println("不能碰杠但能吃没吃");
-                    //摸牌
-                    MahjongGame.rotate();
-                    scheduledFuture = scheduler.schedule(() -> {
-                        Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
-                        handleDiscardMessage(discardMessage);
-                    }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-                }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-            } else {
-                System.out.println("不能碰杠也不能吃");
-                //摸牌
+            discardWithSomeOneCanChew(playerToEat);
+        }
+    }
+
+    private static void discardWithSomeOneCanPungOrKong(Player playerToKong, Player playerToPung, Player playerToEat) {
+        System.out.println("能碰杠");
+        if (playerToKong != null) {
+            Message message1 = new Message(MessageType.KONG);
+            sendMessageToSomeOne(message1, playerToKong);
+            try {
+                sendShutDownMessageToAll();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (playerToPung != null) {
+            Message message2 = new Message(MessageType.PUNG);
+            sendMessageToSomeOne(message2, playerToPung);
+            try {
+                sendShutDownMessageToAll();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        scheduledFuture = scheduler.schedule(() -> {
+            discardWithSomeOneCanChew(playerToEat);
+        }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+    }
+
+    private static void discardWithSomeOneCanChew(Player playerToEat) {
+        if (playerToEat() != null) {
+            Message message1 = new Message(MessageType.CHEW);
+            sendMessageToSomeOne(message1, playerToEat);
+            try {
+                sendShutDownMessageToAll();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            scheduledFuture = scheduler.schedule(() -> {
                 MahjongGame.rotate();
                 scheduledFuture = scheduler.schedule(() -> {
-                    //下一个玩家等待20秒，如果没有打牌则自动打出
                     Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
                     handleDiscardMessage(discardMessage);
                 }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
-            }
+            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
+        } else {
+            MahjongGame.rotate();
+            scheduledFuture = scheduler.schedule(() -> {
+                Message discardMessage = new DiscardMessage(gameBoard.getCurrentActivePlayer().getTile_hand().size() - 1);
+                handleDiscardMessage(discardMessage);
+            }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
         }
     }
 
@@ -396,6 +330,7 @@ public class MahjongGame implements Game {
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
         }, 0, TimeUnit.SECONDS);
     }
+
     public static void handlePungMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
@@ -417,6 +352,7 @@ public class MahjongGame implements Game {
             }, TASK_INTERVAL_SECONDS, TimeUnit.SECONDS);
         }, 0, TimeUnit.SECONDS);
     }
+
     public static void handleKongMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).kong(gameBoard.getLeastDiscardedTile());
@@ -453,6 +389,7 @@ public class MahjongGame implements Game {
         serverSocket.close();
         System.exit(0);
     }
+
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();
         int index = (players.indexOf(gameBoard.getCurrentActivePlayer()) + 1) % 4;
@@ -465,7 +402,7 @@ public class MahjongGame implements Game {
     public static Player playerToPung(){
         Tile pungTile = gameBoard.getLeastDiscardedTile();
         for (Player player : players) {
-            if(player.canpeng(pungTile)){
+            if(player.canpeng(pungTile) && players.indexOf(player) != getCurrentPlayerIndex()){
                 return player;
             }
         }
@@ -475,7 +412,7 @@ public class MahjongGame implements Game {
     public static Player playerToKong(){
         Tile pungTile = gameBoard.getLeastDiscardedTile();
         for (Player player : players) {
-            if(player.cangang(pungTile)){
+            if(player.cangang(pungTile) && players.indexOf(player) != getCurrentPlayerIndex()){
                 return player;
             }
         }

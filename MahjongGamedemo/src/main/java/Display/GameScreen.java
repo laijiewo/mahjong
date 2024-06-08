@@ -437,8 +437,10 @@ public class GameScreen implements Screen {
                 button.setDisable(true);
             }
         }
+        paintChew_Pung_Kong_Tiles(chewpongkongtiles, indexOfButton);
+    }
 
-
+    private void paintChew_Pung_Kong_Tiles(List<Tile> chewpongkongtiles, int indexOfButton) {
         for (Tile tile : chewpongkongtiles) {
             Button button = buttons.get(indexOfButton);
             button.setVisible(true);
@@ -462,7 +464,6 @@ public class GameScreen implements Screen {
         button.setDisable(indexOfButton == 13);
         button.setVisible(false);
     }
-
     public void clearButtons() {
         for(Button button : buttons){
             button.setStyle("-fx-text-fill: #308C4C;" +
@@ -606,6 +607,9 @@ public class GameScreen implements Screen {
         dropShadow.setRadius(10);
         dropShadow.setSpread(0.5);
 
+        setPlayerSiteStyle(dropShadow);
+    }
+    private void setPlayerSiteStyle(DropShadow dropShadow){
         for(int i = 0; i != 4; i++) {
             PlayerInformation player = players.get(i);
             Label playerDirection = playerDirections.get(i);
@@ -619,9 +623,6 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 0){
-                        playerDirection.setEffect(dropShadow);
-                    }
                 } else if (site == Site.South) {
                     playerDirection.setEffect(null);
                     playerDirection.setStyle(
@@ -630,9 +631,6 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 1){
-                        playerDirection.setEffect(dropShadow);
-                    }
                 } else if (site == Site.West) {
                     playerDirection.setEffect(null);
                     playerDirection.setStyle(
@@ -641,9 +639,6 @@ public class GameScreen implements Screen {
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 2){
-                        playerDirection.setEffect(dropShadow);
-                    }
                 } else {
                     playerDirection.setEffect(null);
                     playerDirection.setStyle(
@@ -652,16 +647,15 @@ public class GameScreen implements Screen {
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 3){
-                        playerDirection.setEffect(dropShadow);
-                    }
+                }
+                if(currentActivePlayer == i){
+                    playerDirection.setEffect(dropShadow);
                 }
             } else {
                 System.out.println("failed to change site");
             }
         }
     }
-
     @FXML
     private void initialize() {
         playerPhotos.add(player1Photo);
@@ -690,12 +684,7 @@ public class GameScreen implements Screen {
         } else {
             shutDownButtons();
         }
-
     }
-
-
-
-
 
     public void shutDownFunctionButtons() {
         Kong.setDisable(true);
