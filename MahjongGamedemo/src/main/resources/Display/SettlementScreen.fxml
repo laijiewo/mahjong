@@ -86,7 +86,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="wintype1" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw">
+            <Label fx:id="wintype1" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -102,7 +102,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype2" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="1">
+            <Label fx:id="wintype2" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.rowIndex="1">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -118,7 +118,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype3" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="2">
+            <Label fx:id="wintype3" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.rowIndex="2">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -134,7 +134,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype4" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="3">
+            <Label fx:id="wintype4" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.rowIndex="3">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -150,7 +150,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype5" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="4">
+            <Label fx:id="wintype5" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.rowIndex="4">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -166,7 +166,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype6" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1">
+            <Label fx:id="wintype6" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="1">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -182,7 +182,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype7" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="wintype7" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -198,7 +198,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype8" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="wintype8" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -214,7 +214,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype9" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="wintype9" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -230,7 +230,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype10" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="wintype10" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -246,7 +246,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype11" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2">
+            <Label fx:id="wintype11" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="2">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -262,7 +262,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype12" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="wintype12" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>
@@ -278,7 +278,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="wintype13" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="wintype13" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <effect>
                   <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
                </effect>

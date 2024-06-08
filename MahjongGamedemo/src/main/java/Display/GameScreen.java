@@ -20,6 +20,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -29,6 +31,7 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -338,7 +341,6 @@ public class GameScreen implements Screen {
             List<Tile> tiles = player.getDiscardedTiles();
             System.out.println("Discarded tiles of player " + tiles.size());
             List<ImageView> imageViewList = getAllImageViews(gridPane);
-
             for (ImageView imageView: imageViewList) {
                 imageView.setVisible(false);
             }
@@ -684,7 +686,17 @@ public class GameScreen implements Screen {
         } else {
             shutDownButtons();
         }
+
+        playBackgroundMusic("/bgm/bgm.m4a");
     }
+
+    private void playBackgroundMusic(String musicFilePath) {
+        Media media = new Media(new File(musicFilePath).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop the music
+        mediaPlayer.play();
+    }
+
 
     public void shutDownFunctionButtons() {
         Kong.setDisable(true);
