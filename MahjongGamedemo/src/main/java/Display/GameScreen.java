@@ -504,24 +504,32 @@ public class GameScreen implements Screen {
             button.setDisable(false);
         }
     }
-
-    private void showChew_Pung_Kong_Tiles() {
-        boolean canPung = rule.canPeng(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+    public void showChewButton() {
         boolean canChow = rule.canChi(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        if (playerIndex == (currentActivePlayer + 1)  % 4 && canChow) {
+            Chow.setDisable(false);
+            Chow.setVisible(true);
+        }
+    }
+    public void showPungButton() {
+        boolean canPung = rule.canPeng(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        if (canPung){
+            Pung.setDisable(false);
+            Pung.setVisible(true);
+        }
+    }
+    public void showKongButton() {
         boolean canKong = rule.canGang(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
+        if (canKong) {
+            Kong.setDisable(false);
+            Kong.setVisible(true);
+        }
+    }
+    private void showHuButton() {
         boolean canHu = rule.canHu(new ArrayList<>(players.get(0).getHand_Tiles()), new ArrayList<>(players.get(0).getChew_Pung_Kong_Tiles()));
         if (canHu) {
             Win.setDisable(false);
             Win.setVisible(true);
-        } else if (canKong) {
-            Kong.setDisable(false);
-            Kong.setVisible(true);
-        } else if (canPung){
-            Pung.setDisable(false);
-            Pung.setVisible(true);
-        } else if (playerIndex == (currentActivePlayer + 1)  % 4 && canChow) {
-            Chow.setDisable(false);
-            Chow.setVisible(true);
         }
     }
     private void setPlayerPhotoStyle(){
@@ -637,7 +645,7 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
-
+        shutDownFunctionButtons();
 
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
         TileImageMapper mapper = new TileImageMapper();
@@ -679,7 +687,7 @@ public class GameScreen implements Screen {
         setPlayerPhotoStyle();
         paintPlayerSite();
         paintHandTiles();
-        showChew_Pung_Kong_Tiles();
+        showHuButton();
     }
     public void launchResultScreen(Message message) {
         HuMessage mes = (HuMessage) message;
@@ -704,7 +712,7 @@ public class GameScreen implements Screen {
             clearButtons();
             shutDownButtons();
             paintHandTiles();
-            showChew_Pung_Kong_Tiles();
+            showHuButton();
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();

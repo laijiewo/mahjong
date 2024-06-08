@@ -244,6 +244,14 @@ public class Player implements Serializable {
                     launchGameScreen();
                 } else if (mes.getType() == MessageType.HU) {
                     ((GameScreen) gameScreen).launchResultScreen(mes);
+                } else if (mes.getType() == MessageType.CHEW) {
+                    ((GameScreen) gameScreen).showChewButton();
+                } else if (mes.getType() == MessageType.PUNG) {
+                    ((GameScreen) gameScreen).showPungButton();
+                } else if (mes.getType() == MessageType.KONG) {
+                    ((GameScreen) gameScreen).showKongButton();
+                } else if (mes.getType() == MessageType.GAME_OVER) {
+
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
