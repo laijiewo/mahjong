@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 public class LoginScreen implements Screen{
 
     Stage stage;
-
     @FXML
     private TextField AccountText;
 
@@ -32,17 +31,9 @@ public class LoginScreen implements Screen{
 
     @FXML
     private Label PasswordLabel;
-
     @FXML
     private ImageView BackgroundImage;
 
-    /**
-     * Handles the login action. This method is triggered when the user clicks the "Login" button.
-     * It retrieves the username and password from the text fields, then loads the MenuScreen window and closes the current window.
-     *
-     * @param event The action event triggered by clicking the "Login" button.
-     * @throws Exception if there is an error loading the MenuScreen window.
-     */
     @FXML
     void Login(ActionEvent event) throws Exception {
         String username = AccountText.getText();
@@ -53,12 +44,7 @@ public class LoginScreen implements Screen{
         stage.close();
     }
 
-    /**
-     * Loads the login screen window.
-     *
-     * @param stage The primary stage for this application.
-     * @throws Exception if there is an error loading the FXML file.
-     */
+
     @Override
     public void loadWindow(Stage stage)throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/Display/LoginScreen.fxml"));
@@ -69,3 +55,4 @@ public class LoginScreen implements Screen{
         this.stage = stage;
     }
 }
+
