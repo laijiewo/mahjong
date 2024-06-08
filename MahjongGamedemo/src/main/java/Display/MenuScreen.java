@@ -49,8 +49,11 @@ public class MenuScreen implements Screen {
     }
 
     @FXML
-    void LearnRules(ActionEvent event) {
-
+    void LearnRules(ActionEvent event) throws Exception {
+        RuleScreen ruleScreen = new RuleScreen();
+        ruleScreen.loadWindow(new Stage());
+        Stage stage = (Stage) RulesButton.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
