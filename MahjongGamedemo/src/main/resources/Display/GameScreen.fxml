@@ -9,12 +9,22 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: url('/backgrounds/GameScreenBG.png'); -fx-background-size: cover; -fx-background-repeat: no-repeat; -fx-background-color: #39AB5C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
+      <ImageView fitHeight="654.0" fitWidth="1024.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../backgrounds/GameScreenBG.png" />
+         </image>
+      </ImageView>
+      <Label id="player4Photo" fx:id="player4Photo" alignment="CENTER" layoutX="106.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/NorthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
       <ImageView fitHeight="80.0" fitWidth="132.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../UI/timer_03.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="PlayerTiles" layoutX="184.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
+      <GridPane fx:id="PlayerTiles" layoutX="194.0" layoutY="542.0" scaleX="0.9" scaleY="0.9">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -138,7 +148,7 @@
             <Font name="PixelBug" size="12   " />
          </font>
       </Button>
-      <GridPane fx:id="OppositeTiles" layoutX="326.0" layoutY="37.0" scaleX="1.2" scaleY="1.2">
+      <GridPane fx:id="OppositeTiles" layoutX="344.0" layoutY="34.0" scaleX="1.2" scaleY="1.2">
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
@@ -265,7 +275,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <GridPane fx:id="PreviousTiles" layoutX="129.0" layoutY="117.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+      <GridPane fx:id="PreviousTiles" layoutX="149.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
@@ -392,12 +402,12 @@
             </ImageView>
          </children>
       </GridPane>
-      <ImageView fitHeight="120.0" fitWidth="122.0" layoutX="438.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="120.0" fitWidth="122.0" layoutX="458.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../UI/Grid_03.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="NextTiles" layoutX="843.0" layoutY="117.0">
+      <GridPane fx:id="NextTiles" layoutX="863.0" layoutY="108.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
@@ -523,27 +533,27 @@
             </ImageView>
          </children>
       </GridPane>
-      <Label fx:id="playerDirection1" alignment="CENTER" layoutX="479.0" layoutY="329.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" style="-fx-background-image: url('/UI/East.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
+      <Label fx:id="playerDirection1" alignment="CENTER" layoutX="499.0" layoutY="349.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" style="-fx-background-image: url('/UI/East.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="playerDirection2" alignment="CENTER" layoutX="534.0" layoutY="274.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="270.0" style="-fx-background-image: url('/UI/South.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
+      <Label fx:id="playerDirection2" alignment="CENTER" layoutX="554.0" layoutY="294.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="270.0" style="-fx-background-image: url('/UI/South.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="playerDirection3" alignment="CENTER" layoutX="479.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="180.0" style="-fx-background-image: url('/UI/West.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
+      <Label fx:id="playerDirection3" alignment="CENTER" layoutX="499.0" layoutY="239.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="180.0" style="-fx-background-image: url('/UI/West.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label fx:id="playerDirection4" alignment="CENTER" layoutX="424.0" layoutY="274.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="90.0" style="-fx-background-image: url('/UI/North.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
+      <Label fx:id="playerDirection4" alignment="CENTER" layoutX="444.0" layoutY="294.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" rotate="90.0" style="-fx-background-image: url('/UI/North.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" textFill="WHITE">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <GridPane fx:id="PlayerDiscardPile" layoutX="421.0" layoutY="390.0">
+      <GridPane fx:id="PlayerDiscardPile" layoutX="438.0" layoutY="411.0">
          <children>
             <ImageView fx:id="tile1_1" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" visible="false">
                <cursor>
@@ -729,7 +739,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="NextDiscardPile" layoutX="648.0" layoutY="240.0" rotate="-90.0">
+      <GridPane fx:id="NextDiscardPile" layoutX="675.0" layoutY="261.0" rotate="-90.0">
          <children>
             <ImageView fx:id="tile1_11" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" visible="false">
                <cursor>
@@ -915,7 +925,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="OppositeDiscardPile" layoutX="421.0" layoutY="87.0" rotate="180.0">
+      <GridPane fx:id="OppositeDiscardPile" layoutX="438.0" layoutY="108.0" rotate="180.0">
          <children>
             <ImageView fx:id="tile1_111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" visible="false">
                <cursor>
@@ -1101,12 +1111,12 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="464.0" layoutY="259.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="RemainingTiles" alignment="CENTER" contentDisplay="CENTER" layoutX="484.0" layoutY="279.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" text="83/136" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="PixelGameFont" size="12" />
          </font>
       </Label>
-      <GridPane fx:id="PreviousDiscardPile" layoutX="175.0" layoutY="240.0" rotate="90.0">
+      <GridPane fx:id="PreviousDiscardPile" layoutX="202.0" layoutY="261.0" rotate="90.0">
          <children>
             <ImageView fx:id="tile1_1111" fitHeight="39.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;" visible="false">
                <cursor>
@@ -1302,11 +1312,6 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <Label id="player4Photo" fx:id="player4Photo" alignment="CENTER" layoutX="106.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/NorthPlayer.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Label>
       <Label id="player1Photo" fx:id="player1Photo" alignment="CENTER" layoutX="850.0" layoutY="565.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" scaleX="2.0" scaleY="2.0" style="-fx-background-image: url('/UI/EastPlayer.png'); -fx-background-color: transparant; -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;">
          <font>
             <Font size="9.0" />
@@ -1320,7 +1325,7 @@
             <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
-      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE" >
+      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
          <font>
             <Font name="PixelGameFont" size="12" />
          </font>

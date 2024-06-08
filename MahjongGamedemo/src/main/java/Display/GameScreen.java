@@ -318,7 +318,7 @@ public class GameScreen implements Screen {
         settlementScreen.setFans();
         settlementScreen.setPoint();
         settlementScreen.setWintypelist();
-        
+
         settlementScreen.loadWindow(new Stage());
     }
 
