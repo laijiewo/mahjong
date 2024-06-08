@@ -376,7 +376,8 @@ public class MahjongGame implements Game {
         }, 0, TimeUnit.SECONDS);
     }
 
-    public static void handleHuMessage(int playerIndex) throws IOException {
+    public static void handleHuMessage(Message mes) throws IOException {
+        int playerIndex = ((HuMessage) mes).getWinnerIndex();
         System.out.println("" + gameBoard.getCurrentActivePlayer().getPlayerSite() + " win the game!");
         Message message = new HuMessage(playerIndex);
         for (Socket socket : sockets) {

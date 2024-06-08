@@ -56,7 +56,7 @@ public class ServerGameThread implements Runnable {
                     }
                     case HU -> {
                         try {
-                            MahjongGame.handleHuMessage(((HuMessage) message).getWinnerIndex());
+                            MahjongGame.handleHuMessage(message);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }

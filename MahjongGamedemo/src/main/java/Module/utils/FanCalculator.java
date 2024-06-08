@@ -10,13 +10,16 @@ import Module.Game.GameBoard;
 import java.util.*;
 
 public class FanCalculator {
+    List<String> HuTypes = new ArrayList<>();
 
     private Tile hunTile; // The wildcard tile (混儿牌)
 
     public FanCalculator(Tile hunTile, Player player) {
         this.hunTile = hunTile;
     }
-
+    public List<String> getHuTypes() {
+        return HuTypes;
+    }
     public int calculateFan(List<Tile> hand, boolean isPlayerTurn, boolean isDealer, Tile finalTile) {
         int  tileCount= MahjongGame.getTileCountInTheTileWall();
         boolean selfDrawn = selfDraw(hand,finalTile, isPlayerTurn,isDealer,tileCount);
@@ -24,66 +27,79 @@ public class FanCalculator {
         int fan = 0;
 
         if (selfDrawn && fanTypes.add("selfDrawn")) {
+            HuTypes.add("selfDrawn");
             System.out.println("zimo");
             fan += 1; // 自摸
         }
 
         if (isMenQing(hand,finalTile,isDealer,tileCount) && fanTypes.add("menQing")) {
+            HuTypes.add("menQing");
             System.out.println("menqing");
             fan += 1; // 门清
         }
 
         if (isDuiDuiHu(hand) && fanTypes.add("duiDuiHu")) {
+            HuTypes.add("duiDuiHu");
             fan += 1; // 对对胡
             System.out.println("duiduihu");
         }
 
         if (isZhuaWuKui(finalTile,hand) && fanTypes.add("zhuaWuKui")) {
+            HuTypes.add("zhuaWuKui");
             fan += 1; // 捉五魁
             System.out.println("zhuawukui");
         }
 
         if (isHaiDiLaoYue(hand, selfDrawn,tileCount) && fanTypes.add("haiDiLaoYue")) {
+            HuTypes.add("haiDiLaoYue");
             fan += 1; // 海底捞月
             System.out.println("haidilaoyue");
         }
 
         if (isYiTiaoLong(hand) && fanTypes.add("yiTiaoLong")) {
+            HuTypes.add("yiTiaoLong");
             fan += 2; // 一条龙
             System.out.println("yitiaolong");
         }
 
         if (isQiXiaoDui(hand) && fanTypes.add("qiXiaoDui")) {
+            HuTypes.add("qiXiaoDui");
             fan += 2; // 七小对
             System.out.println("qixiaodui");
         }
 
         if (isHaoHuaQiDui(hand) && fanTypes.add("haoHuaQiDui")) {
+            HuTypes.add("haoHuaQiDui");
             fan += 3; // 豪华七对
             System.out.println("haohuaqidui");
         }
 
         if (isQingYiSe(hand) && fanTypes.add("qingYiSe")) {
+            HuTypes.add("qingYiSe");
             fan += 3; // 清一色
             System.out.println("qingyise");
         }
 
         if (isTianHu(hand,isDealer,tileCount) && fanTypes.add("tianHu")) {
+            HuTypes.add("tianHu");
             fan += 6; // 天和
             System.out.println("tianhu");
         }
 
         if (isDiHu(hand, isDealer,tileCount) && fanTypes.add("diHu")) {
+            HuTypes.add("diHu");
             fan += 5; // 地和
             System.out.println("dihu");
         }
 
         if (isRenHu(hand, isDealer,tileCount) && fanTypes.add("renHu")) {
+            HuTypes.add("renHu");
             fan += 5; // 人和
             System.out.println("renhu");
         }
 
         if (isHunGang(hand) && fanTypes.add("hunGang")) {
+            HuTypes.add("hunGang");
             fan += 9; // 混杠
             System.out.println("hungang");
         }

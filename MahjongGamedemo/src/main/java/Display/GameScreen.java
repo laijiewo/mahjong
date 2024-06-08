@@ -310,7 +310,7 @@ public class GameScreen implements Screen {
     void Win(ActionEvent event) {
         Win.setDisable(true);
         Win.setVisible(false);
-        Message message = new Message(MessageType.HU);
+        Message message = new HuMessage(playerIndex);
         mainPlayer.sendMessageObjectToHost(message);
     }
 
@@ -503,7 +503,7 @@ public class GameScreen implements Screen {
         boolean canChow = rule.canChi(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
         boolean canKong = rule.canGang(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
         boolean canHu = rule.canHu(new ArrayList<>(players.get(0).getHand_Tiles()), new ArrayList<>(players.get(0).getChew_Pung_Kong_Tiles()));
-        if (canHu) {
+        if (true) {
             Win.setDisable(false);
             Win.setVisible(true);
         } else if (canKong) {
@@ -673,7 +673,13 @@ public class GameScreen implements Screen {
     }
     public void launchResultScreen(int winnerIndex) throws Exception {
         SettlementScreen settlementScreen = new SettlementScreen();
-        settlementScreen.loadWindow(new Stage());
+        Platform.runLater(() -> {
+            try {
+                settlementScreen.loadWindow(new Stage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     public void updateScreen(Message message) {
         updateGameInformation(message);
