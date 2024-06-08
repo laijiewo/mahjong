@@ -261,6 +261,14 @@ public class MahjongGame implements Game {
             throw new RuntimeException(e);
         }
     }
+    private static void sendShutDownMessageToAll() throws IOException {
+        Message message = new Message(MessageType.SHUT_DOWN_BUTTONS);
+        for (Socket socket : sockets) {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            oos.writeObject(message);
+            oos.flush();
+        }
+    }
     public static void handleDiscardMessage(Message mes) {
         GameManager.updateScreen();
         DiscardMessage message = (DiscardMessage) mes;
@@ -289,9 +297,19 @@ public class MahjongGame implements Game {
             if (playerToKong != null) {
                 Message message1 = new Message(MessageType.KONG);
                 sendMessageToSomeOne(message1, playerToKong);
+                try {
+                    sendShutDownMessageToAll();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             } else if (playerToPung != null) {
                 Message message2 = new Message(MessageType.PUNG);
                 sendMessageToSomeOne(message2, playerToPung);
+                try {
+                    sendShutDownMessageToAll();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             scheduledFuture = scheduler.schedule(() -> {
@@ -299,6 +317,11 @@ public class MahjongGame implements Game {
                     System.out.println("没碰杠但能吃");
                     Message message1 = new Message(MessageType.CHEW);
                     sendMessageToSomeOne(message1, playerToEat);
+                    try {
+                        sendShutDownMessageToAll();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     scheduledFuture = scheduler.schedule(() -> {
                         System.out.println("没碰杠也没吃");
                         //摸牌
@@ -326,6 +349,11 @@ public class MahjongGame implements Game {
                 System.out.println("不能碰杠但能吃");
                 Message message1 = new Message(MessageType.CHEW);
                 sendMessageToSomeOne(message1, playerToEat);
+                try {
+                    sendShutDownMessageToAll();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 scheduledFuture = scheduler.schedule(() -> {
                     System.out.println("不能碰杠但能吃没吃");
                     //摸牌
@@ -433,7 +461,7 @@ public class MahjongGame implements Game {
         Tile chowTile = gameBoard.getLeastDiscardedTile();
         int index = (players.indexOf(gameBoard.getCurrentActivePlayer()) + 1) % 4;
         if (players.get(index).canchi(chowTile)) {
-            return gameBoard.getCurrentActivePlayer();
+            return players.get((getCurrentPlayerIndex() + 1) % 4);
         }
         return null;
     }

@@ -250,14 +250,13 @@ public class Player implements Serializable {
                     gameScreen.launchResultScreen(mes);
                 } else if (mes.getType() == MessageType.CHEW) {
                     gameScreen.showChewButton();
-                    gameScreen.shutDownButtons();
                 } else if (mes.getType() == MessageType.PUNG) {
                     gameScreen.showPungButton();
-                    gameScreen.shutDownButtons();
                 } else if (mes.getType() == MessageType.KONG) {
                     gameScreen.showKongButton();
+                } else if (mes.getType() == MessageType.SHUT_DOWN_BUTTONS) {
                     gameScreen.shutDownButtons();
-                } else if (mes.getType() == MessageType.GAME_OVER) {
+                }else if (mes.getType() == MessageType.GAME_OVER) {
                     exitGame();
                 }
             } catch (IOException e) {
@@ -284,7 +283,11 @@ public class Player implements Serializable {
         isRunning = false;
         try {
             echoSocket.close();
+            Thread.sleep(10000);
+            System.exit(0);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
