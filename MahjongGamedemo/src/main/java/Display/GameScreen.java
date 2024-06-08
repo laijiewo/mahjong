@@ -281,7 +281,6 @@ public class GameScreen implements Screen {
     }
 
     public void discard(int index) {
-        System.out.println(playerIndex + "      " + currentActivePlayer);
         if (playerIndex == currentActivePlayer) {
             Message message = new DiscardMessage(index);
             mainPlayer.sendMessageObjectToHost(message);
@@ -341,7 +340,6 @@ public class GameScreen implements Screen {
             PlayerInformation player = players.get(indexofPlayer);
 
             List<Tile> tiles = player.getDiscardedTiles();
-            System.out.println("Discarded tiles of player " + tiles.size());
             List<ImageView> imageViewList = getAllImageViews(gridPane);
             for (ImageView imageView: imageViewList) {
                 imageView.setVisible(false);
@@ -362,7 +360,6 @@ public class GameScreen implements Screen {
             PlayerInformation player = players.get(indexofPlayer);
 
             List<Tile> tiles = player.getDiscardedTiles();
-            System.out.println("Discarded tiles of player " + tiles.size());
             List<ImageView> imageViewList = getAllImageViews(gridPane);
 
             int indexOfImage = 0;

@@ -34,7 +34,6 @@ public class GameManager {
     public static void startNewGame() {
         game.initializeGame();
         startGame();
-        // TODO: game应进行定庄、发牌、定混等操作
 
     }
     public static void updateScreen() {

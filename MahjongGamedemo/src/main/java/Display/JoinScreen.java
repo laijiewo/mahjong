@@ -26,42 +26,37 @@ public class JoinScreen implements Screen {
     @FXML
     void JoinGame(ActionEvent event) {
         Player player = new Player();
-        try {
-            player.connect();
-            player.joinToHost();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        player.joinToHost();
+        String ip = IpText.getText();
+        int port = Integer.parseInt(PortText.getText());
+        if(ip!="" && port!=0){
+            player.setServerHostname(ip);
+            player.setServerPort(port);
+            try {
+                player.connect();
+                if (player.getconnected()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Connected to Server");
+                    alert.setHeaderText("Connected to Server");
+                    alert.setContentText("You are connected to the server");
+                    alert.showAndWait();
+                    player.joinToHost();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Error");
+                    alert.setContentText("You are not connected to the server");
+                    alert.showAndWait();
+                }
+            }catch (Exception e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("You are not connected to the server");
+                alert.showAndWait();
+                e.printStackTrace();
+            }
         }
-//        String ip = IpText.getText();
-//        int port = Integer.parseInt(PortText.getText());
-//        if(ip!="" && port!=0){
-//            player.setServerHostname(ip);
-//            player.setServerPort(port);
-//            try {
-//                player.connect();
-//                if (player.getconnected()) {
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Connected to Server");
-//                    alert.setHeaderText("Connected to Server");
-//                    alert.setContentText("You are connected to the server");
-//                    alert.showAndWait();
-//                    player.joinToHost();
-//                } else {
-//                    Alert alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("Error");
-//                    alert.setHeaderText("Error");
-//                    alert.setContentText("You are not connected to the server");
-//                    alert.showAndWait();
-//                }
-//            }catch (Exception e){
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Error");
-//                alert.setContentText("You are not connected to the server");
-//                alert.showAndWait();
-//                System.out.println(e);
-//            }
-//        }
     }
     public JoinScreen closeWindow() {
         Stage stage = (Stage) JoinGameButton.getScene().getWindow();
