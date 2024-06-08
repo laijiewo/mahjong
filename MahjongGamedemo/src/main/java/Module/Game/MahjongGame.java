@@ -450,12 +450,8 @@ public class MahjongGame implements Game {
             oos.writeObject(message);
             oos.flush();
         }
-        while (true) {
-            if (sockets.isEmpty()) {
-                serverSocket.close();
-                System.exit(0);
-            }
-        }
+        serverSocket.close();
+        System.exit(0);
     }
     public static Player playerToEat(){
         Tile chowTile = gameBoard.getLeastDiscardedTile();

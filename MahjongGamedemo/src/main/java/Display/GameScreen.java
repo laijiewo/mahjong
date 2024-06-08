@@ -555,9 +555,11 @@ public class GameScreen implements Screen {
         }
     }
     public void gameOver() {
-        System.out.println("Game Over!");
-        Stage stage = (Stage) Chow.getScene().getWindow();
-        stage.close();
+        Platform.runLater(() -> {
+            System.out.println("Game Over!");
+            Stage stage = (Stage) Chow.getScene().getWindow();
+            stage.close();
+        });
     }
     private void setPlayerPhotoStyle(){
         for(int i = 0; i != 4; i++) {
