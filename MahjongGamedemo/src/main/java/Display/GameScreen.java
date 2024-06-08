@@ -1,4 +1,5 @@
 package Display;
+
 import Display.Screen;
 import Message.*;
 import Module.Game.*;
@@ -30,15 +31,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author Jingwang Li, Lanyun Xiao
+ * This class represents the game screen for the Mahjong game.
+ * It handles the UI elements and game logic for displaying and interacting with the game screen.
+ *
+ * @authoр Jingwang Li, Jie Mao
  */
 public class GameScreen implements Screen {
 
@@ -81,18 +83,14 @@ public class GameScreen implements Screen {
     @FXML
     private Label playerDirection4;
 
-
     @FXML
     private GridPane PreviousDiscardPile;
-
 
     @FXML
     private Button Pause;
 
-
     @FXML
     private Label player1Photo;
-
 
     @FXML
     private Button T1;
@@ -112,7 +110,6 @@ public class GameScreen implements Screen {
     @FXML
     private Button T6;
 
-
     @FXML
     private Button T7;
 
@@ -122,46 +119,35 @@ public class GameScreen implements Screen {
     @FXML
     private Button T9;
 
-
     @FXML
     private GridPane NextTiles;
-
 
     @FXML
     private Label player4Photo;
 
-
     @FXML
     private Button T10;
-
 
     @FXML
     private Button T12;
 
-
     @FXML
     private Button T11;
-
 
     @FXML
     private Button T14;
 
-
     @FXML
     private Button T13;
-
 
     @FXML
     private GridPane OppositeDiscardPile;
 
-
     @FXML
     private GridPane PlayerDiscardPile;
 
-
     @FXML
     private GridPane PreviousTiles;
-
 
     @FXML
     private Button Pung;
@@ -172,10 +158,8 @@ public class GameScreen implements Screen {
     @FXML
     private Button Win;
 
-
     @FXML
     private GridPane NextDiscardPile;
-
 
     @FXML
     private Label player2Photo;
@@ -194,100 +178,39 @@ public class GameScreen implements Screen {
 
     private MediaPlayer mediaPlayer;
 
-
+    /**
+     * Handles the action when a tile is discarded.
+     * This method is used for all discard actions.
+     *
+     * @param event The ActionEvent triggered by the discard button.
+     */
     @FXML
-    void DiscardTile1(ActionEvent event) {
+    void DiscardTile(ActionEvent event) {
         shutDownButtons();
-        discard(0);
-
+        Button sourceButton = (Button) event.getSource();
+        int index = buttons.indexOf(sourceButton);
+        discard(index);
     }
 
-    @FXML
-    void DiscardTile11(ActionEvent event) {
-        shutDownButtons();
-        discard(10);
-    }
-
-    @FXML
-    void DiscardTile7(ActionEvent event) {
-        shutDownButtons();
-        discard(6);
-    }
-
-    @FXML
-    void DiscardTile6(ActionEvent event) {
-        shutDownButtons();
-        discard(5);
-    }
-
-    @FXML
-    void DiscardTile3(ActionEvent event) {
-        shutDownButtons();
-        discard(2);
-    }
-
-    @FXML
-    void DiscardTile14(ActionEvent event) {
-        shutDownButtons();
-        discard(13);
-    }
-
-    @FXML
-    void DiscardTile9(ActionEvent event) {
-        shutDownButtons();
-        discard(8);
-    }
-
-    @FXML
-    void DiscardTile12(ActionEvent event) {
-        shutDownButtons();
-        discard(11);
-    }
-
-    @FXML
-    void DiscardTile8(ActionEvent event) {
-        shutDownButtons();
-        discard(7);
-    }
-
-    @FXML
-    void DiscardTile13(ActionEvent event) {
-        shutDownButtons();
-        discard(12);
-    }
-
-    @FXML
-    void DiscardTile5(ActionEvent event) {
-        shutDownButtons();
-        discard(4);
-    }
-
-    @FXML
-    void DiscardTile10(ActionEvent event) {
-        shutDownButtons();
-        discard(9);
-    }
-
-    @FXML
-    void DiscardTile4(ActionEvent event) {
-        shutDownButtons();
-        discard(3);
-    }
-
-    @FXML
-    void DiscardTile2(ActionEvent event) {
-        shutDownButtons();
-        discard(1);
-    }
-
+    /**
+     * Sends a discard message to the host.
+     *
+     * @param index The index of the tile to be discarded.
+     */
     public void discard(int index) {
         if (playerIndex == currentActivePlayer) {
             Message message = new DiscardMessage(index);
             mainPlayer.sendMessageObjectToHost(message);
         } else {
-            System.out.println("Can not discard!");
+            System.out.println("Cannot discard!");
         }
     }
+
+    /**
+     * Handles the action when the "Pung" button is pressed.
+     *
+     * @param event The ActionEvent triggered by the button.
+     */
     @FXML
     void Pung(ActionEvent event) {
         Pung.setDisable(true);
@@ -296,6 +219,11 @@ public class GameScreen implements Screen {
         mainPlayer.sendMessageObjectToHost(message);
     }
 
+    /**
+     * Handles the action when the "Chow" button is pressed.
+     *
+     * @param event The ActionEvent triggered by the button.
+     */
     @FXML
     void Chow(ActionEvent event) {
         Chow.setDisable(true);
@@ -304,6 +232,11 @@ public class GameScreen implements Screen {
         mainPlayer.sendMessageObjectToHost(message);
     }
 
+    /**
+     * Handles the action when the "Kong" button is pressed.
+     *
+     * @param event The ActionEvent triggered by the button.
+     */
     @FXML
     void Kong(ActionEvent event) {
         Kong.setDisable(true);
@@ -312,6 +245,11 @@ public class GameScreen implements Screen {
         mainPlayer.sendMessageObjectToHost(message);
     }
 
+    /**
+     * Handles the action when the "Win" button is pressed.
+     *
+     * @param event The ActionEvent triggered by the button.
+     */
     @FXML
     void Win(ActionEvent event) throws Exception {
         Win.setDisable(true);
@@ -325,10 +263,20 @@ public class GameScreen implements Screen {
         mainPlayer.sendMessageObjectToHost(message);
     }
 
+    /**
+     * Handles the action when the "Pause" button is pressed.
+     *
+     * @param event The ActionEvent triggered by the button.
+     */
     @FXML
     void Pause(ActionEvent event) {
+        // Implementation for pause functionality
     }
-    public void clearDiscardPiles(){
+
+    /**
+     * Clears all discard piles on the game screen.
+     */
+    public void clearDiscardPiles() {
         List<GridPane> gridPaneList = new ArrayList<>();
         gridPaneList.add(PlayerDiscardPile);
         gridPaneList.add(NextDiscardPile);
@@ -341,14 +289,17 @@ public class GameScreen implements Screen {
 
             List<Tile> tiles = player.getDiscardedTiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
-            for (ImageView imageView: imageViewList) {
+            for (ImageView imageView : imageViewList) {
                 imageView.setVisible(false);
             }
             indexofPlayer++;
         }
     }
 
-    public void paintDiscardPiles(){
+    /**
+     * Paints the discard piles on the game screen.
+     */
+    public void paintDiscardPiles() {
         List<GridPane> gridPaneList = new ArrayList<>();
         gridPaneList.add(PlayerDiscardPile);
         gridPaneList.add(NextDiscardPile);
@@ -373,12 +324,15 @@ public class GameScreen implements Screen {
         }
         Platform.runLater(() -> {
             int remainingtiles = tilesInTheWall.size();
-            RemainingTiles.setText(remainingtiles+"/136");
-            RemainingTiles.setFont(new Font("PixelGameFont",12));
+            RemainingTiles.setText(remainingtiles + "/136");
+            RemainingTiles.setFont(new Font("PixelGameFont", 12));
         });
     }
 
-    public void paintOtherHandTiles(){
+    /**
+     * Paints the hand tiles of other players on the game screen.
+     */
+    public void paintOtherHandTiles() {
         List<GridPane> gridPaneList = new ArrayList<>();
         gridPaneList.add(NextTiles);
         gridPaneList.add(OppositeTiles);
@@ -391,7 +345,7 @@ public class GameScreen implements Screen {
             PlayerInformation player = players.get(indexofPlayer);
             List<Tile> tiles = player.getChew_Pung_Kong_Tiles();
             List<ImageView> imageViewList = getAllImageViews(gridPane);
-            rotationDegree-=90;
+            rotationDegree -= 90;
 
             int indexOfImage = 0;
             for (Tile tile : tiles) {
@@ -402,10 +356,12 @@ public class GameScreen implements Screen {
             }
             indexofPlayer++;
         }
-
     }
 
-    public void paintHandTiles(){
+    /**
+     * Paints the hand tiles of the main player on the game screen.
+     */
+    public void paintHandTiles() {
         PlayerInformation player = players.get(0);
 
         List<Tile> tiles = player.getHand_Tiles();
@@ -424,19 +380,25 @@ public class GameScreen implements Screen {
             String imageUrl = image.getUrl();
 
             button.setStyle("-fx-text-fill: #308C4C;" +
-                                    " -fx-background-color: transparent;" +
-                                    " -fx-background-image: url('" + imageUrl + "');" +
-                                    " -fx-background-repeat: no-repeat;" +
-                                    " -fx-background-position: center center;" +
-                                    " -fx-background-size: 175%;");
+                    " -fx-background-color: transparent;" +
+                    " -fx-background-image: url('" + imageUrl + "');" +
+                    " -fx-background-repeat: no-repeat;" +
+                    " -fx-background-position: center center;" +
+                    " -fx-background-size: 175%;");
             indexOfButton++;
-            if(tile.equals(huntile)){
+            if (tile.equals(huntile)) {
                 button.setDisable(true);
             }
         }
         paintChew_Pung_Kong_Tiles(chewpongkongtiles, indexOfButton);
     }
 
+    /**
+     * Paints the Chew, Pung, and Kong tiles of the main player.
+     *
+     * @param chewpongkongtiles The list of Chew, Pung, and Kong tiles.
+     * @param indexOfButton The starting index of the button.
+     */
     private void paintChew_Pung_Kong_Tiles(List<Tile> chewpongkongtiles, int indexOfButton) {
         for (Tile tile : chewpongkongtiles) {
             Button button = buttons.get(indexOfButton);
@@ -445,11 +407,11 @@ public class GameScreen implements Screen {
             String imageUrl = image.getUrl();
 
             button.setStyle("-fx-text-fill: #308C4C;" +
-                                    " -fx-background-color: transparent;" +
-                                    " -fx-background-image: url('" + imageUrl + "');" +
-                                    " -fx-background-repeat: no-repeat;" +
-                                    " -fx-background-position: center center;" +
-                                    " -fx-background-size: 175%;");
+                    " -fx-background-color: transparent;" +
+                    " -fx-background-image: url('" + imageUrl + "');" +
+                    " -fx-background-repeat: no-repeat;" +
+                    " -fx-background-position: center center;" +
+                    " -fx-background-size: 175%;");
             indexOfButton++;
             button.setDisable(true);
         }
@@ -461,20 +423,30 @@ public class GameScreen implements Screen {
         button.setDisable(indexOfButton == 13);
         button.setVisible(false);
     }
+
+    /**
+     * Clears all buttons on the game screen.
+     */
     public void clearButtons() {
-        for(Button button : buttons){
+        for (Button button : buttons) {
             button.setStyle("-fx-text-fill: #308C4C;" +
-                                    " -fx-background-color: transparent;" +
-                                    " -fx-background-image: url('/mj/mj_24.png');" +
-                                    " -fx-background-repeat: no-repeat;" +
-                                    " -fx-background-position: center center;" +
-                                    " -fx-background-size: 175%;");
+                    " -fx-background-color: transparent;" +
+                    " -fx-background-image: url('/mj/mj_24.png');" +
+                    " -fx-background-repeat: no-repeat;" +
+                    " -fx-background-position: center center;" +
+                    " -fx-background-size: 175%;");
         }
         Button button = buttons.get(13);
         button.setDisable(true);
         button.setVisible(false);
     }
 
+    /**
+     * Gets all ImageView nodes in a given GridPane.
+     *
+     * @param gridPane The GridPane to search.
+     * @return A list of ImageView nodes.
+     */
     public static List<ImageView> getAllImageViews(GridPane gridPane) {
         List<ImageView> imageViews = new ArrayList<>();
         for (Node node : gridPane.getChildren()) {
@@ -485,6 +457,9 @@ public class GameScreen implements Screen {
         return imageViews;
     }
 
+    /**
+     * Sets the game timer.
+     */
     public void setTimer() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             time -= 1;
@@ -494,6 +469,11 @@ public class GameScreen implements Screen {
         timeline.play(); // Start the timeline
     }
 
+    /**
+     * Updates the game information based on a received message.
+     *
+     * @param message The message containing game information.
+     */
     public void updateGameInformation(Message message) {
         List<PlayerInformation> playerInformationList = ((GameInformationMessage) message).getPlayersFromMessage();
         players.clear();
@@ -510,34 +490,65 @@ public class GameScreen implements Screen {
         playerIndex = ((GameInformationMessage) message).getPlayerIndexFromMessage();
         isDealer = ((GameInformationMessage) message).getDealerIndexFromMessage() == playerIndex;
     }
+
+    /**
+     * Sets the main player.
+     *
+     * @param player The main player.
+     */
     public void setPlayer(Player player) {
         this.mainPlayer = player;
     }
+
+    /**
+     * Sets the Hun tile.
+     *
+     * @param huntile The Hun tile.
+     */
     public void setHunTile(Tile huntile) {
         this.huntile = huntile;
     }
 
-    public void shutDownButtons(){
-        for(Button button : buttons){
+    /**
+     * Disables all buttons on the game screen.
+     */
+    public void shutDownButtons() {
+        for (Button button : buttons) {
             button.setDisable(true);
         }
     }
-    public void releaseButtons(){
-        for(Button button : buttons){
+
+    /**
+     * Enables all buttons on the game screen.
+     */
+    public void releaseButtons() {
+        for (Button button : buttons) {
             button.setDisable(false);
         }
     }
+
+    /**
+     * Shows the "Chow" button.
+     */
     public void showChewButton() {
         Chow.setDisable(false);
         Chow.setVisible(true);
     }
+
+    /**
+     * Shows the "Pung" button if the player can perform a Pung action.
+     */
     public void showPungButton() {
         boolean canPung = rule.canPeng(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
-        if (canPung){
+        if (canPung) {
             Pung.setDisable(false);
             Pung.setVisible(true);
         }
     }
+
+    /**
+     * Shows the "Kong" button if the player can perform a Kong action.
+     */
     public void showKongButton() {
         boolean canKong = rule.canGang(new ArrayList<>(players.get(0).getHand_Tiles()), leastDiscardedTile);
         if (canKong) {
@@ -545,6 +556,10 @@ public class GameScreen implements Screen {
             Kong.setVisible(true);
         }
     }
+
+    /**
+     * Shows the "Win" button if the player can win.
+     */
     private void showHuButton() {
         boolean canHu = rule.canHu(new ArrayList<>(players.get(0).getHand_Tiles()), new ArrayList<>(players.get(0).getChew_Pung_Kong_Tiles()));
         if (canHu) {
@@ -552,6 +567,10 @@ public class GameScreen implements Screen {
             Win.setVisible(true);
         }
     }
+
+    /**
+     * Handles the end of the game.
+     */
     public void gameOver() {
         Platform.runLater(() -> {
             System.out.println("Game Over!");
@@ -559,8 +578,12 @@ public class GameScreen implements Screen {
             stage.close();
         });
     }
-    private void setPlayerPhotoStyle(){
-        for(int i = 0; i != 4; i++) {
+
+    /**
+     * Sets the styles for player photos based on their positions.
+     */
+    private void setPlayerPhotoStyle() {
+        for (int i = 0; i != 4; i++) {
             PlayerInformation player = players.get(i);
             Label playerPhoto = playerPhotos.get(i);
             Site site = player.getSite();
@@ -598,13 +621,16 @@ public class GameScreen implements Screen {
         }
     }
 
-    private void paintPlayerSite(){
+    /**
+     * Paints the direction of the players based on their positions.
+     */
+    private void paintPlayerSite() {
         DropShadow dropShadow = new DropShadow();
         dropShadow.setColor(Color.YELLOW);
         dropShadow.setRadius(10);
         dropShadow.setSpread(0.5);
 
-        for(int i = 0; i != 4; i++) {
+        for (int i = 0; i != 4; i++) {
             PlayerInformation player = players.get(i);
             Label playerDirection = playerDirections.get(i);
             Site site = player.getSite();
@@ -617,7 +643,7 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 0){
+                    if (currentActivePlayer == 0) {
                         playerDirection.setEffect(dropShadow);
                     }
                 } else if (site == Site.South) {
@@ -628,7 +654,7 @@ public class GameScreen implements Screen {
                                     " -fx-background-position: center center;" +
                                     " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 1){
+                    if (currentActivePlayer == 1) {
                         playerDirection.setEffect(dropShadow);
                     }
                 } else if (site == Site.West) {
@@ -639,7 +665,7 @@ public class GameScreen implements Screen {
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 2){
+                    if (currentActivePlayer == 2) {
                         playerDirection.setEffect(dropShadow);
                     }
                 } else {
@@ -650,16 +676,20 @@ public class GameScreen implements Screen {
                                     + " -fx-background-position: center center;"
                                     + " -fx-background-size: stretch;"
                     );
-                    if(currentActivePlayer == 3){
+                    if (currentActivePlayer == 3) {
                         playerDirection.setEffect(dropShadow);
                     }
                 }
             } else {
-                System.out.println("failed to change site");
+                System.out.println("Failed to change site");
             }
         }
     }
 
+    /**
+     * Initializes the game screen.
+     * This method is called automatically after the FXML file has been loaded.
+     */
     @FXML
     private void initialize() {
         playerPhotos.add(player1Photo);
@@ -690,6 +720,9 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Disables and hides all function buttons (Chow, Pung, Kong, Win).
+     */
     public void shutDownFunctionButtons() {
         Kong.setDisable(true);
         Kong.setVisible(false);
@@ -700,6 +733,13 @@ public class GameScreen implements Screen {
         Win.setDisable(true);
         Win.setVisible(false);
     }
+
+    /**
+     * Loads the game screen window.
+     *
+     * @param stage The primary stage for this application.
+     * @throws Exception if there is an error loading the FXML file.
+     */
     @Override
     public void loadWindow(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display/GameScreen.fxml"));
@@ -716,6 +756,12 @@ public class GameScreen implements Screen {
         paintHandTiles();
         showHuButton();
     }
+
+    /**
+     * Launches the result screen when the game is over.
+     *
+     * @param message The message containing the result information.
+     */
     public void launchResultScreen(Message message) {
         HuMessage mes = (HuMessage) message;
         Platform.runLater(() -> {
@@ -732,6 +778,12 @@ public class GameScreen implements Screen {
             }
         });
     }
+
+    /**
+     * Updates the game screen based on the received message.
+     *
+     * @param message The message containing the updated game information.
+     */
     public void updateScreen(Message message) {
         shutDownFunctionButtons();
         updateGameInformation(message);
@@ -748,4 +800,5 @@ public class GameScreen implements Screen {
         });
     }
 }
+
 
