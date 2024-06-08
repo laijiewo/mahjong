@@ -324,6 +324,27 @@ public class GameScreen implements Screen {
     @FXML
     void Pause(ActionEvent event) {
     }
+    public void clearDiscardPiles(){
+        List<GridPane> gridPaneList = new ArrayList<>();
+        gridPaneList.add(PlayerDiscardPile);
+        gridPaneList.add(NextDiscardPile);
+        gridPaneList.add(OppositeDiscardPile);
+        gridPaneList.add(PreviousDiscardPile);
+        int indexofPlayer = 0;
+
+        for (GridPane gridPane : gridPaneList) {
+            PlayerInformation player = players.get(indexofPlayer);
+
+            List<Tile> tiles = player.getDiscardedTiles();
+            System.out.println("Discarded tiles of player " + tiles.size());
+            List<ImageView> imageViewList = getAllImageViews(gridPane);
+
+            for (ImageView imageView: imageViewList) {
+                imageView.setVisible(false);
+            }
+            indexofPlayer++;
+        }
+    }
 
     public void paintDiscardPiles(){
         List<GridPane> gridPaneList = new ArrayList<>();
@@ -715,6 +736,7 @@ public class GameScreen implements Screen {
             shutDownButtons();
             paintHandTiles();
             showHuButton();
+            clearDiscardPiles();
             paintDiscardPiles();
             paintOtherHandTiles();
             paintPlayerSite();
