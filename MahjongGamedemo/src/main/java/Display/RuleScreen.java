@@ -26,7 +26,7 @@ public class RuleScreen implements Screen {
         Parent root = FXMLLoader.load(getClass().getResource("/Display/RuleScreem.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Rule Screen");
-        textarea.setStyle("-fx-text-fill: white; -fx-control-inner-background: darkgreen;");
+        textarea.setStyle("-fx-text-fill: white;");
         stage.setScene(scene);
         stage.show();
         this.stage = stage;

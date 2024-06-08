@@ -63,7 +63,7 @@ public class MenuScreen implements Screen {
 
     @FXML
     void Exit(ActionEvent event) {
-
+        System.exit(0);
     }
 
 
