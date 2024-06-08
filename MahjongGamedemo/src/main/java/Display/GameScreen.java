@@ -698,6 +698,7 @@ public class GameScreen implements Screen {
         });
     }
     public void updateScreen(Message message) {
+        shutDownFunctionButtons();
         updateGameInformation(message);
         Platform.runLater(() -> {
             clearButtons();
