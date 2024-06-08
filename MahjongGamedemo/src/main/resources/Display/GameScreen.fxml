@@ -19,7 +19,7 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <ImageView fitHeight="80.0" fitWidth="132.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="80.0" fitWidth="132.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../UI/timer_03.png" />
          </image>
@@ -1310,7 +1310,7 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <ImageView fx:id="HunTile" fitHeight="40.0" fitWidth="40.0" layoutX="146.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.7; -fx-scale-y: 1.7;">
+      <ImageView fx:id="HunTile" fitHeight="40.0" fitWidth="40.0" layoutX="146.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.7; -fx-scale-y: 1.7;">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -1318,9 +1318,9 @@
             <Image url="@../mj/mj_101.png" />
          </image>
       </ImageView>
-      <Label fx:id="timer" alignment="CENTER" layoutY="-29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
+      <Label fx:id="timer" alignment="CENTER" layoutX="6.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="132.0" style="-fx-background-image: url('/UI/timer_03.png'); -fx-background-repeat: no-repeat; -fx-background-position: center center; -fx-background-size: stretch;" text="20" textFill="WHITE">
          <font>
-            <Font name="PixelGameFont" size="12" />
+            <Font name="PixelGameFont" size="20" />
          </font>
       </Label>
 
