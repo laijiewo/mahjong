@@ -389,11 +389,15 @@ public class GameScreen implements Screen {
         List<Tile> tiles = player.getHand_Tiles();
         List<Tile> chewpongkongtiles = player.getChew_Pung_Kong_Tiles();
         int indexOfButton = 0;
+        if (playerIndex == currentActivePlayer) {
+            releaseButtons();
+        } else {
+            shutDownButtons();
+        }
 
         for (Tile tile : tiles) {
             Button button = buttons.get(indexOfButton);
             button.setVisible(true);
-            button.setDisable(false);
             Image image = imageMap.get(tile);
             String imageUrl = image.getUrl();
 
@@ -409,12 +413,7 @@ public class GameScreen implements Screen {
             }
         }
 
-        if (playerIndex == currentActivePlayer) {
-            releaseButtons();
-        } else {
-            shutDownButtons();
-        }
-        
+
         for (Tile tile : chewpongkongtiles) {
             Button button = buttons.get(indexOfButton);
             button.setVisible(true);
@@ -638,14 +637,7 @@ public class GameScreen implements Screen {
         playerDirections.add(playerDirection3);
         playerDirections.add(playerDirection4);
 
-        Kong.setDisable(true);
-        Kong.setVisible(false);
-        Chow.setDisable(true);
-        Chow.setVisible(false);
-        Pung.setDisable(true);
-        Pung.setVisible(false);
-        Win.setDisable(true);
-        Win.setVisible(false);
+
 
         buttons.addAll(Arrays.asList(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14));
         TileImageMapper mapper = new TileImageMapper();
@@ -663,6 +655,16 @@ public class GameScreen implements Screen {
         }
     }
 
+    public void shutDownFunctionButtons() {
+        Kong.setDisable(true);
+        Kong.setVisible(false);
+        Chow.setDisable(true);
+        Chow.setVisible(false);
+        Pung.setDisable(true);
+        Pung.setVisible(false);
+        Win.setDisable(true);
+        Win.setVisible(false);
+    }
     @Override
     public void loadWindow(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display/GameScreen.fxml"));
@@ -699,6 +701,7 @@ public class GameScreen implements Screen {
         updateGameInformation(message);
         Platform.runLater(() -> {
             clearButtons();
+            shutDownButtons();
             paintHandTiles();
             showChew_Pung_Kong_Tiles();
             paintDiscardPiles();

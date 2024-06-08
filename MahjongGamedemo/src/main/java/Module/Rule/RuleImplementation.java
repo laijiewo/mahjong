@@ -68,19 +68,19 @@ public class RuleImplementation implements MahjongRule {
             chiTiles.add(new NumberTile(rank - 2, suit));
             chiTiles.add(new NumberTile(rank - 1, suit));
             chiTiles.add(tile);
-            removeChiTilesFromHand(hand);
+            removeChiTilesFromHand(hand, tile);
             return true; // e.g., 123
         } else if (rank <= 7 && ranks[rank + 1] > 0 && ranks[rank + 2] > 0) {
             chiTiles.add(tile);
             chiTiles.add(new NumberTile(rank + 1, suit));
             chiTiles.add(new NumberTile(rank + 2, suit));
-            removeChiTilesFromHand(hand);
+            removeChiTilesFromHand(hand, tile);
             return true; // e.g., 789
         } else if (rank >= 2 && rank <= 8 && ranks[rank - 1] > 0 && ranks[rank + 1] > 0) {
             chiTiles.add(new NumberTile(rank - 1, suit));
             chiTiles.add(tile);
             chiTiles.add(new NumberTile(rank + 1, suit));
-            removeChiTilesFromHand(hand);
+            removeChiTilesFromHand(hand, tile);
             return true; // e.g., 234
         }
 
@@ -350,9 +350,11 @@ public class RuleImplementation implements MahjongRule {
             }
         }
     }
-    private void removeChiTilesFromHand(List<Tile> hand) {
+    private void removeChiTilesFromHand(List<Tile> hand, Tile t) {
         for (Tile tile : chiTiles) {
-            removeTile(hand, tile);
+            if (!t.equals(tile)) {
+                removeTile(hand, tile);
+            }
         }
     }
 

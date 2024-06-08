@@ -213,7 +213,7 @@ public class Player implements Serializable {
 //        int port = serverPort;
 //        // Attempt to connect to the server
 //        echoSocket = new Socket(serverHostname, port);
-        echoSocket = new Socket("10.27.90.52", 8080);
+        echoSocket = new Socket("192.168.43.197", 8080);
         connected = true;
         new Thread(this::startReceiveGameMessages).start();
     }
