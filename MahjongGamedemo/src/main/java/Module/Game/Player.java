@@ -34,7 +34,9 @@ public class Player implements Serializable {
     private boolean isScreenLaunched = false;
     private GameInformationMessage gameInformationMessage;
 
-
+    /**
+     * Constructs a Player object.
+     */
     public Player(){
         Tile_hand = new ArrayList<>();
         discard_Tiles = new ArrayList<>();
@@ -210,6 +212,10 @@ public class Player implements Serializable {
         new Thread(this::startReceiveGameMessages).start();
     }
 
+    /**
+     * Sends a join message to the host.
+     */
+
     public void joinToHost() {
         Message message = new joinMessage();
         sendMessageObjectToHost(message);
@@ -253,6 +259,13 @@ public class Player implements Serializable {
             }
         }
     }
+
+    /**
+     * Sends a message object to the host.
+     *
+     * @param message The message to send.
+     */
+
     public void sendMessageObjectToHost(Message message) {
         System.out.println("dis " + discard_Tiles.size());
         try {
@@ -263,6 +276,10 @@ public class Player implements Serializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Exits the game, closes the socket connection, and shuts down the application.
+     */
     private void exitGame() {
         gameScreen.gameOver();
         try {

@@ -8,8 +8,15 @@ import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The FallenTileImageMapper class maps fallen Mahjong tiles to their corresponding images.
+ */
 public class FallenTileImageMapper {
     private Map<Tile, Image> imageMap = new HashMap<>();
+
+    /**
+     * Constructs a FallenTileImageMapper and initializes the mappings for all fallen tile types.
+     */
     public FallenTileImageMapper() {
         addFallenWanMapping();
         addFallenTiaoMapping();
@@ -17,19 +24,39 @@ public class FallenTileImageMapper {
         addFallenWindAndDragonMapping();
     }
 
+    /**
+     * Adds a mapping between a tile and its image.
+     *
+     * @param object The tile to be mapped.
+     * @param imagePath The path to the image of the tile.
+     */
     public void addMapping(Tile object, String imagePath) {
         imageMap.put(object, new Image(imagePath));
     }
 
+    /**
+     * Retrieves the image corresponding to a tile.
+     *
+     * @param object The tile whose image is to be retrieved.
+     * @return The image corresponding to the tile.
+     */
     public Image getImage(Tile object) {
         return imageMap.get(object);
     }
 
+    /**
+     * Gets the map of tiles and their corresponding images.
+     *
+     * @return The map of tiles and their corresponding images.
+     */
     public Map<Tile, Image> getImageMap() {
         return imageMap;
 
     }
 
+    /**
+     * Adds mappings for fallen Wan (Character) tiles.
+     */
     private void addFallenWanMapping() {
         Tile oneWan = new NumberTile(1, Suit.WAN);
         addMapping(oneWan, "/mj/mj_73.png");
@@ -50,7 +77,9 @@ public class FallenTileImageMapper {
         Tile nineWan = new NumberTile(9, Suit.WAN);
         addMapping(nineWan, "/mj/mj_81.png");
     }
-
+    /**
+     * Adds mappings for fallen Tiao (Bamboo) tiles.
+     */
     private void addFallenTiaoMapping() {
         Tile oneTiao = new NumberTile(1, Suit.TIAO);
         addMapping(oneTiao, "/mj/mj_82.png");
@@ -71,6 +100,10 @@ public class FallenTileImageMapper {
         Tile nineTiao = new NumberTile(9, Suit.TIAO);
         addMapping(nineTiao, "/mj/mj_90.png");
     }
+
+    /**
+     * Adds mappings for fallen Tong (Circle) tiles.
+     */
     private void addFallenTongMapping() {
         Tile oneTong = new NumberTile(1, Suit.TONG);
         addMapping(oneTong, "/mj/mj_91.png");
@@ -91,6 +124,10 @@ public class FallenTileImageMapper {
         Tile nineTong = new NumberTile(9, Suit.TONG);
         addMapping(nineTong, "/mj/mj_99.png");
     }
+
+    /**
+     * Adds mappings for fallen Wind and Dragon tiles.
+     */
     private void addFallenWindAndDragonMapping() {
         Tile EastWind = new WindAndDragonTile("East", Suit.WIND);
         addMapping(EastWind, "/mj/mj_100.png");
