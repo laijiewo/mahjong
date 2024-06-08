@@ -4,5 +4,5 @@ import java.io.Serializable;
 
 public enum MessageType implements Serializable {
     JOIN, HUN_TILE, GAME_INFORMATION, LAUNCH_GAME,
-    DISCARD, DRAW, CHEW, PUNG, KONG, HU, GAME_OVER;
+    DISCARD, DRAW, CHEW, PUNG, KONG, HU, GAME_OVER, SHUT_DOWN_BUTTONS
 }
