@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -12,31 +13,288 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640" prefWidth="1024" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Display.SettlementScreen">
    <children>
-      <ImageView fitHeight="649.0" fitWidth="1024.0" layoutY="-1.0">
+      <ImageView fitHeight="649.0" fitWidth="1045.0" layoutX="-14.0" layoutY="-4.0">
          <image>
             <Image url="@../backgrounds/GameScreenBG.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-56.0" layoutY="14.0" prefHeight="156.0" prefWidth="634.0" text="WINNER:" textFill="#fff700">
+      <Label fx:id="WinnerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="14.0" prefHeight="156.0" prefWidth="634.0" text="WINNER:">
          <font>
-            <Font size="48.0" />
+            <Font name="Silkscreen" size="48.0" />
          </font>
          <effect>
-            <DropShadow color="#ffee00" />
+            <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
          </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#fff700" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="426.0" prefHeight="156.0" prefWidth="634.0" text="SCORE:    10000000" textFill="#fff700">
-         <effect>
-            <DropShadow color="#ffee00" />
-         </effect>
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="185.0" fitWidth="187.0" layoutX="790.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="winnerPhoto" fitHeight="185.0" fitWidth="187.0" layoutX="790.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../UI/Player_E.png" />
          </image>
       </ImageView>
+      <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" layoutX="366.0" layoutY="428.0" prefHeight="156.0" prefWidth="634.0" text="100000  pt">
+         <effect>
+            <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+         </effect>
+         <font>
+            <Font name="Silkscreen" size="64.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#fff700" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="fan" alignment="CENTER" contentDisplay="CENTER" layoutX="146.0" layoutY="428.0" prefHeight="156.0" prefWidth="390.0" text="1 FAN">
+         <effect>
+            <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+         </effect>
+         <font>
+            <Font name="Silkscreen" size="64.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#fff700" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <GridPane layoutX="62.0" layoutY="149.0" prefHeight="297.0" prefWidth="797.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="wintype1" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype2" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="1">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype3" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="2">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype4" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="3">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype5" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.rowIndex="4">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype6" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype7" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype8" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype9" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype10" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype11" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype12" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="wintype13" alignment="CENTER" contentDisplay="CENTER" prefHeight="96.0" prefWidth="285.0" text="SelfDraw" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <effect>
+                  <DropShadow color="WHITE" height="0.0" offsetX="2.0" radius="0.0" width="0.0" />
+               </effect>
+               <font>
+                  <Font name="Silkscreen" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.24630541871921183" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#fff700" />
+                        <Stop color="RED" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
