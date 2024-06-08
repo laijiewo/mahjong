@@ -2,32 +2,21 @@ package Message;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
-/**
- * Represents a general message in the Mahjong game.
- * Implements Serializable for message serialization.
- */
+import Module.Game.MahjongGame;
+import Module.Tile.Tile;
+
 public class Message implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private MessageType type;
 
-    /**
-     * Constructs a new Message with the specified type.
-     *
-     * @param type The type of the message.
-     */
+    // HU, PAUSE and UNPAUSE Message
     public Message(MessageType type) {
         this.type = type;
     }
-
-    /**
-     * Gets the type of the message.
-     *
-     * @return The type of the message.
-     */
     public MessageType getType() {
         return type;
     }
 }
-
