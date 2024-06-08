@@ -261,7 +261,6 @@ public class MahjongGame implements Game {
     }
 
     private static void discardWithSomeOneCanPungOrKong(Player playerToKong, Player playerToPung, Player playerToEat) {
-        System.out.println("能碰杠");
         if (playerToKong != null) {
             Message message1 = new Message(MessageType.KONG);
             sendMessageToSomeOne(message1, playerToKong);
@@ -334,7 +333,6 @@ public class MahjongGame implements Game {
     public static void handlePungMessage(Message mes) {
         Chew_Pung_KongMessage message = (Chew_Pung_KongMessage) mes;
         ArrayList<Tile> tiles = (ArrayList<Tile>) players.get(message.getPlayerIndex()).pung(gameBoard.getLeastDiscardedTile());
-        System.out.println(gameBoard.getLeastDiscardedTile().getSuit() + "    ");
         players.get(gameBoard.getLeastDiscardedPlayerIndex()).withdrawDiscardTile();
 
         // 添加玩家的pung_Tiles

@@ -20,7 +20,6 @@ import java.util.List;
  * @author Jingwang Li, Lanyun Xiao
  */
 public class Player implements Serializable {
-    private int Score;
     private Site playerSite;
     private ArrayList<Tile> Tile_hand;
     private ArrayList<Tile> Chew_Pong_Kung_Tiles;
@@ -28,7 +27,6 @@ public class Player implements Serializable {
     private ArrayList<Tile> discard_Tiles;
     private RuleImplementation ruleImplementation;
     private static Socket echoSocket;
-    private static boolean isRunning = true;
     private String serverHostname;
     private Tile hunTile;
     private int serverPort;
@@ -38,7 +36,6 @@ public class Player implements Serializable {
 
 
     public Player(){
-        this.Score = 0;
         Tile_hand = new ArrayList<>();
         discard_Tiles = new ArrayList<>();
         gameScreen = new GameScreen();
@@ -73,17 +70,10 @@ public class Player implements Serializable {
     public void setHunTile(Tile tile){
         hunTile=tile;
         ruleImplementation = new RuleImplementation(hunTile);
-        ((GameScreen) gameScreen).setHunTile(tile);
+        gameScreen.setHunTile(tile);
     }
     public void setIsLaunched(boolean isLaunched) {
         isScreenLaunched = isLaunched;
-    }
-    /**
-     * Gets the current score of the player.
-     * @return Current score.
-     */
-    public int getScore() {
-        return Score;
     }
 
     /**
@@ -213,18 +203,13 @@ public class Player implements Serializable {
      * and then attempts to connect to the server.
      */
     public void connect() throws IOException {
-        //String serverHostname = scanner.next();
-//        int port = serverPort;
-//        // Attempt to connect to the server
-//        echoSocket = new Socket(serverHostname, port);
-        echoSocket = new Socket("192.168.43.197", 8080);
+        int port = serverPort;
+        // Attempt to connect to the server
+        echoSocket = new Socket(serverHostname, port);
         connected = true;
         new Thread(this::startReceiveGameMessages).start();
     }
 
-    public Socket getEchoSocket() {
-        return echoSocket;
-    }
     public void joinToHost() {
         Message message = new joinMessage();
         sendMessageObjectToHost(message);
@@ -280,7 +265,6 @@ public class Player implements Serializable {
     }
     private void exitGame() {
         gameScreen.gameOver();
-        isRunning = false;
         try {
             echoSocket.close();
             Thread.sleep(10000);
@@ -291,63 +275,4 @@ public class Player implements Serializable {
             throw new RuntimeException(e);
         }
     }
-
-//    /**
-//     * Sends messages to the server.
-//     * Reads user input from the console and sends it to the server.
-//     * Handles the "Bye." command to exit the application.
-//     */
-//    private static void sendMessage() {
-//        try {
-//            PrintWriter out = new PrintWriter(
-//                    new OutputStreamWriter(echoSocket.getOutputStream(), "UTF-8"), true);
-//            BufferedReader stdIn = new BufferedReader(
-//                    new InputStreamReader(System.in));
-//            String userInput;
-//
-//            while ((userInput = stdIn.readLine()) != null) {
-//                if (userInput.equals("Bye.")) {
-//                    isRunning = false;
-//                    System.out.println("See you again!");
-//                    out.println(userInput);
-//                    out.close();
-//                    stdIn.close();
-//                    return;
-//                }
-//                out.println(userInput);
-//            }
-//            out.close();
-//            stdIn.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    /**
-//     * Receives messages from the server.
-//     * Continuously reads messages from the server and prints them to the console.
-//     * If an error occurs, it attempts to reconnect to the server after a delay.
-//     *
-//     * @throws InterruptedException If the thread is interrupted while sleeping
-//     */
-//    private static void receiveMessage() throws InterruptedException {
-//        String message;
-//        try {
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
-//            while (isRunning && (message = reader.readLine()) != null) {
-//                if (message.contains("player")) {
-//                    System.out.println(message);
-//                } else {
-//                    System.out.println("Server: " + message);
-//                }
-//            }
-//        } catch (IOException e) {
-//            if (isRunning) {
-//                System.out.println("An error occurred while receiving message: " + e.getMessage());
-//                System.out.println("Reconnecting...");
-//                Thread.sleep(3000);
-//            }
-//        }
-//    }
-
 }
