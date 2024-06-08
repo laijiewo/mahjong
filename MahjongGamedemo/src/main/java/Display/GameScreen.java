@@ -307,11 +307,19 @@ public class GameScreen implements Screen {
     }
 
     @FXML
-    void Win(ActionEvent event) {
+    void Win(ActionEvent event) throws Exception {
         Win.setDisable(true);
         Win.setVisible(false);
         Message message = new HuMessage(playerIndex);
         mainPlayer.sendMessageObjectToHost(message);
+
+        SettlementScreen settlementScreen = new SettlementScreen();
+        settlementScreen.setWinner();
+        settlementScreen.setFans();
+        settlementScreen.setPoint();
+        settlementScreen.setWintypelist();
+        
+        settlementScreen.loadWindow(new Stage());
     }
 
     @FXML
